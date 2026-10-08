@@ -1,0 +1,195 @@
+{
+  "root_group": {
+    "name": "",
+    "path": "",
+    "id": "d41d8cd98f00b204e9800998ecf8427e",
+    "groups": [],
+    "checks": []
+  },
+  "options": {
+    "summaryTimeUnit": "",
+    "noColor": false,
+    "summaryTrendStats": [
+      "min",
+      "avg",
+      "med",
+      "p(90)",
+      "p(95)",
+      "max"
+    ]
+  },
+  "state": {
+    "isStdOutTTY": false,
+    "isStdErrTTY": false,
+    "testRunDurationMs": 1860.914
+  },
+  "metrics": {
+    "http_req_blocked": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 7.443,
+        "avg": 7.5282,
+        "med": 7.538,
+        "p(90)": 7.614,
+        "p(95)": 7.625,
+        "max": 7.636
+      }
+    },
+    "http_req_connecting": {
+      "contains": "time",
+      "values": {
+        "min": 0.639,
+        "avg": 0.7332000000000001,
+        "med": 0.753,
+        "p(90)": 0.8192,
+        "p(95)": 0.8286,
+        "max": 0.838
+      },
+      "type": "trend"
+    },
+    "iterations": {
+      "values": {
+        "count": 5,
+        "rate": 2.6868517298488808
+      },
+      "type": "counter",
+      "contains": "default"
+    },
+    "http_req_duration{expected_response:true}": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 267.651,
+        "avg": 328.73539999999997,
+        "med": 337.33,
+        "p(90)": 363.766,
+        "p(95)": 365.567,
+        "max": 367.368
+      }
+    },
+    "http_req_receiving": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 0.0578,
+        "med": 0.052,
+        "p(90)": 0.0844,
+        "p(95)": 0.0902,
+        "max": 0.096,
+        "min": 0.037
+      }
+    },
+    "http_req_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 328.73539999999997,
+        "med": 337.33,
+        "p(90)": 363.766,
+        "p(95)": 365.567,
+        "max": 367.368,
+        "min": 267.651
+      }
+    },
+    "http_req_tls_handshaking": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "med": 0,
+        "p(90)": 0,
+        "p(95)": 0,
+        "max": 0,
+        "min": 0,
+        "avg": 0
+      }
+    },
+    "data_received": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 10440,
+        "rate": 5610.146411924463
+      }
+    },
+    "http_reqs": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "rate": 2.6868517298488808,
+        "count": 5
+      }
+    },
+    "iteration_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "med": 1830.143459,
+        "p(90)": 1856.7287330000001,
+        "p(95)": 1858.5752830000001,
+        "max": 1860.421833,
+        "min": 1760.860208,
+        "avg": 1821.7271332
+      }
+    },
+    "vus_max": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "min": 5,
+        "max": 5,
+        "value": 5
+      }
+    },
+    "data_sent": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 2240,
+        "rate": 1203.7095749722987
+      }
+    },
+    "http_req_failed": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 0,
+        "passes": 0,
+        "fails": 5
+      }
+    },
+    "vus": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "value": 5,
+        "min": 5,
+        "max": 5
+      }
+    },
+    "http_req_sending": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "med": 0.069,
+        "p(90)": 0.0936,
+        "p(95)": 0.09979999999999999,
+        "max": 0.106,
+        "min": 0.04,
+        "avg": 0.07100000000000001
+      }
+    },
+    "http_req_waiting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(90)": 363.66,
+        "p(95)": 365.463,
+        "max": 367.266,
+        "min": 267.486,
+        "avg": 328.6066,
+        "med": 337.172
+      }
+    }
+  }
+}

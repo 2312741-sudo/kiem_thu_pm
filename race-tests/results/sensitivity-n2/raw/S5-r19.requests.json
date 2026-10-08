@@ -1,0 +1,52 @@
+[
+  {
+    "label": "pending-0",
+    "method": "POST",
+    "url": "http://localhost:3000/api/book/event",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "eventTypeId": 1162,
+      "start": "2028-02-27T09:00:00.000Z",
+      "end": "2028-02-27T09:30:00.000Z",
+      "timeZone": "UTC",
+      "language": "en",
+      "metadata": {},
+      "user": "k15host",
+      "responses": {
+        "name": "s5-r19-u0",
+        "email": "s5-r19-u0@k15.test",
+        "location": {
+          "value": "inPerson",
+          "optionValue": ""
+        }
+      }
+    }
+  },
+  {
+    "label": "pending-1",
+    "method": "POST",
+    "url": "http://localhost:3000/api/book/event",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "eventTypeId": 1162,
+      "start": "2028-02-27T09:00:00.000Z",
+      "end": "2028-02-27T09:30:00.000Z",
+      "timeZone": "UTC",
+      "language": "en",
+      "metadata": {},
+      "user": "k15host",
+      "responses": {
+        "name": "s5-r19-u1",
+        "email": "s5-r19-u1@k15.test",
+        "location": {
+          "value": "inPerson",
+          "optionValue": ""
+        }
+      }
+    }
+  }
+]

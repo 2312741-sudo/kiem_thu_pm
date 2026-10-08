@@ -1,0 +1,52 @@
+[
+  {
+    "label": "seat-0",
+    "method": "POST",
+    "url": "http://localhost:3000/api/book/event",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "eventTypeId": 1161,
+      "start": "2027-07-30T09:00:00.000Z",
+      "end": "2027-07-30T09:30:00.000Z",
+      "timeZone": "UTC",
+      "language": "en",
+      "metadata": {},
+      "user": "k15host",
+      "responses": {
+        "name": "s3-r7-u0",
+        "email": "s3-r7-u0@k15.test",
+        "location": {
+          "value": "inPerson",
+          "optionValue": ""
+        }
+      }
+    }
+  },
+  {
+    "label": "seat-1",
+    "method": "POST",
+    "url": "http://localhost:3000/api/book/event",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "eventTypeId": 1161,
+      "start": "2027-07-30T09:00:00.000Z",
+      "end": "2027-07-30T09:30:00.000Z",
+      "timeZone": "UTC",
+      "language": "en",
+      "metadata": {},
+      "user": "k15host",
+      "responses": {
+        "name": "s3-r7-u1",
+        "email": "s3-r7-u1@k15.test",
+        "location": {
+          "value": "inPerson",
+          "optionValue": ""
+        }
+      }
+    }
+  }
+]

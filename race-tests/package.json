@@ -1,0 +1,16 @@
+{
+  "name": "calcom-k15-race-tests",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bộ kiểm thử Concurrency/Race (K15) cho Cal.com v6.2.0 – đề tài R05-K15",
+  "type": "module",
+  "scripts": {
+    "fixtures": "node src/fixtures.mjs",
+    "smoke": "node src/smoke.mjs",
+    "race": "node src/run.mjs",
+    "report": "node src/report.mjs"
+  },
+  "dependencies": {
+    "pg": "^8.23.1"
+  }
+}

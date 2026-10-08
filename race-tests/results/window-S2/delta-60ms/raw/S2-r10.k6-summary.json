@@ -1,0 +1,195 @@
+{
+  "options": {
+    "summaryTrendStats": [
+      "min",
+      "avg",
+      "med",
+      "p(90)",
+      "p(95)",
+      "max"
+    ],
+    "summaryTimeUnit": "",
+    "noColor": false
+  },
+  "state": {
+    "isStdOutTTY": false,
+    "isStdErrTTY": false,
+    "testRunDurationMs": 1576.415
+  },
+  "metrics": {
+    "http_req_waiting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(95)": 82.5902,
+        "max": 84.55,
+        "min": 45.354,
+        "avg": 64.952,
+        "med": 64.952,
+        "p(90)": 80.6304
+      }
+    },
+    "http_req_sending": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(95)": 0.16645,
+        "max": 0.172,
+        "min": 0.061,
+        "avg": 0.11649999999999999,
+        "med": 0.11649999999999999,
+        "p(90)": 0.1609
+      }
+    },
+    "data_sent": {
+      "contains": "data",
+      "values": {
+        "count": 802,
+        "rate": 508.74928239074103
+      },
+      "type": "counter"
+    },
+    "http_req_tls_handshaking": {
+      "contains": "time",
+      "values": {
+        "min": 0,
+        "avg": 0,
+        "med": 0,
+        "p(90)": 0,
+        "p(95)": 0,
+        "max": 0
+      },
+      "type": "trend"
+    },
+    "http_req_receiving": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "med": 0.09,
+        "p(90)": 0.1116,
+        "p(95)": 0.1143,
+        "max": 0.117,
+        "min": 0.063,
+        "avg": 0.09
+      }
+    },
+    "data_received": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 2373,
+        "rate": 1505.3142732085144
+      }
+    },
+    "http_req_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "med": 65.1585,
+        "p(90)": 80.9029,
+        "p(95)": 82.87095,
+        "max": 84.839,
+        "min": 45.478,
+        "avg": 65.1585
+      }
+    },
+    "http_req_connecting": {
+      "values": {
+        "avg": 0.3835,
+        "med": 0.3835,
+        "p(90)": 0.4319,
+        "p(95)": 0.43795,
+        "max": 0.444,
+        "min": 0.323
+      },
+      "type": "trend",
+      "contains": "time"
+    },
+    "http_req_failed": {
+      "values": {
+        "passes": 0,
+        "fails": 2,
+        "rate": 0
+      },
+      "type": "rate",
+      "contains": "default"
+    },
+    "vus_max": {
+      "contains": "default",
+      "values": {
+        "value": 2,
+        "min": 2,
+        "max": 2
+      },
+      "type": "gauge"
+    },
+    "http_reqs": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 2,
+        "rate": 1.2687014523459876
+      }
+    },
+    "iterations": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 2,
+        "rate": 1.2687014523459876
+      }
+    },
+    "iteration_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "max": 1576.262542,
+        "min": 1561.516375,
+        "avg": 1568.8894584999998,
+        "med": 1568.8894584999998,
+        "p(90)": 1574.7879252999999,
+        "p(95)": 1575.52523365
+      }
+    },
+    "http_req_duration{expected_response:true}": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 45.478,
+        "avg": 65.1585,
+        "med": 65.1585,
+        "p(90)": 80.9029,
+        "p(95)": 82.87095,
+        "max": 84.839
+      }
+    },
+    "http_req_blocked": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 0.385,
+        "avg": 2.9455,
+        "med": 2.9455,
+        "p(90)": 4.993900000000001,
+        "p(95)": 5.24995,
+        "max": 5.506
+      }
+    },
+    "vus": {
+      "contains": "default",
+      "values": {
+        "value": 2,
+        "min": 2,
+        "max": 2
+      },
+      "type": "gauge"
+    }
+  },
+  "root_group": {
+    "name": "",
+    "path": "",
+    "id": "d41d8cd98f00b204e9800998ecf8427e",
+    "groups": [],
+    "checks": []
+  }
+}

@@ -1,0 +1,195 @@
+{
+  "root_group": {
+    "id": "d41d8cd98f00b204e9800998ecf8427e",
+    "groups": [],
+    "checks": [],
+    "name": "",
+    "path": ""
+  },
+  "options": {
+    "summaryTrendStats": [
+      "min",
+      "avg",
+      "med",
+      "p(90)",
+      "p(95)",
+      "max"
+    ],
+    "summaryTimeUnit": "",
+    "noColor": false
+  },
+  "state": {
+    "testRunDurationMs": 1630.699,
+    "isStdOutTTY": false,
+    "isStdErrTTY": false
+  },
+  "metrics": {
+    "data_sent": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 802,
+        "rate": 491.81363329467916
+      }
+    },
+    "http_req_duration": {
+      "values": {
+        "min": 142.991,
+        "avg": 143.171,
+        "med": 143.171,
+        "p(90)": 143.315,
+        "p(95)": 143.333,
+        "max": 143.351
+      },
+      "type": "trend",
+      "contains": "time"
+    },
+    "http_req_blocked": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(95)": 2.13835,
+        "max": 2.14,
+        "min": 2.107,
+        "avg": 2.1235,
+        "med": 2.1235,
+        "p(90)": 2.1367000000000003
+      }
+    },
+    "http_req_connecting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(90)": 0.2777,
+        "p(95)": 0.27835000000000004,
+        "max": 0.279,
+        "min": 0.266,
+        "avg": 0.2725,
+        "med": 0.2725
+      }
+    },
+    "http_req_tls_handshaking": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(95)": 0,
+        "max": 0,
+        "min": 0,
+        "avg": 0,
+        "med": 0,
+        "p(90)": 0
+      }
+    },
+    "http_req_failed": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 0,
+        "passes": 0,
+        "fails": 2
+      }
+    },
+    "iteration_duration": {
+      "contains": "time",
+      "values": {
+        "med": 1630.574271,
+        "p(90)": 1630.5853213999999,
+        "p(95)": 1630.5867027,
+        "max": 1630.588084,
+        "min": 1630.560458,
+        "avg": 1630.574271
+      },
+      "type": "trend"
+    },
+    "http_reqs": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "rate": 1.2264679134530654,
+        "count": 2
+      }
+    },
+    "http_req_waiting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 142.753,
+        "avg": 142.971,
+        "med": 142.971,
+        "p(90)": 143.1454,
+        "p(95)": 143.16719999999998,
+        "max": 143.189
+      }
+    },
+    "http_req_sending": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(90)": 0.0856,
+        "p(95)": 0.08629999999999999,
+        "max": 0.087,
+        "min": 0.073,
+        "avg": 0.07999999999999999,
+        "med": 0.07999999999999999
+      }
+    },
+    "iterations": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 2,
+        "rate": 1.2264679134530654
+      }
+    },
+    "vus_max": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "min": 2,
+        "max": 2,
+        "value": 2
+      }
+    },
+    "http_req_duration{expected_response:true}": {
+      "values": {
+        "min": 142.991,
+        "avg": 143.171,
+        "med": 143.171,
+        "p(90)": 143.315,
+        "p(95)": 143.333,
+        "max": 143.351
+      },
+      "type": "trend",
+      "contains": "time"
+    },
+    "http_req_receiving": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 0.12,
+        "med": 0.12,
+        "p(90)": 0.14479999999999998,
+        "p(95)": 0.1479,
+        "max": 0.151,
+        "min": 0.089
+      }
+    },
+    "vus": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "min": 2,
+        "max": 2,
+        "value": 2
+      }
+    },
+    "data_received": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 3867,
+        "rate": 2371.3757106615017
+      }
+    }
+  }
+}

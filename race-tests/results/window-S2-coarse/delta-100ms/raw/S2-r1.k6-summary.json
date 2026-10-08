@@ -1,0 +1,195 @@
+{
+  "options": {
+    "summaryTrendStats": [
+      "min",
+      "avg",
+      "med",
+      "p(90)",
+      "p(95)",
+      "max"
+    ],
+    "summaryTimeUnit": "",
+    "noColor": false
+  },
+  "state": {
+    "isStdOutTTY": false,
+    "isStdErrTTY": false,
+    "testRunDurationMs": 1614.037
+  },
+  "metrics": {
+    "http_req_tls_handshaking": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "max": 0,
+        "min": 0,
+        "avg": 0,
+        "med": 0,
+        "p(90)": 0,
+        "p(95)": 0
+      }
+    },
+    "http_reqs": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 2,
+        "rate": 1.2391289666841592
+      }
+    },
+    "http_req_duration{expected_response:true}": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "med": 54.055,
+        "p(90)": 76.2894,
+        "p(95)": 79.06869999999999,
+        "max": 81.848,
+        "min": 26.262,
+        "avg": 54.055
+      }
+    },
+    "http_req_connecting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(90)": 0.2545,
+        "p(95)": 0.25475,
+        "max": 0.255,
+        "min": 0.25,
+        "avg": 0.2525,
+        "med": 0.2525
+      }
+    },
+    "http_req_failed": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 0,
+        "passes": 0,
+        "fails": 2
+      }
+    },
+    "vus_max": {
+      "contains": "default",
+      "values": {
+        "value": 2,
+        "min": 2,
+        "max": 2
+      },
+      "type": "gauge"
+    },
+    "iterations": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 2,
+        "rate": 1.2391289666841592
+      }
+    },
+    "data_sent": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 798,
+        "rate": 494.41245770697947
+      }
+    },
+    "http_req_waiting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 26.145,
+        "avg": 53.916,
+        "med": 53.916,
+        "p(90)": 76.1328,
+        "p(95)": 78.9099,
+        "max": 81.687
+      }
+    },
+    "iteration_duration": {
+      "values": {
+        "med": 1593.5180209999999,
+        "p(90)": 1609.8206042,
+        "p(95)": 1611.8584271,
+        "max": 1613.89625,
+        "min": 1573.139792,
+        "avg": 1593.5180209999999
+      },
+      "type": "trend",
+      "contains": "time"
+    },
+    "http_req_blocked": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "med": 2.362,
+        "p(90)": 4.0132,
+        "p(95)": 4.2196,
+        "max": 4.426,
+        "min": 0.298,
+        "avg": 2.362
+      }
+    },
+    "vus": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "value": 2,
+        "min": 2,
+        "max": 2
+      }
+    },
+    "http_req_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 26.262,
+        "avg": 54.055,
+        "med": 54.055,
+        "p(90)": 76.2894,
+        "p(95)": 79.06869999999999,
+        "max": 81.848
+      }
+    },
+    "http_req_sending": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "med": 0.064,
+        "p(90)": 0.0712,
+        "p(95)": 0.0721,
+        "max": 0.073,
+        "min": 0.055,
+        "avg": 0.064
+      }
+    },
+    "data_received": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 2369,
+        "rate": 1467.7482610373863
+      }
+    },
+    "http_req_receiving": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 0.075,
+        "med": 0.075,
+        "p(90)": 0.08539999999999999,
+        "p(95)": 0.0867,
+        "max": 0.088,
+        "min": 0.062
+      }
+    }
+  },
+  "root_group": {
+    "name": "",
+    "path": "",
+    "id": "d41d8cd98f00b204e9800998ecf8427e",
+    "groups": [],
+    "checks": []
+  }
+}

@@ -1,0 +1,195 @@
+{
+  "root_group": {
+    "id": "d41d8cd98f00b204e9800998ecf8427e",
+    "groups": [],
+    "checks": [],
+    "name": "",
+    "path": ""
+  },
+  "options": {
+    "summaryTimeUnit": "",
+    "noColor": false,
+    "summaryTrendStats": [
+      "min",
+      "avg",
+      "med",
+      "p(90)",
+      "p(95)",
+      "max"
+    ]
+  },
+  "state": {
+    "isStdOutTTY": false,
+    "isStdErrTTY": false,
+    "testRunDurationMs": 1633.624
+  },
+  "metrics": {
+    "http_req_duration{expected_response:true}": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 141.819,
+        "avg": 144.00799999999998,
+        "med": 144.00799999999998,
+        "p(90)": 145.7592,
+        "p(95)": 145.9781,
+        "max": 146.197
+      }
+    },
+    "vus": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "value": 2,
+        "min": 2,
+        "max": 2
+      }
+    },
+    "vus_max": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "value": 2,
+        "min": 2,
+        "max": 2
+      }
+    },
+    "http_req_blocked": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 4.598,
+        "avg": 4.6035,
+        "med": 4.6035,
+        "p(90)": 4.6079,
+        "p(95)": 4.60845,
+        "max": 4.609
+      }
+    },
+    "http_req_waiting": {
+      "values": {
+        "min": 141.588,
+        "avg": 143.788,
+        "med": 143.788,
+        "p(90)": 145.548,
+        "p(95)": 145.768,
+        "max": 145.988
+      },
+      "type": "trend",
+      "contains": "time"
+    },
+    "http_reqs": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 2,
+        "rate": 1.2242719254859136
+      }
+    },
+    "data_received": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "rate": 2555.6676444518444,
+        "count": 4175
+      }
+    },
+    "http_req_connecting": {
+      "contains": "time",
+      "values": {
+        "avg": 0.519,
+        "med": 0.519,
+        "p(90)": 0.5214,
+        "p(95)": 0.5217,
+        "max": 0.522,
+        "min": 0.516
+      },
+      "type": "trend"
+    },
+    "http_req_failed": {
+      "values": {
+        "rate": 0,
+        "passes": 0,
+        "fails": 2
+      },
+      "type": "rate",
+      "contains": "default"
+    },
+    "http_req_receiving": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 0.069,
+        "avg": 0.0905,
+        "med": 0.0905,
+        "p(90)": 0.1077,
+        "p(95)": 0.10985,
+        "max": 0.112
+      }
+    },
+    "data_sent": {
+      "values": {
+        "count": 896,
+        "rate": 548.4738226176893
+      },
+      "type": "counter",
+      "contains": "data"
+    },
+    "http_req_tls_handshaking": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 0,
+        "avg": 0,
+        "med": 0,
+        "p(90)": 0,
+        "p(95)": 0,
+        "max": 0
+      }
+    },
+    "http_req_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 141.819,
+        "avg": 144.00799999999998,
+        "med": 144.00799999999998,
+        "p(90)": 145.7592,
+        "p(95)": 145.9781,
+        "max": 146.197
+      }
+    },
+    "iteration_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "max": 1633.526167,
+        "min": 1629.346042,
+        "avg": 1631.4361045,
+        "med": 1631.4361045,
+        "p(90)": 1633.1081545,
+        "p(95)": 1633.31716075
+      }
+    },
+    "http_req_sending": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "med": 0.1295,
+        "p(90)": 0.13790000000000002,
+        "p(95)": 0.13895000000000002,
+        "max": 0.14,
+        "min": 0.119,
+        "avg": 0.1295
+      }
+    },
+    "iterations": {
+      "values": {
+        "count": 2,
+        "rate": 1.2242719254859136
+      },
+      "type": "counter",
+      "contains": "default"
+    }
+  }
+}

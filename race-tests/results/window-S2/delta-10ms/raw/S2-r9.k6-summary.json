@@ -1,0 +1,195 @@
+{
+  "metrics": {
+    "vus_max": {
+      "values": {
+        "value": 2,
+        "min": 2,
+        "max": 2
+      },
+      "type": "gauge",
+      "contains": "default"
+    },
+    "vus": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "value": 2,
+        "min": 2,
+        "max": 2
+      }
+    },
+    "http_req_failed": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 0,
+        "passes": 0,
+        "fails": 2
+      }
+    },
+    "http_req_receiving": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "med": 0.0605,
+        "p(90)": 0.0817,
+        "p(95)": 0.08435,
+        "max": 0.087,
+        "min": 0.034,
+        "avg": 0.0605
+      }
+    },
+    "http_req_blocked": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 2.7184999999999997,
+        "med": 2.7185,
+        "p(90)": 4.6029,
+        "p(95)": 4.83845,
+        "max": 5.074,
+        "min": 0.363
+      }
+    },
+    "http_req_connecting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 0.307,
+        "avg": 0.356,
+        "med": 0.356,
+        "p(90)": 0.39520000000000005,
+        "p(95)": 0.4001,
+        "max": 0.405
+      }
+    },
+    "iteration_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 1593.169375,
+        "avg": 1593.6787709999999,
+        "med": 1593.6787709999999,
+        "p(90)": 1594.0862878,
+        "p(95)": 1594.1372274,
+        "max": 1594.188167
+      }
+    },
+    "http_req_sending": {
+      "values": {
+        "min": 0.035,
+        "avg": 0.0675,
+        "med": 0.0675,
+        "p(90)": 0.09350000000000001,
+        "p(95)": 0.09675,
+        "max": 0.1
+      },
+      "type": "trend",
+      "contains": "time"
+    },
+    "data_received": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "rate": 2422.252104888157,
+        "count": 3862
+      }
+    },
+    "data_sent": {
+      "values": {
+        "count": 798,
+        "rate": 500.5067787935654
+      },
+      "type": "counter",
+      "contains": "data"
+    },
+    "http_reqs": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 2,
+        "rate": 1.254402954369838
+      }
+    },
+    "http_req_tls_handshaking": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 0,
+        "avg": 0,
+        "med": 0,
+        "p(90)": 0,
+        "p(95)": 0,
+        "max": 0
+      }
+    },
+    "http_req_waiting": {
+      "contains": "time",
+      "values": {
+        "min": 96.17,
+        "avg": 97.721,
+        "med": 97.721,
+        "p(90)": 98.96180000000001,
+        "p(95)": 99.1169,
+        "max": 99.272
+      },
+      "type": "trend"
+    },
+    "iterations": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 2,
+        "rate": 1.254402954369838
+      }
+    },
+    "http_req_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 97.849,
+        "med": 97.849,
+        "p(90)": 99.137,
+        "p(95)": 99.298,
+        "max": 99.459,
+        "min": 96.239
+      }
+    },
+    "http_req_duration{expected_response:true}": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(90)": 99.137,
+        "p(95)": 99.298,
+        "max": 99.459,
+        "min": 96.239,
+        "avg": 97.849,
+        "med": 97.849
+      }
+    }
+  },
+  "root_group": {
+    "checks": [],
+    "name": "",
+    "path": "",
+    "id": "d41d8cd98f00b204e9800998ecf8427e",
+    "groups": []
+  },
+  "options": {
+    "summaryTrendStats": [
+      "min",
+      "avg",
+      "med",
+      "p(90)",
+      "p(95)",
+      "max"
+    ],
+    "summaryTimeUnit": "",
+    "noColor": false
+  },
+  "state": {
+    "isStdOutTTY": false,
+    "isStdErrTTY": false,
+    "testRunDurationMs": 1594.384
+  }
+}

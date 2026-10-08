@@ -1,0 +1,195 @@
+{
+  "root_group": {
+    "id": "d41d8cd98f00b204e9800998ecf8427e",
+    "groups": [],
+    "checks": [],
+    "name": "",
+    "path": ""
+  },
+  "options": {
+    "summaryTrendStats": [
+      "min",
+      "avg",
+      "med",
+      "p(90)",
+      "p(95)",
+      "max"
+    ],
+    "summaryTimeUnit": "",
+    "noColor": false
+  },
+  "state": {
+    "isStdOutTTY": false,
+    "isStdErrTTY": false,
+    "testRunDurationMs": 1597.576
+  },
+  "metrics": {
+    "iteration_duration": {
+      "contains": "time",
+      "values": {
+        "min": 1594.765291,
+        "avg": 1596.1212285,
+        "med": 1596.1212285,
+        "p(90)": 1597.2059785,
+        "p(95)": 1597.34157225,
+        "max": 1597.477166
+      },
+      "type": "trend"
+    },
+    "data_received": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 3873,
+        "rate": 2424.2978111839434
+      }
+    },
+    "http_req_duration{expected_response:true}": {
+      "values": {
+        "p(90)": 100.6546,
+        "p(95)": 101.1828,
+        "max": 101.711,
+        "min": 91.147,
+        "avg": 96.429,
+        "med": 96.429
+      },
+      "type": "trend",
+      "contains": "time"
+    },
+    "vus": {
+      "contains": "default",
+      "values": {
+        "value": 2,
+        "min": 2,
+        "max": 2
+      },
+      "type": "gauge"
+    },
+    "http_req_tls_handshaking": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 0,
+        "avg": 0,
+        "med": 0,
+        "p(90)": 0,
+        "p(95)": 0,
+        "max": 0
+      }
+    },
+    "http_req_sending": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 0.043,
+        "avg": 0.086,
+        "med": 0.086,
+        "p(90)": 0.12040000000000001,
+        "p(95)": 0.1247,
+        "max": 0.129
+      }
+    },
+    "data_sent": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 802,
+        "rate": 502.01054597715535
+      }
+    },
+    "iterations": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 2,
+        "rate": 1.2518966233844273
+      }
+    },
+    "vus_max": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "value": 2,
+        "min": 2,
+        "max": 2
+      }
+    },
+    "http_req_waiting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(95)": 100.98165,
+        "max": 101.503,
+        "min": 91.076,
+        "avg": 96.2895,
+        "med": 96.2895,
+        "p(90)": 100.4603
+      }
+    },
+    "http_req_blocked": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(90)": 5.3121,
+        "p(95)": 5.59255,
+        "max": 5.873,
+        "min": 0.264,
+        "avg": 3.0685000000000002,
+        "med": 3.0685000000000002
+      }
+    },
+    "http_req_receiving": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 0.028,
+        "avg": 0.0535,
+        "med": 0.053500000000000006,
+        "p(90)": 0.07390000000000001,
+        "p(95)": 0.07645,
+        "max": 0.079
+      }
+    },
+    "http_req_connecting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(90)": 0.4146,
+        "p(95)": 0.4258,
+        "max": 0.437,
+        "min": 0.213,
+        "avg": 0.325,
+        "med": 0.325
+      }
+    },
+    "http_req_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(95)": 101.1828,
+        "max": 101.711,
+        "min": 91.147,
+        "avg": 96.429,
+        "med": 96.429,
+        "p(90)": 100.6546
+      }
+    },
+    "http_req_failed": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 0,
+        "passes": 0,
+        "fails": 2
+      }
+    },
+    "http_reqs": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 2,
+        "rate": 1.2518966233844273
+      }
+    }
+  }
+}

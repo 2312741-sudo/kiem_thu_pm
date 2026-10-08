@@ -1,0 +1,42 @@
+[
+  {
+    "label": "cancel",
+    "method": "POST",
+    "url": "http://localhost:3000/api/cancel",
+    "headers": {
+      "Content-Type": "application/json",
+      "Cookie": "calcom.csrf_token=kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
+    },
+    "body": {
+      "uid": "o9mj1UNGw55U6LBJC2RweG",
+      "cancellationReason": "K15 race test",
+      "csrfToken": "kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
+    }
+  },
+  {
+    "label": "reschedule->+2h",
+    "method": "POST",
+    "url": "http://localhost:3000/api/book/event",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "eventTypeId": 1159,
+      "start": "2028-08-31T11:00:00.000Z",
+      "end": "2028-08-31T11:30:00.000Z",
+      "timeZone": "UTC",
+      "language": "en",
+      "metadata": {},
+      "user": "k15host",
+      "rescheduleUid": "o9mj1UNGw55U6LBJC2RweG",
+      "responses": {
+        "name": "s7-r5-uowner",
+        "email": "s7-r5-uowner@k15.test",
+        "location": {
+          "value": "inPerson",
+          "optionValue": ""
+        }
+      }
+    }
+  }
+]

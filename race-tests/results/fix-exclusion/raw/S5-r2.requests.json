@@ -1,0 +1,262 @@
+[
+  {
+    "label": "pending-0",
+    "method": "POST",
+    "url": "http://localhost:3000/api/book/event",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "eventTypeId": 1162,
+      "start": "2028-02-10T09:00:00.000Z",
+      "end": "2028-02-10T09:30:00.000Z",
+      "timeZone": "UTC",
+      "language": "en",
+      "metadata": {},
+      "user": "k15host",
+      "responses": {
+        "name": "s5-r2-u0",
+        "email": "s5-r2-u0@k15.test",
+        "location": {
+          "value": "inPerson",
+          "optionValue": ""
+        }
+      }
+    },
+    "delayMs": 0
+  },
+  {
+    "label": "pending-1",
+    "method": "POST",
+    "url": "http://localhost:3000/api/book/event",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "eventTypeId": 1162,
+      "start": "2028-02-10T09:00:00.000Z",
+      "end": "2028-02-10T09:30:00.000Z",
+      "timeZone": "UTC",
+      "language": "en",
+      "metadata": {},
+      "user": "k15host",
+      "responses": {
+        "name": "s5-r2-u1",
+        "email": "s5-r2-u1@k15.test",
+        "location": {
+          "value": "inPerson",
+          "optionValue": ""
+        }
+      }
+    },
+    "delayMs": 0
+  },
+  {
+    "label": "pending-2",
+    "method": "POST",
+    "url": "http://localhost:3000/api/book/event",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "eventTypeId": 1162,
+      "start": "2028-02-10T09:00:00.000Z",
+      "end": "2028-02-10T09:30:00.000Z",
+      "timeZone": "UTC",
+      "language": "en",
+      "metadata": {},
+      "user": "k15host",
+      "responses": {
+        "name": "s5-r2-u2",
+        "email": "s5-r2-u2@k15.test",
+        "location": {
+          "value": "inPerson",
+          "optionValue": ""
+        }
+      }
+    },
+    "delayMs": 0
+  },
+  {
+    "label": "pending-3",
+    "method": "POST",
+    "url": "http://localhost:3000/api/book/event",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "eventTypeId": 1162,
+      "start": "2028-02-10T09:00:00.000Z",
+      "end": "2028-02-10T09:30:00.000Z",
+      "timeZone": "UTC",
+      "language": "en",
+      "metadata": {},
+      "user": "k15host",
+      "responses": {
+        "name": "s5-r2-u3",
+        "email": "s5-r2-u3@k15.test",
+        "location": {
+          "value": "inPerson",
+          "optionValue": ""
+        }
+      }
+    },
+    "delayMs": 0
+  },
+  {
+    "label": "pending-4",
+    "method": "POST",
+    "url": "http://localhost:3000/api/book/event",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "eventTypeId": 1162,
+      "start": "2028-02-10T09:00:00.000Z",
+      "end": "2028-02-10T09:30:00.000Z",
+      "timeZone": "UTC",
+      "language": "en",
+      "metadata": {},
+      "user": "k15host",
+      "responses": {
+        "name": "s5-r2-u4",
+        "email": "s5-r2-u4@k15.test",
+        "location": {
+          "value": "inPerson",
+          "optionValue": ""
+        }
+      }
+    },
+    "delayMs": 0
+  },
+  {
+    "label": "pending-5",
+    "method": "POST",
+    "url": "http://localhost:3000/api/book/event",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "eventTypeId": 1162,
+      "start": "2028-02-10T09:00:00.000Z",
+      "end": "2028-02-10T09:30:00.000Z",
+      "timeZone": "UTC",
+      "language": "en",
+      "metadata": {},
+      "user": "k15host",
+      "responses": {
+        "name": "s5-r2-u5",
+        "email": "s5-r2-u5@k15.test",
+        "location": {
+          "value": "inPerson",
+          "optionValue": ""
+        }
+      }
+    },
+    "delayMs": 0
+  },
+  {
+    "label": "pending-6",
+    "method": "POST",
+    "url": "http://localhost:3000/api/book/event",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "eventTypeId": 1162,
+      "start": "2028-02-10T09:00:00.000Z",
+      "end": "2028-02-10T09:30:00.000Z",
+      "timeZone": "UTC",
+      "language": "en",
+      "metadata": {},
+      "user": "k15host",
+      "responses": {
+        "name": "s5-r2-u6",
+        "email": "s5-r2-u6@k15.test",
+        "location": {
+          "value": "inPerson",
+          "optionValue": ""
+        }
+      }
+    },
+    "delayMs": 0
+  },
+  {
+    "label": "pending-7",
+    "method": "POST",
+    "url": "http://localhost:3000/api/book/event",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "eventTypeId": 1162,
+      "start": "2028-02-10T09:00:00.000Z",
+      "end": "2028-02-10T09:30:00.000Z",
+      "timeZone": "UTC",
+      "language": "en",
+      "metadata": {},
+      "user": "k15host",
+      "responses": {
+        "name": "s5-r2-u7",
+        "email": "s5-r2-u7@k15.test",
+        "location": {
+          "value": "inPerson",
+          "optionValue": ""
+        }
+      }
+    },
+    "delayMs": 0
+  },
+  {
+    "label": "pending-8",
+    "method": "POST",
+    "url": "http://localhost:3000/api/book/event",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "eventTypeId": 1162,
+      "start": "2028-02-10T09:00:00.000Z",
+      "end": "2028-02-10T09:30:00.000Z",
+      "timeZone": "UTC",
+      "language": "en",
+      "metadata": {},
+      "user": "k15host",
+      "responses": {
+        "name": "s5-r2-u8",
+        "email": "s5-r2-u8@k15.test",
+        "location": {
+          "value": "inPerson",
+          "optionValue": ""
+        }
+      }
+    },
+    "delayMs": 0
+  },
+  {
+    "label": "pending-9",
+    "method": "POST",
+    "url": "http://localhost:3000/api/book/event",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "eventTypeId": 1162,
+      "start": "2028-02-10T09:00:00.000Z",
+      "end": "2028-02-10T09:30:00.000Z",
+      "timeZone": "UTC",
+      "language": "en",
+      "metadata": {},
+      "user": "k15host",
+      "responses": {
+        "name": "s5-r2-u9",
+        "email": "s5-r2-u9@k15.test",
+        "location": {
+          "value": "inPerson",
+          "optionValue": ""
+        }
+      }
+    },
+    "delayMs": 0
+  }
+]

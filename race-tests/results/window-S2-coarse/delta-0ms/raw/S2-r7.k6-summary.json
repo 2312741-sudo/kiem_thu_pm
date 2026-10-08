@@ -1,0 +1,195 @@
+{
+  "root_group": {
+    "id": "d41d8cd98f00b204e9800998ecf8427e",
+    "groups": [],
+    "checks": [],
+    "name": "",
+    "path": ""
+  },
+  "options": {
+    "summaryTrendStats": [
+      "min",
+      "avg",
+      "med",
+      "p(90)",
+      "p(95)",
+      "max"
+    ],
+    "summaryTimeUnit": "",
+    "noColor": false
+  },
+  "state": {
+    "isStdOutTTY": false,
+    "isStdErrTTY": false,
+    "testRunDurationMs": 1586.715
+  },
+  "metrics": {
+    "http_req_duration{expected_response:true}": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "max": 93.888,
+        "min": 93.565,
+        "avg": 93.7265,
+        "med": 93.7265,
+        "p(90)": 93.8557,
+        "p(95)": 93.87185000000001
+      }
+    },
+    "data_sent": {
+      "contains": "data",
+      "values": {
+        "count": 798,
+        "rate": 502.9258562501772
+      },
+      "type": "counter"
+    },
+    "http_reqs": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 2,
+        "rate": 1.2604658051382889
+      }
+    },
+    "http_req_receiving": {
+      "contains": "time",
+      "values": {
+        "max": 0.086,
+        "min": 0.035,
+        "avg": 0.0605,
+        "med": 0.0605,
+        "p(90)": 0.0809,
+        "p(95)": 0.08345
+      },
+      "type": "trend"
+    },
+    "iterations": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 2,
+        "rate": 1.2604658051382889
+      }
+    },
+    "vus_max": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "value": 2,
+        "min": 2,
+        "max": 2
+      }
+    },
+    "vus": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "min": 2,
+        "max": 2,
+        "value": 2
+      }
+    },
+    "http_req_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 93.565,
+        "avg": 93.7265,
+        "med": 93.7265,
+        "p(90)": 93.8557,
+        "p(95)": 93.87185000000001,
+        "max": 93.888
+      }
+    },
+    "data_received": {
+      "values": {
+        "rate": 2433.3292368194666,
+        "count": 3861
+      },
+      "type": "counter",
+      "contains": "data"
+    },
+    "http_req_connecting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 0.27,
+        "avg": 0.29100000000000004,
+        "med": 0.29100000000000004,
+        "p(90)": 0.3078,
+        "p(95)": 0.3099,
+        "max": 0.312
+      }
+    },
+    "http_req_blocked": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(90)": 4.1444,
+        "p(95)": 4.145700000000001,
+        "max": 4.147,
+        "min": 4.121,
+        "avg": 4.134,
+        "med": 4.134
+      }
+    },
+    "http_req_failed": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "fails": 2,
+        "rate": 0,
+        "passes": 0
+      }
+    },
+    "iteration_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(95)": 1586.6134749999999,
+        "max": 1586.617875,
+        "min": 1586.529875,
+        "avg": 1586.573875,
+        "med": 1586.573875,
+        "p(90)": 1586.6090749999998
+      }
+    },
+    "http_req_tls_handshaking": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "max": 0,
+        "min": 0,
+        "avg": 0,
+        "med": 0,
+        "p(90)": 0,
+        "p(95)": 0
+      }
+    },
+    "http_req_sending": {
+      "values": {
+        "min": 0.063,
+        "avg": 0.07100000000000001,
+        "med": 0.07100000000000001,
+        "p(90)": 0.0774,
+        "p(95)": 0.0782,
+        "max": 0.079
+      },
+      "type": "trend",
+      "contains": "time"
+    },
+    "http_req_waiting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 93.4,
+        "avg": 93.595,
+        "med": 93.595,
+        "p(90)": 93.751,
+        "p(95)": 93.77050000000001,
+        "max": 93.79
+      }
+    }
+  }
+}

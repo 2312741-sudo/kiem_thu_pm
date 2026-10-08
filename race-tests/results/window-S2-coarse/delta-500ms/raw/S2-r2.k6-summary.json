@@ -1,0 +1,195 @@
+{
+  "root_group": {
+    "id": "d41d8cd98f00b204e9800998ecf8427e",
+    "groups": [],
+    "checks": [],
+    "name": "",
+    "path": ""
+  },
+  "options": {
+    "summaryTimeUnit": "",
+    "noColor": false,
+    "summaryTrendStats": [
+      "min",
+      "avg",
+      "med",
+      "p(90)",
+      "p(95)",
+      "max"
+    ]
+  },
+  "state": {
+    "isStdOutTTY": false,
+    "isStdErrTTY": false,
+    "testRunDurationMs": 2016.62
+  },
+  "metrics": {
+    "http_req_blocked": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 2.3035,
+        "med": 2.3035,
+        "p(90)": 3.7615000000000003,
+        "p(95)": 3.94375,
+        "max": 4.126,
+        "min": 0.481
+      }
+    },
+    "http_req_failed": {
+      "contains": "default",
+      "values": {
+        "rate": 0,
+        "passes": 0,
+        "fails": 2
+      },
+      "type": "rate"
+    },
+    "data_received": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 2369,
+        "rate": 1174.7379278198173
+      }
+    },
+    "http_req_duration": {
+      "contains": "time",
+      "values": {
+        "min": 33.318,
+        "avg": 44.699,
+        "med": 44.699,
+        "p(90)": 53.803799999999995,
+        "p(95)": 54.9419,
+        "max": 56.08
+      },
+      "type": "trend"
+    },
+    "http_req_tls_handshaking": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "max": 0,
+        "min": 0,
+        "avg": 0,
+        "med": 0,
+        "p(90)": 0,
+        "p(95)": 0
+      }
+    },
+    "iteration_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "max": 2016.447375,
+        "min": 1542.707667,
+        "avg": 1779.577521,
+        "med": 1779.577521,
+        "p(90)": 1969.0734042,
+        "p(95)": 1992.7603896
+      }
+    },
+    "data_sent": {
+      "values": {
+        "count": 798,
+        "rate": 395.71163630232763
+      },
+      "type": "counter",
+      "contains": "data"
+    },
+    "http_req_duration{expected_response:true}": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 33.318,
+        "avg": 44.699,
+        "med": 44.699,
+        "p(90)": 53.803799999999995,
+        "p(95)": 54.9419,
+        "max": 56.08
+      }
+    },
+    "vus_max": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "value": 2,
+        "min": 2,
+        "max": 2
+      }
+    },
+    "http_req_sending": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 0.059,
+        "med": 0.059,
+        "p(90)": 0.0614,
+        "p(95)": 0.0617,
+        "max": 0.062,
+        "min": 0.056
+      }
+    },
+    "http_req_receiving": {
+      "values": {
+        "max": 0.084,
+        "min": 0.068,
+        "avg": 0.07600000000000001,
+        "med": 0.07600000000000001,
+        "p(90)": 0.0824,
+        "p(95)": 0.08320000000000001
+      },
+      "type": "trend",
+      "contains": "time"
+    },
+    "http_req_waiting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(95)": 54.797,
+        "max": 55.934,
+        "min": 33.194,
+        "avg": 44.564,
+        "med": 44.564,
+        "p(90)": 53.66
+      }
+    },
+    "iterations": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 2,
+        "rate": 0.9917584869732522
+      }
+    },
+    "http_reqs": {
+      "contains": "default",
+      "values": {
+        "count": 2,
+        "rate": 0.9917584869732522
+      },
+      "type": "counter"
+    },
+    "http_req_connecting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(95)": 0.3748,
+        "max": 0.378,
+        "min": 0.314,
+        "avg": 0.346,
+        "med": 0.346,
+        "p(90)": 0.3716
+      }
+    },
+    "vus": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "min": 1,
+        "max": 2,
+        "value": 1
+      }
+    }
+  }
+}

@@ -1,0 +1,195 @@
+{
+  "root_group": {
+    "name": "",
+    "path": "",
+    "id": "d41d8cd98f00b204e9800998ecf8427e",
+    "groups": [],
+    "checks": []
+  },
+  "options": {
+    "summaryTrendStats": [
+      "min",
+      "avg",
+      "med",
+      "p(90)",
+      "p(95)",
+      "max"
+    ],
+    "summaryTimeUnit": "",
+    "noColor": false
+  },
+  "state": {
+    "isStdOutTTY": false,
+    "isStdErrTTY": false,
+    "testRunDurationMs": 1720.658
+  },
+  "metrics": {
+    "http_req_receiving": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(90)": 0.0919,
+        "p(95)": 0.09345,
+        "max": 0.095,
+        "min": 0.064,
+        "avg": 0.0795,
+        "med": 0.0795
+      }
+    },
+    "vus_max": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "value": 2,
+        "min": 2,
+        "max": 2
+      }
+    },
+    "data_sent": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 798,
+        "rate": 463.7760670627167
+      }
+    },
+    "iteration_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(95)": 1713.1230934,
+        "max": 1720.533958,
+        "min": 1572.316666,
+        "avg": 1646.4253119999998,
+        "med": 1646.4253119999998,
+        "p(90)": 1705.7122288
+      }
+    },
+    "http_req_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(90)": 78.2428,
+        "p(95)": 80.61789999999999,
+        "max": 82.993,
+        "min": 35.491,
+        "avg": 59.242,
+        "med": 59.242
+      }
+    },
+    "http_req_sending": {
+      "contains": "time",
+      "values": {
+        "p(90)": 0.12040000000000001,
+        "p(95)": 0.1242,
+        "max": 0.128,
+        "min": 0.052,
+        "avg": 0.09,
+        "med": 0.09
+      },
+      "type": "trend"
+    },
+    "vus": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "min": 2,
+        "max": 2,
+        "value": 2
+      }
+    },
+    "http_reqs": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 2,
+        "rate": 1.1623460327386383
+      }
+    },
+    "http_req_tls_handshaking": {
+      "values": {
+        "med": 0,
+        "p(90)": 0,
+        "p(95)": 0,
+        "max": 0,
+        "min": 0,
+        "avg": 0
+      },
+      "type": "trend",
+      "contains": "time"
+    },
+    "http_req_waiting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 35.375,
+        "avg": 59.0725,
+        "med": 59.0725,
+        "p(90)": 78.0305,
+        "p(95)": 80.40025,
+        "max": 82.77
+      }
+    },
+    "http_req_blocked": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 0.575,
+        "avg": 2.432,
+        "med": 2.4319999999999995,
+        "p(90)": 3.9175999999999997,
+        "p(95)": 4.103299999999999,
+        "max": 4.289
+      }
+    },
+    "http_req_connecting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "med": 0.4085,
+        "p(90)": 0.48410000000000003,
+        "p(95)": 0.49355,
+        "max": 0.503,
+        "min": 0.314,
+        "avg": 0.4085
+      }
+    },
+    "http_req_failed": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 0,
+        "passes": 0,
+        "fails": 2
+      }
+    },
+    "data_received": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "rate": 1376.7988757789171,
+        "count": 2369
+      }
+    },
+    "iterations": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 2,
+        "rate": 1.1623460327386383
+      }
+    },
+    "http_req_duration{expected_response:true}": {
+      "contains": "time",
+      "values": {
+        "max": 82.993,
+        "min": 35.491,
+        "avg": 59.242,
+        "med": 59.242,
+        "p(90)": 78.2428,
+        "p(95)": 80.61789999999999
+      },
+      "type": "trend"
+    }
+  }
+}

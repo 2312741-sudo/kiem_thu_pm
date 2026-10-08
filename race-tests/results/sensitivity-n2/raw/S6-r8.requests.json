@@ -1,0 +1,54 @@
+[
+  {
+    "label": "reschedule->+1h",
+    "method": "POST",
+    "url": "http://localhost:3000/api/book/event",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "eventTypeId": 1159,
+      "start": "2028-05-26T10:00:00.000Z",
+      "end": "2028-05-26T10:30:00.000Z",
+      "timeZone": "UTC",
+      "language": "en",
+      "metadata": {},
+      "user": "k15host",
+      "rescheduleUid": "fNzcJL8veuHF2nteYQBedJ",
+      "responses": {
+        "name": "s6-r8-uowner",
+        "email": "s6-r8-uowner@k15.test",
+        "location": {
+          "value": "inPerson",
+          "optionValue": ""
+        }
+      }
+    }
+  },
+  {
+    "label": "reschedule->+2h",
+    "method": "POST",
+    "url": "http://localhost:3000/api/book/event",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "eventTypeId": 1159,
+      "start": "2028-05-26T11:00:00.000Z",
+      "end": "2028-05-26T11:30:00.000Z",
+      "timeZone": "UTC",
+      "language": "en",
+      "metadata": {},
+      "user": "k15host",
+      "rescheduleUid": "fNzcJL8veuHF2nteYQBedJ",
+      "responses": {
+        "name": "s6-r8-uowner",
+        "email": "s6-r8-uowner@k15.test",
+        "location": {
+          "value": "inPerson",
+          "optionValue": ""
+        }
+      }
+    }
+  }
+]

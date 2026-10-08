@@ -1,0 +1,195 @@
+{
+  "root_group": {
+    "checks": [],
+    "name": "",
+    "path": "",
+    "id": "d41d8cd98f00b204e9800998ecf8427e",
+    "groups": []
+  },
+  "options": {
+    "summaryTimeUnit": "",
+    "noColor": false,
+    "summaryTrendStats": [
+      "min",
+      "avg",
+      "med",
+      "p(90)",
+      "p(95)",
+      "max"
+    ]
+  },
+  "state": {
+    "testRunDurationMs": 1614.387,
+    "isStdOutTTY": false,
+    "isStdErrTTY": false
+  },
+  "metrics": {
+    "data_received": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 2335,
+        "rate": 1446.369426909409
+      }
+    },
+    "vus_max": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "value": 2,
+        "min": 2,
+        "max": 2
+      }
+    },
+    "http_req_sending": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(95)": 0.17275,
+        "max": 0.179,
+        "min": 0.054,
+        "avg": 0.11649999999999999,
+        "med": 0.11649999999999999,
+        "p(90)": 0.1665
+      }
+    },
+    "http_req_duration{expected_response:true}": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "max": 120.505,
+        "min": 102.058,
+        "avg": 111.2815,
+        "med": 111.2815,
+        "p(90)": 118.66029999999999,
+        "p(95)": 119.58265
+      }
+    },
+    "http_req_receiving": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(90)": 0.0978,
+        "p(95)": 0.09989999999999999,
+        "max": 0.102,
+        "min": 0.06,
+        "avg": 0.08099999999999999,
+        "med": 0.08099999999999999
+      }
+    },
+    "data_sent": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 802,
+        "rate": 496.7829894566792
+      }
+    },
+    "http_req_duration": {
+      "values": {
+        "min": 102.058,
+        "avg": 111.2815,
+        "med": 111.2815,
+        "p(90)": 118.66029999999999,
+        "p(95)": 119.58265,
+        "max": 120.505
+      },
+      "type": "trend",
+      "contains": "time"
+    },
+    "iterations": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 2,
+        "rate": 1.2388603228346116
+      }
+    },
+    "http_req_tls_handshaking": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 0,
+        "avg": 0,
+        "med": 0,
+        "p(90)": 0,
+        "p(95)": 0,
+        "max": 0
+      }
+    },
+    "http_req_failed": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 0,
+        "passes": 0,
+        "fails": 2
+      }
+    },
+    "http_req_blocked": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "med": 5.6815,
+        "p(90)": 5.7915,
+        "p(95)": 5.80525,
+        "max": 5.819,
+        "min": 5.544,
+        "avg": 5.6815
+      }
+    },
+    "http_req_connecting": {
+      "contains": "time",
+      "values": {
+        "min": 0.456,
+        "avg": 0.48550000000000004,
+        "med": 0.48550000000000004,
+        "p(90)": 0.5091,
+        "p(95)": 0.51205,
+        "max": 0.515
+      },
+      "type": "trend"
+    },
+    "vus": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "value": 2,
+        "min": 2,
+        "max": 2
+      }
+    },
+    "http_req_waiting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 101.777,
+        "avg": 111.084,
+        "med": 111.084,
+        "p(90)": 118.5296,
+        "p(95)": 119.4603,
+        "max": 120.391
+      }
+    },
+    "iteration_duration": {
+      "contains": "time",
+      "values": {
+        "min": 1595.765333,
+        "avg": 1605.0209375,
+        "med": 1605.0209375,
+        "p(90)": 1612.4254211,
+        "p(95)": 1613.3509815500001,
+        "max": 1614.276542
+      },
+      "type": "trend"
+    },
+    "http_reqs": {
+      "values": {
+        "rate": 1.2388603228346116,
+        "count": 2
+      },
+      "type": "counter",
+      "contains": "default"
+    }
+  }
+}

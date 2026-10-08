@@ -1,0 +1,195 @@
+{
+  "root_group": {
+    "name": "",
+    "path": "",
+    "id": "d41d8cd98f00b204e9800998ecf8427e",
+    "groups": [],
+    "checks": []
+  },
+  "options": {
+    "summaryTrendStats": [
+      "min",
+      "avg",
+      "med",
+      "p(90)",
+      "p(95)",
+      "max"
+    ],
+    "summaryTimeUnit": "",
+    "noColor": false
+  },
+  "state": {
+    "isStdOutTTY": false,
+    "isStdErrTTY": false,
+    "testRunDurationMs": 1637.584
+  },
+  "metrics": {
+    "http_reqs": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 2,
+        "rate": 1.221311395323843
+      }
+    },
+    "http_req_duration{expected_response:true}": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "max": 149.632,
+        "min": 149.282,
+        "avg": 149.457,
+        "med": 149.457,
+        "p(90)": 149.597,
+        "p(95)": 149.6145
+      }
+    },
+    "http_req_receiving": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(90)": 0.1016,
+        "p(95)": 0.10429999999999999,
+        "max": 0.107,
+        "min": 0.053,
+        "avg": 0.08,
+        "med": 0.08
+      }
+    },
+    "data_sent": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 802,
+        "rate": 489.74586952486106
+      }
+    },
+    "http_req_failed": {
+      "contains": "default",
+      "values": {
+        "rate": 0,
+        "passes": 0,
+        "fails": 2
+      },
+      "type": "rate"
+    },
+    "iterations": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 2,
+        "rate": 1.221311395323843
+      }
+    },
+    "http_req_blocked": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 2.052,
+        "avg": 2.0545,
+        "med": 2.0545,
+        "p(90)": 2.0564999999999998,
+        "p(95)": 2.05675,
+        "max": 2.057
+      }
+    },
+    "http_req_sending": {
+      "contains": "time",
+      "values": {
+        "avg": 0.0615,
+        "med": 0.0615,
+        "p(90)": 0.0635,
+        "p(95)": 0.06375,
+        "max": 0.064,
+        "min": 0.059
+      },
+      "type": "trend"
+    },
+    "data_received": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 3866,
+        "rate": 2360.7949271609887
+      }
+    },
+    "iteration_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 1637.267792,
+        "avg": 1637.3066250000002,
+        "med": 1637.3066250000002,
+        "p(90)": 1637.3376914,
+        "p(95)": 1637.3415747,
+        "max": 1637.345458
+      }
+    },
+    "http_req_connecting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 0.19,
+        "med": 0.19,
+        "p(90)": 0.1956,
+        "p(95)": 0.1963,
+        "max": 0.197,
+        "min": 0.183
+      }
+    },
+    "vus": {
+      "values": {
+        "value": 2,
+        "min": 2,
+        "max": 2
+      },
+      "type": "gauge",
+      "contains": "default"
+    },
+    "http_req_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 149.282,
+        "avg": 149.457,
+        "med": 149.457,
+        "p(90)": 149.597,
+        "p(95)": 149.6145,
+        "max": 149.632
+      }
+    },
+    "vus_max": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "value": 2,
+        "min": 2,
+        "max": 2
+      }
+    },
+    "http_req_waiting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(95)": 149.49505,
+        "max": 149.515,
+        "min": 149.116,
+        "avg": 149.3155,
+        "med": 149.3155,
+        "p(90)": 149.4751
+      }
+    },
+    "http_req_tls_handshaking": {
+      "values": {
+        "min": 0,
+        "avg": 0,
+        "med": 0,
+        "p(90)": 0,
+        "p(95)": 0,
+        "max": 0
+      },
+      "type": "trend",
+      "contains": "time"
+    }
+  }
+}

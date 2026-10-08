@@ -1,0 +1,195 @@
+{
+  "root_group": {
+    "name": "",
+    "path": "",
+    "id": "d41d8cd98f00b204e9800998ecf8427e",
+    "groups": [],
+    "checks": []
+  },
+  "options": {
+    "summaryTimeUnit": "",
+    "noColor": false,
+    "summaryTrendStats": [
+      "min",
+      "avg",
+      "med",
+      "p(90)",
+      "p(95)",
+      "max"
+    ]
+  },
+  "state": {
+    "isStdOutTTY": false,
+    "isStdErrTTY": false,
+    "testRunDurationMs": 1581.921
+  },
+  "metrics": {
+    "data_received": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 3867,
+        "rate": 2444.496280155583
+      }
+    },
+    "http_req_duration{expected_response:true}": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "med": 92.757,
+        "p(90)": 92.87620000000001,
+        "p(95)": 92.89110000000001,
+        "max": 92.906,
+        "min": 92.608,
+        "avg": 92.757
+      }
+    },
+    "data_sent": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 802,
+        "rate": 506.9785406477315
+      }
+    },
+    "http_req_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 92.608,
+        "avg": 92.757,
+        "med": 92.757,
+        "p(90)": 92.87620000000001,
+        "p(95)": 92.89110000000001,
+        "max": 92.906
+      }
+    },
+    "iterations": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 2,
+        "rate": 1.264285637525515
+      }
+    },
+    "http_reqs": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 2,
+        "rate": 1.264285637525515
+      }
+    },
+    "http_req_connecting": {
+      "values": {
+        "med": 0.3175,
+        "p(90)": 0.33630000000000004,
+        "p(95)": 0.33865,
+        "max": 0.341,
+        "min": 0.294,
+        "avg": 0.3175
+      },
+      "type": "trend",
+      "contains": "time"
+    },
+    "http_req_tls_handshaking": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 0,
+        "avg": 0,
+        "med": 0,
+        "p(90)": 0,
+        "p(95)": 0,
+        "max": 0
+      }
+    },
+    "http_req_blocked": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 2.417,
+        "avg": 2.4375,
+        "med": 2.4375,
+        "p(90)": 2.4539,
+        "p(95)": 2.45595,
+        "max": 2.458
+      }
+    },
+    "iteration_duration": {
+      "contains": "time",
+      "values": {
+        "avg": 1581.742875,
+        "med": 1581.742875,
+        "p(90)": 1581.801375,
+        "p(95)": 1581.8086875000001,
+        "max": 1581.816,
+        "min": 1581.66975
+      },
+      "type": "trend"
+    },
+    "vus_max": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "value": 2,
+        "min": 2,
+        "max": 2
+      }
+    },
+    "http_req_waiting": {
+      "values": {
+        "min": 92.446,
+        "avg": 92.63149999999999,
+        "med": 92.63149999999999,
+        "p(90)": 92.7799,
+        "p(95)": 92.79844999999999,
+        "max": 92.817
+      },
+      "type": "trend",
+      "contains": "time"
+    },
+    "http_req_receiving": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(95)": 0.0824,
+        "max": 0.084,
+        "min": 0.052,
+        "avg": 0.068,
+        "med": 0.068,
+        "p(90)": 0.08080000000000001
+      }
+    },
+    "http_req_failed": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 0,
+        "passes": 0,
+        "fails": 2
+      }
+    },
+    "http_req_sending": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 0.037,
+        "avg": 0.057499999999999996,
+        "med": 0.057499999999999996,
+        "p(90)": 0.07390000000000001,
+        "p(95)": 0.07595,
+        "max": 0.078
+      }
+    },
+    "vus": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "value": 2,
+        "min": 2,
+        "max": 2
+      }
+    }
+  }
+}

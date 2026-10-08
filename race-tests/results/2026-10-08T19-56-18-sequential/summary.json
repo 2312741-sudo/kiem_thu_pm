@@ -1,0 +1,2340 @@
+{
+  "runId": "2026-10-08T19-56-18-sequential",
+  "mode": "sequential",
+  "startedAt": "2026-10-08T19:56:18.475Z",
+  "baseUrl": "http://localhost:3000",
+  "rounds": 10,
+  "scenarios": [
+    {
+      "id": "S1",
+      "title": "Nhiều người cùng đặt đúng một slot (event 1-1)",
+      "invariant": "I1 – host không có 2 booking active chồng giờ",
+      "n": 10,
+      "rounds": [
+        {
+          "round": 1,
+          "slot": "2027-01-05T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1
+          },
+          "statusCounts": {
+            "200": 1,
+            "409": 9
+          },
+          "messages": [
+            "409 no_available_users_found_error"
+          ],
+          "sendSpreadMs": 281,
+          "latencyMs": [
+            77,
+            23,
+            27,
+            26,
+            25,
+            26,
+            25,
+            23,
+            27,
+            24
+          ]
+        },
+        {
+          "round": 2,
+          "slot": "2027-01-06T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1
+          },
+          "statusCounts": {
+            "200": 1,
+            "409": 9
+          },
+          "messages": [
+            "409 no_available_users_found_error"
+          ],
+          "sendSpreadMs": 253,
+          "latencyMs": [
+            55,
+            25,
+            26,
+            26,
+            23,
+            25,
+            25,
+            23,
+            25,
+            25
+          ]
+        },
+        {
+          "round": 3,
+          "slot": "2027-01-07T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1
+          },
+          "statusCounts": {
+            "200": 1,
+            "409": 9
+          },
+          "messages": [
+            "409 no_available_users_found_error"
+          ],
+          "sendSpreadMs": 248,
+          "latencyMs": [
+            53,
+            25,
+            25,
+            22,
+            24,
+            26,
+            23,
+            25,
+            25,
+            23
+          ]
+        },
+        {
+          "round": 4,
+          "slot": "2027-01-08T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1
+          },
+          "statusCounts": {
+            "200": 1,
+            "409": 9
+          },
+          "messages": [
+            "409 no_available_users_found_error"
+          ],
+          "sendSpreadMs": 250,
+          "latencyMs": [
+            58,
+            26,
+            22,
+            26,
+            24,
+            22,
+            25,
+            25,
+            22,
+            25
+          ]
+        },
+        {
+          "round": 5,
+          "slot": "2027-01-09T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1
+          },
+          "statusCounts": {
+            "200": 1,
+            "409": 9
+          },
+          "messages": [
+            "409 no_available_users_found_error"
+          ],
+          "sendSpreadMs": 255,
+          "latencyMs": [
+            58,
+            23,
+            27,
+            25,
+            22,
+            26,
+            26,
+            23,
+            25,
+            26
+          ]
+        },
+        {
+          "round": 6,
+          "slot": "2027-01-10T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1
+          },
+          "statusCounts": {
+            "200": 1,
+            "409": 9
+          },
+          "messages": [
+            "409 no_available_users_found_error"
+          ],
+          "sendSpreadMs": 248,
+          "latencyMs": [
+            55,
+            25,
+            25,
+            23,
+            25,
+            24,
+            22,
+            24,
+            25,
+            21
+          ]
+        },
+        {
+          "round": 7,
+          "slot": "2027-01-11T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1
+          },
+          "statusCounts": {
+            "200": 1,
+            "409": 9
+          },
+          "messages": [
+            "409 no_available_users_found_error"
+          ],
+          "sendSpreadMs": 249,
+          "latencyMs": [
+            57,
+            25,
+            23,
+            25,
+            25,
+            22,
+            25,
+            25,
+            22,
+            26
+          ]
+        },
+        {
+          "round": 8,
+          "slot": "2027-01-12T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1
+          },
+          "statusCounts": {
+            "200": 1,
+            "409": 9
+          },
+          "messages": [
+            "409 no_available_users_found_error"
+          ],
+          "sendSpreadMs": 252,
+          "latencyMs": [
+            58,
+            23,
+            25,
+            27,
+            23,
+            25,
+            25,
+            23,
+            24,
+            25
+          ]
+        },
+        {
+          "round": 9,
+          "slot": "2027-01-13T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1
+          },
+          "statusCounts": {
+            "200": 1,
+            "409": 9
+          },
+          "messages": [
+            "409 no_available_users_found_error"
+          ],
+          "sendSpreadMs": 247,
+          "latencyMs": [
+            55,
+            26,
+            25,
+            22,
+            24,
+            26,
+            25,
+            21,
+            24,
+            23
+          ]
+        },
+        {
+          "round": 10,
+          "slot": "2027-01-14T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1
+          },
+          "statusCounts": {
+            "200": 1,
+            "409": 9
+          },
+          "messages": [
+            "409 no_available_users_found_error"
+          ],
+          "sendSpreadMs": 252,
+          "latencyMs": [
+            54,
+            25,
+            28,
+            22,
+            24,
+            24,
+            22,
+            26,
+            26,
+            22
+          ]
+        }
+      ],
+      "failedRounds": 0,
+      "verdict": "PASS"
+    },
+    {
+      "id": "S2",
+      "title": "Đặt đồng thời các slot chồng lấn nhưng lệch giờ bắt đầu / khác event type",
+      "invariant": "I1 – host không có 2 booking active chồng giờ",
+      "n": 10,
+      "rounds": [
+        {
+          "round": 1,
+          "slot": "2027-04-15T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1
+          },
+          "statusCounts": {
+            "200": 1,
+            "409": 9
+          },
+          "messages": [
+            "409 no_available_users_found_error"
+          ],
+          "sendSpreadMs": 240,
+          "latencyMs": [
+            53,
+            25,
+            22,
+            24,
+            24,
+            22,
+            24,
+            25,
+            22,
+            25
+          ]
+        },
+        {
+          "round": 2,
+          "slot": "2027-04-16T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1
+          },
+          "statusCounts": {
+            "200": 1,
+            "409": 9
+          },
+          "messages": [
+            "409 no_available_users_found_error"
+          ],
+          "sendSpreadMs": 248,
+          "latencyMs": [
+            55,
+            23,
+            25,
+            25,
+            22,
+            25,
+            25,
+            22,
+            25,
+            26
+          ]
+        },
+        {
+          "round": 3,
+          "slot": "2027-04-17T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1
+          },
+          "statusCounts": {
+            "200": 1,
+            "409": 9
+          },
+          "messages": [
+            "409 no_available_users_found_error"
+          ],
+          "sendSpreadMs": 245,
+          "latencyMs": [
+            54,
+            25,
+            24,
+            22,
+            25,
+            25,
+            22,
+            24,
+            24,
+            21
+          ]
+        },
+        {
+          "round": 4,
+          "slot": "2027-04-18T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1
+          },
+          "statusCounts": {
+            "200": 1,
+            "409": 9
+          },
+          "messages": [
+            "409 no_available_users_found_error"
+          ],
+          "sendSpreadMs": 244,
+          "latencyMs": [
+            53,
+            24,
+            21,
+            25,
+            25,
+            23,
+            25,
+            25,
+            23,
+            25
+          ]
+        },
+        {
+          "round": 5,
+          "slot": "2027-04-19T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1
+          },
+          "statusCounts": {
+            "200": 1,
+            "409": 9
+          },
+          "messages": [
+            "409 no_available_users_found_error"
+          ],
+          "sendSpreadMs": 248,
+          "latencyMs": [
+            57,
+            23,
+            25,
+            25,
+            22,
+            25,
+            25,
+            22,
+            25,
+            24
+          ]
+        },
+        {
+          "round": 6,
+          "slot": "2027-04-20T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1
+          },
+          "statusCounts": {
+            "200": 1,
+            "409": 9
+          },
+          "messages": [
+            "409 no_available_users_found_error"
+          ],
+          "sendSpreadMs": 250,
+          "latencyMs": [
+            55,
+            26,
+            25,
+            22,
+            25,
+            25,
+            22,
+            25,
+            25,
+            23
+          ]
+        },
+        {
+          "round": 7,
+          "slot": "2027-04-21T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1
+          },
+          "statusCounts": {
+            "200": 1,
+            "409": 9
+          },
+          "messages": [
+            "409 no_available_users_found_error"
+          ],
+          "sendSpreadMs": 253,
+          "latencyMs": [
+            58,
+            25,
+            22,
+            25,
+            26,
+            24,
+            25,
+            24,
+            23,
+            27
+          ]
+        },
+        {
+          "round": 8,
+          "slot": "2027-04-22T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1
+          },
+          "statusCounts": {
+            "200": 1,
+            "409": 9
+          },
+          "messages": [
+            "409 no_available_users_found_error"
+          ],
+          "sendSpreadMs": 252,
+          "latencyMs": [
+            57,
+            23,
+            26,
+            26,
+            22,
+            25,
+            26,
+            22,
+            25,
+            26
+          ]
+        },
+        {
+          "round": 9,
+          "slot": "2027-04-23T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1
+          },
+          "statusCounts": {
+            "200": 1,
+            "409": 9
+          },
+          "messages": [
+            "409 no_available_users_found_error"
+          ],
+          "sendSpreadMs": 253,
+          "latencyMs": [
+            55,
+            25,
+            25,
+            22,
+            25,
+            26,
+            24,
+            25,
+            25,
+            23
+          ]
+        },
+        {
+          "round": 10,
+          "slot": "2027-04-24T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1
+          },
+          "statusCounts": {
+            "200": 1,
+            "409": 9
+          },
+          "messages": [
+            "409 no_available_users_found_error"
+          ],
+          "sendSpreadMs": 259,
+          "latencyMs": [
+            58,
+            33,
+            23,
+            25,
+            25,
+            22,
+            24,
+            25,
+            22,
+            25
+          ]
+        }
+      ],
+      "failedRounds": 0,
+      "verdict": "PASS"
+    },
+    {
+      "id": "S3",
+      "title": "Tranh chấp ghế đầu tiên của event có ghế (seated, 3 chỗ, slot đang trống)",
+      "invariant": "I2 – không vượt 3 ghế; I2b – còn ghế thì không được từ chối người đặt",
+      "n": 6,
+      "rounds": [
+        {
+          "round": 1,
+          "slot": "2027-07-24T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 3,
+            "seats": 3,
+            "bookingsForSlot": 1
+          },
+          "statusCounts": {
+            "200": 3,
+            "409": 3
+          },
+          "messages": [
+            "409 booking_seats_full_error"
+          ],
+          "sendSpreadMs": 220,
+          "latencyMs": [
+            64,
+            47,
+            50,
+            31,
+            28,
+            32
+          ]
+        },
+        {
+          "round": 2,
+          "slot": "2027-07-25T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 3,
+            "seats": 3,
+            "bookingsForSlot": 1
+          },
+          "statusCounts": {
+            "200": 3,
+            "409": 3
+          },
+          "messages": [
+            "409 booking_seats_full_error"
+          ],
+          "sendSpreadMs": 230,
+          "latencyMs": [
+            67,
+            50,
+            52,
+            32,
+            29,
+            30
+          ]
+        },
+        {
+          "round": 3,
+          "slot": "2027-07-26T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 3,
+            "seats": 3,
+            "bookingsForSlot": 1
+          },
+          "statusCounts": {
+            "200": 3,
+            "409": 3
+          },
+          "messages": [
+            "409 booking_seats_full_error"
+          ],
+          "sendSpreadMs": 220,
+          "latencyMs": [
+            63,
+            46,
+            49,
+            33,
+            29,
+            31
+          ]
+        },
+        {
+          "round": 4,
+          "slot": "2027-07-27T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 3,
+            "seats": 3,
+            "bookingsForSlot": 1
+          },
+          "statusCounts": {
+            "200": 3,
+            "409": 3
+          },
+          "messages": [
+            "409 booking_seats_full_error"
+          ],
+          "sendSpreadMs": 222,
+          "latencyMs": [
+            64,
+            46,
+            49,
+            33,
+            30,
+            32
+          ]
+        },
+        {
+          "round": 5,
+          "slot": "2027-07-28T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 3,
+            "seats": 3,
+            "bookingsForSlot": 1
+          },
+          "statusCounts": {
+            "200": 3,
+            "409": 3
+          },
+          "messages": [
+            "409 booking_seats_full_error"
+          ],
+          "sendSpreadMs": 223,
+          "latencyMs": [
+            67,
+            48,
+            50,
+            31,
+            27,
+            32
+          ]
+        },
+        {
+          "round": 6,
+          "slot": "2027-07-29T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 3,
+            "seats": 3,
+            "bookingsForSlot": 1
+          },
+          "statusCounts": {
+            "200": 3,
+            "409": 3
+          },
+          "messages": [
+            "409 booking_seats_full_error"
+          ],
+          "sendSpreadMs": 228,
+          "latencyMs": [
+            65,
+            50,
+            51,
+            33,
+            29,
+            31
+          ]
+        },
+        {
+          "round": 7,
+          "slot": "2027-07-30T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 3,
+            "seats": 3,
+            "bookingsForSlot": 1
+          },
+          "statusCounts": {
+            "200": 3,
+            "409": 3
+          },
+          "messages": [
+            "409 booking_seats_full_error"
+          ],
+          "sendSpreadMs": 215,
+          "latencyMs": [
+            63,
+            45,
+            47,
+            32,
+            29,
+            30
+          ]
+        },
+        {
+          "round": 8,
+          "slot": "2027-07-31T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 3,
+            "seats": 3,
+            "bookingsForSlot": 1
+          },
+          "statusCounts": {
+            "200": 3,
+            "409": 3
+          },
+          "messages": [
+            "409 booking_seats_full_error"
+          ],
+          "sendSpreadMs": 221,
+          "latencyMs": [
+            67,
+            46,
+            47,
+            32,
+            30,
+            31
+          ]
+        },
+        {
+          "round": 9,
+          "slot": "2027-08-01T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 3,
+            "seats": 3,
+            "bookingsForSlot": 1
+          },
+          "statusCounts": {
+            "200": 3,
+            "409": 3
+          },
+          "messages": [
+            "409 booking_seats_full_error"
+          ],
+          "sendSpreadMs": 220,
+          "latencyMs": [
+            63,
+            46,
+            49,
+            32,
+            29,
+            29
+          ]
+        },
+        {
+          "round": 10,
+          "slot": "2027-08-02T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 3,
+            "seats": 3,
+            "bookingsForSlot": 1
+          },
+          "statusCounts": {
+            "200": 3,
+            "409": 3
+          },
+          "messages": [
+            "409 booking_seats_full_error"
+          ],
+          "sendSpreadMs": 220,
+          "latencyMs": [
+            62,
+            46,
+            49,
+            33,
+            30,
+            31
+          ]
+        }
+      ],
+      "failedRounds": 0,
+      "verdict": "PASS"
+    },
+    {
+      "id": "S4",
+      "title": "Nhiều người cùng giành 2 ghế còn lại của slot seated đã có 1 người",
+      "invariant": "I2 – không vượt 3 ghế; I2b – đúng 2 người được nhận",
+      "n": 6,
+      "rounds": [
+        {
+          "round": 1,
+          "slot": "2027-11-01T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 2,
+            "seats": 3
+          },
+          "statusCounts": {
+            "200": 2,
+            "409": 4
+          },
+          "messages": [
+            "409 booking_seats_full_error"
+          ],
+          "sendSpreadMs": 187,
+          "latencyMs": [
+            47,
+            49,
+            31,
+            28,
+            32,
+            33
+          ]
+        },
+        {
+          "round": 2,
+          "slot": "2027-11-02T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 2,
+            "seats": 3
+          },
+          "statusCounts": {
+            "200": 2,
+            "409": 4
+          },
+          "messages": [
+            "409 booking_seats_full_error"
+          ],
+          "sendSpreadMs": 193,
+          "latencyMs": [
+            48,
+            50,
+            33,
+            30,
+            32,
+            32
+          ]
+        },
+        {
+          "round": 3,
+          "slot": "2027-11-03T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 2,
+            "seats": 3
+          },
+          "statusCounts": {
+            "200": 2,
+            "409": 4
+          },
+          "messages": [
+            "409 booking_seats_full_error"
+          ],
+          "sendSpreadMs": 190,
+          "latencyMs": [
+            47,
+            49,
+            33,
+            29,
+            32,
+            30
+          ]
+        },
+        {
+          "round": 4,
+          "slot": "2027-11-04T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 2,
+            "seats": 3
+          },
+          "statusCounts": {
+            "200": 2,
+            "409": 4
+          },
+          "messages": [
+            "409 booking_seats_full_error"
+          ],
+          "sendSpreadMs": 192,
+          "latencyMs": [
+            48,
+            48,
+            34,
+            31,
+            33,
+            33
+          ]
+        },
+        {
+          "round": 5,
+          "slot": "2027-11-05T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 2,
+            "seats": 3
+          },
+          "statusCounts": {
+            "200": 2,
+            "409": 4
+          },
+          "messages": [
+            "409 booking_seats_full_error"
+          ],
+          "sendSpreadMs": 194,
+          "latencyMs": [
+            46,
+            52,
+            33,
+            29,
+            33,
+            32
+          ]
+        },
+        {
+          "round": 6,
+          "slot": "2027-11-06T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 2,
+            "seats": 3
+          },
+          "statusCounts": {
+            "200": 2,
+            "409": 4
+          },
+          "messages": [
+            "409 booking_seats_full_error"
+          ],
+          "sendSpreadMs": 194,
+          "latencyMs": [
+            47,
+            51,
+            34,
+            30,
+            32,
+            31
+          ]
+        },
+        {
+          "round": 7,
+          "slot": "2027-11-07T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 2,
+            "seats": 3
+          },
+          "statusCounts": {
+            "200": 2,
+            "409": 4
+          },
+          "messages": [
+            "409 booking_seats_full_error"
+          ],
+          "sendSpreadMs": 189,
+          "latencyMs": [
+            49,
+            48,
+            31,
+            29,
+            31,
+            31
+          ]
+        },
+        {
+          "round": 8,
+          "slot": "2027-11-08T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 2,
+            "seats": 3
+          },
+          "statusCounts": {
+            "200": 2,
+            "409": 4
+          },
+          "messages": [
+            "409 booking_seats_full_error"
+          ],
+          "sendSpreadMs": 186,
+          "latencyMs": [
+            46,
+            48,
+            32,
+            29,
+            31,
+            31
+          ]
+        },
+        {
+          "round": 9,
+          "slot": "2027-11-09T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 2,
+            "seats": 3
+          },
+          "statusCounts": {
+            "200": 2,
+            "409": 4
+          },
+          "messages": [
+            "409 booking_seats_full_error"
+          ],
+          "sendSpreadMs": 195,
+          "latencyMs": [
+            47,
+            51,
+            34,
+            30,
+            33,
+            33
+          ]
+        },
+        {
+          "round": 10,
+          "slot": "2027-11-10T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 2,
+            "seats": 3
+          },
+          "statusCounts": {
+            "200": 2,
+            "409": 4
+          },
+          "messages": [
+            "409 booking_seats_full_error"
+          ],
+          "sendSpreadMs": 189,
+          "latencyMs": [
+            48,
+            49,
+            31,
+            29,
+            31,
+            30
+          ]
+        }
+      ],
+      "failedRounds": 0,
+      "verdict": "PASS"
+    },
+    {
+      "id": "S5",
+      "title": "Nhiều người cùng đặt một slot của event cần xác nhận (PENDING giữ chỗ)",
+      "invariant": "I3 – tối đa 1 booking accepted/pending cho một slot",
+      "n": 10,
+      "rounds": [
+        {
+          "round": 1,
+          "slot": "2028-02-09T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1,
+            "statuses": [
+              "pending"
+            ]
+          },
+          "statusCounts": {
+            "200": 1,
+            "409": 9
+          },
+          "messages": [
+            "409 no_available_users_found_error"
+          ],
+          "sendSpreadMs": 277,
+          "latencyMs": [
+            52,
+            27,
+            27,
+            25,
+            28,
+            30,
+            29,
+            27,
+            30,
+            29
+          ]
+        },
+        {
+          "round": 2,
+          "slot": "2028-02-10T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1,
+            "statuses": [
+              "pending"
+            ]
+          },
+          "statusCounts": {
+            "200": 1,
+            "409": 9
+          },
+          "messages": [
+            "409 no_available_users_found_error"
+          ],
+          "sendSpreadMs": 278,
+          "latencyMs": [
+            53,
+            28,
+            28,
+            26,
+            30,
+            29,
+            30,
+            26,
+            28,
+            30
+          ]
+        },
+        {
+          "round": 3,
+          "slot": "2028-02-11T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1,
+            "statuses": [
+              "pending"
+            ]
+          },
+          "statusCounts": {
+            "200": 1,
+            "409": 9
+          },
+          "messages": [
+            "409 no_available_users_found_error"
+          ],
+          "sendSpreadMs": 296,
+          "latencyMs": [
+            54,
+            28,
+            28,
+            25,
+            30,
+            30,
+            29,
+            44,
+            29,
+            29
+          ]
+        },
+        {
+          "round": 4,
+          "slot": "2028-02-12T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1,
+            "statuses": [
+              "pending"
+            ]
+          },
+          "statusCounts": {
+            "200": 1,
+            "409": 9
+          },
+          "messages": [
+            "409 no_available_users_found_error"
+          ],
+          "sendSpreadMs": 278,
+          "latencyMs": [
+            53,
+            30,
+            29,
+            26,
+            29,
+            29,
+            29,
+            26,
+            28,
+            29
+          ]
+        },
+        {
+          "round": 5,
+          "slot": "2028-02-13T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1,
+            "statuses": [
+              "pending"
+            ]
+          },
+          "statusCounts": {
+            "200": 1,
+            "409": 9
+          },
+          "messages": [
+            "409 no_available_users_found_error"
+          ],
+          "sendSpreadMs": 270,
+          "latencyMs": [
+            53,
+            28,
+            27,
+            24,
+            28,
+            28,
+            27,
+            27,
+            28,
+            27
+          ]
+        },
+        {
+          "round": 6,
+          "slot": "2028-02-14T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1,
+            "statuses": [
+              "pending"
+            ]
+          },
+          "statusCounts": {
+            "200": 1,
+            "409": 9
+          },
+          "messages": [
+            "409 no_available_users_found_error"
+          ],
+          "sendSpreadMs": 276,
+          "latencyMs": [
+            53,
+            29,
+            29,
+            26,
+            28,
+            29,
+            28,
+            26,
+            29,
+            29
+          ]
+        },
+        {
+          "round": 7,
+          "slot": "2028-02-15T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1,
+            "statuses": [
+              "pending"
+            ]
+          },
+          "statusCounts": {
+            "200": 1,
+            "409": 9
+          },
+          "messages": [
+            "409 no_available_users_found_error"
+          ],
+          "sendSpreadMs": 282,
+          "latencyMs": [
+            55,
+            30,
+            30,
+            26,
+            29,
+            28,
+            30,
+            24,
+            29,
+            28
+          ]
+        },
+        {
+          "round": 8,
+          "slot": "2028-02-16T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1,
+            "statuses": [
+              "pending"
+            ]
+          },
+          "statusCounts": {
+            "200": 1,
+            "409": 9
+          },
+          "messages": [
+            "409 no_available_users_found_error"
+          ],
+          "sendSpreadMs": 269,
+          "latencyMs": [
+            52,
+            27,
+            28,
+            25,
+            27,
+            28,
+            29,
+            25,
+            28,
+            30
+          ]
+        },
+        {
+          "round": 9,
+          "slot": "2028-02-17T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1,
+            "statuses": [
+              "pending"
+            ]
+          },
+          "statusCounts": {
+            "200": 1,
+            "409": 9
+          },
+          "messages": [
+            "409 no_available_users_found_error"
+          ],
+          "sendSpreadMs": 276,
+          "latencyMs": [
+            55,
+            29,
+            29,
+            26,
+            30,
+            29,
+            26,
+            25,
+            27,
+            27
+          ]
+        },
+        {
+          "round": 10,
+          "slot": "2028-02-18T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1,
+            "statuses": [
+              "pending"
+            ]
+          },
+          "statusCounts": {
+            "200": 1,
+            "409": 9
+          },
+          "messages": [
+            "409 no_available_users_found_error"
+          ],
+          "sendSpreadMs": 271,
+          "latencyMs": [
+            51,
+            28,
+            27,
+            26,
+            29,
+            28,
+            27,
+            25,
+            30,
+            30
+          ]
+        }
+      ],
+      "failedRounds": 0,
+      "verdict": "PASS"
+    },
+    {
+      "id": "S6",
+      "title": "Đổi lịch (reschedule) đồng thời cùng một booking sang nhiều slot khác nhau",
+      "invariant": "I4 – một booking gốc sinh tối đa 1 booking mới còn hiệu lực",
+      "n": 5,
+      "rounds": [
+        {
+          "round": 1,
+          "slot": "2028-05-19T09:00:00.000Z",
+          "pass": false,
+          "violations": [
+            {
+              "invariant": "I4",
+              "detail": "Booking gốc eere1pkoFHCmgPAyr1cwac sinh ra 5 booking mới cùng ACCEPTED: 10:00, 11:00, 12:00, 13:00, 14:00"
+            }
+          ],
+          "observed": {
+            "success": 5,
+            "aliveChildren": 5,
+            "originalStatus": "cancelled"
+          },
+          "statusCounts": {
+            "200": 5
+          },
+          "messages": [],
+          "sendSpreadMs": 281,
+          "latencyMs": [
+            72,
+            70,
+            70,
+            68,
+            68
+          ]
+        },
+        {
+          "round": 2,
+          "slot": "2028-05-20T09:00:00.000Z",
+          "pass": false,
+          "violations": [
+            {
+              "invariant": "I4",
+              "detail": "Booking gốc bqiyD8CcJZogQRSvAdZnPp sinh ra 5 booking mới cùng ACCEPTED: 10:00, 11:00, 12:00, 13:00, 14:00"
+            }
+          ],
+          "observed": {
+            "success": 5,
+            "aliveChildren": 5,
+            "originalStatus": "cancelled"
+          },
+          "statusCounts": {
+            "200": 5
+          },
+          "messages": [],
+          "sendSpreadMs": 276,
+          "latencyMs": [
+            69,
+            68,
+            70,
+            69,
+            68
+          ]
+        },
+        {
+          "round": 3,
+          "slot": "2028-05-21T09:00:00.000Z",
+          "pass": false,
+          "violations": [
+            {
+              "invariant": "I4",
+              "detail": "Booking gốc cYmbYgxdNiZVcycWRLsZXM sinh ra 5 booking mới cùng ACCEPTED: 10:00, 11:00, 12:00, 13:00, 14:00"
+            }
+          ],
+          "observed": {
+            "success": 5,
+            "aliveChildren": 5,
+            "originalStatus": "cancelled"
+          },
+          "statusCounts": {
+            "200": 5
+          },
+          "messages": [],
+          "sendSpreadMs": 275,
+          "latencyMs": [
+            68,
+            68,
+            70,
+            69,
+            70
+          ]
+        },
+        {
+          "round": 4,
+          "slot": "2028-05-22T09:00:00.000Z",
+          "pass": false,
+          "violations": [
+            {
+              "invariant": "I4",
+              "detail": "Booking gốc cT3VN14MAT55mvPZMnmNbQ sinh ra 5 booking mới cùng ACCEPTED: 10:00, 11:00, 12:00, 13:00, 14:00"
+            }
+          ],
+          "observed": {
+            "success": 5,
+            "aliveChildren": 5,
+            "originalStatus": "cancelled"
+          },
+          "statusCounts": {
+            "200": 5
+          },
+          "messages": [],
+          "sendSpreadMs": 282,
+          "latencyMs": [
+            68,
+            69,
+            71,
+            72,
+            70
+          ]
+        },
+        {
+          "round": 5,
+          "slot": "2028-05-23T09:00:00.000Z",
+          "pass": false,
+          "violations": [
+            {
+              "invariant": "I4",
+              "detail": "Booking gốc 3dh4ZrJMByPiWcoDanxv8o sinh ra 5 booking mới cùng ACCEPTED: 10:00, 11:00, 12:00, 13:00, 14:00"
+            }
+          ],
+          "observed": {
+            "success": 5,
+            "aliveChildren": 5,
+            "originalStatus": "cancelled"
+          },
+          "statusCounts": {
+            "200": 5
+          },
+          "messages": [],
+          "sendSpreadMs": 280,
+          "latencyMs": [
+            70,
+            68,
+            71,
+            72,
+            70
+          ]
+        },
+        {
+          "round": 6,
+          "slot": "2028-05-24T09:00:00.000Z",
+          "pass": false,
+          "violations": [
+            {
+              "invariant": "I4",
+              "detail": "Booking gốc 9sqedPUS2opudehWkDscvy sinh ra 5 booking mới cùng ACCEPTED: 10:00, 11:00, 12:00, 13:00, 14:00"
+            }
+          ],
+          "observed": {
+            "success": 5,
+            "aliveChildren": 5,
+            "originalStatus": "cancelled"
+          },
+          "statusCounts": {
+            "200": 5
+          },
+          "messages": [],
+          "sendSpreadMs": 275,
+          "latencyMs": [
+            69,
+            70,
+            70,
+            66,
+            68
+          ]
+        },
+        {
+          "round": 7,
+          "slot": "2028-05-25T09:00:00.000Z",
+          "pass": false,
+          "violations": [
+            {
+              "invariant": "I4",
+              "detail": "Booking gốc 7n527mEZRSJgjxfY2d76f7 sinh ra 5 booking mới cùng ACCEPTED: 10:00, 11:00, 12:00, 13:00, 14:00"
+            }
+          ],
+          "observed": {
+            "success": 5,
+            "aliveChildren": 5,
+            "originalStatus": "cancelled"
+          },
+          "statusCounts": {
+            "200": 5
+          },
+          "messages": [],
+          "sendSpreadMs": 289,
+          "latencyMs": [
+            82,
+            68,
+            68,
+            71,
+            73
+          ]
+        },
+        {
+          "round": 8,
+          "slot": "2028-05-26T09:00:00.000Z",
+          "pass": false,
+          "violations": [
+            {
+              "invariant": "I4",
+              "detail": "Booking gốc b8mjGbyWB3f51Dgv8qWec6 sinh ra 5 booking mới cùng ACCEPTED: 10:00, 11:00, 12:00, 13:00, 14:00"
+            }
+          ],
+          "observed": {
+            "success": 5,
+            "aliveChildren": 5,
+            "originalStatus": "cancelled"
+          },
+          "statusCounts": {
+            "200": 5
+          },
+          "messages": [],
+          "sendSpreadMs": 289,
+          "latencyMs": [
+            71,
+            73,
+            70,
+            75,
+            74
+          ]
+        },
+        {
+          "round": 9,
+          "slot": "2028-05-27T09:00:00.000Z",
+          "pass": false,
+          "violations": [
+            {
+              "invariant": "I4",
+              "detail": "Booking gốc 6q9ZK38kgWmXBDTBHaHfeK sinh ra 5 booking mới cùng ACCEPTED: 10:00, 11:00, 12:00, 13:00, 14:00"
+            }
+          ],
+          "observed": {
+            "success": 5,
+            "aliveChildren": 5,
+            "originalStatus": "cancelled"
+          },
+          "statusCounts": {
+            "200": 5
+          },
+          "messages": [],
+          "sendSpreadMs": 296,
+          "latencyMs": [
+            72,
+            70,
+            75,
+            79,
+            110
+          ]
+        },
+        {
+          "round": 10,
+          "slot": "2028-05-28T09:00:00.000Z",
+          "pass": false,
+          "violations": [
+            {
+              "invariant": "I4",
+              "detail": "Booking gốc f8bRUaadWmAbR7C5cBTMBq sinh ra 5 booking mới cùng ACCEPTED: 10:00, 11:00, 12:00, 13:00, 14:00"
+            }
+          ],
+          "observed": {
+            "success": 5,
+            "aliveChildren": 5,
+            "originalStatus": "cancelled"
+          },
+          "statusCounts": {
+            "200": 5
+          },
+          "messages": [],
+          "sendSpreadMs": 282,
+          "latencyMs": [
+            77,
+            72,
+            64,
+            69,
+            72
+          ]
+        }
+      ],
+      "failedRounds": 10,
+      "verdict": "FAIL"
+    },
+    {
+      "id": "S7",
+      "title": "Hủy và đổi lịch cùng lúc trên một booking",
+      "invariant": "I5 – nếu lệnh hủy báo thành công thì không còn booking nào của cuộc hẹn đó active",
+      "n": 2,
+      "rounds": [
+        {
+          "round": 1,
+          "slot": "2028-08-27T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "cancel": 200,
+            "reschedule": 400,
+            "aliveChildren": 0
+          },
+          "statusCounts": {
+            "200": 1,
+            "400": 1
+          },
+          "messages": [
+            "400 cancelled_bookings_cannot_be_rescheduled"
+          ],
+          "sendSpreadMs": 54,
+          "latencyMs": [
+            53,
+            18
+          ]
+        },
+        {
+          "round": 2,
+          "slot": "2028-08-28T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "cancel": 200,
+            "reschedule": 400,
+            "aliveChildren": 0
+          },
+          "statusCounts": {
+            "200": 1,
+            "400": 1
+          },
+          "messages": [
+            "400 cancelled_bookings_cannot_be_rescheduled"
+          ],
+          "sendSpreadMs": 51,
+          "latencyMs": [
+            50,
+            18
+          ]
+        },
+        {
+          "round": 3,
+          "slot": "2028-08-29T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "cancel": 200,
+            "reschedule": 400,
+            "aliveChildren": 0
+          },
+          "statusCounts": {
+            "200": 1,
+            "400": 1
+          },
+          "messages": [
+            "400 cancelled_bookings_cannot_be_rescheduled"
+          ],
+          "sendSpreadMs": 49,
+          "latencyMs": [
+            49,
+            17
+          ]
+        },
+        {
+          "round": 4,
+          "slot": "2028-08-30T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "cancel": 200,
+            "reschedule": 400,
+            "aliveChildren": 0
+          },
+          "statusCounts": {
+            "200": 1,
+            "400": 1
+          },
+          "messages": [
+            "400 cancelled_bookings_cannot_be_rescheduled"
+          ],
+          "sendSpreadMs": 47,
+          "latencyMs": [
+            47,
+            19
+          ]
+        },
+        {
+          "round": 5,
+          "slot": "2028-08-31T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "cancel": 200,
+            "reschedule": 400,
+            "aliveChildren": 0
+          },
+          "statusCounts": {
+            "200": 1,
+            "400": 1
+          },
+          "messages": [
+            "400 cancelled_bookings_cannot_be_rescheduled"
+          ],
+          "sendSpreadMs": 47,
+          "latencyMs": [
+            47,
+            17
+          ]
+        },
+        {
+          "round": 6,
+          "slot": "2028-09-01T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "cancel": 200,
+            "reschedule": 400,
+            "aliveChildren": 0
+          },
+          "statusCounts": {
+            "200": 1,
+            "400": 1
+          },
+          "messages": [
+            "400 cancelled_bookings_cannot_be_rescheduled"
+          ],
+          "sendSpreadMs": 44,
+          "latencyMs": [
+            44,
+            18
+          ]
+        },
+        {
+          "round": 7,
+          "slot": "2028-09-02T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "cancel": 200,
+            "reschedule": 400,
+            "aliveChildren": 0
+          },
+          "statusCounts": {
+            "200": 1,
+            "400": 1
+          },
+          "messages": [
+            "400 cancelled_bookings_cannot_be_rescheduled"
+          ],
+          "sendSpreadMs": 41,
+          "latencyMs": [
+            41,
+            17
+          ]
+        },
+        {
+          "round": 8,
+          "slot": "2028-09-03T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "cancel": 200,
+            "reschedule": 400,
+            "aliveChildren": 0
+          },
+          "statusCounts": {
+            "200": 1,
+            "400": 1
+          },
+          "messages": [
+            "400 cancelled_bookings_cannot_be_rescheduled"
+          ],
+          "sendSpreadMs": 40,
+          "latencyMs": [
+            40,
+            18
+          ]
+        },
+        {
+          "round": 9,
+          "slot": "2028-09-04T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "cancel": 200,
+            "reschedule": 400,
+            "aliveChildren": 0
+          },
+          "statusCounts": {
+            "200": 1,
+            "400": 1
+          },
+          "messages": [
+            "400 cancelled_bookings_cannot_be_rescheduled"
+          ],
+          "sendSpreadMs": 43,
+          "latencyMs": [
+            42,
+            17
+          ]
+        },
+        {
+          "round": 10,
+          "slot": "2028-09-05T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "cancel": 200,
+            "reschedule": 400,
+            "aliveChildren": 0
+          },
+          "statusCounts": {
+            "200": 1,
+            "400": 1
+          },
+          "messages": [
+            "400 cancelled_bookings_cannot_be_rescheduled"
+          ],
+          "sendSpreadMs": 41,
+          "latencyMs": [
+            41,
+            18
+          ]
+        }
+      ],
+      "failedRounds": 0,
+      "verdict": "PASS"
+    },
+    {
+      "id": "S8",
+      "title": "Vượt giới hạn 1 booking/ngày khi đặt đồng thời nhiều giờ khác nhau",
+      "invariant": "I6 – số booking active trong ngày ≤ bookingLimits.PER_DAY (=1)",
+      "n": 8,
+      "rounds": [
+        {
+          "round": 1,
+          "slot": "2028-12-05T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1
+          },
+          "statusCounts": {
+            "200": 1,
+            "401": 7
+          },
+          "messages": [
+            "401 booking_limit_reached"
+          ],
+          "sendSpreadMs": 182,
+          "latencyMs": [
+            61,
+            19,
+            22,
+            18,
+            21,
+            22,
+            19,
+            25
+          ]
+        },
+        {
+          "round": 2,
+          "slot": "2028-12-06T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1
+          },
+          "statusCounts": {
+            "200": 1,
+            "401": 7
+          },
+          "messages": [
+            "401 booking_limit_reached"
+          ],
+          "sendSpreadMs": 194,
+          "latencyMs": [
+            66,
+            20,
+            24,
+            20,
+            23,
+            19,
+            22,
+            19
+          ]
+        },
+        {
+          "round": 3,
+          "slot": "2028-12-07T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1
+          },
+          "statusCounts": {
+            "200": 1,
+            "401": 7
+          },
+          "messages": [
+            "401 booking_limit_reached"
+          ],
+          "sendSpreadMs": 189,
+          "latencyMs": [
+            63,
+            22,
+            18,
+            23,
+            19,
+            23,
+            20,
+            23
+          ]
+        },
+        {
+          "round": 4,
+          "slot": "2028-12-08T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1
+          },
+          "statusCounts": {
+            "200": 1,
+            "401": 7
+          },
+          "messages": [
+            "401 booking_limit_reached"
+          ],
+          "sendSpreadMs": 187,
+          "latencyMs": [
+            61,
+            19,
+            23,
+            19,
+            23,
+            22,
+            19,
+            23
+          ]
+        },
+        {
+          "round": 5,
+          "slot": "2028-12-09T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1
+          },
+          "statusCounts": {
+            "200": 1,
+            "401": 7
+          },
+          "messages": [
+            "401 booking_limit_reached"
+          ],
+          "sendSpreadMs": 187,
+          "latencyMs": [
+            63,
+            19,
+            23,
+            19,
+            22,
+            20,
+            22,
+            20
+          ]
+        },
+        {
+          "round": 6,
+          "slot": "2028-12-10T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1
+          },
+          "statusCounts": {
+            "200": 1,
+            "401": 7
+          },
+          "messages": [
+            "401 booking_limit_reached"
+          ],
+          "sendSpreadMs": 185,
+          "latencyMs": [
+            63,
+            22,
+            19,
+            22,
+            19,
+            21,
+            19,
+            23
+          ]
+        },
+        {
+          "round": 7,
+          "slot": "2028-12-11T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1
+          },
+          "statusCounts": {
+            "200": 1,
+            "401": 7
+          },
+          "messages": [
+            "401 booking_limit_reached"
+          ],
+          "sendSpreadMs": 220,
+          "latencyMs": [
+            61,
+            20,
+            24,
+            21,
+            26,
+            40,
+            29,
+            34
+          ]
+        },
+        {
+          "round": 8,
+          "slot": "2028-12-12T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1
+          },
+          "statusCounts": {
+            "200": 1,
+            "401": 7
+          },
+          "messages": [
+            "401 booking_limit_reached"
+          ],
+          "sendSpreadMs": 256,
+          "latencyMs": [
+            111,
+            24,
+            26,
+            21,
+            28,
+            20,
+            25,
+            20
+          ]
+        },
+        {
+          "round": 9,
+          "slot": "2028-12-13T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1
+          },
+          "statusCounts": {
+            "200": 1,
+            "401": 7
+          },
+          "messages": [
+            "401 booking_limit_reached"
+          ],
+          "sendSpreadMs": 194,
+          "latencyMs": [
+            68,
+            22,
+            19,
+            23,
+            20,
+            23,
+            20,
+            23
+          ]
+        },
+        {
+          "round": 10,
+          "slot": "2028-12-14T09:00:00.000Z",
+          "pass": true,
+          "violations": [],
+          "observed": {
+            "success": 1,
+            "activeBookings": 1
+          },
+          "statusCounts": {
+            "200": 1,
+            "401": 7
+          },
+          "messages": [
+            "401 booking_limit_reached"
+          ],
+          "sendSpreadMs": 185,
+          "latencyMs": [
+            61,
+            19,
+            21,
+            19,
+            22,
+            22,
+            19,
+            22
+          ]
+        }
+      ],
+      "failedRounds": 0,
+      "verdict": "PASS"
+    }
+  ],
+  "finishedAt": "2026-10-08T19:56:40.648Z"
+}

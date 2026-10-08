@@ -1,0 +1,7 @@
+# Mã nguồn Cal.com được clone riêng theo tag v6.2.0 (xem README mục 2.1)
+calcom/
+.pgdata/
+node_modules/
+/.*.log
+.DS_Store
+.env
