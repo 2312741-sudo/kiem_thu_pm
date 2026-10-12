@@ -114,6 +114,7 @@ Cần cài k6 (`brew install k6` trên macOS, hoặc xem https://grafana.com/doc
 | Lệnh | Tác dụng |
 |---|---|
 | `npm run fixtures` | Tạo host `k15host` với lịch 24/7 UTC và 5 event type test (chạy lại nhiều lần được) |
+| `npm run demo:midterm` | Demo giữa kỳ (~20 giây): kiểm hệ thống, 3 luồng nghiệp vụ, PoC race S1 (PASS) và S2 (FAIL) |
 | `npm run smoke` | Kiểm tra 3 luồng nghiệp vụ: đặt lịch, đổi lịch, hủy |
 | `npm run race` | Chạy 8 scenario, mỗi scenario 10 vòng, gửi đồng thời bằng k6 |
 | `npm run race -- --mode sequential` | Nhóm đối chứng: gửi đúng các request đó nhưng tuần tự |

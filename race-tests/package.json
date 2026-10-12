@@ -8,7 +8,8 @@
     "fixtures": "node src/fixtures.mjs",
     "smoke": "node src/smoke.mjs",
     "race": "node src/run.mjs",
-    "report": "node src/report.mjs"
+    "report": "node src/report.mjs",
+    "demo:midterm": "node src/demo-midterm.mjs"
   },
   "dependencies": {
     "pg": "^8.23.1"
