@@ -377,6 +377,15 @@ Vì race mang tính xác suất, tỉ lệ có thể khác đôi chút trên má
 
 ---
 
+## Quản trị dự án
+
+- **Phân vai:** bảng thành viên ở đầu báo cáo (A – Môi trường & DevOps, B – Phân tích hệ thống, C – Tác giả test, D – Verifier & báo cáo).
+- **Board công việc:** [dán liên kết Trello/Jira/GitHub Projects của nhóm tại đây].
+- **Git:** repo https://github.com/2312741-sudo/kiem_thu_pm; mỗi thành viên commit phần việc của mình để lịch sử thể hiện đóng góp đều đặn.
+- **Quy trình:** Scrum theo Sprint, họp nhóm ngắn đầu và cuối tuần.
+
+---
+
 ## Hạn chế và hướng phát triển
 
 - Chạy ở chế độ `yarn dev`, chưa đo trên bản build production hay nhiều instance sau load balancer.

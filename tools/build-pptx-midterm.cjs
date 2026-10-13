@@ -76,20 +76,21 @@ const add = (master, section) => {
 {
   const s = add("LIGHT", "Tiến độ");
   eyebrow(s, "02 · TIẾN ĐỘ SO VỚI KẾ HOẠCH");
-  s.addText("Sprint 1 hoàn thành, đã làm trước một phần Sprint 2", { placeholder: "title" });
-  const done = { text: "Xong", bold: true, color: GREEN }, part = { text: "Đang làm", bold: true, color: RUST }, todo = { text: "Chưa làm", bold: true, color: MUTED };
+  s.addText("Sprint 1 hoàn thành, harness 8 scenario đã chạy xong", { placeholder: "title" });
+  const done = { text: "Xong", bold: true, color: GREEN }, part = { text: "Một phần", bold: true, color: RUST }, todo = { text: "Chưa làm", bold: true, color: MUTED }, fill = { text: "Cần điền", bold: true, color: RUST };
   tbl(s, [
     ["Hạng mục", "Sprint", "Trạng thái", "Bằng chứng"],
     ["Chốt repo, kỹ thuật, pin tag và commit SHA", "Đăng ký", done, "README.md mục 1"],
     ["Dựng Cal.com local, seed data, chạy 3 luồng nghiệp vụ", "1", done, "docs/evidence/smoke-test.txt"],
     ["Đọc code, vẽ kiến trúc và luồng dữ liệu", "1", done, "docs/diagrams/kien-truc.md"],
-    ["Tài liệu on-boarding, cài đặt từ máy sạch", "1", done, "README.md mục 2–3"],
-    ["Kế hoạch kiểm thử: phạm vi, giả định, tiêu chí", "1", done, "Slide 6"],
-    ["PoC race đầu tiên (đặt trùng slot)", "1", done, "Slide 7"],
-    ["Mở rộng scenario S3–S8, chạy nhiều vòng", "2–3", part, "Đã có bản nháp harness"],
-    ["Phân tích nguyên nhân gốc, viết báo cáo cuối", "4", todo, "–"],
-  ], { y: 1.75, colW: [5.6, 1.4, 1.6, W - 8.6], fontSize: 14, rowH: 0.5 });
-  s.addNotes("Mọi mục của Sprint 1 đã xong. Nhóm đã bắt đầu sang Sprint 2: harness cho nhiều scenario đã có bản nháp, đang chạy thử nhiều vòng. Phần phân tích nguyên nhân gốc và báo cáo cuối còn lại.");
+    ["Tài liệu on-boarding, kế hoạch kiểm thử", "1", done, "README.md, slide 6"],
+    ["Harness k6 + SQL, 8 scenario, mỗi scenario 10 vòng, có đối chứng tuần tự", "2–3", done, "race-tests/results/"],
+    ["Phân tích nguyên nhân gốc, thí nghiệm khắc phục", "4", done, "docs/DEFECTS.md"],
+    ["Báo cáo cuối (bản nháp A–H) và slide bảo vệ", "4–5", part, "docs/BAO_CAO.md"],
+    ["Scenario Playwright qua giao diện, chạy lại trên máy khác", "3", todo, "–"],
+    ["Phân vai 4 người, board Trello/Jira, lịch sử Git đều các thành viên", "Đăng ký", fill, "Ảnh board, git log"],
+  ], { y: 1.75, colW: [5.9, 1.2, 1.5, W - 8.6], fontSize: 13, rowH: 0.46 });
+  s.addNotes("Mọi mục của Sprint 1 đã xong, và nhóm đã làm trước: harness 8 scenario đã chạy 10 vòng mỗi scenario kèm nhóm đối chứng tuần tự, đã phân tích nguyên nhân gốc. Giữa kỳ nhóm chỉ trình bày kết quả sơ bộ S1 và S2; kết quả đầy đủ dành cho buổi bảo vệ cuối kỳ. Còn lại: Playwright qua giao diện, hoàn thiện báo cáo, và chuẩn bị bảo vệ. Nói rõ phân vai và board Trello/Jira của nhóm.");
 }
 
 // 4 · Kiến trúc
@@ -180,14 +181,14 @@ const add = (master, section) => {
     [{ text: "S2 · slot lệch giờ, chồng lấn", bold: true }, { text: "FAIL (10/10 vòng sai)", bold: true }, "PASS", { text: "10 booking chồng nhau", bold: true }],
   ], { y: 1.85, colW: [3.7, 3.2, 2.0, W - 8.9], fontSize: 15, rowH: 0.62, fills: { 2: race } });
   const cw = (W - 0.7) / 3;
-  [["Mã HTTP vẫn 200", "Cả 10 request đều trả thành công. Chỉ truy vấn CSDL mới thấy dữ liệu sai."], ["Chỉ cần 2 người", "Với 2 request đồng thời, S2 vi phạm ở 20/20 vòng."], ["Do khóa quá hẹp", "idempotencyKey chỉ bắt slot trùng khít start, end và host."]].forEach(([h, b], i) => {
+  [["Mã HTTP vẫn 200", "Cả 10 request đều trả thành công. Chỉ truy vấn CSDL mới thấy dữ liệu sai."], ["Chỉ cần 2 người", "Thí nghiệm riêng với 2 request đồng thời, 20 vòng: S2 vi phạm 20/20 (results/sensitivity-n2)."], ["Do khóa quá hẹp", "idempotencyKey chỉ bắt slot trùng khít start, end và host."]].forEach(([h, b], i) => {
     const x = M + i * (cw + 0.35);
     card(s, x, 4.1, cw, 2.3);
     s.addText(h, { x: x + 0.3, y: 4.3, w: cw - 0.6, h: 0.5, fontFace: BODY, fontSize: 20, bold: true, color: INK, margin: 0, isTextBox: true });
     s.addText(b, { x: x + 0.3, y: 4.9, w: cw - 0.6, h: 1.4, fontFace: BODY, fontSize: 15, color: MUTED, margin: 0, valign: "top", isTextBox: true });
   });
-  footer(s, "Chạy lại: npm run demo:midterm · kết quả đầy đủ 8 scenario sẽ trình bày ở bảo vệ cuối kỳ");
-  s.addNotes("Kết quả sơ bộ: S1 đặt cùng slot PASS nhờ khóa idempotency. S2 đặt hai slot chồng lấn thì FAIL ở mọi vòng: host bị đặt chồng. Đây là lý do nhóm chọn kỹ thuật này. Kết quả đầy đủ 8 scenario, nguyên nhân gốc và thí nghiệm khắc phục sẽ trình bày ở cuối kỳ.");
+  footer(s, "Bảng: 10 request/vòng; demo chạy 3 vòng, kết quả chuẩn 10 vòng · Nhóm đã chạy đủ 8 scenario, trình bày ở cuối kỳ");
+  s.addNotes("Kết quả sơ bộ: S1 đặt cùng slot PASS nhờ khóa idempotency. S2 đặt hai slot chồng lấn thì FAIL ở mọi vòng: host bị đặt chồng. Đây là lý do nhóm chọn kỹ thuật này. Nhóm đã chạy đủ 8 scenario; kết quả đầy đủ, nguyên nhân gốc và thí nghiệm khắc phục xin để dành cho buổi bảo vệ cuối kỳ. Con số 20/20 đến từ thí nghiệm riêng với 2 request, 20 vòng.");
 }
 
 // 8 · Kế hoạch tiếp theo
@@ -196,10 +197,10 @@ const add = (master, section) => {
   eyebrow(s, "07 · KẾ HOẠCH TIẾP THEO", true);
   s.addText("Từ giữa kỳ đến bảo vệ", { placeholder: "title" });
   const rows = [
-    ["21/10 – 3/11", "Hoàn thiện test model, viết scenario seated, PENDING, đổi lịch, hủy lịch", ORANGE],
-    ["4/11 – 17/11", "Chạy nhiều vòng, đo cửa sổ race, thêm một scenario Playwright qua giao diện", ORANGE],
-    ["18/11 – 30/11", "Phân tích nguyên nhân gốc, thí nghiệm khắc phục, viết báo cáo, nộp trước bảo vệ 1 tuần", ORANGE],
-    ["Tháng 12", "Slide, tập dượt, chạy lại trên máy sạch, đánh giá chéo", ORANGE],
+    ["21/10 – 3/11", "Thêm scenario Playwright qua giao diện, chạy lại toàn bộ trên máy sạch của thành viên khác", ORANGE],
+    ["4/11 – 17/11", "Rà soát nguyên nhân gốc và đề xuất sửa; chuẩn bị báo cáo lỗi D1, D4 cho Cal.com", ORANGE],
+    ["18/11 – 30/11", "Hoàn thiện báo cáo A–H, nộp trước bảo vệ 1 tuần", ORANGE],
+    ["Tháng 12", "Slide bảo vệ, tập dượt, đánh giá chéo giữa các thành viên", ORANGE],
   ];
   rows.forEach(([when, what], i) => {
     const y = 1.85 + i * 0.95;
@@ -208,9 +209,9 @@ const add = (master, section) => {
     s.addShape(pres.ShapeType.roundRect, { x: M + 2.6, y, w: W - 2.6, h: 0.75, rectRadius: 0.1, fill: { color: INK2 }, line: { color: INK2, width: 0 } });
     s.addText(what, { x: M + 2.85, y, w: W - 3.1, h: 0.75, fontFace: BODY, fontSize: 16, color: "F4F2EC", valign: "middle", margin: 0, isTextBox: true });
   });
-  s.addText("Rủi ro: race không tái hiện ổn định (chạy nhiều vòng, báo tỉ lệ) · máy yếu khi chạy Cal.com + PostgreSQL + k6 (giảm số VU) · cần chứng minh coverage nếu không tìm được lỗi.", { x: M, y: 5.8, w: W, h: 0.9, fontFace: BODY, fontSize: 15, color: MUTED_DARK, margin: 0, valign: "top", isTextBox: true });
+  s.addText("Rủi ro: kết quả race có thể khác trên máy khác (báo tỉ lệ, không báo một lần chạy) · máy yếu khi chạy Cal.com + PostgreSQL + k6 (giảm số VU) · thành viên đóng góp không đều (board có người phụ trách, đánh giá chéo hằng tuần).", { x: M, y: 5.8, w: W, h: 0.9, fontFace: BODY, fontSize: 15, color: MUTED_DARK, margin: 0, valign: "top", isTextBox: true });
   footer(s, "Cảm ơn thầy và các bạn. Mời đặt câu hỏi.", true);
-  s.addNotes("Kế hoạch bốn giai đoạn đến bảo vệ. Rủi ro chính là race không tái hiện ổn định nên nhóm chạy nhiều vòng và báo tỉ lệ. Kết thúc phần báo cáo, mời thầy đặt câu hỏi.");
+  s.addNotes("Kế hoạch bốn giai đoạn đến bảo vệ; phần kiểm thử chính đã chạy xong nên thời gian còn lại dành cho kiểm chứng lại, hoàn thiện báo cáo và chuẩn bị bảo vệ. Rủi ro chính là race không tái hiện ổn định nên nhóm chạy nhiều vòng và báo tỉ lệ. Kết thúc phần báo cáo, mời thầy đặt câu hỏi.");
 }
 
 pres.writeFile({ fileName: OUT }).then((f) => console.log("wrote", f));
