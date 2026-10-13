@@ -6,10 +6,10 @@ Môn: Kiểm thử phần mềm · Giảng viên: Nguyễn Thế Lâm · Khoa CN
 
 | Thành viên | MSSV | Vai trò | Phần phụ trách |
 |---|---|---|---|
-| _(điền)_ | _(điền)_ | A – Môi trường & DevOps | Phần C, H |
-| _(điền)_ | _(điền)_ | B – Phân tích hệ thống | Phần A, B, RCA |
-| _(điền)_ | _(điền)_ | C – Tác giả test | Phần E, F |
-| _(điền)_ | _(điền)_ | D – Verifier & báo cáo | Phần D, G |
+| Nguyễn Thanh Tâm | 2312741 | A – Môi trường & DevOps | Phần C, H |
+| Võ Công Vinh | 2312800 | B – Phân tích hệ thống | Phần A, B, RCA |
+| Nguyễn Đức Tín | 2312774 | C – Tác giả test | Phần E, F |
+| Ngô Quốc Trường Vĩ | 2312796 | D – Verifier & báo cáo | Phần D, G |
 
 ---
 
@@ -380,7 +380,7 @@ Vì race mang tính xác suất, tỉ lệ có thể khác đôi chút trên má
 ## Quản trị dự án
 
 - **Phân vai:** bảng thành viên ở đầu báo cáo (A – Môi trường & DevOps, B – Phân tích hệ thống, C – Tác giả test, D – Verifier & báo cáo).
-- **Board công việc:** [dán liên kết Trello/Jira/GitHub Projects của nhóm tại đây].
+- **Board công việc:** GitHub Projects tại https://github.com/users/2312741-sudo/projects/1 (danh sách thẻ: docs/board-cards.md).
 - **Git:** repo https://github.com/2312741-sudo/kiem_thu_pm; mỗi thành viên commit phần việc của mình để lịch sử thể hiện đóng góp đều đặn.
 - **Quy trình:** Scrum theo Sprint, họp nhóm ngắn đầu và cuối tuần.
 

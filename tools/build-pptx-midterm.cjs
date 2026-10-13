@@ -46,7 +46,7 @@ const add = (master, section) => {
   s.addText("R05-K15\nKiểm thử race condition cho Cal.com", { x: M, y: 1.9, w: 11.5, h: 2.4, fontFace: BODY, fontSize: 54, bold: true, color: "F4F2EC", margin: 0, valign: "top", isTextBox: true });
   s.addText("Đã dựng hệ thống, đã vẽ kiến trúc, đã có kế hoạch kiểm thử và kết quả thử nghiệm đầu tiên", { x: M, y: 4.5, w: 10.5, h: 0.9, fontFace: BODY, fontSize: 24, color: MUTED_DARK, margin: 0, valign: "top", isTextBox: true });
   s.addText("Môn Kiểm thử phần mềm · GV Nguyễn Thế Lâm\nKhoa CNTT – Trường Đại học Đà Lạt", { x: M, y: 6.1, w: 7, h: 0.8, fontFace: BODY, fontSize: 16, color: MUTED_DARK, margin: 0, isTextBox: true });
-  s.addText("Nhóm: [Tên thành viên 1 – 4]", { x: 8.2, y: 6.1, w: 4.4, h: 0.8, fontFace: BODY, fontSize: 16, color: MUTED_DARK, align: "right", margin: 0, isTextBox: true });
+  s.addText("Nhóm 13\n2312741 - Nguyễn Thanh Tâm\n2312800 - Võ Công Vinh\n2312774 - Nguyễn Đức Tín\n2312796 - Ngô Quốc Trường Vĩ", { x: 7.6, y: 5.5, w: 5.03, h: 1.45, fontFace: BODY, fontSize: 16, color: MUTED_DARK, align: "right", valign: "bottom", margin: 0, isTextBox: true });
   s.addNotes("Giữa kỳ cần trình bày bốn thứ: demo hệ thống chạy, sơ đồ kiến trúc và tài liệu on-boarding, kế hoạch áp dụng kỹ thuật kiểm thử. Nhóm có thêm một kết quả thử nghiệm đầu tiên.");
 }
 
@@ -88,7 +88,7 @@ const add = (master, section) => {
     ["Phân tích nguyên nhân gốc, thí nghiệm khắc phục", "4", done, "docs/DEFECTS.md"],
     ["Báo cáo cuối (bản nháp A–H) và slide bảo vệ", "4–5", part, "docs/BAO_CAO.md"],
     ["Scenario Playwright qua giao diện, chạy lại trên máy khác", "3", todo, "–"],
-    ["Phân vai 4 người, board Trello/Jira, lịch sử Git đều các thành viên", "Đăng ký", fill, "Ảnh board, git log"],
+    ["Board GitHub Projects đã tạo; đang thêm thẻ và gán người, commit đều các thành viên", "Đăng ký", part, "github.com/users/2312741-sudo/projects/1"],
   ], { y: 1.75, colW: [5.9, 1.2, 1.5, W - 8.6], fontSize: 13, rowH: 0.46 });
   s.addNotes("Mọi mục của Sprint 1 đã xong, và nhóm đã làm trước: harness 8 scenario đã chạy 10 vòng mỗi scenario kèm nhóm đối chứng tuần tự, đã phân tích nguyên nhân gốc. Giữa kỳ nhóm chỉ trình bày kết quả sơ bộ S1 và S2; kết quả đầy đủ dành cho buổi bảo vệ cuối kỳ. Còn lại: Playwright qua giao diện, hoàn thiện báo cáo, và chuẩn bị bảo vệ. Nói rõ phân vai và board Trello/Jira của nhóm.");
 }

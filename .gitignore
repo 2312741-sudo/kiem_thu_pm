@@ -8,3 +8,6 @@ node_modules/
 
 # Kết quả demo chạy tại chỗ
 race-tests/results/demo*/
+
+# File khóa của Office
+~$*

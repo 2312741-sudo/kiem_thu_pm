@@ -82,7 +82,7 @@ function newSlide(master, sec) {
   s.addText('Hai người cùng bấm "Đặt lịch".\nAi thắng?', { x: M, y: 1.9, w: 11.5, h: 2.4, fontFace: HEAD, fontSize: 54, bold: true, color: "F4F2EC", margin: 0, valign: "top", isTextBox: true });
   s.addText("Kiểm thử race condition cho hệ thống đặt lịch mã nguồn mở Cal.com v6.2.0", { x: M, y: 4.5, w: 10.5, h: 0.9, fontFace: BODY, fontSize: 24, color: MUTED_DARK, margin: 0, valign: "top", isTextBox: true });
   s.addText("Môn Kiểm thử phần mềm · GV Nguyễn Thế Lâm\nKhoa CNTT – Trường Đại học Đà Lạt", { x: M, y: 6.1, w: 7, h: 0.8, fontFace: BODY, fontSize: 16, color: MUTED_DARK, margin: 0, isTextBox: true });
-  s.addText("Nhóm: [Tên thành viên 1 – 4]", { x: 8.2, y: 6.1, w: 4.4, h: 0.8, fontFace: BODY, fontSize: 16, color: MUTED_DARK, align: "right", margin: 0, isTextBox: true });
+  s.addText("Nhóm 13\n2312741 - Nguyễn Thanh Tâm\n2312800 - Võ Công Vinh\n2312774 - Nguyễn Đức Tín\n2312796 - Ngô Quốc Trường Vĩ", { x: 7.6, y: 5.5, w: 5.03, h: 1.45, fontFace: BODY, fontSize: 16, color: MUTED_DARK, align: "right", valign: "bottom", margin: 0, isTextBox: true });
   s.addNotes("Giới thiệu nhóm và đề tài: hệ thống R05 là Cal.com, kỹ thuật K15 là kiểm thử concurrency/race. Câu hỏi mở đầu: khi hai người cùng đặt một khung giờ, hệ thống có đảm bảo chỉ một người thắng không?");
 }
 
