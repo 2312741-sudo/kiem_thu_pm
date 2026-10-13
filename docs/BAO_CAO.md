@@ -384,6 +384,8 @@ Vì race mang tính xác suất, tỉ lệ có thể khác đôi chút trên má
 - **Git:** repo https://github.com/2312741-sudo/kiem_thu_pm; mỗi thành viên commit phần việc của mình để lịch sử thể hiện đóng góp đều đặn.
 - **Quy trình:** Scrum theo Sprint, họp nhóm ngắn đầu và cuối tuần.
 
+![Board GitHub Projects R05-K15 – Kế hoạch: 7 thẻ Todo, 1 In Progress, 10 Done](evidence/board.png)
+
 ---
 
 ## Hạn chế và hướng phát triển

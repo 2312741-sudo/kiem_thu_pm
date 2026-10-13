@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const {
   AlignmentType, BorderStyle, Document, Footer, HeadingLevel, LevelFormat, Packer, PageNumber,
-  Paragraph, ShadingType, Table, TableCell, TableRow, TextRun, WidthType, PageBreak,
+  Paragraph, ShadingType, Table, TableCell, TableRow, TextRun, WidthType, PageBreak, ImageRun,
 } = require("docx");
 
 const root = path.resolve(__dirname, "..");
@@ -101,6 +101,15 @@ function convert(md, { demoteHeadings = 0 } = {}) {
       const level = Math.min(4, h[1].length + demoteHeadings);
       const hl = [HeadingLevel.HEADING_1, HeadingLevel.HEADING_2, HeadingLevel.HEADING_3, HeadingLevel.HEADING_4][level - 1];
       out.push(new Paragraph({ heading: hl, children: [new TextRun({ text: h[2].replace(/\*\*/g, "") })] }));
+      i++;
+      continue;
+    }
+    const img = line.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+    if (img) {
+      const data = fs.readFileSync(path.join(root, "docs", img[2]));
+      const w = 600, h = Math.round((w * data.readUInt32BE(20)) / data.readUInt32BE(16));
+      out.push(new Paragraph({ alignment: AlignmentType.CENTER, spacing: { before: 120, after: 60 }, children: [new ImageRun({ type: "png", data, transformation: { width: w, height: h }, altText: { title: img[1], description: img[1], name: "board" } })] }));
+      out.push(new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 160 }, children: [new TextRun({ text: img[1], italics: true, size: 20 })] }));
       i++;
       continue;
     }

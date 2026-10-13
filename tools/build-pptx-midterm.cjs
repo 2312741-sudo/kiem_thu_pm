@@ -88,7 +88,7 @@ const add = (master, section) => {
     ["Phân tích nguyên nhân gốc, thí nghiệm khắc phục", "4", done, "docs/DEFECTS.md"],
     ["Báo cáo cuối (bản nháp A–H) và slide bảo vệ", "4–5", part, "docs/BAO_CAO.md"],
     ["Scenario Playwright qua giao diện, chạy lại trên máy khác", "3", todo, "–"],
-    ["Board GitHub Projects đã tạo; đang thêm thẻ và gán người, commit đều các thành viên", "Đăng ký", part, "github.com/users/2312741-sudo/projects/1"],
+    ["Board GitHub Projects: 18 thẻ ở 3 cột; còn gán người và commit đều các thành viên", "Đăng ký", part, "docs/evidence/board.png"],
   ], { y: 1.75, colW: [5.9, 1.2, 1.5, W - 8.6], fontSize: 13, rowH: 0.46 });
   s.addNotes("Mọi mục của Sprint 1 đã xong, và nhóm đã làm trước: harness 8 scenario đã chạy 10 vòng mỗi scenario kèm nhóm đối chứng tuần tự, đã phân tích nguyên nhân gốc. Giữa kỳ nhóm chỉ trình bày kết quả sơ bộ S1 và S2; kết quả đầy đủ dành cho buổi bảo vệ cuối kỳ. Còn lại: Playwright qua giao diện, hoàn thiện báo cáo, và chuẩn bị bảo vệ. Nói rõ phân vai và board Trello/Jira của nhóm.");
 }
