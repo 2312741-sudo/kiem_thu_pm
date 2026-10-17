@@ -14,12 +14,23 @@ const out = path.join(root, "results", "demo-midterm");
 const title = (t) => console.log(`\n=== ${t} ===`);
 
 title("Bước 1/3 · Hệ thống Cal.com v6.2.0 đang chạy?");
-try {
-  const res = await fetch(`${config.baseUrl}/${config.hostUsername}`, { signal: AbortSignal.timeout(60_000) });
-  console.log(`GET ${config.baseUrl}/${config.hostUsername} → HTTP ${res.status}`);
-  if (!res.ok) process.exit(2);
-} catch (err) {
-  console.error(`Không kết nối được ${config.baseUrl}. Chạy 'yarn dev' trong thư mục calcom trước.`);
+const url = `${config.baseUrl}/${config.hostUsername}`;
+let alive = false;
+for (let attempt = 1; attempt <= 3 && !alive; attempt++) {
+  try {
+    const res = await fetch(url, { signal: AbortSignal.timeout(90_000) });
+    console.log(`GET ${url} → HTTP ${res.status}`);
+    alive = res.ok;
+    if (!res.ok) break;
+  } catch (err) {
+    const reason = err.cause?.code ?? err.cause?.message ?? err.name ?? String(err);
+    console.error(`Lần ${attempt}/3: không kết nối được ${url} (${reason})`);
+    if (attempt < 3) await new Promise((r) => setTimeout(r, 5000));
+  }
+}
+if (!alive) {
+  console.error("Cal.com chưa sẵn sàng. Kiểm tra: cd calcom && yarn dev (đợi dòng 'Ready'), và PostgreSQL đang chạy.");
+  console.error(`Thử trong Terminal: curl -i ${url}`);
   process.exit(2);
 }
 
