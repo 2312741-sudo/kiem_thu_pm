@@ -87,9 +87,10 @@ const add = (master, section) => {
     ["Harness k6 + SQL, 8 scenario, mỗi scenario 10 vòng, có đối chứng tuần tự", "2–3", done, "race-tests/results/"],
     ["Phân tích nguyên nhân gốc, thí nghiệm khắc phục", "4", done, "docs/DEFECTS.md"],
     ["Báo cáo cuối (bản nháp A–H) và slide bảo vệ", "4–5", part, "docs/BAO_CAO.md"],
-    ["Scenario Playwright qua giao diện, chạy lại trên máy khác", "3", todo, "–"],
+    ["Chạy lại trên máy Windows khác: kết quả khớp 8/8", "3", done, "race-tests/results/windows-race"],
+    ["Scenario Playwright qua giao diện", "3", todo, "–"],
     ["Board GitHub Projects: 18 thẻ ở 3 cột; còn gán người và commit đều các thành viên", "Đăng ký", part, "docs/evidence/board.png"],
-  ], { y: 1.75, colW: [5.9, 1.2, 1.5, W - 8.6], fontSize: 13, rowH: 0.46 });
+  ], { y: 1.75, colW: [5.9, 1.2, 1.5, W - 8.6], fontSize: 13, rowH: 0.43 });
   s.addNotes("Mọi mục của Sprint 1 đã xong, và nhóm đã làm trước: harness 8 scenario đã chạy 10 vòng mỗi scenario kèm nhóm đối chứng tuần tự, đã phân tích nguyên nhân gốc. Giữa kỳ nhóm chỉ trình bày kết quả sơ bộ S1 và S2; kết quả đầy đủ dành cho buổi bảo vệ cuối kỳ. Còn lại: Playwright qua giao diện, hoàn thiện báo cáo, và chuẩn bị bảo vệ. Nói rõ phân vai và board Trello/Jira của nhóm.");
 }
 
@@ -271,10 +272,32 @@ const add = (master, section) => {
   s.addNotes("Kết quả thật của lượt chạy chính thức: mỗi test case chạy 10 vòng, ở hai chế độ đồng thời và tuần tự. TC-01 và TC-04 đúng, hai cơ chế bảo vệ của hệ thống hoạt động. Năm test case chỉ sai khi đồng thời là lỗi race. TC-06 sai cả khi tuần tự nên là lỗi logic, không phải race. Mã HTTP đều thành công, chỉ truy vấn trực tiếp cơ sở dữ liệu mới thấy dữ liệu sai.");
 }
 
+// Chạy lại trên máy thứ hai
+{
+  const s = add("LIGHT");
+  eyebrow(s, "10 · CHẠY LẠI TRÊN MÁY THỨ HAI");
+  s.addText("Máy Windows cho cùng kết quả: khớp 8/8", { placeholder: "title" });
+  tbl(s, [
+    ["Test case", "Mac: đồng thời", "Windows: đồng thời", "Windows: tuần tự", "Khớp"],
+    ["TC-01, TC-04", "0/10", "0/10", "0/10", "Có"],
+    ["TC-02, 03, 05, 07, 08", "10/10", "10/10", "0/10", "Có"],
+    ["TC-06", "10/10", "10/10", "10/10", "Có"],
+  ], { y: 1.75, colW: [3.6, 2.3, 2.6, 2.4, W - 10.9], fontSize: 15, rowH: 0.55 });
+  const cw = (W - 0.7) / 3;
+  [["Thời gian", "Đồng thời 210 giây (Mac 154 giây); tuần tự 43 giây (Mac 23 giây)."], ["Hai lượt đầu bị loại", "Thiếu k6 và Cal.com dừng giữa chừng. Chỉ dùng lượt chạy sạch."], ["Còn thiếu", "Cấu hình máy Windows và tên người test cần ghi vào báo cáo."]].forEach(([h, b], i) => {
+    const x = M + i * (cw + 0.35);
+    card(s, x, 4.0, cw, 2.2);
+    s.addText(h, { x: x + 0.3, y: 4.2, w: cw - 0.6, h: 0.5, fontFace: BODY, fontSize: 20, bold: true, color: INK, margin: 0, isTextBox: true });
+    s.addText(b, { x: x + 0.3, y: 4.8, w: cw - 0.6, h: 1.3, fontFace: BODY, fontSize: 15, color: MUTED, margin: 0, valign: "top", isTextBox: true });
+  });
+  footer(s, "race-tests/results/windows-race · race-tests/results/windows-sequential");
+  s.addNotes("Một thành viên chạy lại bộ test trên máy Windows của mình với cùng phiên bản mã. Kết luận tám test case giống hệt máy Mac: năm lỗi race chỉ sai khi đồng thời, một lỗi logic sai cả khi tuần tự, hai test case đúng. Hai lượt chạy đầu trên máy Windows không hợp lệ vì thiếu công cụ k6 và vì Cal.com dừng giữa chừng; nhóm đã loại và chỉ dùng lượt chạy sạch. Cấu hình máy và tên người test cần ghi vào báo cáo.");
+}
+
 // 4 · Lỗi thật
 {
   const s = add("LIGHT");
-  eyebrow(s, "10 · LỖI THẬT, TÁI HIỆN ĐỘC LẬP");
+  eyebrow(s, "11 · LỖI THẬT, TÁI HIỆN ĐỘC LẬP");
   s.addText("6 lỗi, đều tái hiện được bằng curl thuần", { placeholder: "title" });
   tbl(s, [
     ["Lỗi", "Tái hiện bằng curl (không dùng harness)", "Dữ liệu trong CSDL"],
@@ -293,10 +316,10 @@ const add = (master, section) => {
 // 8 · Kế hoạch tiếp theo
 {
   const s = add("DARK", "Tiếp theo");
-  eyebrow(s, "11 · KẾ HOẠCH TIẾP THEO", true);
+  eyebrow(s, "12 · KẾ HOẠCH TIẾP THEO", true);
   s.addText("Từ giữa kỳ đến bảo vệ", { placeholder: "title" });
   const rows = [
-    ["21/10 – 3/11", "Thêm scenario Playwright qua giao diện, chạy lại toàn bộ trên máy sạch của thành viên khác", ORANGE],
+    ["21/10 – 3/11", "Thêm scenario Playwright qua giao diện, bổ sung cấu hình máy Windows và tên người test vào báo cáo", ORANGE],
     ["4/11 – 17/11", "Rà soát nguyên nhân gốc và đề xuất sửa; chuẩn bị báo cáo lỗi D1, D4 cho Cal.com", ORANGE],
     ["18/11 – 30/11", "Hoàn thiện báo cáo A–H, nộp trước bảo vệ 1 tuần", ORANGE],
     ["Tháng 12", "Slide bảo vệ, tập dượt, đánh giá chéo giữa các thành viên", ORANGE],

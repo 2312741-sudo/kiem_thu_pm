@@ -134,7 +134,8 @@ npm run midterm-report
 |---|---|---|
 | Sprint 1 (đến 20/10) | Dựng hệ thống, kiến trúc, kế hoạch, thử nghiệm đầu tiên | Xong |
 | Sprint 2 và 3 | Harness 8 test case, chạy 10 vòng, đối chứng tuần tự, đo cửa sổ race | Đã chạy xong |
-| Sprint 2 và 3 (còn lại) | Test qua giao diện bằng Playwright; chạy lại trên máy của thành viên khác | Chưa làm |
+| Sprint 2 và 3 | Chạy lại trên máy Windows của thành viên khác | Đã chạy xong, kết quả khớp |
+| Sprint 2 và 3 (còn lại) | Test qua giao diện bằng Playwright | Chưa làm |
 | Sprint 4 | Rà soát nguyên nhân gốc, đề xuất sửa, hoàn thiện báo cáo | Đang làm |
 | Tháng 12 | Slide bảo vệ, tập dượt, đánh giá chéo | Chưa làm |
 
@@ -188,6 +189,34 @@ Nguồn: lượt chạy chính thức ngày 18/10/2026, mỗi test case 10 vòng
 
 **Độ nhạy:** chỉ với 2 request đồng thời, TC-02 vi phạm ở 20 trên 20 vòng và TC-08 vi phạm ở 20 trên 20 vòng. Lỗi không cần tải lớn.
 
+### Chạy lại trên máy thứ hai (Windows)
+
+Một thành viên chạy lại toàn bộ bộ test trên máy Windows của mình, với cùng phiên bản mã (Cal.com v6.2.0, bộ test cùng commit) để kiểm tra kết quả có phụ thuộc vào máy hay không.
+
+- Người test: [điền tên thành viên]
+- Cấu hình máy: [điền CPU, RAM, hệ điều hành, phiên bản Node và k6]
+- Ngày chạy: 18/10/2026
+- Kết quả đồng thời: [race-tests/results/windows-race/REPORT.md](../race-tests/results/windows-race/REPORT.md)
+- Kết quả tuần tự: [race-tests/results/windows-sequential/REPORT.md](../race-tests/results/windows-sequential/REPORT.md)
+
+| TC | Mac: đồng thời | Windows: đồng thời | Windows: tuần tự | Khớp |
+|---|---|---|---|---|
+| TC-01 | 0/10 | 0/10 | 0/10 | Có |
+| TC-02 | 10/10 | 10/10 | 0/10 | Có |
+| TC-03 | 10/10 | 10/10 | 0/10 | Có |
+| TC-04 | 0/10 | 0/10 | 0/10 | Có |
+| TC-05 | 10/10 | 10/10 | 0/10 | Có |
+| TC-06 | 10/10 | 10/10 | 10/10 | Có |
+| TC-07 | 10/10 | 10/10 | 0/10 | Có |
+| TC-08 | 10/10 | 10/10 | 0/10 | Có |
+
+**Nhận xét**
+
+- Kết luận 8/8 test case giống nhau trên hai máy. Số vòng vi phạm và dữ liệu trong CSDL ở vòng 1 giống hệt, trừ TC-05: máy Mac nhận 9 booking chờ xác nhận (1 request bị 409), máy Windows nhận 10. Cả hai đều vi phạm 10/10 vòng, khác nhau ở thời điểm chạm cửa sổ race.
+- Máy Windows chậm hơn: lượt đồng thời chạy 210 giây so với 154 giây trên máy Mac. Độ trễ p95 của TC-01 là 9 703 ms trên Windows so với 417 ms trên Mac. Nhiều khả năng do Cal.com biên dịch lần đầu ở vòng đầu, nhóm chưa kiểm chứng.
+- Lượt tuần tự trên Windows: chỉ TC-06 FAIL (10/10), khớp máy Mac; chạy 43 giây so với 23 giây trên máy Mac.
+- Hai lượt chạy đầu trên máy Windows **không hợp lệ và đã bị loại**: lượt thứ nhất do máy chưa cài k6, lượt thứ hai do Cal.com dừng giữa chừng (TC-01 báo FAIL bất thường). Kết quả dùng ở trên là lượt chạy sạch sau khi khắc phục. Đây là lý do bộ test hiện có bước khởi động nóng và báo lỗi rõ khi Cal.com dừng.
+
 **Dữ liệu thô:** `race-tests/results/giua-ky-race/` và `race-tests/results/giua-ky-sequential/` (request đã gửi, phản hồi từng request, tóm tắt k6).
 
 ## 8. Lỗi tìm được
@@ -229,11 +258,12 @@ Nguồn: lượt chạy chính thức ngày 18/10/2026, mỗi test case 10 vòng
 
 - Chưa báo lỗi cho nhóm phát triển Cal.com và chưa kiểm tra trên bản mới hơn, nên chưa thể khẳng định phía Cal.com coi tất cả là lỗi.
 - Chưa sửa mã Cal.com. Hướng sửa mới thử trên dữ liệu test.
-- Chưa test qua giao diện bằng Playwright; chưa chạy lại trên máy của thành viên khác.
+- Chưa test qua giao diện bằng Playwright.
+- Mới chạy lại trên một máy khác (Windows). Cấu hình máy đó và tên người test chưa được ghi vào báo cáo.
 
 **Việc tiếp theo**
 
-1. Test qua giao diện và chạy lại trên máy sạch của thành viên khác.
+1. Test qua giao diện bằng Playwright.
 2. Rà soát nguyên nhân gốc, đề xuất sửa cho D1 và D4, chuẩn bị báo lỗi cho Cal.com.
 3. Hoàn thiện báo cáo cuối và nộp trước bảo vệ một tuần.
 
@@ -260,6 +290,7 @@ Phần kết quả đã điền từ lượt chạy chính thức. Người test
 | Quy trình test đầy đủ | docs/QUY_TRINH_TEST.md |
 | Hướng dẫn người test | docs/HUONG_DAN_NGUOI_TEST.md |
 | Kết quả test giữa kỳ (sinh tự động) | docs/KET_QUA_TEST_GIUA_KY.md |
+| Kết quả chạy lại trên máy Windows | race-tests/results/windows-race/REPORT.md, race-tests/results/windows-sequential/REPORT.md |
 | Mô tả chi tiết từng lỗi | docs/DEFECTS.md |
 | Minh chứng lỗi | docs/MINH_CHUNG_LOI.md |
 | Tái hiện độc lập bằng curl | race-tests/repro/repro-curl.sh, docs/evidence/repro-curl.txt |

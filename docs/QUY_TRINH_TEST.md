@@ -115,7 +115,8 @@ Chạy lại toàn bộ bộ test chính (đồng thời + tuần tự) tốn d�
 |---|---|---|
 | Sprint 1 (đến 20/10) | Dựng hệ thống, kiến trúc, kế hoạch, PoC | Xong |
 | Sprint 2–3 | Harness 8 test case, chạy 10 vòng, đối chứng tuần tự, đo cửa sổ race | Đã chạy xong |
-| Sprint 2–3 còn lại | Scenario Playwright qua giao diện; chạy lại trên máy của thành viên khác | Chưa làm |
+| Sprint 2–3 | Chạy lại trên máy Windows của thành viên khác | Đã chạy xong, kết quả khớp |
+| Sprint 2–3 còn lại | Scenario Playwright qua giao diện | Chưa làm |
 | Sprint 4 | Rà soát nguyên nhân gốc, đề xuất sửa, hoàn thiện báo cáo | Đang làm |
 | Tháng 12 | Slide bảo vệ, tập dượt, đánh giá chéo | Chưa làm |
 
