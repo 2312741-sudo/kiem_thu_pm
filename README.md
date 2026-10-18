@@ -9,6 +9,9 @@
 | Tài liệu | Nội dung |
 |---|---|
 | [docs/BAO_CAO.md](docs/BAO_CAO.md) | Báo cáo đầy đủ phần A–H |
+| [docs/HUONG_DAN_NGUOI_TEST.md](docs/HUONG_DAN_NGUOI_TEST.md) | Hướng dẫn người test, phiếu ghi kết quả, phiếu báo lỗi |
+| [docs/KET_QUA_TEST_GIUA_KY.md](docs/KET_QUA_TEST_GIUA_KY.md) | Kết quả test giữa kỳ (sinh tự động từ lần chạy thật) |
+| [docs/QUY_TRINH_TEST.md](docs/QUY_TRINH_TEST.md) | Quy trình test, danh sách test case, chi phí, kế hoạch |
 | [docs/DEFECTS.md](docs/DEFECTS.md) | Danh sách lỗi, cách tái hiện, phân tích nguyên nhân gốc |
 | [docs/diagrams/kien-truc.md](docs/diagrams/kien-truc.md) | Sơ đồ kiến trúc, module, luồng dữ liệu (Mermaid) |
 | [Slide bảo vệ](https://claude.ai/artifact/F5BpD71znEGvUL3d34wKRe) | 15 slide, tải được dạng .pptx/PDF |
