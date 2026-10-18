@@ -112,7 +112,10 @@ k6 version
 | `password authentication failed` | Thiếu hoặc sai mật khẩu PostgreSQL | Đặt `$env:DATABASE_URL` như bước 3 |
 | `ECONNREFUSED` đến cổng 3000 | Cal.com chưa chạy | Chạy `yarn dev` trong thư mục `calcom`, đợi `Ready` |
 | `ECONNREFUSED` đến cổng 5432 | PostgreSQL chưa chạy | Khởi động dịch vụ PostgreSQL |
-| Request đầu tiên rất chậm | Cal.com biên dịch lần đầu | Chạy lại một lần, lần sau nhanh |
+| `Cal.com không phản hồi tại ...` | Cal.com chưa chạy hoặc đã tắt | Chạy `yarn dev` trong thư mục `calcom`, đợi `Ready`, rồi chạy lại |
+| `Mất kết nối tới Cal.com giữa lúc đang chạy` | Cal.com bị dừng hoặc crash giữa chừng (thường do thiếu RAM) | Kết quả lượt đó không hợp lệ; đóng bớt ứng dụng, chạy lại Cal.com và chạy lại từ đầu |
+| S1 báo FAIL (đáng lẽ PASS) | Có request trả 5xx/timeout, hoặc Cal.com sai phiên bản/thiếu ràng buộc CSDL | Chạy `npm run inspect -- results/windows-race/raw/S1-r1.console.log` rồi gửi kết quả cho người phụ trách |
+| Request đầu tiên rất chậm | Cal.com biên dịch lần đầu | Bộ test đã tự khởi động nóng; nếu vẫn chậm, mở http://localhost:3000/k15host trên trình duyệt trước |
 | Kết quả bất thường (ví dụ S1 FAIL) | Có lượt test khác chạy chồng | Dừng mọi lượt, chạy lại từ đầu |
 
 Nếu vẫn lỗi, chụp cả cửa sổ Terminal (từ dòng lệnh đến thông báo lỗi) và gửi người phụ trách.

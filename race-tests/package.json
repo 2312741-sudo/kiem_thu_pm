@@ -10,7 +10,8 @@
     "race": "node src/run.mjs",
     "report": "node src/report.mjs",
     "demo:midterm": "node src/demo-midterm.mjs",
-    "midterm-report": "node src/midterm-report.mjs"
+    "midterm-report": "node src/midterm-report.mjs",
+    "inspect": "node src/inspect-round.mjs"
   },
   "dependencies": {
     "pg": "^8.23.1"

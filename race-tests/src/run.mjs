@@ -8,7 +8,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseArgs } from "node:util";
 
-import { send } from "./api.mjs";
+import { bookingRequest, cancelRequest, send } from "./api.mjs";
 import { config } from "./config.mjs";
 import { deleteHostBookings, loadFixture, pool } from "./db.mjs";
 import { writeReport } from "./report.mjs";
@@ -103,8 +103,27 @@ async function runSequential(requests) {
   return results;
 }
 
+// Cal.com ở chế độ dev biên dịch route lần đầu được gọi, mất vài giây đến vài chục giây. Nếu để request
+// đầu tiên của scenario đầu tiên gặp đúng lúc đó thì có thể trả 5xx/timeout và làm hỏng kết quả vòng đầu.
+async function preflightAndWarmUp(fx) {
+  try {
+    const res = await fetch(`${config.baseUrl}/${config.hostUsername}`, { signal: AbortSignal.timeout(120_000) });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  } catch (err) {
+    const reason = err.cause?.code ?? err.message;
+    throw new Error(`Cal.com không phản hồi tại ${config.baseUrl} (${reason}). Kiểm tra Cal.com đang chạy ('yarn dev', đợi dòng Ready) rồi chạy lại.`);
+  }
+  process.stdout.write("Khởi động nóng Cal.com (đặt và hủy một booking thử)... ");
+  const et = fx.eventTypes["k15-30"];
+  const start = new Date(Date.UTC(2031, 0, 5, 9, 0));
+  const booked = await send(bookingRequest({ eventType: et, start, email: "warmup@k15.test" }));
+  if (booked.json?.uid) await send(cancelRequest({ uid: booked.json.uid }));
+  console.log(booked.status === 200 ? "xong" : `bỏ qua (HTTP ${booked.status})`);
+}
+
 async function main() {
   const fx = await loadFixture();
+  await preflightAndWarmUp(fx);
   await deleteHostBookings(fx.hostId);
   console.log(`Run ${runId} → ${path.relative(process.cwd(), outDir)}`);
   console.log(`Cal.com: ${config.baseUrl} | host id ${fx.hostId} | chế độ ${mode} | ${rounds} vòng/scenario\n`);
@@ -165,7 +184,12 @@ async function main() {
 }
 
 main().catch(async (err) => {
-  console.error(err);
+  if (err?.cause?.code === "ECONNREFUSED") {
+    console.error(`\nMất kết nối tới Cal.com tại ${config.baseUrl} giữa lúc đang chạy: Cal.com đã dừng hoặc bị crash.`);
+    console.error("Kết quả lượt này KHÔNG hợp lệ. Chạy lại Cal.com ('yarn dev', đợi dòng Ready) và chạy lại từ đầu.");
+  } else {
+    console.error(err);
+  }
   await pool.end();
   process.exit(2);
 });
