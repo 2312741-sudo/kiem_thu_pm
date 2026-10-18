@@ -9,6 +9,7 @@
 | Tài liệu | Nội dung |
 |---|---|
 | [docs/BAO_CAO.md](docs/BAO_CAO.md) | Báo cáo đầy đủ phần A–H |
+| [docs/HUONG_DAN_CHAY_LAI_WINDOWS.md](docs/HUONG_DAN_CHAY_LAI_WINDOWS.md) | Hướng dẫn ngắn chạy lại test trên máy Windows khác |
 | [docs/HUONG_DAN_NGUOI_TEST.md](docs/HUONG_DAN_NGUOI_TEST.md) | Hướng dẫn người test, phiếu ghi kết quả, phiếu báo lỗi |
 | [docs/KET_QUA_TEST_GIUA_KY.md](docs/KET_QUA_TEST_GIUA_KY.md) | Kết quả test giữa kỳ (sinh tự động từ lần chạy thật) |
 | [docs/QUY_TRINH_TEST.md](docs/QUY_TRINH_TEST.md) | Quy trình test, danh sách test case, chi phí, kế hoạch |
