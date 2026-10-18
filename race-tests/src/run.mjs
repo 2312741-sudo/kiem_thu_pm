@@ -53,14 +53,21 @@ function runK6(requests, tag) {
     {
       env: {
         ...process.env,
-        REQUESTS_FILE: requestsFile,
-        SUMMARY_FILE: summaryFile,
+        REQUESTS_FILE: requestsFile.replaceAll("\\", "/"),
+        SUMMARY_FILE: summaryFile.replaceAll("\\", "/"),
         // để k6 kịp khởi tạo hết VU trước khi tất cả cùng bắn
         START_AT: String(Date.now() + 1500),
       },
       encoding: "utf8",
     }
   );
+  if (proc.error) {
+    const hint =
+      proc.error.code === "ENOENT"
+        ? `Không tìm thấy chương trình '${config.k6Bin}'. Cài k6 (Windows: winget install k6; macOS: brew install k6), mở lại Terminal rồi kiểm tra 'k6 version'. Hoặc đặt biến môi trường K6_BIN trỏ tới k6.exe.`
+        : proc.error.message;
+    throw new Error(`Không chạy được k6: ${hint}`);
+  }
   if (proc.status !== 0) {
     throw new Error(`k6 lỗi (exit ${proc.status}): ${proc.stderr || proc.stdout}`);
   }
