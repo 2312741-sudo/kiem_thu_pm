@@ -155,14 +155,17 @@ npm run midterm-report
 
 **Chi phí xây dựng bộ test:** khoảng 970 dòng mã (Node.js, k6, SQL).
 
-**Công sức của nhóm (người-giờ):**
+**Công sức của nhóm (người-giờ), ước lượng theo công việc:**
 
-| Thành viên | Việc | Số giờ |
+| Hạng mục | Người phụ trách | Ước lượng (giờ) |
 |---|---|---|
-| Nguyễn Thanh Tâm | | |
-| Võ Công Vinh | | |
-| Nguyễn Đức Tín | | |
-| Ngô Quốc Trường Vĩ | | |
+| Dựng Cal.com, seed data, chạy 3 luồng nghiệp vụ | Nguyễn Thanh Tâm | 6 đến 8 |
+| Đọc code, vẽ kiến trúc, phân tích nguyên nhân gốc | Võ Công Vinh | 6 đến 8 |
+| Thiết kế test case, viết bộ test | Nguyễn Đức Tín | 10 đến 14 |
+| Chạy test, ghi kết quả, báo cáo, slide | Ngô Quốc Trường Vĩ | 12 đến 16 |
+| **Tổng** | | **34 đến 46 giờ, khoảng 9 đến 12 giờ mỗi người** |
+
+Đây là **ước lượng** của nhóm cho khối lượng công việc, **không phải số giờ ghi lại thực tế**. Nhóm chưa theo dõi giờ làm từng người.
 
 ## 7. Kết quả test
 

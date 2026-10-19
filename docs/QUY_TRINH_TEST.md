@@ -86,7 +86,7 @@ Chạy lại toàn bộ bộ test chính (đồng thời + tuần tự) tốn d�
 
 **Chi phí xây dựng bộ test:** khoảng 970 dòng mã (Node.js, k6, SQL).
 
-**Công sức của nhóm (người-giờ):** [điền số giờ thực tế của từng thành viên theo bảng dưới; các số ước lượng chỉ để tham khảo]
+**Công sức của nhóm (người-giờ):** ước lượng khoảng 34 đến 46 giờ cho cả nhóm (xem báo cáo giữa kỳ, mục 6). Đây là ước lượng, không phải số giờ ghi lại thực tế; nhóm có thể điền số thực tế vào cột bên phải.
 
 | Hạng mục | Ước lượng | Thực tế (nhóm điền) |
 |---|---|---|

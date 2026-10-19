@@ -245,9 +245,9 @@ const add = (master, section) => {
     ["Thí nghiệm khắc phục", "380", "85 giây"],
     ["Đo cửa sổ race (18 mốc độ trễ)", "360", "300 giây"],
   ], { y: 3.85, colW: [7.2, 2.2, W - 9.4], fontSize: 14, rowH: 0.42 });
-  s.addText("Công sức nhóm (người-giờ): [nhóm điền số giờ thực tế của từng thành viên]. Máy: MacBook Apple Silicon 10 nhân, 32 GB RAM.", { x: M, y: 6.5, w: W, h: 0.4, fontFace: BODY, fontSize: 14, color: MUTED, margin: 0, isTextBox: true });
+  s.addText("Công sức nhóm: ước lượng 34–46 người-giờ (chưa theo dõi giờ thực tế). Máy: MacBook Apple Silicon 10 nhân, 32 GB RAM.", { x: M, y: 6.5, w: W, h: 0.4, fontFace: BODY, fontSize: 14, color: MUTED, margin: 0, isTextBox: true });
   footer(s, "Số liệu lấy từ summary.json của từng lần chạy: docs/QUY_TRINH_TEST.md mục 3");
-  s.addNotes("Số liệu chi phí máy đo thật từ thời điểm bắt đầu và kết thúc trong file summary.json của mỗi lần chạy. Chạy lại bộ test chính cả đồng thời và tuần tự mất dưới ba phút. Phần công sức người-giờ nhóm tự điền theo thực tế.");
+  s.addNotes("Số liệu chi phí máy đo thật từ thời điểm bắt đầu và kết thúc trong file summary.json của mỗi lần chạy. Chạy lại bộ test chính cả đồng thời và tuần tự mất dưới ba phút. Công sức nhân lực là ước lượng khoảng 34 đến 46 người-giờ, nhóm chưa theo dõi giờ thực tế từng người.");
 }
 
 // Kết quả test
