@@ -198,7 +198,7 @@ const add = (master, section) => {
     ["TC-07", "1 lệnh hủy + 1 lệnh đổi lịch cùng booking", "Không thể cả hai cùng thành công", "I5"],
     ["TC-08", "8 người đặt 8 giờ khác nhau, giới hạn 1/ngày", "Chỉ 1 người thành công", "I6"],
   ], { y: 1.75, colW: [1.0, 5.2, 4.3, W - 10.5], fontSize: 14, rowH: 0.47 });
-  s.addText("Dữ liệu: host k15host (UTC, rảnh 24/7); 5 loại cuộc hẹn; mỗi request dùng một email người đặt khác nhau. I7 (không có 5xx) áp dụng cho mọi test case.", { x: M, y: 6.0, w: W, h: 0.7, fontFace: BODY, fontSize: 15, color: MUTED, margin: 0, valign: "top", isTextBox: true });
+  s.addText("Dữ liệu: host k15host (UTC, rảnh 24/7); 5 loại cuộc hẹn; mỗi request dùng một email người đặt khác nhau. I7 (không có 5xx) áp dụng cho mọi test case.", { x: M, y: 6.2, w: W, h: 0.6, fontFace: BODY, fontSize: 14, color: MUTED, margin: 0, valign: "top", isTextBox: true });
   footer(s, "Đầy đủ tiền điều kiện và invariant: docs/QUY_TRINH_TEST.md mục 2");
   s.addNotes("Mỗi test case chọn một cơ chế bảo vệ khác nhau để thử. TC-01 và TC-04 là hai trường hợp hệ thống đã có bảo vệ, dùng để kiểm chứng harness không báo lỗi giả. Sáu test case còn lại thử những chỗ đọc code cho thấy chưa có bảo vệ ở tầng cơ sở dữ liệu.");
 }
@@ -286,9 +286,9 @@ const add = (master, section) => {
   const cw = (W - 0.7) / 3;
   [["Thời gian", "Đồng thời 210 giây (Mac 154 giây); tuần tự 43 giây (Mac 23 giây)."], ["Hai lượt đầu bị loại", "Thiếu k6 và Cal.com dừng giữa chừng. Chỉ dùng lượt chạy sạch."], ["Máy Windows", "Người test: Ngô Quốc Trường Vĩ. Máy MSI, Core i7-13620H, RAM 16 GB."]].forEach(([h, b], i) => {
     const x = M + i * (cw + 0.35);
-    card(s, x, 4.0, cw, 2.2);
-    s.addText(h, { x: x + 0.3, y: 4.2, w: cw - 0.6, h: 0.5, fontFace: BODY, fontSize: 20, bold: true, color: INK, margin: 0, isTextBox: true });
-    s.addText(b, { x: x + 0.3, y: 4.8, w: cw - 0.6, h: 1.3, fontFace: BODY, fontSize: 15, color: MUTED, margin: 0, valign: "top", isTextBox: true });
+    card(s, x, 4.4, cw, 2.0);
+    s.addText(h, { x: x + 0.3, y: 4.6, w: cw - 0.6, h: 0.5, fontFace: BODY, fontSize: 20, bold: true, color: INK, margin: 0, isTextBox: true });
+    s.addText(b, { x: x + 0.3, y: 5.2, w: cw - 0.6, h: 1.1, fontFace: BODY, fontSize: 15, color: MUTED, margin: 0, valign: "top", isTextBox: true });
   });
   footer(s, "race-tests/results/windows-race · race-tests/results/windows-sequential");
   s.addNotes("Một thành viên chạy lại bộ test trên máy Windows của mình với cùng phiên bản mã. Kết luận tám test case giống hệt máy Mac: năm lỗi race chỉ sai khi đồng thời, một lỗi logic sai cả khi tuần tự, hai test case đúng. Hai lượt chạy đầu trên máy Windows không hợp lệ vì thiếu công cụ k6 và vì Cal.com dừng giữa chừng; nhóm đã loại và chỉ dùng lượt chạy sạch. Người chạy trên máy Windows là Ngô Quốc Trường Vĩ, máy MSI Core i7-13620H, RAM 16 GB.");
@@ -313,10 +313,27 @@ const add = (master, section) => {
   s.addNotes("Để chứng minh đây là lỗi thật, nhóm tái hiện lại từng lỗi bằng lệnh curl thuần, không dùng bộ test, rồi xem trực tiếp dữ liệu trong cơ sở dữ liệu. D4 là lỗi logic xảy ra cả khi gửi tuần tự; năm lỗi còn lại chỉ xảy ra khi đồng thời. Nhóm chưa báo lỗi cho nhóm phát triển Cal.com và chưa sửa mã Cal.com, nên nói là lỗi nhóm tìm được trên bản v6.2.0 chạy local.");
 }
 
+// Nhiệm vụ và đóng góp
+{
+  const s = add("LIGHT");
+  eyebrow(s, "12 · NHIỆM VỤ VÀ ĐÓNG GÓP");
+  s.addText("Nhiệm vụ và đóng góp của từng thành viên", { placeholder: "title" });
+  tbl(s, [
+    ["Thành viên", "Vai trò", "Nhiệm vụ đã thực hiện", "Sản phẩm"],
+    ["Nguyễn Thanh Tâm · 2312741", "Môi trường, DevOps", "Dựng Cal.com, CSDL, seed data; ghim phiên bản; chạy test trên macOS", "README, kết quả chạy chính thức"],
+    ["Võ Công Vinh · 2312800", "Phân tích hệ thống", "Đọc mã, vẽ kiến trúc, luồng dữ liệu; phân tích nguyên nhân gốc", "Sơ đồ, DEFECTS.md, thí nghiệm khắc phục"],
+    ["Nguyễn Đức Tín · 2312774", "Tác giả test", "Thiết kế invariant và test case; viết bộ test (k6, Node.js, SQL)", "race-tests/, đặc tả test case"],
+    ["Ngô Quốc Trường Vĩ · 2312796", "Chạy test, báo cáo", "Chạy test, ghi kết quả; chạy lại trên Windows; báo cáo, slide", "windows-race, báo cáo, slide"],
+  ], { y: 1.85, colW: [3.1, 2.1, 4.6, W - 9.8], fontSize: 14, rowH: 0.75 });
+  s.addText("Quản lý công việc: bảng GitHub Projects (18 thẻ, 3 cột), mã nguồn trên GitHub. Việc gán người cho từng thẻ và commit đều các thành viên sẽ hoàn thiện trước buổi bảo vệ.", { x: M, y: 5.9, w: W, h: 0.8, fontFace: BODY, fontSize: 15, color: MUTED, margin: 0, valign: "top", isTextBox: true });
+  footer(s, "Chi tiết: báo cáo mục 4.6 · github.com/users/2312741-sudo/projects/1");
+  s.addNotes("Mỗi thành viên có vai trò và nhiệm vụ riêng, theo phân công của nhóm. Công việc được theo dõi trên bảng GitHub Projects; việc gán người cho từng thẻ và lịch sử commit đều các thành viên sẽ được hoàn thiện trước buổi bảo vệ.");
+}
+
 // 8 · Kế hoạch tiếp theo
 {
   const s = add("DARK", "Tiếp theo");
-  eyebrow(s, "12 · KẾ HOẠCH TIẾP THEO", true);
+  eyebrow(s, "13 · KẾ HOẠCH TIẾP THEO", true);
   s.addText("Từ giữa kỳ đến bảo vệ", { placeholder: "title" });
   const rows = [
     ["21/10 – 3/11", "Thêm scenario Playwright qua giao diện, hoàn thiện báo cáo", ORANGE],
