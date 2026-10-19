@@ -284,14 +284,14 @@ const add = (master, section) => {
     ["TC-06", "10/10", "10/10", "10/10", "Có"],
   ], { y: 1.75, colW: [3.6, 2.3, 2.6, 2.4, W - 10.9], fontSize: 15, rowH: 0.55 });
   const cw = (W - 0.7) / 3;
-  [["Thời gian", "Đồng thời 210 giây (Mac 154 giây); tuần tự 43 giây (Mac 23 giây)."], ["Hai lượt đầu bị loại", "Thiếu k6 và Cal.com dừng giữa chừng. Chỉ dùng lượt chạy sạch."], ["Còn thiếu", "Cấu hình máy Windows và tên người test cần ghi vào báo cáo."]].forEach(([h, b], i) => {
+  [["Thời gian", "Đồng thời 210 giây (Mac 154 giây); tuần tự 43 giây (Mac 23 giây)."], ["Hai lượt đầu bị loại", "Thiếu k6 và Cal.com dừng giữa chừng. Chỉ dùng lượt chạy sạch."], ["Máy Windows", "Người test: Ngô Quốc Trường Vĩ. Máy MSI, Core i7-13620H, RAM 16 GB."]].forEach(([h, b], i) => {
     const x = M + i * (cw + 0.35);
     card(s, x, 4.0, cw, 2.2);
     s.addText(h, { x: x + 0.3, y: 4.2, w: cw - 0.6, h: 0.5, fontFace: BODY, fontSize: 20, bold: true, color: INK, margin: 0, isTextBox: true });
     s.addText(b, { x: x + 0.3, y: 4.8, w: cw - 0.6, h: 1.3, fontFace: BODY, fontSize: 15, color: MUTED, margin: 0, valign: "top", isTextBox: true });
   });
   footer(s, "race-tests/results/windows-race · race-tests/results/windows-sequential");
-  s.addNotes("Một thành viên chạy lại bộ test trên máy Windows của mình với cùng phiên bản mã. Kết luận tám test case giống hệt máy Mac: năm lỗi race chỉ sai khi đồng thời, một lỗi logic sai cả khi tuần tự, hai test case đúng. Hai lượt chạy đầu trên máy Windows không hợp lệ vì thiếu công cụ k6 và vì Cal.com dừng giữa chừng; nhóm đã loại và chỉ dùng lượt chạy sạch. Cấu hình máy và tên người test cần ghi vào báo cáo.");
+  s.addNotes("Một thành viên chạy lại bộ test trên máy Windows của mình với cùng phiên bản mã. Kết luận tám test case giống hệt máy Mac: năm lỗi race chỉ sai khi đồng thời, một lỗi logic sai cả khi tuần tự, hai test case đúng. Hai lượt chạy đầu trên máy Windows không hợp lệ vì thiếu công cụ k6 và vì Cal.com dừng giữa chừng; nhóm đã loại và chỉ dùng lượt chạy sạch. Người chạy trên máy Windows là Ngô Quốc Trường Vĩ, máy MSI Core i7-13620H, RAM 16 GB.");
 }
 
 // 4 · Lỗi thật
@@ -319,7 +319,7 @@ const add = (master, section) => {
   eyebrow(s, "12 · KẾ HOẠCH TIẾP THEO", true);
   s.addText("Từ giữa kỳ đến bảo vệ", { placeholder: "title" });
   const rows = [
-    ["21/10 – 3/11", "Thêm scenario Playwright qua giao diện, bổ sung cấu hình máy Windows và tên người test vào báo cáo", ORANGE],
+    ["21/10 – 3/11", "Thêm scenario Playwright qua giao diện, hoàn thiện báo cáo", ORANGE],
     ["4/11 – 17/11", "Rà soát nguyên nhân gốc và đề xuất sửa; chuẩn bị báo cáo lỗi D1, D4 cho Cal.com", ORANGE],
     ["18/11 – 30/11", "Hoàn thiện báo cáo A–H, nộp trước bảo vệ 1 tuần", ORANGE],
     ["Tháng 12", "Slide bảo vệ, tập dượt, đánh giá chéo giữa các thành viên", ORANGE],

@@ -193,9 +193,9 @@ Nguồn: lượt chạy chính thức ngày 18/10/2026, mỗi test case 10 vòng
 
 Một thành viên chạy lại toàn bộ bộ test trên máy Windows của mình, với cùng phiên bản mã (Cal.com v6.2.0, bộ test cùng commit) để kiểm tra kết quả có phụ thuộc vào máy hay không.
 
-- Người test: [điền tên thành viên]
-- Cấu hình máy: [điền CPU, RAM, hệ điều hành, phiên bản Node và k6]
-- Ngày chạy: 18/10/2026
+- Người test: Ngô Quốc Trường Vĩ (2312796)
+- Cấu hình máy: MSI, Intel Core i7-13620H 2,40 GHz, RAM 16 GB (15,7 GB dùng được), Windows 64-bit; phiên bản Node và k6: [điền]
+- Thời điểm chạy: lượt đồng thời bắt đầu lúc 19:15 UTC ngày 18/10/2026, tức 02:15 sáng ngày 19/10/2026 giờ Việt Nam
 - Kết quả đồng thời: [race-tests/results/windows-race/REPORT.md](../race-tests/results/windows-race/REPORT.md)
 - Kết quả tuần tự: [race-tests/results/windows-sequential/REPORT.md](../race-tests/results/windows-sequential/REPORT.md)
 
@@ -259,7 +259,7 @@ Một thành viên chạy lại toàn bộ bộ test trên máy Windows của m�
 - Chưa báo lỗi cho nhóm phát triển Cal.com và chưa kiểm tra trên bản mới hơn, nên chưa thể khẳng định phía Cal.com coi tất cả là lỗi.
 - Chưa sửa mã Cal.com. Hướng sửa mới thử trên dữ liệu test.
 - Chưa test qua giao diện bằng Playwright.
-- Mới chạy lại trên một máy khác (Windows). Cấu hình máy đó và tên người test chưa được ghi vào báo cáo.
+- Mới chạy lại trên một máy khác (Windows); chưa ghi phiên bản Node và k6 của máy đó.
 
 **Việc tiếp theo**
 
