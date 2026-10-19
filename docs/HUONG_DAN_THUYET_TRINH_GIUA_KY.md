@@ -16,6 +16,12 @@
 | Slide PDF dùng để thuyết trình | Bộ 14 slide dạng PDF | Toàn bộ |
 | **Mục đích cuối: thuyết phục tính khả thi để được duyệt kế hoạch kiểm thử** | Kế hoạch, chi phí, rủi ro, và bằng chứng đã chạy thật | 8, 9, 10, 11, 12, 14 |
 | **Ghi rõ nhiệm vụ và đóng góp từng thành viên** | Bảng nhiệm vụ từng người, mỗi người nói phần của mình | 13 |
+| Đưa ra quy trình test | Quy trình 7 bước, tiêu chí pass/fail | 6; báo cáo 3.3.4 |
+| Danh sách test case là gì | 8 test case, đặc tả đầy đủ | 7; báo cáo 3.3.6 |
+| Chi phí cho việc test | 0 đồng, 176 giây máy, ước lượng 34 đến 46 giờ | 9; báo cáo 4.4.4 |
+| Nêu kế hoạch test (giữa kỳ) | Phạm vi, giả định, rủi ro, lịch | 8, 14; báo cáo 3.3, 3.4 |
+| Test như thế nào | k6 đồng thời, kiểm CSDL, đối chứng, hai máy | 10, 11; báo cáo 4.3, 4.4 |
+| Kỹ thuật test | Kiểm thử đồng thời (race condition) | 6, 8; báo cáo 2.1 |
 | Phải test thật, lỗi là lỗi thật (yêu cầu trước đó) | 6 lỗi tái hiện bằng curl thuần; chạy trên 2 máy | 10, 11, 12 |
 | Mỗi nhóm trình bày 1 slide nội dung hoàn thành đến hiện tại | Slide 1 trang riêng | Mục 6 |
 

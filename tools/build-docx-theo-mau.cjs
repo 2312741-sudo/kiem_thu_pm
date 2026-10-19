@@ -196,6 +196,16 @@ function buildBody() {
     ["G", "Log, báo cáo, số đo, danh sách lỗi và nguyên nhân gốc", "4.4, 4.5"],
     ["H", "Ghim phiên bản, lưu cấu hình test, cách chạy lại trên máy mới", "4.7"],
   ], [1, 8, 3.4], "Đối chiếu các phần A đến H của đề bài với các mục của báo cáo", { center: [0, 2], key: "doi-chieu" }));
+  body.push(P("Ngoài các phần A đến H, giảng viên yêu cầu báo cáo giữa kỳ nêu rõ sáu nội dung dưới đây. [[tbl:yeu-cau-gk]] chỉ ra vị trí của từng nội dung trong báo cáo."));
+  body.push(...table([
+    ["Yêu cầu của giảng viên", "Mục trong báo cáo", "Tóm tắt"],
+    ["Đưa ra quy trình test", "3.3.4, 3.3.5", "Quy trình 7 bước, tiêu chí pass/fail, nhóm đối chứng tuần tự"],
+    ["Danh sách test case là gì", "3.3.6", "8 test case TC-01 đến TC-08, mỗi test case có đặc tả đầy đủ tiền điều kiện, input, kết quả mong đợi, dữ liệu"],
+    ["Chi phí cho việc test", "4.4.4", "0 đồng; 1 140 request, 176 giây máy cho lượt chính thức; ước lượng nhân lực 34 đến 46 giờ"],
+    ["Nêu kế hoạch test (giữa kỳ)", "3.3.2, 3.3.3, 3.4", "Phạm vi, giả định, rủi ro, lịch, tính khả thi và đề nghị duyệt"],
+    ["Test như thế nào", "4.3, 4.4", "Gửi đồng thời bằng k6, kiểm tra dữ liệu trong cơ sở dữ liệu, chạy 10 vòng, đối chứng tuần tự, chạy lại trên máy thứ hai"],
+    ["Kỹ thuật test", "2.1, 3.3.1", "Kiểm thử đồng thời (race condition): nguyên lý, lý do chọn, giới hạn"],
+  ], [3.6, 2.4, 7], "Đối chiếu các yêu cầu của giảng viên cho báo cáo giữa kỳ", { center: [1], key: "yeu-cau-gk", size: 22 }));
 
   // ===== CHƯƠNG 2 =====
   body.push(H1("CHƯƠNG 2. CƠ SỞ LÝ THUYẾT VÀ CÔNG NGHỆ"));
