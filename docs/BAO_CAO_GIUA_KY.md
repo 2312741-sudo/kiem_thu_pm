@@ -197,7 +197,7 @@ Nguồn: lượt chạy chính thức ngày 18/10/2026, mỗi test case 10 vòng
 Một thành viên chạy lại toàn bộ bộ test trên máy Windows của mình, với cùng phiên bản mã (Cal.com v6.2.0, bộ test cùng commit) để kiểm tra kết quả có phụ thuộc vào máy hay không.
 
 - Người test: Ngô Quốc Trường Vĩ (2312796)
-- Cấu hình máy: MSI, Intel Core i7-13620H 2,40 GHz, RAM 16 GB (15,7 GB dùng được), Windows 11 64-bit; phiên bản Node và k6: [điền]
+- Cấu hình máy: MSI, Intel Core i7-13620H 2,40 GHz, RAM 16 GB (15,7 GB dùng được), Windows 11 64-bit; Node.js v22.18.0; k6 v2.2.0 (windows/amd64)
 - Thời điểm chạy: lượt đồng thời bắt đầu lúc 19:15 UTC ngày 18/10/2026, tức 02:15 sáng ngày 19/10/2026 giờ Việt Nam
 - Kết quả đồng thời: [race-tests/results/windows-race/REPORT.md](../race-tests/results/windows-race/REPORT.md)
 - Kết quả tuần tự: [race-tests/results/windows-sequential/REPORT.md](../race-tests/results/windows-sequential/REPORT.md)
