@@ -9,6 +9,8 @@ on:
       rounds:
         description: Số vòng mỗi scenario
         default: "10"
+  push:
+    branches: [ci-race]
   pull_request:
     paths:
       - "race-tests/**"
