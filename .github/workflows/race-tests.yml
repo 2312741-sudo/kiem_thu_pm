@@ -1,0 +1,165 @@
+name: Race tests (Cal.com v6.2.0)
+
+# Chạy bộ kiểm thử race nhiều lượt độc lập trên runner của GitHub.
+# Mỗi lượt dựng PostgreSQL + Cal.com v6.2.0 mới, nạp fixture, chạy chế độ đồng thời và tuần tự.
+# Chỉ kiểm thử trên instance cục bộ trong runner, không gửi request tới server công khai nào.
+on:
+  workflow_dispatch:
+    inputs:
+      rounds:
+        description: Số vòng mỗi scenario
+        default: "10"
+  pull_request:
+    paths:
+      - "race-tests/**"
+      - ".github/workflows/race-tests.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  race:
+    name: Lượt ${{ matrix.run }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        run: [1, 2, 3]
+    env:
+      CALCOM_URL: http://localhost:3000
+      DATABASE_URL: postgresql://postgres:@localhost:5432/calendso
+      ROUNDS: ${{ inputs.rounds || '10' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - uses: grafana/setup-k6-action@v1
+
+      - name: PostgreSQL 16 (max_connections=300)
+        run: |
+          docker run -d --name pg -p 5432:5432 \
+            -e POSTGRES_HOST_AUTH_METHOD=trust -e POSTGRES_DB=calendso \
+            postgres:16 -c max_connections=300
+          for i in $(seq 1 30); do
+            docker exec pg pg_isready -U postgres -d calendso && exit 0
+            sleep 2
+          done
+          echo "PostgreSQL không khởi động được" >&2
+          exit 1
+
+      - name: Tải Cal.com v6.2.0
+        run: git clone --depth 1 --branch v6.2.0 https://github.com/calcom/cal.com.git calcom
+
+      - name: Cache Yarn
+        uses: actions/cache@v4
+        with:
+          path: ~/.yarn/berry/cache
+          key: yarn-calcom-6.2.0-${{ runner.os }}
+          restore-keys: yarn-calcom-
+
+      - name: Cấu hình môi trường Cal.com
+        working-directory: calcom
+        run: |
+          cp .env.example .env
+          cp .env.appStore.example .env.appStore
+          {
+            echo "NEXTAUTH_SECRET=$(openssl rand -base64 32)"
+            echo "CALENDSO_ENCRYPTION_KEY=$(openssl rand -base64 24)"
+            echo "DATABASE_DIRECT_URL=postgresql://postgres:@localhost:5432/calendso"
+            echo "NEXTAUTH_URL=http://localhost:3000"
+            echo "NEXT_PUBLIC_WEBAPP_URL=http://localhost:3000"
+            echo "CALCOM_TELEMETRY_DISABLED=1"
+            echo "UNKEY_ROOT_KEY="
+            echo "NODE_OPTIONS=--max-old-space-size=5120"
+          } >> "$GITHUB_ENV"
+
+      - name: Cài đặt phụ thuộc
+        working-directory: calcom
+        run: |
+          corepack enable
+          yarn install
+
+      - name: Migrate và seed CSDL
+        working-directory: calcom
+        run: |
+          yarn workspace @calcom/prisma db-deploy
+          yarn workspace @calcom/prisma db-seed
+
+      - name: Khởi động Cal.com
+        working-directory: calcom
+        run: |
+          nohup yarn dev > "$RUNNER_TEMP/calcom-dev.log" 2>&1 &
+          echo "Đã chạy nền yarn dev"
+
+      - name: Cài harness và nạp fixture
+        working-directory: race-tests
+        run: |
+          npm install
+          npm run fixtures
+
+      - name: Đợi Cal.com sẵn sàng (biên dịch lần đầu có thể mất vài phút)
+        run: |
+          for i in $(seq 1 90); do
+            code=$(curl -s -o /dev/null -m 120 -w "%{http_code}" http://localhost:3000/k15host || true)
+            echo "lần $i: HTTP $code"
+            [ "$code" = "200" ] && exit 0
+            sleep 5
+          done
+          echo "Cal.com không lên được" >&2
+          tail -n 80 "$RUNNER_TEMP/calcom-dev.log" >&2
+          exit 1
+
+      - name: Smoke test (đặt, đổi, hủy lịch)
+        working-directory: race-tests
+        run: npm run smoke
+
+      - name: Race (đồng thời)
+        working-directory: race-tests
+        run: |
+          npm run race -- --rounds "$ROUNDS" --out results/ci-race-${{ matrix.run }} || true
+          npm run report -- results/ci-race-${{ matrix.run }}
+
+      - name: Đối chứng (tuần tự)
+        working-directory: race-tests
+        run: |
+          npm run race -- --mode sequential --rounds "$ROUNDS" --out results/ci-sequential-${{ matrix.run }} || true
+          npm run report -- results/ci-sequential-${{ matrix.run }}
+
+      - name: Kiểm tra kết quả so với kỳ vọng
+        working-directory: race-tests
+        run: |
+          rc=0
+          node src/check-expected.mjs results/ci-race-${{ matrix.run }} race || rc=1
+          node src/check-expected.mjs results/ci-sequential-${{ matrix.run }} sequential || rc=1
+          exit $rc
+
+      - name: Lưu kết quả
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ket-qua-luot-${{ matrix.run }}
+          path: |
+            race-tests/results/ci-*
+            ${{ runner.temp }}/calcom-dev.log
+          if-no-files-found: warn
+
+  tong-hop:
+    name: Tổng hợp các lượt
+    needs: race
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: ket-qua-luot-*
+          path: tong-hop
+      - name: Gộp tỉ lệ tái hiện
+        run: node race-tests/src/aggregate.mjs tong-hop
