@@ -1,0 +1,56 @@
+[
+  {
+    "label": "reschedule-A",
+    "method": "POST",
+    "url": "http://localhost:3000/api/book/event",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "eventTypeId": 1174,
+      "start": "2029-03-22T15:00:00.000Z",
+      "end": "2029-03-22T15:30:00.000Z",
+      "timeZone": "UTC",
+      "language": "en",
+      "metadata": {},
+      "user": "k15host",
+      "rescheduleUid": "cs4JoWxyfuru27AbDcRTW6",
+      "responses": {
+        "name": "s9-r8-ua",
+        "email": "s9-r8-ua@k15.test",
+        "location": {
+          "value": "inPerson",
+          "optionValue": ""
+        }
+      }
+    },
+    "delayMs": 0
+  },
+  {
+    "label": "reschedule-B",
+    "method": "POST",
+    "url": "http://localhost:3000/api/book/event",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "eventTypeId": 1174,
+      "start": "2029-03-22T15:00:00.000Z",
+      "end": "2029-03-22T15:30:00.000Z",
+      "timeZone": "UTC",
+      "language": "en",
+      "metadata": {},
+      "user": "k15host",
+      "rescheduleUid": "wjK1xCyZUC8CXUZZT4ZTiG",
+      "responses": {
+        "name": "s9-r8-ub",
+        "email": "s9-r8-ub@k15.test",
+        "location": {
+          "value": "inPerson",
+          "optionValue": ""
+        }
+      }
+    },
+    "delayMs": 0
+  }
+]

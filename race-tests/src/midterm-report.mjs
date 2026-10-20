@@ -1,6 +1,6 @@
 // Dựng docs/KET_QUA_TEST_GIUA_KY.md từ kết quả thật của hai lần chạy:
-//   results/giua-ky-race        (gửi đồng thời)
-//   results/giua-ky-sequential  (đối chứng tuần tự)
+//   results/giua-ky-20-race        (gửi đồng thời)
+//   results/giua-ky-20-sequential  (đối chứng tuần tự)
 // Chạy: npm run midterm-report
 import fs from "node:fs";
 import path from "node:path";
@@ -8,11 +8,11 @@ import { fileURLToPath } from "node:url";
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const load = (name) => JSON.parse(fs.readFileSync(path.join(root, "results", name, "summary.json"), "utf8"));
-const race = load("giua-ky-race");
-const seq = load("giua-ky-sequential");
+const race = load("giua-ky-20-race");
+const seq = load("giua-ky-20-sequential");
 
 const TC = (id) => `TC-${id.slice(1).padStart(2, "0")}`;
-const DEFECT = { S2: "D1", S3: "D2", S5: "D3", S6: "D4", S7: "D5", S8: "D6" };
+const DEFECT = { S2: "D1", S17: "D1", S3: "D2", S5: "D3", S6: "D4", S7: "D5", S8: "D6", S13: "D6", S11: "D7", S12: "D8", S14: "D9", S15: "D10", S16: "D11" };
 const seqById = Object.fromEntries(seq.scenarios.map((s) => [s.id, s]));
 
 const duration = (s) => (new Date(s.finishedAt) - new Date(s.startedAt)) / 1000;

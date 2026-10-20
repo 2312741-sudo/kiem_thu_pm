@@ -87,3 +87,42 @@ export async function rescheduledChildren(uid) {
     [uid]
   );
 }
+
+// Booking còn hiệu lực của một event type trong khoảng thời gian (dùng cho các giới hạn theo event type).
+export async function activeByEventType(eventTypeId, from, to) {
+  return query(
+    `SELECT b.id, b.uid, b.status, b."startTime", b."endTime"
+       FROM "Booking" b
+      WHERE b."eventTypeId" = $1 AND b.status IN ('accepted','pending') AND b."startTime" >= $2 AND b."startTime" < $3
+      ORDER BY b."startTime", b.id`,
+    [eventTypeId, from, to]
+  );
+}
+
+// Booking còn hiệu lực của một người đặt (theo email) trên một event type.
+export async function activeByAttendee(eventTypeId, email) {
+  return query(
+    `SELECT b.uid, b.status, b."startTime"
+       FROM "Booking" b JOIN "Attendee" a ON a."bookingId" = b.id
+      WHERE b."eventTypeId" = $1 AND lower(a.email) = lower($2) AND b.status IN ('accepted','pending')
+      ORDER BY b."startTime"`,
+    [eventTypeId, email]
+  );
+}
+
+// Số dòng Attendee của một email trong một booking (event có ghế: mỗi người chỉ được 1 ghế).
+export async function attendeeRows(uid, email) {
+  const rows = await query(
+    `SELECT count(*)::int AS n FROM "Attendee" a JOIN "Booking" b ON b.id = a."bookingId"
+      WHERE b.uid = $1 AND lower(a.email) = lower($2)`,
+    [uid, email]
+  );
+  return rows[0].n;
+}
+
+export async function bookingsOfSlot(eventTypeId, start) {
+  return query(
+    `SELECT uid, status FROM "Booking" WHERE "eventTypeId" = $1 AND "startTime" = $2 ORDER BY id`,
+    [eventTypeId, start]
+  );
+}

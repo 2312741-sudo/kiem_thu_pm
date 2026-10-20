@@ -1,0 +1,92 @@
+[
+  {
+    "label": "cancel-0",
+    "method": "POST",
+    "url": "http://localhost:3000/api/cancel",
+    "headers": {
+      "Content-Type": "application/json",
+      "Cookie": "calcom.csrf_token=kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
+    },
+    "body": {
+      "uid": "j8jBkhqkCHgLYPiGgkCzbM",
+      "cancellationReason": "K15 race test",
+      "csrfToken": "kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
+    },
+    "delayMs": 0
+  },
+  {
+    "label": "cancel-1",
+    "method": "POST",
+    "url": "http://localhost:3000/api/cancel",
+    "headers": {
+      "Content-Type": "application/json",
+      "Cookie": "calcom.csrf_token=kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
+    },
+    "body": {
+      "uid": "j8jBkhqkCHgLYPiGgkCzbM",
+      "cancellationReason": "K15 race test",
+      "csrfToken": "kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
+    },
+    "delayMs": 0
+  },
+  {
+    "label": "cancel-2",
+    "method": "POST",
+    "url": "http://localhost:3000/api/cancel",
+    "headers": {
+      "Content-Type": "application/json",
+      "Cookie": "calcom.csrf_token=kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
+    },
+    "body": {
+      "uid": "j8jBkhqkCHgLYPiGgkCzbM",
+      "cancellationReason": "K15 race test",
+      "csrfToken": "kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
+    },
+    "delayMs": 0
+  },
+  {
+    "label": "cancel-3",
+    "method": "POST",
+    "url": "http://localhost:3000/api/cancel",
+    "headers": {
+      "Content-Type": "application/json",
+      "Cookie": "calcom.csrf_token=kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
+    },
+    "body": {
+      "uid": "j8jBkhqkCHgLYPiGgkCzbM",
+      "cancellationReason": "K15 race test",
+      "csrfToken": "kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
+    },
+    "delayMs": 0
+  },
+  {
+    "label": "cancel-4",
+    "method": "POST",
+    "url": "http://localhost:3000/api/cancel",
+    "headers": {
+      "Content-Type": "application/json",
+      "Cookie": "calcom.csrf_token=kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
+    },
+    "body": {
+      "uid": "j8jBkhqkCHgLYPiGgkCzbM",
+      "cancellationReason": "K15 race test",
+      "csrfToken": "kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
+    },
+    "delayMs": 0
+  },
+  {
+    "label": "cancel-5",
+    "method": "POST",
+    "url": "http://localhost:3000/api/cancel",
+    "headers": {
+      "Content-Type": "application/json",
+      "Cookie": "calcom.csrf_token=kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
+    },
+    "body": {
+      "uid": "j8jBkhqkCHgLYPiGgkCzbM",
+      "cancellationReason": "K15 race test",
+      "csrfToken": "kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
+    },
+    "delayMs": 0
+  }
+]

@@ -87,3 +87,23 @@ Ví dụ: [race-tests/results/latest-race/raw/](../race-tests/results/latest-rac
 [DEFECTS.md](DEFECTS.md): cách tái hiện, input, kết quả, dòng code gây lỗi, đề xuất sửa.
 
 Lưu ý: mục 1 và 2 dùng số liệu chạy ngày 8/10. Các booking trong DB hiện có thêm dữ liệu từ những lần chạy sau, không ảnh hưởng số liệu trong báo cáo.
+
+## 9. Đợt 2 (20 test case): bằng chứng cho D7–D11 và test case đối chứng
+
+Nguồn: [race-tests/results/giua-ky-20-race/REPORT.md](../race-tests/results/giua-ky-20-race/REPORT.md) (đồng thời) và [giua-ky-20-sequential/REPORT.md](../race-tests/results/giua-ky-20-sequential/REPORT.md) (tuần tự). Bảng tổng hợp sinh tự động: [KET_QUA_TEST_GIUA_KY.md](KET_QUA_TEST_GIUA_KY.md).
+
+| Scenario | Lỗi | Đồng thời | Tuần tự | Hiện tượng đo được |
+|---|---|---|---|---|
+| S11 | D7 | 10/10 | 0/10 | 6 booking sát nhau (09:00 đến 11:30) dù buffer 30 phút |
+| S12 | D8 | 10/10 | 0/10 | Tổng 180 phút trong ngày, giới hạn 30 phút |
+| S13 | D6 | 10/10 | 0/10 | 6 booking trong một tuần, giới hạn 1 |
+| S14 | D9 | 10/10 | 0/10 | 1 email có 6 booking active, giới hạn 1 |
+| S15 | D10 | 10/10 | 0/10 | 6 lệnh hủy cùng 200; 12 email hủy thay vì 2 |
+| S16 | D11 | 10/10 | 0/10 | 1 email chiếm 2 ghế |
+| S17 | D1 | 10/10 | 0/10 | 2 booking chồng giờ (30 phút và 60 phút cùng 09:00) |
+| S9, S10, S18, S19, S20 | – | 0/10 | 0/10 | Đúng ở cả hai chế độ: đổi lịch, tải 30 request, 20 giờ độc lập, hủy rồi đặt lại |
+
+- Tái hiện độc lập bằng curl (D7–D11): [race-tests/repro/repro-curl-2.sh](../race-tests/repro/repro-curl-2.sh), kết quả [evidence/repro-curl-2.txt](evidence/repro-curl-2.txt).
+- Chỉ 2 request đồng thời (S11–S17): [race-tests/results/sensitivity-n2-new/REPORT.md](../race-tests/results/sensitivity-n2-new/REPORT.md), tất cả vẫn 10/10 vòng vi phạm.
+- Sửa lỗi thì test đạt: [fix-unique-attendee](../race-tests/results/fix-unique-attendee/REPORT.md) (S16: FAIL 10/10 → PASS 10/10) và [fix-exclusion-20](../race-tests/results/fix-exclusion-20/REPORT.md) (S2, S5, S17: hết chồng giờ nhưng người thua nhận 500).
+- Đánh giá rủi ro từng lỗi: [DANH_GIA_RUI_RO.md](DANH_GIA_RUI_RO.md).

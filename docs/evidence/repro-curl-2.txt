@@ -1,0 +1,20 @@
+# 2026-10-20 20:46 · Cal.com v6.2.0 · macOS · bash repro/repro-curl-2.sh
+######## D7: event co buffer 30 phut, 6 nguoi dat cac slot sat nhau cung luc ########
+HTTP:    6 200    (ky vong: 3x200 cach nhau >=30 phut, 3 bi tu choi)
+Booking hieu luc trong DB (gio bat dau): 09:00 09:30 10:00 10:30 11:00 11:30
+
+######## D8: gioi han tong thoi luong 30 phut/ngay, 6 nguoi dat 6 gio khac nhau cung luc ########
+HTTP:    6 200    (ky vong: 1x200, 5 bi tu choi)
+Tong thoi luong booking hieu luc ngay 11/8: 180 phut   (gioi han 30)
+
+######## D9: moi nguoi dat toi da 1 booking dang hoat dong, cung mot nguoi dat 6 slot cung luc ########
+HTTP:    6 200    (ky vong: 1x200, 5 bi tu choi)
+Booking hieu luc cua samebooker@thu.test: 6   (gioi han 1)
+
+######## D10: huy MOT booking 6 lan cung luc (bam huy nhieu lan / nhieu tab) ########
+HTTP:    6 200    (ky vong: 1x200, 5x400 'da huy')
+Email huy Cal.com cu gui cho booking nay: 12   (ky vong 2: 1 cho host + 1 cho nguoi dat)
+
+######## D11: event 3 ghe, CUNG MOT email dat 6 lan cung luc vao slot da co 1 nguoi ########
+HTTP:    2 200    4 409    (ky vong: 1x200, 5x409 'da dang ky')
+So ghe cua dupseat@thu.test trong booking: 2   (ky vong 1; tong ghe 3)

@@ -28,7 +28,7 @@ pgrep -fl "src/run.mjs|k6 run" || echo "không có lượt nào đang chạy"
 | 2 | Cal.com chạy | `curl -s -o /dev/null -w "%{http_code}\n" http://localhost:3000/k15host` | `200` |
 | 3 | Đúng phiên bản | `git -C calcom rev-parse HEAD` | `1c193cca8682b33b9866c792186033f7ef886682` |
 | 4 | Công cụ test | `cd race-tests && npm install && k6 version` | k6 2.x |
-| 5 | Dữ liệu test | `npm run fixtures` | In bảng 5 loại cuộc hẹn |
+| 5 | Dữ liệu test | `npm run fixtures` | In bảng 9 loại cuộc hẹn |
 
 Cài đặt từ máy sạch: xem [README.md](../README.md) mục 2.
 
@@ -54,6 +54,18 @@ Người test phụ trách bước 4 đến 7. Bước 1–3 đã làm xong, k�
 | TC-06 | Đổi lịch nhiều lần | 5 lệnh đổi lịch cùng một booking | 1 lệnh thành công | I4 |
 | TC-07 | Hủy và đổi lịch cùng lúc | 1 lệnh hủy + 1 lệnh đổi lịch | Không thể cả hai cùng thành công | I5 |
 | TC-08 | Giới hạn 1 booking/ngày | 8 người đặt 8 giờ khác nhau | Chỉ 1 người thành công | I6 |
+| TC-09 | Hai booking cùng đổi lịch sang một giờ | 2 lệnh đổi lịch cùng sang giờ trống | 1 thành công, 1 bị 409 | I1 |
+| TC-10 | Đổi lịch tranh giờ với đặt mới | 1 lệnh đổi lịch + 1 người đặt mới cùng một giờ | Chỉ 1 trong 2 giữ được giờ | I1 |
+| TC-11 | Thời gian đệm 30 phút | 6 người đặt 6 giờ sát nhau | Tối đa 3 booking, cách nhau ≥ 30 phút | I8 |
+| TC-12 | Giới hạn thời lượng 30 phút/ngày | 6 người đặt 6 giờ khác nhau | Chỉ 1 người thành công | I9 |
+| TC-13 | Giới hạn 1 booking/tuần | 6 người đặt 6 ngày trong tuần | Chỉ 1 người thành công | I6 |
+| TC-14 | Giới hạn 1 booking/người đặt | 1 email đặt 6 giờ khác nhau | Chỉ 1 booking thành công | I10 |
+| TC-15 | Hủy một booking nhiều lần | 6 lệnh hủy cùng một booking | Đúng 1 lệnh 200 | I5 |
+| TC-16 | Một người chiếm nhiều ghế | 1 email đặt 6 lần vào event 3 ghế | Email đó chiếm đúng 1 ghế | I11 |
+| TC-17 | Hai loại cuộc hẹn cùng giờ bắt đầu | 5 người 30 phút + 5 người 60 phút, đều 09:00 | Chỉ 1 booking hiệu lực | I1 |
+| TC-18 | Tải cao | 30 người đặt cùng một giờ | 1 người 200, 29 người 409, không 5xx | I1, I7 |
+| TC-19 | Giờ độc lập không bị từ chối nhầm | 20 người đặt 20 giờ liền kề | Cả 20 người thành công | I12 |
+| TC-20 | Hủy và đặt lại đúng giờ vừa hủy | 1 lệnh hủy + 1 người đặt mới cùng giờ | Không có 2 booking hiệu lực cùng giờ | I1 |
 
 Tiền điều kiện đầy đủ và định nghĩa invariant: [QUY_TRINH_TEST.md](QUY_TRINH_TEST.md) mục 2.
 
@@ -125,7 +137,7 @@ Chi phí máy đo thật được sinh tự động trong báo cáo kết quả.
 - **Phạm vi:** luồng đặt, đổi, hủy lịch; event 1-1, event có ghế, event cần xác nhận, giới hạn số booking.
 - **Giả định:** một Cal.com, một PostgreSQL, chạy local, rate limit tắt, host không nối lịch ngoài.
 - **Tiêu chí:** một vòng vi phạm là test case FAIL; lỗi là race khi tuần tự PASS.
-- **Lịch:** Sprint 1 xong; harness và 8 test case đã chạy; còn lại Playwright qua giao diện, chạy lại trên máy khác, đề xuất sửa, hoàn thiện báo cáo.
+- **Lịch:** Sprint 1 xong; harness và 20 test case đã chạy; còn lại Playwright qua giao diện, chạy lại trên máy khác, đề xuất sửa, hoàn thiện báo cáo.
 
 ## 8. Phiếu ghi kết quả (người test điền)
 
@@ -141,6 +153,18 @@ Chi phí máy đo thật được sinh tự động trong báo cáo kết quả.
 | TC-06 | | | | | | | |
 | TC-07 | | | | | | | |
 | TC-08 | | | | | | | |
+| TC-09 | | | | | | | |
+| TC-10 | | | | | | | |
+| TC-11 | | | | | | | |
+| TC-12 | | | | | | | |
+| TC-13 | | | | | | | |
+| TC-14 | | | | | | | |
+| TC-15 | | | | | | | |
+| TC-16 | | | | | | | |
+| TC-17 | | | | | | | |
+| TC-18 | | | | | | | |
+| TC-19 | | | | | | | |
+| TC-20 | | | | | | | |
 
 Số liệu có sẵn trong `results/giua-ky-race/REPORT.md` và `results/giua-ky-sequential/REPORT.md`. Bảng kết quả dựng sẵn từ số liệu thật: [KET_QUA_TEST_GIUA_KY.md](KET_QUA_TEST_GIUA_KY.md).
 

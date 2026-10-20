@@ -1,0 +1,195 @@
+{
+  "root_group": {
+    "path": "",
+    "id": "d41d8cd98f00b204e9800998ecf8427e",
+    "groups": [],
+    "checks": [],
+    "name": ""
+  },
+  "options": {
+    "summaryTrendStats": [
+      "min",
+      "avg",
+      "med",
+      "p(90)",
+      "p(95)",
+      "max"
+    ],
+    "summaryTimeUnit": "",
+    "noColor": false
+  },
+  "state": {
+    "isStdErrTTY": false,
+    "testRunDurationMs": 1636.117,
+    "isStdOutTTY": false
+  },
+  "metrics": {
+    "http_req_blocked": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "max": 6.172,
+        "min": 6.161,
+        "avg": 6.166499999999999,
+        "med": 6.166499999999999,
+        "p(90)": 6.1709,
+        "p(95)": 6.17145
+      }
+    },
+    "http_req_waiting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "max": 144.062,
+        "min": 143.58,
+        "avg": 143.82100000000003,
+        "med": 143.82100000000003,
+        "p(90)": 144.0138,
+        "p(95)": 144.0379
+      }
+    },
+    "vus": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "min": 2,
+        "max": 2,
+        "value": 2
+      }
+    },
+    "iteration_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(90)": 1635.9907003,
+        "p(95)": 1635.9986836500002,
+        "max": 1636.006667,
+        "min": 1635.847,
+        "avg": 1635.9268335000002,
+        "med": 1635.9268335000002
+      }
+    },
+    "data_sent": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 802,
+        "rate": 490.1849928825383
+      }
+    },
+    "http_reqs": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 2,
+        "rate": 1.2224064660412428
+      }
+    },
+    "http_req_duration{expected_response:true}": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(95)": 144.21935,
+        "max": 144.242,
+        "min": 143.789,
+        "avg": 144.01549999999997,
+        "med": 144.01549999999997,
+        "p(90)": 144.1967
+      }
+    },
+    "http_req_duration": {
+      "values": {
+        "med": 144.01549999999997,
+        "p(90)": 144.1967,
+        "p(95)": 144.21935,
+        "max": 144.242,
+        "min": 143.789,
+        "avg": 144.01549999999997
+      },
+      "type": "trend",
+      "contains": "time"
+    },
+    "http_req_connecting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 0.529,
+        "med": 0.529,
+        "p(90)": 0.5322,
+        "p(95)": 0.5326000000000001,
+        "max": 0.533,
+        "min": 0.525
+      }
+    },
+    "http_req_receiving": {
+      "contains": "time",
+      "values": {
+        "min": 0.05,
+        "avg": 0.07150000000000001,
+        "med": 0.07150000000000001,
+        "p(90)": 0.0887,
+        "p(95)": 0.09085,
+        "max": 0.093
+      },
+      "type": "trend"
+    },
+    "http_req_failed": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 0,
+        "passes": 0,
+        "fails": 2
+      }
+    },
+    "vus_max": {
+      "values": {
+        "value": 2,
+        "min": 2,
+        "max": 2
+      },
+      "type": "gauge",
+      "contains": "default"
+    },
+    "http_req_tls_handshaking": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(95)": 0,
+        "max": 0,
+        "min": 0,
+        "avg": 0,
+        "med": 0,
+        "p(90)": 0
+      }
+    },
+    "iterations": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 2,
+        "rate": 1.2224064660412428
+      }
+    },
+    "data_received": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 3888,
+        "rate": 2376.3581699841757
+      }
+    },
+    "http_req_sending": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(95)": 0.1293,
+        "max": 0.13,
+        "min": 0.116,
+        "avg": 0.123,
+        "med": 0.123,
+        "p(90)": 0.1286
+      }
+    }
+  }
+}

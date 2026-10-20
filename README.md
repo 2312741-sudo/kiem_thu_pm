@@ -14,6 +14,7 @@
 | [docs/KET_QUA_TEST_GIUA_KY.md](docs/KET_QUA_TEST_GIUA_KY.md) | Kết quả test giữa kỳ (sinh tự động từ lần chạy thật) |
 | [docs/QUY_TRINH_TEST.md](docs/QUY_TRINH_TEST.md) | Quy trình test, danh sách test case, chi phí, kế hoạch |
 | [docs/DEFECTS.md](docs/DEFECTS.md) | Danh sách lỗi, cách tái hiện, phân tích nguyên nhân gốc |
+| [docs/DANH_GIA_RUI_RO.md](docs/DANH_GIA_RUI_RO.md) | Đánh giá rủi ro, vai trò từng test case, chứng minh tính khả thi |
 | [docs/diagrams/kien-truc.md](docs/diagrams/kien-truc.md) | Sơ đồ kiến trúc, module, luồng dữ liệu (Mermaid) |
 | [Slide bảo vệ](https://claude.ai/artifact/F5BpD71znEGvUL3d34wKRe) | 15 slide, tải được dạng .pptx/PDF |
 | [ke_hoach_R05-K15.md](ke_hoach_R05-K15.md) | Kế hoạch đề tài |
@@ -117,10 +118,10 @@ Cần cài k6 (`brew install k6` trên macOS, hoặc xem https://grafana.com/doc
 
 | Lệnh | Tác dụng |
 |---|---|
-| `npm run fixtures` | Tạo host `k15host` với lịch 24/7 UTC và 5 event type test (chạy lại nhiều lần được) |
+| `npm run fixtures` | Tạo host `k15host` với lịch 24/7 UTC và 9 event type test (chạy lại nhiều lần được) |
 | `npm run demo:midterm` | Demo giữa kỳ (~20 giây): kiểm hệ thống, 3 luồng nghiệp vụ, PoC race S1 (PASS) và S2 (FAIL) |
 | `npm run smoke` | Kiểm tra 3 luồng nghiệp vụ: đặt lịch, đổi lịch, hủy |
-| `npm run race` | Chạy 8 scenario, mỗi scenario 10 vòng, gửi đồng thời bằng k6 |
+| `npm run race` | Chạy 20 scenario (TC-01 đến TC-20), mỗi scenario 10 vòng, gửi đồng thời bằng k6 |
 | `npm run race -- --mode sequential` | Nhóm đối chứng: gửi đúng các request đó nhưng tuần tự |
 | `npm run race -- --scenarios S2,S6 --rounds 20 --n 15` | Chạy một số scenario, đổi số vòng và mức đồng thời |
 | `npm run report -- results/<thư-mục>` | Sinh lại `REPORT.md` từ `summary.json` |
@@ -150,7 +151,7 @@ Mã thoát của `npm run race`: `0` khi mọi scenario PASS, `1` khi có scenar
 │   │   ├── config.mjs        cấu hình URL, DB
 │   │   ├── api.mjs           dựng request đặt/đổi/hủy lịch
 │   │   ├── db.mjs            truy vấn kiểm invariant trên PostgreSQL
-│   │   ├── scenarios.mjs     8 scenario S1–S8: chuẩn bị + kiểm tra
+│   │   ├── scenarios.mjs     20 scenario S1–S20: chuẩn bị + kiểm tra
 │   │   ├── run.mjs           điều phối: chuẩn bị → k6 → kiểm DB → ghi kết quả
 │   │   ├── report.mjs        sinh REPORT.md
 │   │   ├── fixtures.mjs      nạp fixtures.sql

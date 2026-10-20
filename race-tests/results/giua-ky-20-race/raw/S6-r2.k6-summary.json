@@ -1,0 +1,195 @@
+{
+  "root_group": {
+    "name": "",
+    "path": "",
+    "id": "d41d8cd98f00b204e9800998ecf8427e",
+    "groups": [],
+    "checks": []
+  },
+  "options": {
+    "summaryTrendStats": [
+      "min",
+      "avg",
+      "med",
+      "p(90)",
+      "p(95)",
+      "max"
+    ],
+    "summaryTimeUnit": "",
+    "noColor": false
+  },
+  "state": {
+    "testRunDurationMs": 1890.239,
+    "isStdOutTTY": false,
+    "isStdErrTTY": false
+  },
+  "metrics": {
+    "http_req_failed": {
+      "values": {
+        "rate": 0,
+        "passes": 0,
+        "fails": 5
+      },
+      "type": "rate",
+      "contains": "default"
+    },
+    "http_req_duration{expected_response:true}": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 327.877,
+        "avg": 370.15639999999996,
+        "med": 375.838,
+        "p(90)": 399.493,
+        "p(95)": 400.447,
+        "max": 401.401
+      }
+    },
+    "data_received": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 10456,
+        "rate": 5531.575636731652
+      }
+    },
+    "http_req_waiting": {
+      "values": {
+        "min": 327.741,
+        "avg": 370.0582,
+        "med": 375.772,
+        "p(90)": 399.3904,
+        "p(95)": 400.34119999999996,
+        "max": 401.292
+      },
+      "type": "trend",
+      "contains": "time"
+    },
+    "http_req_blocked": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "max": 3.272,
+        "min": 3.093,
+        "avg": 3.1824000000000003,
+        "med": 3.208,
+        "p(90)": 3.2528,
+        "p(95)": 3.2624
+      }
+    },
+    "http_req_connecting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(95)": 0.4856,
+        "max": 0.495,
+        "min": 0.315,
+        "avg": 0.40279999999999994,
+        "med": 0.433,
+        "p(90)": 0.4762
+      }
+    },
+    "vus": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "min": 5,
+        "max": 5,
+        "value": 5
+      }
+    },
+    "http_reqs": {
+      "contains": "default",
+      "values": {
+        "count": 5,
+        "rate": 2.6451681506941713
+      },
+      "type": "counter"
+    },
+    "http_req_tls_handshaking": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "max": 0,
+        "min": 0,
+        "avg": 0,
+        "med": 0,
+        "p(90)": 0,
+        "p(95)": 0
+      }
+    },
+    "http_req_sending": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 0.039400000000000004,
+        "med": 0.04,
+        "p(90)": 0.0644,
+        "p(95)": 0.0682,
+        "max": 0.072,
+        "min": 0.013
+      }
+    },
+    "http_req_receiving": {
+      "contains": "time",
+      "values": {
+        "max": 0.083,
+        "min": 0.037,
+        "avg": 0.0588,
+        "med": 0.053,
+        "p(90)": 0.0794,
+        "p(95)": 0.0812
+      },
+      "type": "trend"
+    },
+    "data_sent": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 2240,
+        "rate": 1185.0353315109887
+      }
+    },
+    "http_req_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "med": 375.838,
+        "p(90)": 399.493,
+        "p(95)": 400.447,
+        "max": 401.401,
+        "min": 327.877,
+        "avg": 370.15639999999996
+      }
+    },
+    "iteration_duration": {
+      "values": {
+        "min": 1816.820708,
+        "avg": 1859.0047168,
+        "med": 1864.64875,
+        "p(90)": 1888.2732836,
+        "p(95)": 1889.1831418000002,
+        "max": 1890.093
+      },
+      "type": "trend",
+      "contains": "time"
+    },
+    "iterations": {
+      "contains": "default",
+      "values": {
+        "count": 5,
+        "rate": 2.6451681506941713
+      },
+      "type": "counter"
+    },
+    "vus_max": {
+      "contains": "default",
+      "values": {
+        "value": 5,
+        "min": 5,
+        "max": 5
+      },
+      "type": "gauge"
+    }
+  }
+}

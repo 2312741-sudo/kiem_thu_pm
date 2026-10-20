@@ -37,6 +37,20 @@ FROM users u,
 ) AS v(title, slug, length, seats, confirm, limits)
 WHERE u.username = 'k15host';
 
+-- Event type bổ sung cho các testcase S11–S14: buffer, giới hạn thời lượng, giới hạn theo tuần, giới hạn theo người đặt
+INSERT INTO "EventType" (title, slug, length, "userId", "minimumBookingNotice", locations, "afterEventBuffer",
+                         "durationLimits", "bookingLimits", "maxActiveBookingsPerBooker")
+SELECT v.title, v.slug, 30, u.id, 0, '[{"type":"inPerson","address":"Phong A"}]'::jsonb, v.buf,
+       v.dur::jsonb, v.lim::jsonb, v.maxb
+FROM users u,
+(VALUES
+  ('K15 buffer 30',      'k15-buffer',   30, NULL::text,            NULL::text,        NULL::int),
+  ('K15 gioi han thoi luong', 'k15-duration', 0, '{"PER_DAY":30}', NULL,              NULL),
+  ('K15 gioi han 1/tuan','k15-week',     0, NULL,                   '{"PER_WEEK":1}',  NULL),
+  ('K15 1 booking/nguoi','k15-booker',   0, NULL,                   NULL,              1)
+) AS v(title, slug, buf, dur, lim, maxb)
+WHERE u.username = 'k15host';
+
 -- Booking PENDING mặc định không chiếm slot; bật cờ này để PENDING cũng phải "giữ chỗ",
 -- nhờ đó có invariant rõ ràng để kiểm tra race cho luồng cần xác nhận.
 UPDATE "EventType" SET "requiresConfirmationWillBlockSlot" = true

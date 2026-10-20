@@ -1,0 +1,195 @@
+{
+  "root_group": {
+    "id": "d41d8cd98f00b204e9800998ecf8427e",
+    "groups": [],
+    "checks": [],
+    "name": "",
+    "path": ""
+  },
+  "options": {
+    "summaryTrendStats": [
+      "min",
+      "avg",
+      "med",
+      "p(90)",
+      "p(95)",
+      "max"
+    ],
+    "summaryTimeUnit": "",
+    "noColor": false
+  },
+  "state": {
+    "isStdOutTTY": false,
+    "isStdErrTTY": false,
+    "testRunDurationMs": 1610.24
+  },
+  "metrics": {
+    "vus_max": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "value": 2,
+        "min": 2,
+        "max": 2
+      }
+    },
+    "http_req_connecting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(95)": 0.25405,
+        "max": 0.256,
+        "min": 0.217,
+        "avg": 0.2365,
+        "med": 0.2365,
+        "p(90)": 0.2521
+      }
+    },
+    "http_req_sending": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 0.039,
+        "avg": 0.045,
+        "med": 0.045,
+        "p(90)": 0.0498,
+        "p(95)": 0.05039999999999999,
+        "max": 0.051
+      }
+    },
+    "http_req_tls_handshaking": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 0,
+        "avg": 0,
+        "med": 0,
+        "p(90)": 0,
+        "p(95)": 0,
+        "max": 0
+      }
+    },
+    "http_reqs": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 2,
+        "rate": 1.2420508744038157
+      }
+    },
+    "http_req_receiving": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 0.086,
+        "avg": 0.091,
+        "med": 0.091,
+        "p(90)": 0.095,
+        "p(95)": 0.0955,
+        "max": 0.096
+      }
+    },
+    "iterations": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 2,
+        "rate": 1.2420508744038157
+      }
+    },
+    "http_req_waiting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 112.883,
+        "avg": 128.5895,
+        "med": 128.5895,
+        "p(90)": 141.1547,
+        "p(95)": 142.72535,
+        "max": 144.296
+      }
+    },
+    "http_req_failed": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 0,
+        "passes": 0,
+        "fails": 2
+      }
+    },
+    "data_received": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 2501,
+        "rate": 1553.1846184419715
+      }
+    },
+    "http_req_duration{expected_response:true}": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 113.008,
+        "avg": 128.7255,
+        "med": 128.7255,
+        "p(90)": 141.29950000000002,
+        "p(95)": 142.87125,
+        "max": 144.443
+      }
+    },
+    "iteration_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "med": 1604.4515005,
+        "p(90)": 1609.0189673,
+        "p(95)": 1609.5899006500001,
+        "max": 1610.160834,
+        "min": 1598.742167,
+        "avg": 1604.4515005
+      }
+    },
+    "vus": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "value": 2,
+        "min": 2,
+        "max": 2
+      }
+    },
+    "http_req_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "med": 128.7255,
+        "p(90)": 141.29950000000002,
+        "p(95)": 142.87125,
+        "max": 144.443,
+        "min": 113.008,
+        "avg": 128.7255
+      }
+    },
+    "http_req_blocked": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 5.978,
+        "avg": 6.008,
+        "med": 6.008,
+        "p(90)": 6.032,
+        "p(95)": 6.035,
+        "max": 6.038
+      }
+    },
+    "data_sent": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 880,
+        "rate": 546.5023847376789
+      }
+    }
+  }
+}

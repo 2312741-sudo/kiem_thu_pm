@@ -2,26 +2,36 @@
 
 Hệ thống: Cal.com `v6.2.0` (commit `1c193cca`), chạy local với PostgreSQL 16, `yarn dev`.
 Dữ liệu: host `k15host`, lịch 24/7 UTC, 5 event type tạo bởi `race-tests/fixtures/fixtures.sql`.
-Kết quả gốc: `race-tests/results/latest-race/` (đồng thời) và `race-tests/results/latest-sequential/` (tuần tự).
+Kết quả gốc đợt 1 (8 test case): `race-tests/results/giua-ky-race/` và `giua-ky-sequential/`.
+Kết quả đợt 2 (20 test case, chính thức): `race-tests/results/giua-ky-20-race/` (đồng thời) và `giua-ky-20-sequential/` (tuần tự). Chấm điểm rủi ro: [DANH_GIA_RUI_RO.md](DANH_GIA_RUI_RO.md).
 
 ## Tổng quan
 
 | ID | Tóm tắt | Scenario | Đồng thời | Tuần tự | Loại | Mức độ |
 |---|---|---|---|---|---|---|
-| D1 | Host bị đặt chồng nhiều cuộc hẹn khi các slot lệch giờ bắt đầu hoặc khác event type | S2 | 10/10 vòng vi phạm | 0/10 | Race (TOCTOU) | **Cao** |
-| D2 | Event có ghế: nhiều người đặt cùng lúc vào slot trống thì chỉ 1 người được nhận, số còn lại bị 409 dù còn ghế | S3 | 10/10 | 0/10 | Race | Trung bình |
-| D3 | Event cần xác nhận (`requiresConfirmationWillBlockSlot`): nhiều booking PENDING cho cùng một slot | S5 | 10/10 | 0/10 | Race | Trung bình |
-| D4 | Booking đã đổi lịch vẫn đổi lịch tiếp được: một booking gốc sinh ra nhiều booking mới | S6 | 10/10 | **10/10** | Lỗi logic (không phải race) | **Cao** |
-| D5 | Hủy và đổi lịch cùng lúc: cả hai báo thành công, cuộc hẹn đã hủy vẫn còn hiệu lực ở giờ mới | S7 | 10/10 | 0/10 | Race (TOCTOU) | Trung bình |
-| D6 | Vượt giới hạn `bookingLimits` (1 booking/ngày) khi đặt đồng thời | S8 | 10/10 | 0/10 | Race (TOCTOU) | Trung bình |
+| D1 | Host bị đặt chồng nhiều cuộc hẹn khi các slot lệch giờ bắt đầu hoặc khác event type | S2, S17 | 10/10 vòng vi phạm | 0/10 | Race (TOCTOU) | **Nghiêm trọng (25)** |
+| D2 | Event có ghế: nhiều người đặt cùng lúc vào slot trống thì chỉ 1 người được nhận, số còn lại bị 409 dù còn ghế | S3 | 10/10 | 0/10 | Race | Trung bình (8) |
+| D3 | Event cần xác nhận (`requiresConfirmationWillBlockSlot`): nhiều booking PENDING cho cùng một slot | S5 | 10/10 | 0/10 | Race | Cao (12) |
+| D4 | Booking đã đổi lịch vẫn đổi lịch tiếp được: một booking gốc sinh ra nhiều booking mới | S6 | 10/10 | **10/10** | Lỗi logic (không phải race) | **Cao (16)** |
+| D5 | Hủy và đổi lịch cùng lúc: cả hai báo thành công, cuộc hẹn đã hủy vẫn còn hiệu lực ở giờ mới | S7 | 10/10 | 0/10 | Race (TOCTOU) | Trung bình (8) |
+| D6 | Vượt giới hạn `bookingLimits` (1 booking/ngày hoặc /tuần) khi đặt đồng thời | S8, S13 | 10/10 | 0/10 | Race (TOCTOU) | **Nghiêm trọng (20)** |
+| D7 | Bỏ qua thời gian đệm (`afterEventBuffer` 30 phút): 6 booking sát nhau cùng được nhận | S11 | 10/10 | 0/10 | Race (TOCTOU) | Cao (12) |
+| D8 | Vượt giới hạn tổng thời lượng `durationLimits` (180 phút so với 30 phút/ngày) | S12 | 10/10 | 0/10 | Race (TOCTOU) | Cao (15) |
+| D9 | Vượt `maxActiveBookingsPerBooker`: 1 người có 6 booking đang hoạt động, giới hạn là 1 | S14 | 10/10 | 0/10 | Race (TOCTOU) | Cao (12) |
+| D10 | Hủy một booking nhiều lần đồng thời: cả 6 lệnh trả 200, Cal.com gửi 12 email hủy thay vì 2 | S15 | 10/10 | 0/10 | Race (TOCTOU) | Cao (12) |
+| D11 | Cùng một email chiếm 2 ghế trong một slot có ghế dù có cơ chế chống đăng ký trùng | S16 | 10/10 | 0/10 | Race (TOCTOU) | Trung bình (6) |
 | O1 | Vượt giới hạn booking trả HTTP **401 Unauthorized** thay vì 403 | S8 tuần tự | – | 70/70 request | Sai mã lỗi | Thấp |
 | O2 | `uid` booking sinh từ `username + start + Date.now()`: hai request trong cùng mili-giây trùng `uid` | S3, S5 | – | – | Thiết kế kém an toàn | Thấp |
 
 "Vi phạm" nghĩa là sau vòng đó, truy vấn trực tiếp PostgreSQL cho thấy invariant bị phá. Không dựa vào mã HTTP trả về.
 
-Hai scenario PASS ở cả hai chế độ, cho thấy cơ chế bảo vệ hiện có hoạt động đúng:
+Bảy scenario PASS ở cả hai chế độ (10/10 vòng), cho thấy cơ chế bảo vệ hiện có hoạt động đúng và bộ test không báo lỗi giả:
 - **S1:** cùng một slot, cùng event. 1 request được nhận, 9 request bị 409 `booking_conflict_error` nhờ `UNIQUE(idempotencyKey)`.
 - **S4:** tranh 2 ghế còn lại. Đúng 2 người được nhận, không vượt 3 ghế, nhờ `SELECT … FOR UPDATE` trong `addSeatToBooking`.
+- **S9, S10:** đường đổi lịch cũng bị chặn đúng khi hai booking đổi vào cùng một giờ, hoặc đổi lịch tranh giờ với đặt mới (409 `booking_conflict_error`).
+- **S18:** 30 request đồng thời vào một slot: 1 thành công, 29 bị 409, không có 5xx.
+- **S19:** 20 slot độc lập đặt cùng lúc: cả 20 thành công, không từ chối nhầm.
+- **S20:** hủy và đặt lại đúng giờ vừa hủy cùng lúc: không bao giờ có 2 booking active chồng giờ.
 
 ---
 
@@ -193,6 +203,104 @@ Hàm không phân biệt hai trường hợp, nên trường hợp 2 vẫn đư�
 **Thí nghiệm khắc phục:** exclusion constraint của D1 **không** sửa được D6 (`results/fix-exclusion`: vẫn 8/8), vì các booking không chồng giờ. Invariant dạng "đếm" cần cơ chế khác:
 - `pg_advisory_xact_lock(eventTypeId, ngày)` bao quanh bước đếm + INSERT;
 - hoặc transaction mức `SERIALIZABLE` có retry.
+
+---
+
+## D7. Bỏ qua thời gian đệm (buffer) khi đặt đồng thời
+
+**Tái hiện:** `npm run race -- --scenarios S11` hoặc `bash race-tests/repro/repro-curl-2.sh` (phần D7)
+
+- **Tiền điều kiện:** event `k15-buffer` (30 phút, `afterEventBuffer = 30`), khung 09:00–13:00 trống.
+- **Input:** 6 request đồng thời đặt 09:00, 09:30, 10:00, 10:30, 11:00, 11:30.
+- **Kỳ vọng (I8):** tối đa 3 booking (09:00, 10:00, 11:00), hai booking liền kề cách nhau ≥ 30 phút.
+- **Thực tế:** 10/10 vòng cả 6 request trả 200; CSDL có 6 booking cách nhau 0 phút. Với 2 request: 10/10 vòng vi phạm.
+- **Đối chứng tuần tự:** 3 thành công, 3 bị `no_available_users_found_error`.
+
+**Nguyên nhân gốc:** thời gian đệm được tính khi đọc lịch bận của host (`ensureAvailableUsers`, truyền `beforeEventBuffer` và `afterEventBuffer`), tức một bước đọc trước khi ghi như D1.
+
+**Đề xuất sửa:** cùng cơ chế với D1: khóa theo host bao quanh bước kiểm tra lịch và INSERT. Exclusion constraint thuần theo `tsrange(startTime, endTime)` chưa đủ, vì phải mở rộng khoảng giờ thêm buffer.
+
+---
+
+## D8. Vượt giới hạn tổng thời lượng mỗi ngày
+
+**Tái hiện:** `npm run race -- --scenarios S12` hoặc `repro-curl-2.sh` (phần D8)
+
+- **Tiền điều kiện:** event `k15-duration` (30 phút) có `durationLimits = {"PER_DAY": 30}`.
+- **Input:** 6 request đồng thời, 6 giờ khác nhau trong cùng một ngày.
+- **Kỳ vọng (I9):** tổng thời lượng booking active trong ngày ≤ 30 phút, tức 1 booking.
+- **Thực tế:** 10/10 vòng cả 6 request trả 200, tổng 180 phút.
+- **Đối chứng tuần tự:** 1 thành công, 5 bị 401 `duration_limit_reached` (cùng lỗi mã 401 như O1).
+
+**Nguyên nhân gốc:** `checkBookingAndDurationLimits` (`RegularBookingService.ts` dòng ~944) cộng thời lượng các booking hiện có rồi so với giới hạn; INSERT sau đó, không khóa. Cùng họ với D6.
+
+**Đề xuất sửa:** như D6: `pg_advisory_xact_lock(eventTypeId, ngày)` bao quanh bước đếm và INSERT.
+
+---
+
+## D9. Vượt giới hạn số booking đang hoạt động của một người đặt
+
+**Tái hiện:** `npm run race -- --scenarios S14` hoặc `repro-curl-2.sh` (phần D9)
+
+- **Tiền điều kiện:** event `k15-booker` có `maxActiveBookingsPerBooker = 1`.
+- **Input:** cùng một email đặt 6 giờ khác nhau, đồng thời.
+- **Kỳ vọng (I10):** đúng 1 booking active của email đó.
+- **Thực tế:** 10/10 vòng cả 6 request trả 200, email đó có 6 booking active.
+- **Đối chứng tuần tự:** 1 thành công, 5 bị 400 `booker_limit_exceeded_error`.
+
+**Nguyên nhân gốc:** `checkActiveBookingsLimitForBooker` (`RegularBookingService.ts` dòng ~702) đếm booking active của email rồi mới tiếp tục luồng đặt lịch; ghi ở bước sau, không khóa theo email.
+
+**Đề xuất sửa:** khóa theo `(eventTypeId, email)` bao quanh bước đếm + INSERT.
+
+---
+
+## D10. Hủy một booking nhiều lần đồng thời đều thành công
+
+**Tái hiện:** `npm run race -- --scenarios S15` hoặc `repro-curl-2.sh` (phần D10)
+
+- **Tiền điều kiện:** booking B (ACCEPTED).
+- **Input:** 6 lệnh `POST /api/cancel {uid: B}` đồng thời (mô phỏng bấm hủy nhiều lần hoặc nhiều tab).
+- **Kỳ vọng (I5):** đúng 1 lệnh trả 200, 5 lệnh còn lại trả 400 "This booking has already been cancelled."
+- **Thực tế:** 10/10 vòng cả 6 lệnh trả 200. Booking cuối cùng vẫn ở trạng thái cancelled nên **dữ liệu không dấu hiệu lỗi**. Nhưng đếm email: một booking bị hủy 6 lần làm Cal.com cố gửi **12 email hủy** (mỗi lần 2: host và người đặt), đối chứng tuần tự là 2. Số 12 đã đo ở `repro-curl-2.sh` (2 lần chạy liên tiếp đều 12) và đối chiếu được với tổng 28 email của một booking qua 4 lần chạy (2 + 12 + 12 + 2).
+- **Đối chứng tuần tự:** 1 lệnh 200, 5 lệnh 400.
+
+**Nguyên nhân gốc:** `handleCancelBooking.ts` kiểm tra `bookingToDelete.status === CANCELLED` (dòng ~197, trả 400) trên bản đọc ở đầu hàm; sau đó cập nhật trạng thái bằng `where: { uid }` (dòng ~566, không điều kiện trạng thái) và chạy các tác dụng phụ: webhook `BOOKING_CANCELLED`, email, nhắc nhở workflow, xóa sự kiện lịch ngoài, xử lý hoàn tiền (nếu đã thanh toán, dòng ~605). Không có khóa và không có điều kiện ghi "chỉ khi chưa hủy".
+
+**Chưa kiểm chứng:** ảnh hưởng tới hoàn tiền với booking có thanh toán (cần tích hợp Stripe, ngoài phạm vi đề tài). Chỉ khẳng định được email lặp; webhook và lịch ngoài suy ra từ mã nhưng chưa quan sát.
+
+**Đề xuất sửa:** cập nhật có điều kiện `updateMany({ where: { uid, status: { not: CANCELLED } } })` và chỉ chạy tác dụng phụ khi `count === 1`.
+
+---
+
+## D11. Một người chiếm nhiều ghế trong cùng một slot
+
+**Tái hiện:** `npm run race -- --scenarios S16` hoặc `repro-curl-2.sh` (phần D11)
+
+- **Tiền điều kiện:** event `k15-seated` (3 ghế), slot đã có 1 người đặt trước.
+- **Input:** cùng một email đặt 6 lần đồng thời vào slot đó.
+- **Kỳ vọng (I11):** email đó chiếm đúng 1 ghế; các request còn lại bị 409 `already_signed_up_for_this_booking_error`.
+- **Thực tế:** 10/10 vòng email đó chiếm **2 ghế**, 2 request 200, 4 request 409 `booking_seats_full_error` (hết ghế). Một người chiếm 2/3 ghế của event.
+- **Đối chứng tuần tự:** 1 thành công, 5 bị 409 `already_signed_up_for_this_booking_error`: cơ chế chống trùng hoạt động tốt khi các request đến lần lượt.
+
+**Nguyên nhân gốc:** `handleSeats.ts` (dòng ~205–215) kiểm tra người này đã đăng ký slot chưa trên bản `seatedBooking` đọc **trước** khi khóa. Khóa `FOR UPDATE` nằm ở `createNewSeat.ts` (dòng ~53), sau bước kiểm tra, và không kiểm tra lại. Nhiều request cùng email qua kiểm tra rồi lần lượt thêm ghế.
+
+**Thí nghiệm khắc phục** (`race-tests/experiments/unique-attendee.sql`, kết quả `results/fix-unique-attendee/`): thêm chỉ mục duy nhất `("bookingId", lower(email))` trên bảng `Attendee`. Chạy lại S16 10 vòng: **PASS 10/10**, mỗi vòng 1 người được nhận, 5 người bị HTTP 400, không có 500. Chứng minh test case phát hiện đúng lỗi này. (Chỉ mục chỉ dùng trên CSDL test và đã gỡ sau thí nghiệm; bản sửa thật cần xem xét các luồng hợp lệ có cùng email nhiều lần trong một booking.)
+
+**Đề xuất sửa:** kiểm tra lại "đã đăng ký chưa" bên trong transaction sau khi khóa dòng, hoặc dùng chỉ mục duy nhất như trên.
+
+---
+
+## Thí nghiệm khắc phục bổ sung cho D1 và D3 (đợt 2)
+
+`results/fix-exclusion-20/` (ràng buộc loại trừ của D1 trên CSDL test, đã gỡ sau thí nghiệm):
+
+| Test case | Không có ràng buộc | Có ràng buộc loại trừ |
+|---|---|---|
+| S2 (D1) | 10 booking chồng giờ | 1 booking; 9 request thua nhận HTTP 500 |
+| S5 (D3) | 9 đến 10 booking pending cùng giờ | 1 booking pending; 9 request thua nhận HTTP 500 |
+| S17 (D1) | 2 booking chồng giờ | 1 booking; 4 request thua 409, 5 request thua HTTP 500 |
+
+Invariant I1 và I3 được bảo toàn (không còn vi phạm), nhưng người thua nhận 500 (vi phạm I7) vì Cal.com chưa ánh xạ mã lỗi `23P01` của ràng buộc loại trừ sang 409. Sửa phải làm ở cả hai tầng.
 
 ---
 

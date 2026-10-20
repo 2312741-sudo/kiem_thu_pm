@@ -23,9 +23,9 @@ Mọi kết quả dưới đây đến từ **lần chạy thật trên Cal.com 
 | Bước | Việc làm | Sản phẩm |
 |---|---|---|
 | 1 | Đọc `RegularBookingService`, `createBooking`, `handleSeats`, extension `booking-idempotency-key` để tìm chỗ "kiểm tra rồi mới ghi" | [diagrams/kien-truc.md](diagrams/kien-truc.md) |
-| 2 | Chọn 7 invariant I1–I7 (tính chất dữ liệu luôn phải đúng) | mục 2 dưới đây |
-| 3 | Thiết kế 8 test case TC-01 đến TC-08 | mục 2 |
-| 4 | Tạo host `k15host` và 5 loại cuộc hẹn bằng `fixtures.sql`; mỗi vòng dùng ngày riêng | [race-tests/fixtures/fixtures.sql](../race-tests/fixtures/fixtures.sql) |
+| 2 | Chọn 12 invariant I1–I12 (tính chất dữ liệu luôn phải đúng) | mục 2 dưới đây |
+| 3 | Thiết kế 20 test case TC-01 đến TC-20 (8 ban đầu + 12 bổ sung) | mục 2 |
+| 4 | Tạo host `k15host` và 9 loại cuộc hẹn bằng `fixtures.sql`; mỗi vòng dùng ngày riêng | [race-tests/fixtures/fixtures.sql](../race-tests/fixtures/fixtures.sql) |
 | 5 | Chạy đồng thời bằng k6, rồi chạy lại đúng các request đó nhưng tuần tự | [race-tests/src/run.mjs](../race-tests/src/run.mjs) |
 | 6 | Truy vấn SQL kiểm invariant sau mỗi vòng | [race-tests/src/scenarios.mjs](../race-tests/src/scenarios.mjs) |
 | 7 | Đọc code tìm nguyên nhân, thử khắc phục trên dữ liệu test | [DEFECTS.md](DEFECTS.md) |
@@ -49,6 +49,18 @@ Dữ liệu chung: host `k15host` (múi giờ UTC, rảnh 24/7). Loại cuộc h
 | TC-06 | Đổi lịch nhiều lần cùng một booking | Booking B 09:00 | 5 lệnh đổi lịch B sang 10:00, 11:00, 12:00, 13:00, 14:00 | 1 lệnh thành công; B bị hủy | I4 |
 | TC-07 | Hủy và đổi lịch cùng lúc | Booking B 09:00 | 1 lệnh hủy B + 1 lệnh đổi lịch B sang 11:00 | Không thể cả hai cùng thành công | I5 |
 | TC-08 | Vượt giới hạn 1 booking/ngày | Ngày trống | 8 người đặt `k15-limit` ở 8 giờ khác nhau | Chỉ 1 người thành công | I6 |
+| TC-09 | Hai booking cùng đổi lịch sang một giờ | A 10:00, B 12:00 của hai người; 15:00 trống | 2 lệnh đổi lịch: A và B cùng sang 15:00 | 1 thành công, 1 bị 409 | I1 |
+| TC-10 | Đổi lịch tranh giờ với đặt mới | A 10:00; 15:00 trống | 1 lệnh đổi lịch A sang 15:00 + 1 người mới đặt 15:00 | Chỉ 1 trong 2 giữ được giờ | I1 |
+| TC-11 | Thời gian đệm 30 phút | `k15-buffer` (30 phút, đệm 30 phút); 09:00–13:00 trống | 6 người đặt 09:00, 09:30, …, 11:30 | Tối đa 3 booking, cách nhau ≥ 30 phút | I8 |
+| TC-12 | Giới hạn tổng thời lượng 30 phút/ngày | `k15-duration`; ngày trống | 6 người đặt 6 giờ cách nhau 1 giờ | Chỉ 1 người thành công | I9 |
+| TC-13 | Giới hạn 1 booking/tuần | `k15-week`; tuần trống | 6 người đặt 6 ngày (thứ hai đến thứ bảy) lúc 09:00 | Chỉ 1 người thành công | I6 |
+| TC-14 | Giới hạn 1 booking/người đặt | `k15-booker` | Cùng một email đặt 6 giờ khác nhau | Chỉ 1 booking thành công | I10 |
+| TC-15 | Hủy một booking nhiều lần | Booking B | 6 lệnh hủy B | Đúng 1 lệnh 200, 5 lệnh bị từ chối; B cancelled | I5 |
+| TC-16 | Một người chiếm nhiều ghế | `k15-seated` (3 ghế), giờ đã có 1 người | Cùng một email đặt 6 lần | Email đó chiếm đúng 1 ghế | I11 |
+| TC-17 | Hai loại cuộc hẹn cùng giờ bắt đầu | 09:00 trống | 5 người đặt `k15-30` + 5 người đặt `k15-60`, đều 09:00 | Chỉ 1 booking hiệu lực | I1 |
+| TC-18 | Tải cao | 09:00 trống | 30 người đặt `k15-30` lúc 09:00 | 1 người 200, 29 người 409, không 5xx | I1, I7 |
+| TC-19 | Giờ độc lập không bị từ chối nhầm | 09:00–19:00 trống | 20 người đặt 20 giờ liền kề cách nhau 30 phút | Cả 20 người thành công | I12 |
+| TC-20 | Hủy và đặt lại đúng giờ vừa hủy | Booking O 09:00 | 1 lệnh hủy O + 1 người mới đặt 09:00 | Không có 2 booking hiệu lực cùng giờ | I1 |
 
 **Invariant**
 
@@ -59,11 +71,16 @@ Dữ liệu chung: host `k15host` (múi giờ UTC, rảnh 24/7). Loại cuộc h
 | I2b | Còn ghế thì người đặt không bị từ chối | So số người thành công với số ghế trống |
 | I3 | Một giờ có tối đa 1 booking chờ xác nhận | Như I1, gồm cả trạng thái `pending` |
 | I4 | Một booking gốc sinh tối đa 1 booking mới hiệu lực | Đếm booking có `fromReschedule` bằng mã gốc |
-| I5 | Hủy báo thành công thì không còn booking hiệu lực của cuộc hẹn đó | Kết hợp mã HTTP của hủy và trạng thái các booking con |
-| I6 | Số booking trong ngày không vượt giới hạn | Đếm booking hiệu lực theo ngày |
+| I5 | Hủy báo thành công thì không còn booking hiệu lực của cuộc hẹn đó; mỗi booking chỉ hủy thành công đúng một lần | Kết hợp mã HTTP của hủy, trạng thái các booking con và số lệnh hủy trả 200 |
+| I6 | Số booking trong ngày (hoặc tuần) không vượt giới hạn | Đếm booking hiệu lực theo ngày hoặc tuần của loại cuộc hẹn |
 | I7 | Không có 5xx, timeout hay lỗi kết nối | Log của k6 |
+| I8 | Hai booking liền kề của host cách nhau ≥ thời gian đệm | Sắp xếp booking hiệu lực theo giờ, so khoảng cách |
+| I9 | Tổng thời lượng booking hiệu lực trong ngày ≤ giới hạn thời lượng | Cộng độ dài booking của event type theo ngày |
+| I10 | Một người đặt không vượt số booking đang hoạt động được phép | Đếm booking hiệu lực theo email trong `Attendee` |
+| I11 | Một email chỉ chiếm tối đa 1 ghế trong một giờ | Đếm dòng `Attendee` theo booking và email |
+| I12 | Yêu cầu hợp lệ trên các giờ độc lập đều thành công | So số phản hồi 200 với số booking trong CSDL |
 
-Tổng cộng 8 test case × 10 vòng = 80 lần chạy cho mỗi chế độ (đồng thời và tuần tự).
+Tổng cộng 20 test case × 10 vòng = 200 lần chạy cho mỗi chế độ (đồng thời và tuần tự). Đánh giá rủi ro, vai trò từng test case và chứng minh tính khả thi: [DANH_GIA_RUI_RO.md](DANH_GIA_RUI_RO.md).
 
 ## 3. Chi phí test
 
@@ -75,16 +92,20 @@ Tổng cộng 8 test case × 10 vòng = 80 lần chạy cho mỗi chế độ (�
 
 | Lần chạy | Mục đích | Vòng | Request | Thời gian máy |
 |---|---|---|---|---|
-| Chạy đồng thời chính | 8 test case × 10 vòng | 80 | 570 | 150 giây |
-| Chạy tuần tự đối chứng | Cùng request, gửi lần lượt | 80 | 570 | 22 giây |
-| Độ nhạy N = 2 | Chỉ 2 request đồng thời, 20 vòng | 100 | 200 | 164 giây |
-| Thí nghiệm khắc phục | Sau khi thêm ràng buộc CSDL | 40 | 380 | 85 giây |
+| Đợt 1: đồng thời | 8 test case × 10 vòng | 80 | 570 | 154 giây |
+| Đợt 1: tuần tự đối chứng | Cùng request, gửi lần lượt | 80 | 570 | 23 giây |
+| **Đợt 2: đồng thời (chính thức)** | 20 test case × 10 vòng | 200 | 1 590 | 383 giây |
+| **Đợt 2: tuần tự đối chứng** | Cùng request, gửi lần lượt | 200 | 1 590 | 76 giây |
+| Độ nhạy N = 2 (đợt 1) | Chỉ 2 request đồng thời, 20 vòng | 100 | 200 | 164 giây |
+| Độ nhạy N = 2 (7 test case mới) | TC-11 đến TC-17, 10 vòng | 70 | 140 | 117 giây |
+| Thí nghiệm khắc phục (đợt 1) | Sau khi thêm ràng buộc CSDL | 40 | 380 | 85 giây |
+| Thí nghiệm khắc phục (đợt 2) | TC-02, 05, 17 (ràng buộc loại trừ), TC-16 (chỉ mục duy nhất) | 40 | 360 | 89 giây |
 | Đo cửa sổ race | 18 mốc độ trễ Δ | 180 | 360 | 300 giây |
-| **Tổng** | | | **2 080** | **khoảng 12 phút** |
+| **Tổng** | | **990** | **5 760** | **khoảng 23 phút** |
 
-Chạy lại toàn bộ bộ test chính (đồng thời + tuần tự) tốn dưới 3 phút máy. Bộ demo giữa kỳ (`npm run demo:midterm`) chạy khoảng 20 giây.
+Chạy lại toàn bộ bộ test chính 20 test case (đồng thời + tuần tự) tốn khoảng 8 phút máy. Bộ demo giữa kỳ (`npm run demo:midterm`) chạy khoảng 20 giây.
 
-**Chi phí xây dựng bộ test:** khoảng 970 dòng mã (Node.js, k6, SQL).
+**Chi phí xây dựng bộ test:** khoảng 1 600 dòng mã (Node.js, k6, SQL, bash).
 
 **Công sức của nhóm (người-giờ):** ước lượng khoảng 34 đến 46 giờ cho cả nhóm (xem báo cáo giữa kỳ, mục 6). Đây là ước lượng, không phải số giờ ghi lại thực tế; nhóm có thể điền số thực tế vào cột bên phải.
 
@@ -115,6 +136,7 @@ Chạy lại toàn bộ bộ test chính (đồng thời + tuần tự) tốn d�
 |---|---|---|
 | Sprint 1 (đến 20/10) | Dựng hệ thống, kiến trúc, kế hoạch, PoC | Xong |
 | Sprint 2–3 | Harness 8 test case, chạy 10 vòng, đối chứng tuần tự, đo cửa sổ race | Đã chạy xong |
+| Mở rộng | 20 test case, đánh giá rủi ro, chứng minh khả thi, tái hiện 5 lỗi mới bằng curl | Đã chạy xong (macOS) |
 | Sprint 2–3 | Chạy lại trên máy Windows của thành viên khác | Đã chạy xong, kết quả khớp |
 | Sprint 2–3 còn lại | Scenario Playwright qua giao diện | Chưa làm |
 | Sprint 4 | Rà soát nguyên nhân gốc, đề xuất sửa, hoàn thiện báo cáo | Đang làm |
@@ -134,7 +156,7 @@ Lệnh chạy:
 ```bash
 cd race-tests
 npm run fixtures                          # tạo dữ liệu test
-npm run race                              # 8 test case, đồng thời, 10 vòng
+npm run race                              # 20 test case, đồng thời, 10 vòng
 npm run race -- --mode sequential         # đối chứng tuần tự
 npm run demo:midterm                      # demo giữa kỳ, khoảng 20 giây
 ```

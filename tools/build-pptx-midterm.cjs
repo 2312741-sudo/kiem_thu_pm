@@ -1,4 +1,4 @@
-// Sinh docs/BAO_CAO_GIUA_KY_R05-K15.pptx (8 slide, 16:9).
+// Sinh docs/BAO_CAO_GIUA_KY_R05-K15.pptx (17 slide, 16:9).
 // Chạy: NODE_PATH=<nơi cài pptxgenjs> node tools/build-pptx-midterm.cjs
 const path = require("path");
 const pptxgen = require("pptxgenjs");
@@ -44,7 +44,7 @@ const add = (master, section) => {
   const s = add("DARK_BLANK", "Mở đầu");
   s.addText("BÁO CÁO GIỮA KỲ · MILESTONE 2 · 20/10", { x: M, y: 0.7, w: W, h: 0.4, fontFace: MONO, fontSize: 16, bold: true, color: ORANGE, charSpacing: 3, margin: 0, isTextBox: true });
   s.addText("R05-K15\nKiểm thử race condition cho Cal.com", { x: M, y: 1.9, w: 11.5, h: 2.4, fontFace: BODY, fontSize: 54, bold: true, color: "F4F2EC", margin: 0, valign: "top", isTextBox: true });
-  s.addText("Quy trình test, 8 test case, kết quả test thật và 6 lỗi đã tái hiện", { x: M, y: 4.5, w: 10.5, h: 0.9, fontFace: BODY, fontSize: 24, color: MUTED_DARK, margin: 0, valign: "top", isTextBox: true });
+  s.addText("Quy trình test, 20 test case, kết quả test thật và 11 lỗi đã tái hiện", { x: M, y: 4.5, w: 10.5, h: 0.9, fontFace: BODY, fontSize: 24, color: MUTED_DARK, margin: 0, valign: "top", isTextBox: true });
   s.addText("Môn Kiểm thử phần mềm · GV Nguyễn Thế Lâm\nKhoa CNTT – Trường Đại học Đà Lạt", { x: M, y: 6.1, w: 7, h: 0.8, fontFace: BODY, fontSize: 16, color: MUTED_DARK, margin: 0, isTextBox: true });
   s.addText("Nhóm 14\n2312741 - Nguyễn Thanh Tâm\n2312800 - Võ Công Vinh\n2312774 - Nguyễn Đức Tín\n2312796 - Ngô Quốc Trường Vĩ", { x: 7.6, y: 5.5, w: 5.03, h: 1.45, fontFace: BODY, fontSize: 16, color: MUTED_DARK, align: "right", valign: "bottom", margin: 0, isTextBox: true });
   s.addNotes("Giữa kỳ cần trình bày bốn thứ: demo hệ thống chạy, sơ đồ kiến trúc và tài liệu on-boarding, kế hoạch áp dụng kỹ thuật kiểm thử. Nhóm có thêm một kết quả thử nghiệm đầu tiên.");
@@ -76,7 +76,7 @@ const add = (master, section) => {
 {
   const s = add("LIGHT", "Tiến độ");
   eyebrow(s, "02 · TIẾN ĐỘ SO VỚI KẾ HOẠCH");
-  s.addText("Sprint 1 hoàn thành, harness 8 scenario đã chạy xong", { placeholder: "title" });
+  s.addText("Sprint 1 hoàn thành, harness 20 test case đã chạy xong", { placeholder: "title" });
   const done = { text: "Xong", bold: true, color: GREEN }, part = { text: "Một phần", bold: true, color: RUST }, todo = { text: "Chưa làm", bold: true, color: MUTED }, fill = { text: "Cần điền", bold: true, color: RUST };
   tbl(s, [
     ["Hạng mục", "Sprint", "Trạng thái", "Bằng chứng"],
@@ -84,14 +84,14 @@ const add = (master, section) => {
     ["Dựng Cal.com local, seed data, chạy 3 luồng nghiệp vụ", "1", done, "docs/evidence/smoke-test.txt"],
     ["Đọc code, vẽ kiến trúc và luồng dữ liệu", "1", done, "docs/diagrams/kien-truc.md"],
     ["Tài liệu on-boarding, kế hoạch kiểm thử", "1", done, "README.md, slide 8"],
-    ["Harness k6 + SQL, 8 scenario, mỗi scenario 10 vòng, có đối chứng tuần tự", "2–3", done, "race-tests/results/"],
+    ["Harness k6 + SQL, 20 test case, mỗi test case 10 vòng, có đối chứng tuần tự", "2–3", done, "race-tests/results/"],
     ["Phân tích nguyên nhân gốc, thí nghiệm khắc phục", "4", done, "docs/DEFECTS.md"],
     ["Báo cáo cuối (bản nháp A–H) và slide bảo vệ", "4–5", part, "docs/BAO_CAO.md"],
-    ["Chạy lại trên máy Windows khác: kết quả khớp 8/8", "3", done, "race-tests/results/windows-race"],
+    ["Chạy lại trên Windows: 8 test case đầu khớp 8/8", "3", done, "race-tests/results/windows-race"],
     ["Scenario Playwright qua giao diện", "3", todo, "–"],
     ["Board GitHub Projects: 18 thẻ ở 3 cột; còn gán người và commit đều các thành viên", "Đăng ký", part, "docs/evidence/board.png"],
   ], { y: 1.75, colW: [5.9, 1.2, 1.5, W - 8.6], fontSize: 13, rowH: 0.43 });
-  s.addNotes("Mọi mục của Sprint 1 đã xong, và nhóm đã làm trước: harness 8 scenario đã chạy 10 vòng mỗi scenario kèm nhóm đối chứng tuần tự, đã phân tích nguyên nhân gốc. Giữa kỳ nhóm chỉ trình bày kết quả sơ bộ S1 và S2; kết quả đầy đủ dành cho buổi bảo vệ cuối kỳ. Còn lại: Playwright qua giao diện, hoàn thiện báo cáo, và chuẩn bị bảo vệ. Nói rõ phân vai và board Trello/Jira của nhóm.");
+  s.addNotes("Mọi mục của Sprint 1 đã xong, và nhóm đã làm trước: harness 20 test case đã chạy 10 vòng mỗi scenario kèm nhóm đối chứng tuần tự, đã phân tích nguyên nhân gốc. Giữa kỳ nhóm chỉ trình bày kết quả sơ bộ S1 và S2; kết quả đầy đủ dành cho buổi bảo vệ cuối kỳ. Còn lại: Playwright qua giao diện, hoàn thiện báo cáo, và chuẩn bị bảo vệ. Nói rõ phân vai và board Trello/Jira của nhóm.");
 }
 
 // 4 · Kiến trúc
@@ -157,7 +157,7 @@ const add = (master, section) => {
   const steps = [
     ["1", "Đọc code", "Tìm chỗ kiểm tra rồi mới ghi"],
     ["2", "Chọn invariant", "7 tính chất dữ liệu phải đúng"],
-    ["3", "Thiết kế test case", "8 test case TC-01 đến TC-08"],
+    ["3", "Thiết kế test case", "20 test case TC-01 đến TC-20"],
     ["4", "Chuẩn bị dữ liệu", "Host test, 5 loại cuộc hẹn"],
     ["5", "Chạy", "Đồng thời (k6) và tuần tự"],
     ["6", "Kiểm trong CSDL", "SQL kiểm từng invariant"],
@@ -182,11 +182,11 @@ const add = (master, section) => {
   s.addNotes("Quy trình gồm bảy bước. Điểm khác của kiểm thử race là bước 6: oracle là dữ liệu trong cơ sở dữ liệu, không phải mã HTTP. Bước 5 chạy cả đồng thời và tuần tự để tách lỗi race khỏi lỗi logic thông thường.");
 }
 
-// 2 · Danh sách test case
+// 2 · Danh sách test case (1/2)
 {
   const s = add("LIGHT");
-  eyebrow(s, "06 · DANH SÁCH TEST CASE");
-  s.addText("8 test case, mỗi cái chạy 10 vòng", { placeholder: "title" });
+  eyebrow(s, "06 · DANH SÁCH TEST CASE (1/2)");
+  s.addText("20 test case, mỗi cái chạy 10 vòng", { placeholder: "title" });
   tbl(s, [
     ["TC", "Input (gửi đồng thời)", "Kết quả mong đợi", "Invariant"],
     ["TC-01", "10 người đặt cùng một giờ 09:00", "1 người 200, 9 người 409", "I1"],
@@ -197,22 +197,47 @@ const add = (master, section) => {
     ["TC-06", "5 lệnh đổi lịch cùng một booking", "1 lệnh thành công, booking gốc bị hủy", "I4"],
     ["TC-07", "1 lệnh hủy + 1 lệnh đổi lịch cùng booking", "Không thể cả hai cùng thành công", "I5"],
     ["TC-08", "8 người đặt 8 giờ khác nhau, giới hạn 1/ngày", "Chỉ 1 người thành công", "I6"],
-  ], { y: 1.75, colW: [1.0, 5.2, 4.3, W - 10.5], fontSize: 14, rowH: 0.47 });
-  s.addText("Dữ liệu: host k15host (UTC, rảnh 24/7); 5 loại cuộc hẹn; mỗi request dùng một email người đặt khác nhau. I7 (không có 5xx) áp dụng cho mọi test case.", { x: M, y: 6.2, w: W, h: 0.6, fontFace: BODY, fontSize: 14, color: MUTED, margin: 0, valign: "top", isTextBox: true });
-  footer(s, "Đầy đủ tiền điều kiện và invariant: docs/QUY_TRINH_TEST.md mục 2");
-  s.addNotes("Mỗi test case chọn một cơ chế bảo vệ khác nhau để thử. TC-01 và TC-04 là hai trường hợp hệ thống đã có bảo vệ, dùng để kiểm chứng harness không báo lỗi giả. Sáu test case còn lại thử những chỗ đọc code cho thấy chưa có bảo vệ ở tầng cơ sở dữ liệu.");
+    ["TC-09", "2 booking khác nhau cùng đổi lịch sang một giờ trống", "1 thành công, 1 bị 409", "I1"],
+    ["TC-10", "1 lệnh đổi lịch + 1 người đặt mới cùng nhắm một giờ", "Chỉ 1 trong 2 giữ được giờ", "I1"],
+  ], { y: 1.75, colW: [1.0, 5.4, 4.1, W - 10.5], fontSize: 13, rowH: 0.39 });
+  s.addText("Dữ liệu: host k15host (UTC, rảnh 24/7); 9 loại cuộc hẹn; mỗi request dùng một email người đặt khác nhau (trừ TC-14, 15, 16). I7 (không có 5xx) áp dụng cho mọi test case.", { x: M, y: 6.4, w: W, h: 0.5, fontFace: BODY, fontSize: 13, color: MUTED, margin: 0, valign: "top", isTextBox: true });
+  footer(s, "Đặc tả đầy đủ (tiền điều kiện, input, kết quả mong đợi): báo cáo mục 3.3.6 · docs/QUY_TRINH_TEST.md");
+  s.addNotes("Nhóm đã tăng từ 8 lên 20 test case theo góp ý của thầy. Mười test case đầu: TC-01 và TC-04 là hai trường hợp hệ thống đã có bảo vệ, dùng để kiểm chứng bộ test không báo lỗi giả. TC-02, 03, 05, 06, 07, 08 thử những chỗ đọc mã cho thấy chưa có khóa. TC-09 và TC-10 mới: kiểm tra đường đổi lịch có được bảo vệ chống trùng giờ giống đường đặt mới hay không. Mỗi test case có đặc tả đầy đủ trong báo cáo mục 3.3.6.");
+}
+
+// 2 · Danh sách test case (2/2)
+{
+  const s = add("LIGHT");
+  eyebrow(s, "07 · DANH SÁCH TEST CASE (2/2)");
+  s.addText("12 test case bổ sung: giới hạn, buffer, hủy, ghế, tải", { placeholder: "title" });
+  tbl(s, [
+    ["TC", "Input (gửi đồng thời)", "Kết quả mong đợi", "Invariant"],
+    ["TC-11", "6 người đặt 6 giờ sát nhau, buffer 30 phút", "Tối đa 3 booking, cách nhau ≥ 30 phút", "I8"],
+    ["TC-12", "6 người đặt 6 giờ, giới hạn 30 phút/ngày", "Chỉ 1 người thành công", "I9"],
+    ["TC-13", "6 người đặt 6 ngày trong tuần, giới hạn 1/tuần", "Chỉ 1 người thành công", "I6"],
+    ["TC-14", "1 người (cùng email) đặt 6 giờ, giới hạn 1 booking/người", "Chỉ 1 booking thành công", "I10"],
+    ["TC-15", "6 lệnh hủy cùng một booking", "Đúng 1 lệnh 200, 5 lệnh bị từ chối", "I5"],
+    ["TC-16", "1 email đặt 6 lần vào event 3 ghế đã có 1 người", "Email đó chiếm đúng 1 ghế", "I11"],
+    ["TC-17", "5 người đặt event 30 phút + 5 người đặt event 60 phút, đều 09:00", "Chỉ 1 booking hiệu lực", "I1"],
+    ["TC-18", "Tải cao: 30 người đặt cùng một giờ", "1 người 200, 29 người 409, không 5xx", "I1, I7"],
+    ["TC-19", "20 người đặt 20 giờ liền kề, không chồng nhau", "Cả 20 người thành công", "I12"],
+    ["TC-20", "1 lệnh hủy + 1 người đặt mới đúng giờ vừa hủy", "Không có 2 booking hiệu lực cùng giờ", "I1"],
+  ], { y: 1.75, colW: [1.0, 5.6, 3.9, W - 10.5], fontSize: 13, rowH: 0.39 });
+  s.addText("TC-09, 10, 18, 19, 20 là test case đối chứng: cơ chế đang bảo vệ tốt, dùng để chứng minh bộ test không báo lỗi giả. TC-11 đến TC-17 là các chỗ nhóm nghi có lỗi sau khi đọc mã.", { x: M, y: 6.4, w: W, h: 0.5, fontFace: BODY, fontSize: 13, color: MUTED, margin: 0, valign: "top", isTextBox: true });
+  footer(s, "Đặc tả đầy đủ: báo cáo mục 3.3.6 · mã: race-tests/src/scenarios.mjs");
+  s.addNotes("Mười hai test case bổ sung đi vào những tính năng mà thầy nhắc là khó thấy: các loại giới hạn đặt lịch (ngày, tuần, thời lượng, số booking của mỗi người), thời gian đệm, hủy nhiều lần, một người chiếm nhiều ghế, hai loại cuộc hẹn cùng giờ bắt đầu, và hai kiểm tra độ ổn định là tải 30 người và 20 giờ độc lập. Năm test case TC-09, 10, 18, 19, 20 cuối cùng đều đạt, nên cho thấy bộ test không báo lỗi giả.");
 }
 
 // 6 · Kế hoạch kỹ thuật
 {
   const s = add("DARK", "Kế hoạch kiểm thử");
-  eyebrow(s, "07 · KẾ HOẠCH ÁP DỤNG K15", true);
+  eyebrow(s, "08 · KẾ HOẠCH ÁP DỤNG K15", true);
   s.addText("Phạm vi, giả định và tiêu chí đánh giá", { placeholder: "title" });
   const cw = (W - 0.7) / 3;
   const cols = [
-    ["PHẠM VI", ORANGE, ["Đặt lịch 1-1 và event có ghế", "Event cần xác nhận (PENDING)", "Đổi lịch, hủy lịch", "Giới hạn số booking/ngày", "Ngoài phạm vi: lịch ngoài, thanh toán, team, API v2"]],
+    ["PHẠM VI", ORANGE, ["Đặt lịch 1-1 và event có ghế", "Event cần xác nhận (PENDING)", "Đổi lịch, hủy lịch", "Giới hạn: ngày, tuần, thời lượng, người đặt; thời gian đệm", "Ngoài phạm vi: lịch ngoài, thanh toán, team, API v2"]],
     ["GIẢ ĐỊNH", SKY, ["Một instance, một PostgreSQL, chạy local", "Chạy yarn dev; production có thể rộng cửa sổ hơn", "Host không nối lịch ngoài", "Rate limit tắt", "Mỗi vòng dùng một ngày riêng"]],
-    ["TIÊU CHÍ PASS / FAIL", ORANGE, ["Oracle là invariant trong CSDL, không phải mã HTTP", "I1: host không có 2 booking chồng giờ", "I2: không vượt số ghế", "I4–I6: đổi lịch, hủy, giới hạn", "FAIL khi 1 vòng vi phạm; so với nhóm đối chứng tuần tự"]],
+    ["TIÊU CHÍ PASS / FAIL", ORANGE, ["Oracle là invariant trong CSDL, không phải mã HTTP", "I1: host không có 2 booking chồng giờ", "I2, I11: không vượt số ghế, một người một ghế", "I4–I6, I8–I10: đổi lịch, hủy, giới hạn, đệm", "FAIL khi 1 vòng vi phạm; so với nhóm đối chứng tuần tự"]],
   ];
   cols.forEach(([h, color, items], i) => {
     const x = M + i * (cw + 0.35);
@@ -227,9 +252,9 @@ const add = (master, section) => {
 // 3 · Chi phí test
 {
   const s = add("LIGHT");
-  eyebrow(s, "08 · CHI PHÍ TEST");
-  s.addText("Chi phí đo thật: 0 đồng, khoảng 12 phút máy", { placeholder: "title" });
-  const stats = [["0 đồng", "Công cụ miễn phí, chạy trên máy cá nhân"], ["2 080", "Request đã gửi trong mọi lần chạy"], ["≈ 12 phút", "Tổng thời gian máy chạy test"], ["≈ 970", "Dòng mã bộ test (Node.js, k6, SQL)"]];
+  eyebrow(s, "09 · CHI PHÍ TEST");
+  s.addText("Chi phí đo thật: 0 đồng, khoảng 23 phút máy", { placeholder: "title" });
+  const stats = [["0 đồng", "Công cụ miễn phí, chạy trên máy cá nhân"], ["5 760", "Request đã gửi trong mọi lần chạy"], ["≈ 8 phút", "Chạy lại 20 test case, cả hai chế độ"], ["≈ 1 600", "Dòng mã bộ test (Node.js, k6, SQL, bash)"]];
   const cw = (W - 3 * 0.3) / 4;
   stats.forEach(([n, l], i) => {
     const x = M + i * (cw + 0.3);
@@ -239,44 +264,40 @@ const add = (master, section) => {
   });
   tbl(s, [
     ["Lần chạy", "Request", "Thời gian máy"],
-    ["Đồng thời chính (8 test case × 10 vòng)", "570", "150 giây"],
-    ["Tuần tự đối chứng", "570", "22 giây"],
-    ["Độ nhạy: chỉ 2 request, 20 vòng", "200", "164 giây"],
-    ["Thí nghiệm khắc phục", "380", "85 giây"],
-    ["Đo cửa sổ race (18 mốc độ trễ)", "360", "300 giây"],
+    ["Đợt 1: 8 test case, đồng thời + tuần tự", "1 140", "177 giây"],
+    ["Đợt 2: 20 test case, đồng thời (chính thức)", "1 590", "383 giây"],
+    ["Đợt 2: 20 test case, tuần tự (đối chứng)", "1 590", "76 giây"],
+    ["Độ nhạy: chỉ 2 request (đợt 1 và 7 test case mới)", "340", "281 giây"],
+    ["Thí nghiệm khắc phục + đo cửa sổ race", "1 100", "474 giây"],
   ], { y: 3.85, colW: [7.2, 2.2, W - 9.4], fontSize: 14, rowH: 0.42 });
-  s.addText("Công sức nhóm: ước lượng 34–46 người-giờ (chưa theo dõi giờ thực tế). Máy: MacBook Apple Silicon 10 nhân, 32 GB RAM.", { x: M, y: 6.5, w: W, h: 0.4, fontFace: BODY, fontSize: 14, color: MUTED, margin: 0, isTextBox: true });
-  footer(s, "Số liệu lấy từ summary.json của từng lần chạy: docs/QUY_TRINH_TEST.md mục 3");
-  s.addNotes("Số liệu chi phí máy đo thật từ thời điểm bắt đầu và kết thúc trong file summary.json của mỗi lần chạy. Chạy lại bộ test chính cả đồng thời và tuần tự mất dưới ba phút. Công sức nhân lực là ước lượng khoảng 34 đến 46 người-giờ, nhóm chưa theo dõi giờ thực tế từng người.");
+  s.addText("Công sức nhóm: ước lượng 34–46 người-giờ (chưa theo dõi giờ thực tế, chưa gồm đợt mở rộng lên 20 test case). Máy: MacBook Apple Silicon 10 nhân, 32 GB RAM.", { x: M, y: 6.5, w: W, h: 0.4, fontFace: BODY, fontSize: 14, color: MUTED, margin: 0, isTextBox: true });
+  footer(s, "Số liệu lấy từ summary.json của từng lần chạy: báo cáo bảng 'Chi phí chạy kiểm thử đo được' · docs/QUY_TRINH_TEST.md mục 3");
+  s.addNotes("Số liệu chi phí máy đo thật từ thời điểm bắt đầu và kết thúc trong file summary.json của mỗi lần chạy. Chạy lại bộ test chính 20 test case, cả đồng thời và tuần tự, mất khoảng tám phút. Tổng cộng mọi lần chạy khoảng 23 phút và 5 760 request. Công sức nhân lực là ước lượng 34 đến 46 người-giờ, nhóm chưa theo dõi giờ thực tế từng người và ước lượng này chưa gồm đợt mở rộng.");
 }
 
 // Kết quả test
 {
-  const s = add("LIGHT", "Kết quả sơ bộ");
-  eyebrow(s, "09 · KẾT QUẢ TEST");
-  s.addText("6 trên 8 test case phát hiện lỗi", { placeholder: "title" });
-  const race = "F6E2D3", logic = "DCE5F4";
-  tbl(s, [
-    ["Test case", "Đồng thời", "Tuần tự", "Kết luận", "Lỗi"],
-    ["TC-01 cùng một giờ", "0/10", "0/10", "Đúng", "–"],
-    [{ text: "TC-02 giờ chồng lấn", bold: true }, { text: "10/10", bold: true }, "0/10", "Lỗi race", "D1"],
-    [{ text: "TC-03 ghế đầu tiên", bold: true }, { text: "10/10", bold: true }, "0/10", "Lỗi race", "D2"],
-    ["TC-04 ghế còn lại", "0/10", "0/10", "Đúng", "–"],
-    [{ text: "TC-05 chờ xác nhận", bold: true }, { text: "10/10", bold: true }, "0/10", "Lỗi race", "D3"],
-    [{ text: "TC-06 đổi lịch lặp", bold: true }, { text: "10/10", bold: true }, { text: "10/10", bold: true }, "Lỗi logic", "D4"],
-    [{ text: "TC-07 hủy và đổi lịch", bold: true }, { text: "10/10", bold: true }, "0/10", "Lỗi race", "D5"],
-    [{ text: "TC-08 giới hạn 1/ngày", bold: true }, { text: "10/10", bold: true }, "0/10", "Lỗi race", "D6"],
-  ], { y: 1.75, colW: [4.4, 2.0, 2.0, 2.4, W - 10.8], fontSize: 14, rowH: 0.46, fills: { 2: race, 3: race, 5: race, 6: logic, 7: race, 8: race } });
-  s.addText("Vòng vi phạm trên 10 vòng. Mã HTTP đều là 200 nhưng dữ liệu trong CSDL sai. Chỉ cần 2 request đồng thời, TC-02 vi phạm ở 20/20 vòng.", { x: M, y: 6.1, w: W, h: 0.7, fontFace: BODY, fontSize: 15, color: MUTED, margin: 0, valign: "top", isTextBox: true });
-  footer(s, "Lượt chạy chính thức 18/10/2026 · docs/KET_QUA_TEST_GIUA_KY.md · race-tests/results/giua-ky-race");
-  s.addNotes("Kết quả thật của lượt chạy chính thức: mỗi test case chạy 10 vòng, ở hai chế độ đồng thời và tuần tự. TC-01 và TC-04 đúng, hai cơ chế bảo vệ của hệ thống hoạt động. Năm test case chỉ sai khi đồng thời là lỗi race. TC-06 sai cả khi tuần tự nên là lỗi logic, không phải race. Mã HTTP đều thành công, chỉ truy vấn trực tiếp cơ sở dữ liệu mới thấy dữ liệu sai.");
+  const s = add("LIGHT", "Kết quả");
+  eyebrow(s, "10 · KẾT QUẢ TEST");
+  s.addText("13 trên 20 test case phát hiện lỗi", { placeholder: "title" });
+  s.addImage({ path: path.resolve(__dirname, "..", "docs", "figures", "hinh-ket-qua-20.png"), x: M, y: 1.7, w: 8.3, h: 8.3 * 850 / 1850 });
+  const stats = [["13 / 20", "test case phát hiện lỗi: 12 lỗi race, 1 lỗi logic (TC-06)"], ["7 / 20", "đạt ở cả hai chế độ: bộ test không báo lỗi giả"], ["19 / 20", "đạt khi chạy tuần tự: kiểm thử thường không thấy lỗi"]];
+  stats.forEach(([n, l], i) => {
+    const y = 1.7 + i * 1.3;
+    card(s, 9.3, y, W - 8.6, 1.15);
+    s.addText(n, { x: 9.5, y: y + 0.05, w: 1.9, h: 1.05, fontFace: BODY, fontSize: 28, bold: true, color: i === 0 ? RUST : BLUE, margin: 0, valign: "middle", isTextBox: true });
+    s.addText(l, { x: 11.35, y: y + 0.05, w: W - 10.75 + 0.05, h: 1.05, fontFace: BODY, fontSize: 13, color: MUTED, margin: 0, valign: "middle", isTextBox: true });
+  });
+  s.addText("Cột là số vòng vi phạm trên 10 vòng. TC-02: mã HTTP của cả 10 request đều là 200 nhưng CSDL có 10 booking chồng giờ. TC-15: một booking bị hủy 6 lần, Cal.com gửi 12 email thay vì 2. Chỉ cần 2 request đồng thời, 7 test case mới vẫn vi phạm 10/10 vòng.", { x: M, y: 5.75, w: W, h: 1.0, fontFace: BODY, fontSize: 15, color: MUTED, margin: 0, valign: "top", isTextBox: true });
+  footer(s, "Lượt chạy chính thức 20/10/2026 · docs/KET_QUA_TEST_GIUA_KY.md · race-tests/results/giua-ky-20-race và giua-ky-20-sequential");
+  s.addNotes("Kết quả thật của lượt chạy chính thức: 20 test case, mỗi test case 10 vòng ở hai chế độ đồng thời và tuần tự, tổng 3 180 request. Mười ba test case phát hiện lỗi: mười hai lỗi race chỉ sai khi đồng thời, một lỗi logic TC-06 sai cả khi tuần tự. Bảy test case đạt ở cả hai chế độ, cho thấy các cơ chế bảo vệ hiện có hoạt động và bộ test không báo lỗi giả. Điểm quan trọng: khi chạy tuần tự thì mười chín trên hai mươi test case đạt, nghĩa là kiểm thử chức năng thông thường sẽ kết luận hệ thống đúng; lỗi chỉ lộ ra khi gửi đồng thời và đối chiếu cơ sở dữ liệu.");
 }
 
 // Chạy lại trên máy thứ hai
 {
   const s = add("LIGHT");
-  eyebrow(s, "10 · CHẠY LẠI TRÊN MÁY THỨ HAI");
-  s.addText("Máy Windows cho cùng kết quả: khớp 8/8", { placeholder: "title" });
+  eyebrow(s, "11 · CHẠY LẠI TRÊN MÁY THỨ HAI");
+  s.addText("Máy Windows: 8 test case đầu khớp 8/8", { placeholder: "title" });
   tbl(s, [
     ["Test case", "Mac: đồng thời", "Windows: đồng thời", "Windows: tuần tự", "Khớp"],
     ["TC-01, TC-04", "0/10", "0/10", "0/10", "Có"],
@@ -284,7 +305,7 @@ const add = (master, section) => {
     ["TC-06", "10/10", "10/10", "10/10", "Có"],
   ], { y: 1.75, colW: [3.6, 2.3, 2.6, 2.4, W - 10.9], fontSize: 15, rowH: 0.55 });
   const cw = (W - 0.7) / 3;
-  [["Thời gian", "Đồng thời 210 giây (Mac 154 giây); tuần tự 43 giây (Mac 23 giây)."], ["Hai lượt đầu bị loại", "Thiếu k6 và Cal.com dừng giữa chừng. Chỉ dùng lượt chạy sạch."], ["Máy Windows", "Người test: Ngô Quốc Trường Vĩ. Máy MSI, Core i7-13620H, RAM 16 GB."]].forEach(([h, b], i) => {
+  [["Thời gian", "Đồng thời 210 giây (Mac 154 giây); tuần tự 43 giây (Mac 23 giây)."], ["Hai lượt đầu bị loại", "Thiếu k6 và Cal.com dừng giữa chừng. Chỉ dùng lượt chạy sạch."], ["Máy Windows", "Người test: Ngô Quốc Trường Vĩ. Máy MSI, Core i7-13620H, RAM 16 GB. 12 test case mới (TC-09 đến TC-20) chưa chạy trên Windows."]].forEach(([h, b], i) => {
     const x = M + i * (cw + 0.35);
     card(s, x, 4.4, cw, 2.0);
     s.addText(h, { x: x + 0.3, y: 4.6, w: cw - 0.6, h: 0.5, fontFace: BODY, fontSize: 20, bold: true, color: INK, margin: 0, isTextBox: true });
@@ -294,29 +315,82 @@ const add = (master, section) => {
   s.addNotes("Một thành viên chạy lại bộ test trên máy Windows của mình với cùng phiên bản mã. Kết luận tám test case giống hệt máy Mac: năm lỗi race chỉ sai khi đồng thời, một lỗi logic sai cả khi tuần tự, hai test case đúng. Hai lượt chạy đầu trên máy Windows không hợp lệ vì thiếu công cụ k6 và vì Cal.com dừng giữa chừng; nhóm đã loại và chỉ dùng lượt chạy sạch. Người chạy trên máy Windows là Ngô Quốc Trường Vĩ, máy MSI Core i7-13620H, RAM 16 GB.");
 }
 
+// Chứng minh tính khả thi
+{
+  const s = add("LIGHT");
+  eyebrow(s, "12 · CHỨNG MINH TEST CASE KHẢ THI");
+  s.addText("Bảy bằng chứng test case chạy được và đúng", { placeholder: "title" });
+  tbl(s, [
+    ["Tiêu chí", "Bằng chứng đã thực hiện"],
+    ["1. Chạy được, đo được", "20/20 test case chạy tự động, 3 180 request, mỗi vòng kiểm dữ liệu trong CSDL"],
+    ["2. Không báo lỗi giả", "7 test case đạt ở cả hai chế độ; khi tuần tự, cơ chế bảo vệ từ chối đúng bằng mã lỗi riêng"],
+    ["3. Lặp lại được", "13 test case vi phạm 10/10 vòng, vẫn 10/10 khi chỉ 2 request đồng thời"],
+    ["4. Công cụ khác cho cùng kết quả", "curl thuần tái hiện cả 11 lỗi; D7–D11 chạy 2 lần liên tiếp, giống hệt"],
+    ["5. Sửa lỗi thì test đạt", "Chỉ mục duy nhất theo người tham dự: TC-16 từ FAIL 10/10 sang PASS 10/10; ràng buộc loại trừ: TC-02, 05, 17 hết chồng giờ"],
+    ["6. Chi phí chấp nhận được", "20 test case, 10 vòng, hai chế độ: ≈ 8 phút máy, 0 đồng"],
+    ["7. Nhiều máy", "8 test case đầu khớp 8/8 giữa macOS và Windows (12 test case mới chỉ chạy trên macOS)"],
+  ], { y: 1.75, colW: [3.5, W - 3.5], fontSize: 14, rowH: 0.56 });
+  s.addText("Nếu bỏ một test case thì mất một lỗi mà kiểm thử tuần tự không thấy, hoặc mất một mốc đối chứng: bảng 'Vai trò của từng test case' trong báo cáo mục 4.4.4.", { x: M, y: 6.35, w: W, h: 0.5, fontFace: BODY, fontSize: 14, color: MUTED, margin: 0, valign: "top", isTextBox: true });
+  footer(s, "Báo cáo mục 4.4.4 · docs/DANH_GIA_RUI_RO.md · results/fix-unique-attendee, fix-exclusion-20, sensitivity-n2-new");
+  s.addNotes("Đây là phần chứng minh tính khả thi của test case. Một: tất cả chạy tự động. Hai: bảy test case đạt ở cả hai chế độ và khi chạy tuần tự các cơ chế bảo vệ từ chối bằng mã lỗi riêng như duration_limit_reached hay booker_limit_exceeded_error, nghĩa là test case thật sự kiểm tra chứ không đạt rỗng. Ba: lặp lại mười trên mười vòng và vẫn như vậy khi chỉ có hai request. Bốn: curl thuần cho cùng kết quả. Năm là bằng chứng mạnh nhất: khi nhóm thêm chỉ mục duy nhất theo người tham dự trên cơ sở dữ liệu test thì TC-16 chuyển từ không đạt sang đạt, tức test case đúng là phát hiện lỗi đó. Với ràng buộc loại trừ thì dữ liệu hết chồng giờ nhưng người thua nhận lỗi 500, nên sửa phải làm ở cả hai tầng. Hạn chế: mười hai test case mới chưa chạy trên máy Windows.");
+}
+
 // 4 · Lỗi thật
 {
   const s = add("LIGHT");
-  eyebrow(s, "11 · LỖI THẬT, TÁI HIỆN ĐỘC LẬP");
-  s.addText("6 lỗi, đều tái hiện được bằng curl thuần", { placeholder: "title" });
+  eyebrow(s, "13 · LỖI THẬT, TÁI HIỆN ĐỘC LẬP");
+  s.addText("11 lỗi, đều tái hiện được bằng curl thuần", { placeholder: "title" });
   tbl(s, [
     ["Lỗi", "Tái hiện bằng curl (không dùng harness)", "Dữ liệu trong CSDL"],
-    ["D1", "2 khách đặt 2 giờ chồng nhau cùng lúc: cả hai 200", "2 booking accepted chồng giờ 09:00–09:30 và 09:15–09:45"],
+    ["D1", "2 khách đặt 2 giờ chồng nhau cùng lúc: cả hai 200", "2 booking accepted chồng giờ"],
     ["D2", "6 người đặt event 3 ghế: 1×200, 5×409", "Chỉ bán 1/3 ghế dù còn ghế"],
-    ["D3", "10 người đặt event cần xác nhận: 8×200", "8 booking chờ xác nhận cùng một giờ"],
-    ["D4", "Đổi lịch liên tiếp một booking gốc 3 lần: cả 3 đều 200", "3 booking accepted từ cùng một gốc (cả khi tuần tự)"],
-    ["D5", "Hủy và đổi lịch cùng lúc: cả hai 200", "Booking 09:00 đã hủy nhưng vẫn còn booking 11:00"],
+    ["D3", "10 người đặt event cần xác nhận: 8×200", "8 booking chờ xác nhận cùng giờ"],
+    ["D4", "Đổi lịch một booking gốc 3 lần liên tiếp: 3×200", "3 booking accepted từ một gốc (cả khi tuần tự)"],
+    ["D5", "Hủy và đổi lịch cùng lúc: cả hai 200", "Booking 09:00 đã hủy nhưng còn booking 11:00"],
     ["D6", "8 người đặt 8 giờ, giới hạn 1/ngày: 8×200", "8 booking hiệu lực trong một ngày"],
-  ], { y: 1.75, colW: [0.9, 5.9, W - 6.8], fontSize: 14, rowH: 0.55 });
-  s.addText("Đối chứng: gửi tuần tự hai request chồng giờ thì request thứ hai bị 409. Nhóm chưa báo lỗi cho Cal.com và chưa sửa mã Cal.com.", { x: M, y: 5.9, w: W, h: 0.8, fontFace: BODY, fontSize: 16, color: MUTED, margin: 0, valign: "top", isTextBox: true });
-  footer(s, "race-tests/repro/repro-curl.sh · docs/evidence/repro-curl.txt · docs/MINH_CHUNG_LOI.md");
-  s.addNotes("Để chứng minh đây là lỗi thật, nhóm tái hiện lại từng lỗi bằng lệnh curl thuần, không dùng bộ test, rồi xem trực tiếp dữ liệu trong cơ sở dữ liệu. D4 là lỗi logic xảy ra cả khi gửi tuần tự; năm lỗi còn lại chỉ xảy ra khi đồng thời. Nhóm chưa báo lỗi cho nhóm phát triển Cal.com và chưa sửa mã Cal.com, nên nói là lỗi nhóm tìm được trên bản v6.2.0 chạy local.");
+    ["D7", "6 người đặt 6 giờ sát nhau, buffer 30 phút: 6×200", "6 booking cách nhau 0 phút"],
+    ["D8", "6 người đặt 6 giờ, giới hạn 30 phút/ngày: 6×200", "Tổng 180 phút trong ngày"],
+    ["D9", "1 người đặt 6 giờ, giới hạn 1 booking/người: 6×200", "6 booking hiệu lực của cùng một email"],
+    ["D10", "Hủy 1 booking 6 lần cùng lúc: 6×200", "12 email hủy được gửi (kỳ vọng 2)"],
+    ["D11", "1 email đặt 6 lần vào event 3 ghế: 2×200, 4×409", "Email đó chiếm 2 ghế"],
+  ], { y: 1.7, colW: [0.8, 6.2, W - 7.0], fontSize: 13, rowH: 0.36 });
+  s.addText("Đối chứng: gửi tuần tự thì cơ chế bảo vệ từ chối đúng (trừ D4). Nhóm chưa báo lỗi cho Cal.com và chưa sửa mã Cal.com.", { x: M, y: 6.45, w: W, h: 0.55, fontFace: BODY, fontSize: 15, color: MUTED, margin: 0, valign: "top", isTextBox: true });
+  footer(s, "race-tests/repro/repro-curl.sh, repro-curl-2.sh · docs/evidence/repro-curl*.txt · docs/MINH_CHUNG_LOI.md");
+  s.addNotes("Để chứng minh đây là lỗi thật, nhóm tái hiện lại từng lỗi bằng lệnh curl thuần, không dùng bộ test, rồi xem trực tiếp dữ liệu trong cơ sở dữ liệu. Năm lỗi đầu D1 đến D6 đã có từ đợt một, năm lỗi D7 đến D11 là phát hiện của đợt mở rộng. D4 là lỗi logic xảy ra cả khi gửi tuần tự; mười lỗi còn lại chỉ xảy ra khi đồng thời. D10 đáng chú ý: mọi lệnh hủy đều thành công nên nhìn bề ngoài không có gì sai, chỉ khi đếm email mới thấy 12 thay vì 2. Nhóm chưa báo lỗi cho nhóm phát triển Cal.com và chưa sửa mã Cal.com, nên nói là lỗi theo tính chất dữ liệu bất biến, chưa phải được nhóm phát triển xác nhận.");
+}
+
+// Lỗi khó tìm và rủi ro
+{
+  const s = add("LIGHT");
+  eyebrow(s, "14 · LỖI KHÓ TÌM VÀ ĐÁNH GIÁ RỦI RO");
+  s.addText("Vì sao khó tìm, và lỗi nào nguy hiểm nhất", { placeholder: "title" });
+  s.addImage({ path: path.resolve(__dirname, "..", "docs", "figures", "hinh-ma-tran-rui-ro.png"), x: M, y: 1.65, w: 4.9, h: 4.9 * 960 / 1300 });
+  s.addText("Rủi ro = khả năng × ảnh hưởng (thang 1–5). Đỏ: nghiêm trọng (D1: 25, D6: 20).", { x: M, y: 5.35, w: 4.9, h: 0.7, fontFace: BODY, fontSize: 13, color: MUTED, margin: 0, valign: "top", isTextBox: true });
+  const cx = M + 5.3, cw2 = W - 5.3;
+  card(s, cx, 1.65, cw2, 2.35);
+  s.addText("VÌ SAO KHÓ PHÁT HIỆN", { x: cx + 0.25, y: 1.75, w: cw2 - 0.5, h: 0.35, fontFace: MONO, fontSize: 13, bold: true, color: BLUE, margin: 0, isTextBox: true });
+  s.addText([
+    { text: "Cửa sổ chỉ 30–60 ms: thử tay gần như không gặp", options: { bullet: true, breakLine: true, paraSpaceAfter: 4 } },
+    { text: "Mọi request trả 200, giao diện báo thành công", options: { bullet: true, breakLine: true, paraSpaceAfter: 4 } },
+    { text: "Chạy tuần tự thì đúng: 19/20 test case đạt", options: { bullet: true, breakLine: true, paraSpaceAfter: 4 } },
+    { text: "Chỉ lộ ra khi đối chiếu CSDL hoặc đếm tác dụng phụ", options: { bullet: true } },
+  ], { x: cx + 0.25, y: 2.15, w: cw2 - 0.5, h: 1.75, fontFace: BODY, fontSize: 14, color: MUTED, margin: 0, valign: "top", isTextBox: true });
+  card(s, cx, 4.15, cw2, 2.4);
+  s.addText("MẤU CHỐT: NẾU KHÔNG KIỂM TRA THÌ SAO", { x: cx + 0.25, y: 4.25, w: cw2 - 0.5, h: 0.35, fontFace: MONO, fontSize: 13, bold: true, color: RUST, margin: 0, isTextBox: true });
+  s.addText([
+    { text: "Không có lỗi nào làm sập hệ thống (30 request: không 5xx)", options: { bullet: true, breakLine: true, paraSpaceAfter: 4 } },
+    { text: "Nguy hiểm hơn: dữ liệu sai âm thầm, hai khách cùng đến một giờ", options: { bullet: true, breakLine: true, paraSpaceAfter: 4 } },
+    { text: "D10: 1 lần hủy gửi 12 email; D11: 1 người chiếm 2/3 ghế", options: { bullet: true, breakLine: true, paraSpaceAfter: 4 } },
+    { text: "Sửa thiếu cũng nguy hiểm: ràng buộc CSDL mà không ánh xạ lỗi thì thua nhận 500", options: { bullet: true } },
+  ], { x: cx + 0.25, y: 4.65, w: cw2 - 0.5, h: 1.85, fontFace: BODY, fontSize: 14, color: MUTED, margin: 0, valign: "top", isTextBox: true });
+  footer(s, "Báo cáo mục 3.4.3, 4.5.5, 4.5.6 · docs/DANH_GIA_RUI_RO.md");
+  s.addNotes("Phần này trả lời hai yêu cầu của thầy: tìm ra lỗi quan trọng mà khó thấy, và đánh giá rủi ro. Khó thấy vì bốn lý do trên slide. Nổi bật là D10 và D11: D10 mọi lệnh hủy đều thành công, chỉ khi đếm email gửi đi mới thấy mỗi lệnh chạy lại toàn bộ tác dụng phụ; D11 nằm đúng trong cơ chế chống đăng ký trùng mà Cal.com đã viết, và cơ chế đó chạy tốt khi test tuần tự. Về rủi ro, nhóm chấm điểm bằng khả năng nhân ảnh hưởng. D1, tức chủ lịch bị đặt trùng giờ, và D6, tức vượt giới hạn đặt lịch, ở mức nghiêm trọng. Điểm mấu chốt: không có lỗi nào làm hệ thống sập, mà dữ liệu sai một cách âm thầm. Điểm khả năng là đánh giá dựa trên số liệu đã đo (tái hiện 10 trên 10 vòng, chỉ cần 2 request), điểm ảnh hưởng là đánh giá của nhóm.");
 }
 
 // Nhiệm vụ và đóng góp
 {
   const s = add("LIGHT");
-  eyebrow(s, "12 · NHIỆM VỤ VÀ ĐÓNG GÓP");
+  eyebrow(s, "15 · NHIỆM VỤ VÀ ĐÓNG GÓP");
   s.addText("Nhiệm vụ và đóng góp của từng thành viên", { placeholder: "title" });
   tbl(s, [
     ["Thành viên", "Vai trò", "Nhiệm vụ đã thực hiện", "Sản phẩm"],
@@ -333,7 +407,7 @@ const add = (master, section) => {
 // 8 · Kế hoạch tiếp theo
 {
   const s = add("DARK", "Tiếp theo");
-  eyebrow(s, "13 · KẾ HOẠCH TIẾP THEO", true);
+  eyebrow(s, "16 · KẾ HOẠCH TIẾP THEO", true);
   s.addText("Từ giữa kỳ đến bảo vệ", { placeholder: "title" });
   const rows = [
     ["21/10 – 3/11", "Thêm scenario Playwright qua giao diện, hoàn thiện báo cáo", ORANGE],

@@ -168,3 +168,38 @@ for (x, y, t) in ((0.9, 3.2, "Khách"), (9.1, 1.6, "Chủ lịch")):
 save(fig, "hinh-usecase.png")
 
 print("ok", sorted(os.listdir(OUT)))
+
+# --- Hình: kết quả 20 test case (macOS, đồng thời và tuần tự) ---
+r20 = {s["id"]: s["failedRounds"] for s in load("giua-ky-20-race")["scenarios"]}
+s20 = {s["id"]: s["failedRounds"] for s in load("giua-ky-20-sequential")["scenarios"]}
+ids20 = [f"S{i}" for i in range(1, 21)]
+fig, ax = plt.subplots(figsize=(11, 4.6))
+x = np.arange(20); bw = 0.38
+ax.bar(x - bw / 2, [r20[i] for i in ids20], bw, label="Đồng thời", color=ORANGE, edgecolor="#404040", lw=0.6)
+ax.bar(x + bw / 2, [s20[i] for i in ids20], bw, label="Tuần tự (đối chứng)", color=BLUE, edgecolor="#404040", lw=0.6)
+ax.set_xticks(x); ax.set_xticklabels([f"{i:02d}" for i in range(1, 21)])
+ax.set_xlabel("Test case (TC-01 đến TC-20)"); ax.set_ylabel("Số vòng vi phạm (trên 10 vòng)")
+ax.set_ylim(0, 13.5); ax.set_yticks(range(0, 11, 2)); ax.legend(ncol=2, fontsize=11, loc="upper center", frameon=False)
+ax.grid(axis="y", alpha=0.3)
+for s_ in ("top", "right"): ax.spines[s_].set_visible(False)
+save(fig, "hinh-ket-qua-20.png")
+
+# --- Hình: ma trận rủi ro (khả năng xảy ra × mức ảnh hưởng) ---
+risk = {"D1": (5, 5), "D2": (4, 2), "D3": (4, 3), "D4": (4, 4), "D5": (2, 4), "D6": (5, 4),
+        "D7": (4, 3), "D8": (5, 3), "D9": (4, 3), "D10": (4, 3), "D11": (2, 3)}
+fig, ax = plt.subplots(figsize=(7.6, 5.4))
+for li in range(1, 6):
+    for im in range(1, 6):
+        sc = li * im
+        c = "#F4B6B6" if sc >= 20 else "#F8CBAD" if sc >= 12 else "#FFE699" if sc >= 6 else "#C6E0B4"
+        ax.add_patch(plt.Rectangle((li - 0.5, im - 0.5), 1, 1, fc=c, ec="white", lw=2))
+cell = {}
+for k, (li, im) in risk.items(): cell.setdefault((li, im), []).append(k)
+for (li, im), ks in cell.items():
+    ax.text(li, im, "\n".join(", ".join(ks[i:i + 2]) for i in range(0, len(ks), 2)), ha="center", va="center", fontsize=11.5, fontweight="bold", color=INK)
+ax.set_xlim(0.5, 5.5); ax.set_ylim(0.5, 5.5)
+ax.set_xticks(range(1, 6)); ax.set_yticks(range(1, 6))
+ax.set_xlabel("Khả năng xảy ra (1 thấp, 5 rất cao)"); ax.set_ylabel("Mức ảnh hưởng (1 nhẹ, 5 nghiêm trọng)")
+for s_ in ax.spines.values(): s_.set_visible(False)
+ax.tick_params(length=0)
+save(fig, "hinh-ma-tran-rui-ro.png")

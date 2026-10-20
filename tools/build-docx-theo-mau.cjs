@@ -144,8 +144,8 @@ function buildBody() {
   body.push(
     P("Trong thời đại số, việc đặt lịch hẹn trực tuyến đã trở thành nhu cầu phổ biến: khám bệnh, tư vấn, học thêm, họp công việc. Các hệ thống đặt lịch cho phép người sở hữu lịch công bố những khung giờ còn trống và để khách tự chọn giờ mà không cần trao đổi qua lại. Điều quan trọng nhất mà người dùng kỳ vọng ở loại hệ thống này rất đơn giản: một khung giờ chỉ được giữ cho một người."),
     P("Tuy nhiên, kỳ vọng đó chỉ dễ đạt được khi các yêu cầu đến lần lượt. Khi nhiều khách cùng bấm “Đặt lịch” trong một phần giây, hệ thống phải xử lý đồng thời nhiều yêu cầu cùng tranh một tài nguyên chung là lịch của chủ lịch. Nếu cách xử lý không an toàn trước tình huống này, hệ thống có thể nhận cả hai yêu cầu và chủ lịch bị đặt trùng giờ. Loại lỗi này rất khó gặp khi kiểm thử bằng tay hoặc bằng các kịch bản chạy tuần tự."),
-    P("Xuất phát từ thực tế đó, nhóm thực hiện đề tài R05-K15 của môn Kiểm thử phần mềm: kiểm thử race condition cho Cal.com, một hệ thống đặt lịch mã nguồn mở. Nhóm dựng hệ thống trên máy cá nhân, phân tích luồng đặt lịch, thiết kế 8 test case xoay quanh các tính chất dữ liệu phải luôn đúng, viết bộ test tự động gửi request đồng thời bằng k6 và kiểm tra trực tiếp cơ sở dữ liệu PostgreSQL. Kết quả là 6 lỗi, mỗi lỗi đều được tái hiện lại bằng lệnh `curl` thuần và được xác nhận trên hai máy khác nhau."),
-    P("Mục đích của báo cáo giữa kỳ này là **thuyết phục tính khả thi của kế hoạch kiểm thử** để được duyệt: kế hoạch có phạm vi hợp lý, tiêu chí đánh giá rõ ràng, chi phí thấp, và đã được chứng minh chạy thật bằng bộ test và các lỗi thật tìm được. Báo cáo cũng ghi rõ nhiệm vụ và đóng góp của từng thành viên.")
+    P("Xuất phát từ thực tế đó, nhóm thực hiện đề tài R05-K15 của môn Kiểm thử phần mềm: kiểm thử race condition cho Cal.com, một hệ thống đặt lịch mã nguồn mở. Nhóm dựng hệ thống trên máy cá nhân, phân tích luồng đặt lịch, thiết kế 20 test case xoay quanh các tính chất dữ liệu phải luôn đúng, viết bộ test tự động gửi request đồng thời bằng k6 và kiểm tra trực tiếp cơ sở dữ liệu PostgreSQL. Kết quả là 11 lỗi, tất cả đều được tái hiện lại bằng lệnh `curl` thuần (6 lỗi đầu còn được xác nhận trên máy thứ hai). Phần lớn là lỗi khó thấy: hệ thống vẫn trả HTTP 200 và giao diện báo thành công nhưng dữ liệu đã sai, nên kiểm thử tuần tự thông thường không phát hiện được."),
+    P("Mục đích của báo cáo giữa kỳ này là **thuyết phục tính khả thi của kế hoạch kiểm thử** để được duyệt: kế hoạch có phạm vi hợp lý, tiêu chí đánh giá rõ ràng, chi phí thấp, và đã được chứng minh chạy thật bằng bộ test và các lỗi thật tìm được. Báo cáo cũng đánh giá rủi ro của từng lỗi, chứng minh tính khả thi của từng test case và ghi rõ nhiệm vụ, đóng góp của từng thành viên.")
   );
 
   // ===== CHƯƠNG 1 =====
@@ -200,8 +200,11 @@ function buildBody() {
   body.push(...table([
     ["Yêu cầu của giảng viên", "Mục trong báo cáo", "Tóm tắt"],
     ["Đưa ra quy trình test", "3.3.4, 3.3.5", "Quy trình 7 bước, tiêu chí pass/fail, nhóm đối chứng tuần tự"],
-    ["Danh sách test case là gì", "3.3.6", "8 test case TC-01 đến TC-08, mỗi test case có đặc tả đầy đủ tiền điều kiện, input, kết quả mong đợi, dữ liệu"],
-    ["Chi phí cho việc test", "4.4.4", "0 đồng; 1 140 request, 176 giây máy cho lượt chính thức; ước lượng nhân lực 34 đến 46 giờ"],
+    ["Danh sách test case là gì", "3.3.6", "20 test case TC-01 đến TC-20, mỗi test case có đặc tả đầy đủ tiền điều kiện, input, kết quả mong đợi, dữ liệu"],
+    ["Đánh giá rủi ro", "3.4.3, 4.5.6", "Thang khả năng × ảnh hưởng, ma trận rủi ro, hậu quả của từng lỗi nếu không được kiểm tra"],
+    ["Chứng minh tính khả thi của test case", "4.4.4", "Bảy bằng chứng: chạy được, không báo lỗi giả, lặp lại được, tái hiện bằng công cụ khác, sửa lỗi thì test đạt, chi phí, hai máy"],
+    ["Lỗi quan trọng, khó phát hiện", "4.5.1, 4.5.6", "11 lỗi; lý do khó thấy khi kiểm thử tuần tự; hậu quả với người dùng"],
+    ["Chi phí cho việc test", "4.4.4", "0 đồng; 3 180 request, 460 giây máy cho lượt chính thức 20 test case; ước lượng nhân lực 34 đến 46 giờ (chưa gồm đợt mở rộng)"],
     ["Nêu kế hoạch test (giữa kỳ)", "3.3.2, 3.3.3, 3.4", "Phạm vi, giả định, rủi ro, lịch, tính khả thi và đề nghị duyệt"],
     ["Test như thế nào", "4.3, 4.4", "Gửi đồng thời bằng k6, kiểm tra dữ liệu trong cơ sở dữ liệu, chạy 10 vòng, đối chứng tuần tự, chạy lại trên máy thứ hai"],
     ["Kỹ thuật test", "2.1, 3.3.1", "Kiểm thử đồng thời (race condition): nguyên lý, lý do chọn, giới hạn"],
@@ -353,8 +356,8 @@ function buildBody() {
   body.push(...table([
     ["Bước", "Việc làm", "Sản phẩm"],
     ["1", "Đọc mã luồng đặt lịch, tìm chỗ kiểm tra rồi mới ghi", "Sơ đồ kiến trúc, giả thuyết"],
-    ["2", "Chọn 7 invariant I1 đến I7", "[[tbl:invariant]]"],
-    ["3", "Thiết kế 8 test case TC-01 đến TC-08", "Mục 3.3.6"],
+    ["2", "Chọn 12 invariant I1 đến I12", "[[tbl:invariant]]"],
+    ["3", "Thiết kế 20 test case TC-01 đến TC-20", "Mục 3.3.6"],
     ["4", "Tạo host test, loại cuộc hẹn; mỗi vòng dùng ngày riêng", "`fixtures.sql`"],
     ["5", "Chạy đồng thời bằng k6, rồi chạy lại đúng các yêu cầu đó tuần tự", "`run.mjs`, `race.js`"],
     ["6", "Truy vấn SQL kiểm invariant sau mỗi vòng", "`scenarios.mjs`, `db.mjs`"],
@@ -368,9 +371,14 @@ function buildBody() {
     ["I2b", "Còn ghế thì người đặt không bị từ chối", "So số người thành công với số ghế trống"],
     ["I3", "Một giờ có tối đa một booking chờ xác nhận", "Như I1, gồm cả trạng thái `pending`"],
     ["I4", "Một booking gốc sinh tối đa một booking mới hiệu lực", "Đếm booking có `fromReschedule` bằng mã gốc"],
-    ["I5", "Hủy báo thành công thì không còn booking hiệu lực của cuộc hẹn đó", "Kết hợp mã HTTP lệnh hủy và trạng thái các booking con"],
-    ["I6", "Số booking trong ngày không vượt giới hạn", "Đếm booking hiệu lực theo ngày"],
+    ["I5", "Hủy báo thành công thì không còn booking hiệu lực của cuộc hẹn đó; mỗi booking chỉ được hủy thành công đúng một lần", "Kết hợp mã HTTP lệnh hủy, trạng thái các booking con và số lệnh hủy trả 200"],
+    ["I6", "Số booking trong ngày (hoặc tuần) không vượt giới hạn", "Đếm booking hiệu lực theo ngày hoặc tuần của loại cuộc hẹn"],
     ["I7", "Không có phản hồi 5xx, quá thời gian hay lỗi kết nối", "Log của k6"],
+    ["I8", "Hai booking liền kề của chủ lịch cách nhau ít nhất bằng thời gian đệm đã cấu hình", "Sắp xếp booking hiệu lực theo giờ rồi so khoảng cách"],
+    ["I9", "Tổng thời lượng booking hiệu lực trong ngày không vượt giới hạn thời lượng", "Cộng độ dài booking của loại cuộc hẹn theo ngày"],
+    ["I10", "Một người đặt không vượt số booking đang hoạt động được phép", "Đếm booking hiệu lực theo email trong bảng `Attendee`"],
+    ["I11", "Một email chỉ chiếm tối đa một ghế trong một giờ", "Đếm dòng `Attendee` theo booking và email"],
+    ["I12", "Yêu cầu hợp lệ trên các giờ độc lập đều thành công, không bị từ chối nhầm", "So số phản hồi 200 với số booking trong cơ sở dữ liệu"],
   ], [1, 6, 6], "Các invariant dùng làm tiêu chí đúng sai", { center: [0], key: "invariant" }));
   body.push(PN("**Tiêu chí pass/fail:**"));
   body.push(
@@ -379,7 +387,7 @@ function buildBody() {
     L("3)", "Là lỗi race khi chạy đồng thời không đạt nhưng chạy tuần tự đạt. Nếu chạy tuần tự cũng không đạt thì là lỗi logic.")
   );
   body.push(H3("3.3.6. Danh sách và đặc tả test case"));
-  body.push(P("Dữ liệu chung của mọi test case: chủ lịch `k15host` (múi giờ UTC, rảnh cả ngày mọi ngày) và năm loại cuộc hẹn ở [[tbl:loai]]. Mỗi yêu cầu dùng một email người đặt khác nhau."));
+  body.push(P("Dữ liệu chung của mọi test case: chủ lịch `k15host` (múi giờ UTC, rảnh cả ngày mọi ngày) và chín loại cuộc hẹn ở [[tbl:loai]]. Mỗi yêu cầu dùng một email người đặt khác nhau, trừ TC-14, TC-15 và TC-16 cố ý dùng cùng một email."));
   body.push(...table([
     ["Loại cuộc hẹn", "Thời lượng", "Cấu hình đặc biệt"],
     ["`k15-30`", "30 phút", "Không"],
@@ -387,8 +395,12 @@ function buildBody() {
     ["`k15-seated`", "30 phút", "3 ghế mỗi giờ"],
     ["`k15-confirm`", "30 phút", "Cần xác nhận, booking chờ vẫn giữ chỗ"],
     ["`k15-limit`", "30 phút", "Tối đa 1 booking mỗi ngày"],
+    ["`k15-buffer`", "30 phút", "Thời gian đệm 30 phút sau mỗi cuộc hẹn"],
+    ["`k15-duration`", "30 phút", "Tổng thời lượng tối đa 30 phút mỗi ngày"],
+    ["`k15-week`", "30 phút", "Tối đa 1 booking mỗi tuần"],
+    ["`k15-booker`", "30 phút", "Mỗi người đặt chỉ được 1 booking đang hoạt động"],
   ], [3, 2, 6], "Các loại cuộc hẹn dùng cho kiểm thử", { key: "loai" }));
-  body.push(P("[[tbl:ds-tc]] tổng hợp danh sách test case. Từ [[tbl:spec1]] đến [[tbl:spec8]] là đặc tả từng test case theo mẫu: mô tả, tác nhân, tiền điều kiện, input, kết quả mong đợi, invariant."));
+  body.push(P("[[tbl:ds-tc]] tổng hợp danh sách test case. Từ [[tbl:spec1]] đến [[tbl:spec20]] là đặc tả từng test case theo mẫu: mô tả, tác nhân, tiền điều kiện, input, kết quả mong đợi, invariant."));
   body.push(...table([
     ["TC", "Test case", "Input (gửi đồng thời)", "Kết quả mong đợi", "Invariant"],
     ["TC-01", "Nhiều người đặt cùng một giờ", "10 người đặt `k15-30` lúc 09:00", "1 người 200, 9 người 409", "I1"],
@@ -399,6 +411,18 @@ function buildBody() {
     ["TC-06", "Đổi lịch nhiều lần", "5 lệnh đổi lịch cùng một booking", "1 lệnh thành công", "I4"],
     ["TC-07", "Hủy và đổi lịch cùng lúc", "1 lệnh hủy + 1 lệnh đổi lịch", "Không thể cả hai cùng thành công", "I5"],
     ["TC-08", "Vượt giới hạn 1 booking mỗi ngày", "8 người đặt 8 giờ khác nhau", "Chỉ 1 người thành công", "I6"],
+    ["TC-09", "Hai booking cùng đổi lịch sang một giờ", "2 lệnh đổi lịch của hai booking khác nhau sang cùng giờ trống", "1 thành công, 1 bị 409", "I1"],
+    ["TC-10", "Đổi lịch tranh giờ với đặt mới", "1 lệnh đổi lịch + 1 lệnh đặt mới cùng nhắm một giờ", "Chỉ 1 trong 2 giữ được giờ", "I1"],
+    ["TC-11", "Thời gian đệm 30 phút", "6 người đặt 6 giờ sát nhau (cách 30 phút)", "Tối đa 3 booking, cách nhau ≥ 30 phút", "I8"],
+    ["TC-12", "Giới hạn thời lượng 30 phút mỗi ngày", "6 người đặt 6 giờ khác nhau trong ngày", "Chỉ 1 người thành công", "I9"],
+    ["TC-13", "Giới hạn 1 booking mỗi tuần", "6 người đặt 6 ngày khác nhau trong tuần", "Chỉ 1 người thành công", "I6"],
+    ["TC-14", "Giới hạn 1 booking mỗi người đặt", "1 người (cùng email) đặt 6 giờ khác nhau", "Chỉ 1 booking thành công", "I10"],
+    ["TC-15", "Hủy một booking nhiều lần", "6 lệnh hủy cùng một booking", "Đúng 1 lệnh 200, 5 lệnh bị từ chối", "I5"],
+    ["TC-16", "Một người chiếm nhiều ghế", "Cùng một email đặt 6 lần vào giờ có ghế", "Email đó chiếm đúng 1 ghế", "I11"],
+    ["TC-17", "Hai loại cuộc hẹn cùng giờ bắt đầu", "10 người: 5 đặt 30 phút, 5 đặt 60 phút, đều 09:00", "Chỉ 1 booking hiệu lực", "I1"],
+    ["TC-18", "Tải cao", "30 người đặt cùng một giờ", "1 người 200, 29 người 409, không 5xx", "I1, I7"],
+    ["TC-19", "Giờ độc lập không bị từ chối nhầm", "20 người đặt 20 giờ liền kề, không chồng nhau", "Cả 20 người thành công", "I12"],
+    ["TC-20", "Hủy và đặt lại đúng giờ vừa hủy", "1 lệnh hủy + 1 lệnh đặt mới cùng giờ", "Không có 2 booking hiệu lực cùng giờ", "I1"],
   ], [1.3, 3.2, 4.2, 3.6, 1.4], "Danh sách test case", { center: [0, 4], size: 22, key: "ds-tc" }));
   let specN = 0;
   const spec = (tc, name, desc, pre, input, expected, inv) => {
@@ -415,6 +439,18 @@ function buildBody() {
   body.push(...spec("TC-06", "đổi lịch nhiều lần", "Kiểm tra một booking đã đổi lịch có thể bị đổi tiếp bằng cùng mã gốc hay không.", "Booking B lúc 09:00 ở trạng thái đã chấp nhận.", "5 lệnh đổi lịch B sang 10:00, 11:00, 12:00, 13:00, 14:00.", "Một lệnh thành công; B bị hủy; chỉ 1 booking mới hiệu lực.", "I4, I7"));
   body.push(...spec("TC-07", "hủy và đổi lịch cùng lúc", "Kiểm tra tính nhất quán khi hai thao tác trái ngược tác động lên cùng một booking.", "Booking B lúc 09:00.", "1 lệnh hủy B và 1 lệnh đổi lịch B sang 11:00 gửi đồng thời.", "Không thể cả hai cùng thành công; nếu hủy thành công thì không còn booking hiệu lực.", "I5, I7"));
   body.push(...spec("TC-08", "vượt giới hạn 1 booking mỗi ngày", "Kiểm tra giới hạn số booking khi nhiều yêu cầu cùng đếm trước khi ghi.", "Ngày trống, cuộc hẹn giới hạn 1 booking mỗi ngày.", "8 người cùng đặt 8 giờ khác nhau (09:00 đến 16:00) trong cùng một ngày.", "Chỉ 1 người thành công, 7 người bị từ chối vì vượt giới hạn.", "I6, I7"));
+  body.push(...spec("TC-09", "hai booking cùng đổi lịch sang một giờ", "Kiểm tra đường đổi lịch có được bảo vệ chống trùng giờ giống đường đặt mới hay không.", "Booking A (10:00) và B (12:00) của hai người khác nhau; giờ đích 15:00 trống.", "2 lệnh đổi lịch gửi đồng thời: A và B cùng sang 15:00.", "Đúng 1 lệnh thành công, lệnh còn lại bị 409; chỉ 1 booking hiệu lực lúc 15:00.", "I1"));
+  body.push(...spec("TC-10", "đổi lịch tranh giờ với đặt mới", "Kiểm tra đổi lịch và đặt mới có thể cùng chiếm một giờ trống hay không.", "Booking A lúc 10:00; giờ đích 15:00 trống.", "1 lệnh đổi lịch A sang 15:00 và 1 người mới đặt 15:00, gửi đồng thời.", "Chỉ một trong hai giữ được 15:00.", "I1"));
+  body.push(...spec("TC-11", "thời gian đệm 30 phút", "Kiểm tra thời gian đệm sau cuộc hẹn có còn được tôn trọng khi nhiều yêu cầu cùng đến.", "Cuộc hẹn `k15-buffer` (30 phút, đệm 30 phút); khung 09:00 đến 13:00 trống.", "6 người đặt 6 giờ sát nhau: 09:00, 09:30, 10:00, 10:30, 11:00, 11:30.", "Tối đa 3 booking (09:00, 10:00, 11:00), hai booking liền kề cách nhau ít nhất 30 phút.", "I8"));
+  body.push(...spec("TC-12", "giới hạn thời lượng 30 phút mỗi ngày", "Kiểm tra giới hạn tổng thời lượng khi nhiều yêu cầu cùng cộng thời lượng trước khi ghi.", "Ngày trống, cuộc hẹn `k15-duration` (30 phút, tối đa 30 phút mỗi ngày).", "6 người đặt 6 giờ cách nhau 1 giờ trong cùng một ngày.", "Chỉ 1 người thành công; các yêu cầu còn lại bị từ chối với `duration_limit_reached`.", "I9"));
+  body.push(...spec("TC-13", "giới hạn 1 booking mỗi tuần", "Kiểm tra giới hạn theo tuần (cùng họ với TC-08 nhưng khác khung thời gian).", "Tuần trống, cuộc hẹn `k15-week` (tối đa 1 booking mỗi tuần).", "6 người đặt 6 ngày liên tiếp (thứ hai đến thứ bảy) lúc 09:00 trong cùng một tuần.", "Chỉ 1 người thành công; các yêu cầu còn lại bị từ chối với `booking_limit_reached`.", "I6"));
+  body.push(...spec("TC-14", "giới hạn 1 booking mỗi người đặt", "Kiểm tra giới hạn số booking đang hoạt động của cùng một người đặt.", "Cuộc hẹn `k15-booker` (mỗi người tối đa 1 booking đang hoạt động); người đặt chưa có booking.", "Cùng một email đặt 6 giờ khác nhau cùng lúc.", "Chỉ 1 booking thành công; các yêu cầu còn lại bị từ chối với `booker_limit_exceeded_error`.", "I10"));
+  body.push(...spec("TC-15", "hủy một booking nhiều lần", "Kiểm tra bấm hủy nhiều lần hoặc hủy từ nhiều tab có làm lệnh hủy chạy lặp hay không.", "Booking B ở trạng thái đã chấp nhận.", "6 lệnh hủy B gửi đồng thời.", "Đúng 1 lệnh trả 200, 5 lệnh còn lại trả 400 “đã hủy”; B ở trạng thái cancelled.", "I5"));
+  body.push(...spec("TC-16", "một người chiếm nhiều ghế", "Kiểm tra cơ chế chống đăng ký trùng của cuộc hẹn có ghế khi cùng một người gửi nhiều yêu cầu.", "Cuộc hẹn 3 ghế; giờ đã có 1 người đặt trước.", "Cùng một email đặt 6 lần đồng thời vào giờ đó.", "Email đó chiếm đúng 1 ghế; các yêu cầu còn lại bị 409 `already_signed_up_for_this_booking_error`.", "I11"));
+  body.push(...spec("TC-17", "hai loại cuộc hẹn cùng giờ bắt đầu", "Kiểm tra hai loại cuộc hẹn khác độ dài cùng bắt đầu một giờ (khóa chống trùng khác nhau vì giờ kết thúc khác nhau).", "Giờ 09:00 của chủ lịch trống; hai loại `k15-30` và `k15-60`.", "10 người: 5 đặt `k15-30`, 5 đặt `k15-60`, đều bắt đầu 09:00.", "Chỉ 1 booking hiệu lực.", "I1"));
+  body.push(...spec("TC-18", "tải cao", "Kiểm tra hệ thống vẫn đúng và không lỗi 5xx khi số yêu cầu tăng gấp ba so với TC-01.", "Giờ 09:00 trống.", "30 người cùng đặt `k15-30` lúc 09:00.", "1 người thành công, 29 người bị 409; không có phản hồi 5xx.", "I1, I7"));
+  body.push(...spec("TC-19", "giờ độc lập không bị từ chối nhầm", "Kiểm tra yêu cầu hợp lệ không bị ảnh hưởng bởi các yêu cầu khác đến cùng lúc (không có từ chối nhầm).", "Khung 09:00 đến 19:00 trống.", "20 người đặt 20 giờ liền kề, cách nhau 30 phút, không chồng nhau.", "Cả 20 yêu cầu thành công và có đúng 20 booking.", "I12"));
+  body.push(...spec("TC-20", "hủy và đặt lại đúng giờ vừa hủy", "Kiểm tra giải phóng giờ bằng hủy và đặt mới vào đúng giờ đó cùng lúc.", "Booking O lúc 09:00.", "1 lệnh hủy O và 1 người mới đặt 09:00, gửi đồng thời.", "Không bao giờ có 2 booking hiệu lực cùng giờ; người mới được nhận hoặc bị từ chối (409) đều chấp nhận được.", "I1"));
   body.push(H3("3.3.7. Cơ sở dữ liệu liên quan"));
   body.push(P("Các bảng của Cal.com mà bộ test đọc để kiểm invariant gồm `Booking`, `Attendee` và `BookingSeat`; [[tbl:booking]] đến [[tbl:bookingseat]] liệt kê các cột được sử dụng. Hai ràng buộc duy nhất đáng chú ý nằm ở bảng `Booking`: `uid` và `idempotencyKey`."));
   body.push(...table([
@@ -450,7 +486,8 @@ function buildBody() {
     ["Giai đoạn", "Việc", "Trạng thái"],
     ["Đăng ký", "Chốt thành viên, repo, kỹ thuật, phiên bản; lập bảng công việc", "Xong"],
     ["Sprint 1 (đến 20/10)", "Dựng hệ thống, vẽ kiến trúc, viết tài liệu cài đặt, kế hoạch test, thử nghiệm đầu tiên", "Xong"],
-    ["Sprint 2 và 3", "Bộ test 8 test case, chạy 10 vòng, đối chứng tuần tự, đo cửa sổ race, chạy lại trên máy Windows", "Xong"],
+    ["Sprint 2 và 3", "Bộ test 8 test case ban đầu, chạy 10 vòng, đối chứng tuần tự, đo cửa sổ race, chạy lại trên máy Windows", "Xong"],
+    ["Mở rộng theo góp ý của giảng viên", "Tăng lên 20 test case, đánh giá rủi ro, chứng minh tính khả thi, tái hiện 5 lỗi mới bằng curl", "Xong (chạy trên macOS)"],
     ["Sprint 2 và 3 (còn lại)", "Kiểm thử qua giao diện bằng Playwright", "Chưa làm"],
     ["Sprint 4", "Rà soát nguyên nhân gốc, đề xuất sửa, hoàn thiện báo cáo cuối", "Đang làm"],
     ["Tháng 12", "Slide bảo vệ, tập dượt, đánh giá chéo giữa các thành viên", "Chưa làm"],
@@ -459,12 +496,27 @@ function buildBody() {
   body.push(P("Nhóm đề nghị được duyệt kế hoạch kiểm thử trên cơ sở các bằng chứng sau, đều đã thực hiện thật:"));
   body.push(
     L("1)", "**Hệ thống dựng được và chạy được:** Cal.com v6.2.0 chạy trên hai máy (macOS và Windows 11), ba luồng đặt, đổi, hủy lịch đều thành công."),
-    L("2)", "**Kỹ thuật phát hiện được lỗi thật:** 6 trên 8 test case phát hiện lỗi; cả 6 lỗi tái hiện độc lập bằng `curl`, có dữ liệu sai trong cơ sở dữ liệu."),
-    L("3)", "**Kết quả không phụ thuộc máy:** máy Windows cho cùng kết luận 8/8 với máy macOS."),
-    L("4)", "**Chi phí thấp:** 0 đồng, lượt chạy chính thức dưới 3 phút máy, bộ test khoảng 970 dòng mã."),
+    L("2)", "**Kỹ thuật phát hiện được lỗi thật:** 13 trên 20 test case phát hiện lỗi (11 lỗi khác nhau); cả 11 lỗi tái hiện độc lập bằng `curl`, có dữ liệu sai trong cơ sở dữ liệu."),
+    L("3)", "**Kết quả không phụ thuộc máy:** 8 test case đầu chạy lại trên máy Windows cho cùng kết luận 8/8 với máy macOS; 12 test case bổ sung mới chạy trên macOS."),
+    L("4)", "**Chi phí thấp:** 0 đồng, lượt chạy chính thức 20 test case khoảng 8 phút máy (383 giây đồng thời + 76 giây tuần tự), bộ test khoảng 1 600 dòng mã."),
     L("5)", "**Rủi ro đã được kiểm soát:** nhóm đối chứng tuần tự, lặp 10 vòng, kiểm dữ liệu trong cơ sở dữ liệu, ghim phiên bản."),
     L("6)", "**Phạm vi và việc còn lại rõ ràng:** phần chưa làm (Playwright, báo lỗi cho Cal.com) đã được liệt kê cùng lịch thực hiện.")
   );
+
+  body.push(H3("3.4.3. Đánh giá rủi ro và lý do chọn test case"));
+  body.push(P("Nhóm đánh giá rủi ro của từng khu vực chức năng trước khi viết test case, để dồn công sức vào chỗ hỏng thì hậu quả nặng nhất. Điểm rủi ro bằng **khả năng xảy ra × mức ảnh hưởng**, mỗi thang từ 1 đến 5. Khả năng xảy ra dựa trên hai căn cứ: nhiều người dùng có cùng thao tác lên một tài nguyên hay không, và đoạn mã tương ứng có khóa hay giao dịch bao trùm bước kiểm tra và bước ghi hay không (đọc mã ở mục 3.2). Mức ảnh hưởng dựa trên hậu quả với người dùng: dữ liệu sai mà không có cảnh báo là nặng nhất; thông báo lỗi sai là nhẹ. Quy ước mức: từ 20 trở lên là nghiêm trọng, 12 đến 19 là cao, 6 đến 11 là trung bình."));
+  body.push(...table([
+    ["Khu vực", "Vì sao rủi ro", "Khả năng", "Ảnh hưởng", "Test case"],
+    ["Chống trùng giờ của chủ lịch", "Kiểm tra giờ trống rồi mới ghi, không khóa; hậu quả là chủ lịch bị đặt trùng", "5", "5", "TC-01, 02, 17, 18, 19"],
+    ["Giới hạn đặt (ngày, tuần, thời lượng, người đặt)", "Bốn cơ chế đều đếm trước rồi ghi sau; giới hạn là cam kết với chủ lịch", "5", "4", "TC-08, 12, 13, 14"],
+    ["Đổi lịch", "Một booking sinh booking mới, trạng thái gốc mang hai nghĩa", "4", "4", "TC-06, 09, 10"],
+    ["Hủy lịch", "Tác dụng phụ (email, webhook, lịch ngoài) chạy sau bước kiểm tra trạng thái", "4", "3", "TC-07, 15, 20"],
+    ["Cuộc hẹn có ghế", "Có khóa dòng nhưng chỉ ở nhánh thêm ghế; nhánh tạo mới và nhánh kiểm tra trùng chưa rõ", "4", "3", "TC-03, 04, 16"],
+    ["Cuộc hẹn cần xác nhận", "Booking chờ không có khóa chống trùng ở cơ sở dữ liệu", "4", "3", "TC-05"],
+    ["Thời gian đệm", "Tính khi kiểm tra giờ trống, cùng điểm yếu kiểm tra rồi ghi", "4", "3", "TC-11"],
+    ["Độ ổn định khi tải cao", "Mỗi yêu cầu giữ một kết nối cơ sở dữ liệu; tải cao có thể gây lỗi 5xx", "3", "4", "TC-18, 19"],
+  ], [3, 6, 1.4, 1.4, 3.2], "Đánh giá rủi ro theo khu vực chức năng và test case tương ứng", { center: [2, 3], size: 22, key: "rui-ro-vung" }));
+  body.push(P("Phần lớn khu vực có từ hai test case trở lên: một test case “đúng mong đợi” để đối chứng cơ chế bảo vệ hiện có (như TC-01, TC-04, TC-09) và một hay nhiều test case cố ý tạo tranh chấp. Nhờ vậy khi một test case không đạt, nhóm biết được cơ chế bảo vệ nào hỏng chứ không chỉ biết hệ thống “có lỗi”."));
 
   // ===== CHƯƠNG 4 =====
   body.push(H1("CHƯƠNG 4. XÂY DỰNG VÀ THỰC HIỆN KIỂM THỬ"));
@@ -523,17 +575,18 @@ function buildBody() {
     ["Lệnh", "Tác dụng"],
     ["`npm run fixtures`", "Tạo lại chủ lịch và loại cuộc hẹn test"],
     ["`npm run smoke`", "Kiểm tra ba luồng nghiệp vụ"],
-    ["`npm run race`", "Chạy 8 test case đồng thời, 10 vòng mỗi test case"],
+    ["`npm run race`", "Chạy 20 test case đồng thời, 10 vòng mỗi test case"],
     ["`npm run race -- --mode sequential`", "Chạy đối chứng tuần tự"],
     ["`node src/window.mjs`", "Đo độ rộng cửa sổ race"],
     ["`npm run demo:midterm`", "Demo giữa kỳ: kiểm hệ thống, ba luồng và thử nghiệm race (khoảng 20 giây)"],
     ["`bash repro/repro-curl.sh`", "Tái hiện độc lập D2, D3, D5, D6 bằng `curl`"],
+    ["`bash repro/repro-curl-2.sh`", "Tái hiện độc lập D7 đến D11 bằng `curl`"],
   ], [5.2, 7], "Các lệnh chính của bộ test"));
   body.push(P("Mỗi lần chạy sinh thư mục kết quả gồm `REPORT.md` (bảng tổng hợp và chi tiết từng vòng), `summary.json` và thư mục `raw/` chứa yêu cầu đã gửi, phản hồi từng yêu cầu và tóm tắt của k6. Mã thoát bằng 0 khi mọi test case đạt, 1 khi có test case không đạt, 2 khi bộ test lỗi."));
 
   body.push(H2("4.4. Thực hiện kiểm thử và kết quả"));
   body.push(H3("4.4.1. Kết quả chạy đồng thời và tuần tự"));
-  body.push(P("Lượt chạy chính thức ngày 18/10/2026 trên máy macOS: 8 test case, mỗi test case 10 vòng ở mỗi chế độ. [[tbl:kq-mac]] tổng hợp kết quả; [[fig:ket-qua]] so sánh với máy Windows."));
+  body.push(P("Lượt chạy chính thức ngày 20/10/2026 trên máy macOS: 20 test case, mỗi test case 10 vòng ở mỗi chế độ (3 180 yêu cầu). [[tbl:kq-mac]] và [[fig:ket-qua-20]] tổng hợp kết quả; kết quả của 8 test case đầu trên máy Windows ở mục 4.4.2."));
   body.push(...table([
     ["TC", "Đồng thời (vòng vi phạm)", "Tuần tự (vòng vi phạm)", "Kết luận", "Lỗi"],
     ["TC-01", "0/10", "0/10", "Đúng", "–"],
@@ -544,37 +597,91 @@ function buildBody() {
     ["TC-06", "10/10", "10/10", "Lỗi logic", "D4"],
     ["TC-07", "10/10", "0/10", "Lỗi race", "D5"],
     ["TC-08", "10/10", "0/10", "Lỗi race", "D6"],
-  ], [1.4, 3.2, 3.2, 2.6, 1.2], "Kết quả chạy chính thức trên máy macOS", { center: [0, 1, 2, 4], key: "kq-mac" }));
+    ["TC-09", "0/10", "0/10", "Đúng", "–"],
+    ["TC-10", "0/10", "0/10", "Đúng", "–"],
+    ["TC-11", "10/10", "0/10", "Lỗi race", "D7"],
+    ["TC-12", "10/10", "0/10", "Lỗi race", "D8"],
+    ["TC-13", "10/10", "0/10", "Lỗi race", "D6"],
+    ["TC-14", "10/10", "0/10", "Lỗi race", "D9"],
+    ["TC-15", "10/10", "0/10", "Lỗi race", "D10"],
+    ["TC-16", "10/10", "0/10", "Lỗi race", "D11"],
+    ["TC-17", "10/10", "0/10", "Lỗi race", "D1"],
+    ["TC-18", "0/10", "0/10", "Đúng", "–"],
+    ["TC-19", "0/10", "0/10", "Đúng", "–"],
+    ["TC-20", "0/10", "0/10", "Đúng", "–"],
+  ], [1.4, 3.2, 3.2, 2.6, 1.2], "Kết quả chạy chính thức 20 test case trên máy macOS", { center: [0, 1, 2, 4], key: "kq-mac", size: 22 }));
+  body.push(...fig("hinh-ket-qua-20.png", "Số vòng vi phạm của 20 test case ở hai chế độ (máy macOS)", 15, "ket-qua-20"));
   body.push(PN("**Nhận xét:**"));
   body.push(
-    L("1)", "TC-01 và TC-04 đạt ở cả hai chế độ: ràng buộc duy nhất ở TC-01 và khóa dòng ở TC-04 hoạt động đúng. Kết quả này cũng cho thấy bộ test không báo lỗi giả."),
-    L("2)", "Năm test case TC-02, 03, 05, 07, 08 chỉ không đạt khi chạy đồng thời: đây là lỗi race."),
-    L("3)", "TC-06 không đạt ở cả hai chế độ nên là lỗi logic, không phải race."),
-    L("4)", "Ở TC-02, mã HTTP của cả 10 yêu cầu đều là 200 nhưng cơ sở dữ liệu có 10 booking chồng giờ, tạo ra 45 cặp chồng nhau trong mỗi vòng. Đây là lý do nhóm kiểm tra dữ liệu thay vì tin mã HTTP.")
+    L("1)", "13 trên 20 test case phát hiện lỗi: 12 test case không đạt khi chạy đồng thời nhưng đạt khi chạy tuần tự (lỗi race) và 1 test case (TC-06) không đạt ở cả hai chế độ (lỗi logic)."),
+    L("2)", "7 test case đạt ở cả hai chế độ (TC-01, 04, 09, 10, 18, 19, 20). Đây là bằng chứng bộ test không báo lỗi giả và cho biết cơ chế nào của Cal.com đang bảo vệ đúng: ràng buộc duy nhất ở TC-01, khóa dòng ở TC-04, đường đổi lịch ở TC-09 và TC-10, tải 30 yêu cầu ở TC-18, các giờ độc lập ở TC-19."),
+    L("3)", "Nhóm đối chứng tuần tự đạt 19/20: kiểm thử chức năng thông thường sẽ kết luận mọi tính năng trừ TC-06 đều đúng. Lỗi chỉ lộ ra khi gửi đồng thời."),
+    L("4)", "Ở TC-02, mã HTTP của cả 10 yêu cầu đều là 200 nhưng cơ sở dữ liệu có 10 booking chồng giờ (45 cặp chồng nhau mỗi vòng); ở TC-11, TC-12, TC-13, TC-14 cả 6 yêu cầu đều 200 dù giới hạn đã cấu hình. Đây là lý do nhóm kiểm tra dữ liệu thay vì tin mã HTTP."),
+    L("5)", "TC-15 cho thấy một dạng lỗi khác: cả 6 lệnh hủy đều thành công, và nhóm đếm được 12 email hủy được gửi cho một booking (đối chứng tuần tự: 2 email).")
   );
   body.push(H3("4.4.2. Chạy lại trên máy Windows"));
-  body.push(P("Thành viên Ngô Quốc Trường Vĩ chạy lại toàn bộ trên máy Windows 11 ([[tbl:cau-hinh]]) với cùng phiên bản mã. Kết quả khớp 8/8 với máy macOS: số vòng vi phạm và dữ liệu trong cơ sở dữ liệu ở vòng 1 giống nhau, trừ TC-05, nơi máy macOS nhận 9 booking chờ xác nhận và máy Windows nhận 10; cả hai đều vi phạm 10/10 vòng."));
-  body.push(...fig("hinh-ket-qua.png", "Số vòng vi phạm của từng test case trên hai máy, hai chế độ", 15, "ket-qua"));
+  body.push(P("Thành viên Ngô Quốc Trường Vĩ chạy lại toàn bộ trên máy Windows 11 ([[tbl:cau-hinh]]) với cùng phiên bản mã. Lượt này gồm 8 test case đầu (bộ test ngày 18/10); 12 test case bổ sung (TC-09 đến TC-20) chưa chạy trên Windows. Kết quả khớp 8/8 với máy macOS: số vòng vi phạm và dữ liệu trong cơ sở dữ liệu ở vòng 1 giống nhau, trừ TC-05, nơi máy macOS nhận 9 booking chờ xác nhận và máy Windows nhận 10; cả hai đều vi phạm 10/10 vòng."));
+  body.push(...fig("hinh-ket-qua.png", "Số vòng vi phạm của 8 test case đầu trên hai máy, hai chế độ", 15, "ket-qua"));
   body.push(P("Máy Windows chạy chậm hơn: lượt đồng thời mất 210 giây so với 154 giây trên máy macOS, lượt tuần tự 43 giây so với 23 giây. Độ trễ p95 của TC-01 là 9 703 ms trên Windows so với 417 ms trên macOS; nhiều khả năng do Cal.com biên dịch lần đầu ở vòng đầu, nhóm chưa kiểm chứng. [[fig:win-race]] và [[fig:win-seq]] là ảnh chụp Terminal của hai lượt chạy trên máy Windows."));
   body.push(...fig("windows-race.png", "Kết quả chạy đồng thời trên máy Windows", 9, "win-race"));
   body.push(...fig("windows-sequential.png", "Kết quả chạy tuần tự trên máy Windows", 11, "win-seq"));
   body.push(P("Hai lượt chạy đầu trên máy Windows không hợp lệ và đã bị loại: lượt thứ nhất do máy chưa cài k6, lượt thứ hai do Cal.com dừng giữa chừng và test case TC-01 báo không đạt bất thường. Kết quả ở trên là lượt chạy sạch sau khi khắc phục. Từ đó bộ test được bổ sung bước khởi động nóng và thông báo rõ ràng khi Cal.com dừng giữa lúc chạy."));
   body.push(H3("4.4.3. Độ nhạy và cửa sổ race"));
-  body.push(P("Để xem lỗi có cần tải lớn hay không, nhóm giảm xuống chỉ 2 yêu cầu đồng thời và chạy 20 vòng. TC-02 (các giờ chồng lấn) vi phạm ở 20/20 vòng và TC-08 (giới hạn mỗi ngày) vi phạm ở 20/20 vòng. Như vậy hai khách đặt gần cùng lúc là đủ gây lỗi."));
+  body.push(P("Để xem lỗi có cần tải lớn hay không, nhóm giảm xuống chỉ 2 yêu cầu đồng thời và chạy 20 vòng. TC-02 (các giờ chồng lấn) vi phạm ở 20/20 vòng và TC-08 (giới hạn mỗi ngày) vi phạm ở 20/20 vòng. Như vậy hai khách đặt gần cùng lúc là đủ gây lỗi. Với 7 test case bổ sung (TC-11 đến TC-17) nhóm cũng giảm xuống 2 yêu cầu đồng thời và chạy 10 vòng: cả 7 test case vẫn vi phạm ở 10/10 vòng. Vậy các lỗi mới không đòi hỏi tải lớn."));
   body.push(P("Để đo độ rộng cửa sổ race, nhóm cho hai yêu cầu xung đột, yêu cầu thứ hai gửi trễ Δ mili-giây. [[fig:cua-so]] cho thấy với Δ từ 0 đến 30 ms vòng nào cũng vi phạm; từ 35 đến 50 ms vi phạm một phần; từ 60 ms trở đi không còn. Vậy cửa sổ race khoảng 30 đến 60 ms, xấp xỉ thời gian xử lý một yêu cầu trên máy test. Trên hệ thống thật, thời gian này dài hơn vì có thêm lời gọi tới lịch ngoài, nên cửa sổ có thể rộng hơn."));
   body.push(...fig("hinh-cua-so-race.png", "Tỉ lệ vòng vi phạm theo độ trễ của yêu cầu thứ hai", 14, "cua-so"));
-  body.push(H3("4.4.4. Chi phí kiểm thử"));
+  body.push(H3("4.4.4. Chứng minh tính khả thi của các test case"));
+  body.push(P("Một test case khả thi khi nó chạy được, phân biệt được hệ thống đúng với hệ thống sai, cho kết quả lặp lại được và chỉ đúng nguyên nhân. [[tbl:bang-chung]] liệt kê bảy bằng chứng nhóm đã thực hiện thật, kèm nơi lưu."));
+  body.push(...table([
+    ["Tiêu chí", "Bằng chứng", "Nơi lưu"],
+    ["1. Chạy được, đo được", "20/20 test case chạy tự động, 3 180 yêu cầu, mỗi vòng ghi lại dữ liệu trong cơ sở dữ liệu", "`results/giua-ky-20-race/`"],
+    ["2. Không báo lỗi giả", "7 test case đạt ở cả hai chế độ; ở chế độ tuần tự cơ chế bảo vệ từ chối đúng bằng mã lỗi cụ thể (`duration_limit_reached`, `booking_limit_reached`, `booker_limit_exceeded_error`, `already_signed_up_for_this_booking_error`, “đã hủy”), tức test case thật sự kiểm tra chứ không đạt rỗng", "`results/giua-ky-20-sequential/`"],
+    ["3. Lặp lại được", "13 test case không đạt ở 10/10 vòng; vẫn 10/10 vòng khi chỉ có 2 yêu cầu đồng thời (7 test case mới)", "`results/sensitivity-n2-new/`"],
+    ["4. Công cụ khác cho cùng kết quả", "`curl` thuần (không k6, không bộ test) tái hiện cả 11 lỗi; D7 đến D11 chạy hai lần liên tiếp cho kết quả y hệt", "`docs/evidence/repro-curl-2.txt`"],
+    ["5. Sửa lỗi thì test đạt", "Thêm chỉ mục duy nhất theo người tham dự: TC-16 chuyển từ không đạt 10/10 sang đạt 10/10 (1 người được nhận, 5 người bị từ chối với HTTP 400, không có 500). Thêm ràng buộc loại trừ: TC-02, TC-05, TC-17 hết vi phạm I1 và I3, chỉ còn vi phạm I7 do trả 500", "`results/fix-unique-attendee/`, `results/fix-exclusion-20/`"],
+    ["6. Chi phí chấp nhận được", "20 test case, 10 vòng, hai chế độ: khoảng 8 phút máy, 0 đồng", "[[tbl:chi-phi]]"],
+    ["7. Nhiều máy", "8 test case đầu khớp 8/8 giữa macOS và Windows; 12 test case mới mới chạy trên macOS (hạn chế đã ghi nhận)", "`results/windows-race/`"],
+  ], [3, 7.5, 3.2], "Bằng chứng về tính khả thi của các test case", { size: 22, key: "bang-chung" }));
+  body.push(P("Câu hỏi “nếu không có test case này thì sao” được trả lời ở [[tbl:ma-tran-tc]]: mỗi test case phát hiện một lỗi mà kiểm thử tuần tự không thấy (cột thứ ba), hoặc xác nhận một cơ chế bảo vệ để làm mốc đối chứng cho các test case khác."));
+  body.push(...table([
+    ["TC", "Kết quả đồng thời", "Tuần tự có thấy lỗi?", "Nếu không có test case này"],
+    ["01", "Đạt", "Không có lỗi", "Không biết ràng buộc duy nhất còn bảo vệ được slot trùng khít; mất mốc đối chứng cho TC-02"],
+    ["02", "D1", "Không", "Lỗi đặt chồng giờ, nghiêm trọng nhất, lọt qua"],
+    ["03", "D2", "Không", "Không thấy việc bán thiếu ghế và thông báo xung đột sai"],
+    ["04", "Đạt", "Không có lỗi", "Không biết khóa dòng ở nhánh thêm ghế hoạt động; mất mốc đối chứng cho TC-03, TC-16"],
+    ["05", "D3", "Không", "Chủ lịch nhận hàng loạt yêu cầu chờ cho một giờ mà không ai phát hiện"],
+    ["06", "D4", "Có (lỗi logic)", "Link đổi lịch cũ dùng lại nhiều lần, sinh nhiều booking"],
+    ["07", "D5", "Không", "Hủy và đổi lịch cùng lúc để lại booking ma"],
+    ["08", "D6", "Không", "Giới hạn 1 booking mỗi ngày bị phá"],
+    ["09", "Đạt", "Không có lỗi", "Không biết đường đổi lịch có chống trùng như đường đặt mới"],
+    ["10", "Đạt", "Không có lỗi", "Không biết đổi lịch và đặt mới có tranh nhau một giờ được không"],
+    ["11", "D7", "Không", "Thời gian đệm bị bỏ qua: chủ lịch bị xếp lịch sát nhau"],
+    ["12", "D8", "Không", "Giới hạn thời lượng mỗi ngày bị vượt (180 phút so với 30 phút)"],
+    ["13", "D6", "Không", "Giới hạn theo tuần bị phá, khác khung thời gian với TC-08"],
+    ["14", "D9", "Không", "Một người chiếm nhiều chỗ dù có giới hạn mỗi người đặt"],
+    ["15", "D10", "Không", "Hủy lặp lại gửi email, webhook nhiều lần mà phản hồi vẫn trông bình thường"],
+    ["16", "D11", "Không", "Một người chiếm nhiều ghế của cuộc hẹn có ghế"],
+    ["17", "D1", "Không", "Trường hợp hai loại cuộc hẹn cùng giờ bắt đầu không được kiểm tra"],
+    ["18", "Đạt", "Không có lỗi", "Không biết hệ thống có sập hoặc trả 5xx khi tải gấp ba"],
+    ["19", "Đạt", "Không có lỗi", "Không biết yêu cầu hợp lệ có bị từ chối nhầm khi nhiều người đặt cùng lúc"],
+    ["20", "Đạt", "Không có lỗi", "Không biết hủy rồi đặt lại đúng giờ vừa hủy có an toàn"],
+  ], [1, 2.6, 3, 7.4], "Vai trò của từng test case: nếu không có thì bỏ sót điều gì", { center: [0, 1, 2], size: 22, key: "ma-tran-tc" }));
+  body.push(H3("4.4.5. Chi phí kiểm thử"));
   body.push(P("Chi phí tiền là 0 đồng, vì toàn bộ công cụ miễn phí hoặc mã nguồn mở và chạy trên máy cá nhân. Chi phí chạy test được đo từ thời điểm bắt đầu và kết thúc ghi trong `summary.json` của từng lần chạy ([[tbl:chi-phi]])."));
   body.push(...table([
     ["Lần chạy", "Vòng", "Request", "Thời gian máy"],
-    ["Đồng thời chính (macOS)", "80", "570", "154 giây"],
-    ["Tuần tự đối chứng (macOS)", "80", "570", "23 giây"],
-    ["Độ nhạy: 2 request, 20 vòng", "100", "200", "164 giây"],
-    ["Thí nghiệm khắc phục", "40", "380", "85 giây"],
+    ["Đợt 1: 8 test case, đồng thời (macOS)", "80", "570", "154 giây"],
+    ["Đợt 1: 8 test case, tuần tự (macOS)", "80", "570", "23 giây"],
+    ["Đợt 2: 20 test case, đồng thời (chính thức)", "200", "1 590", "383 giây"],
+    ["Đợt 2: 20 test case, tuần tự (đối chứng)", "200", "1 590", "76 giây"],
+    ["Độ nhạy: 2 request (đợt 1, 20 vòng)", "100", "200", "164 giây"],
+    ["Độ nhạy: 2 request (7 test case mới)", "70", "140", "117 giây"],
+    ["Thí nghiệm khắc phục (đợt 1)", "40", "380", "85 giây"],
+    ["Thí nghiệm khắc phục (TC-02, 05, 16, 17)", "40", "360", "89 giây"],
     ["Đo cửa sổ race (18 mốc độ trễ)", "180", "360", "300 giây"],
-    ["**Tổng**", "", "**1 710**", "**khoảng 12 phút**"],
+    ["**Tổng**", "**990**", "**5 760**", "**khoảng 23 phút**"],
   ], [5.6, 1.6, 2, 2.8], "Chi phí chạy kiểm thử đo được", { center: [1, 2, 3], key: "chi-phi" }));
-  body.push(P("Chạy lại bộ test chính (cả đồng thời và tuần tự) tốn dưới 3 phút. Chi phí xây dựng bộ test khoảng 970 dòng mã (Node.js, k6, SQL). Về nhân lực, nhóm chưa theo dõi giờ làm của từng người; [[tbl:nhan-luc]] là ước lượng khối lượng công việc, không phải số giờ đo thực tế."));
+  body.push(P("Chạy lại bộ test chính 20 test case (cả đồng thời và tuần tự) tốn khoảng 8 phút. Chi phí xây dựng bộ test khoảng 1 600 dòng mã (Node.js, k6, SQL, bash). Về nhân lực, nhóm chưa theo dõi giờ làm của từng người; [[tbl:nhan-luc]] là ước lượng khối lượng công việc, không phải số giờ đo thực tế; ước lượng này chưa gồm đợt mở rộng lên 20 test case."));
   body.push(...table([
     ["Hạng mục", "Người phụ trách", "Ước lượng (giờ)"],
     ["Dựng Cal.com, seed data, chạy 3 luồng nghiệp vụ", "Nguyễn Thanh Tâm", "6 đến 8"],
@@ -588,12 +695,17 @@ function buildBody() {
   body.push(H3("4.5.1. Danh sách lỗi"));
   body.push(...table([
     ["Lỗi", "Hiện tượng", "Loại", "Mức độ"],
-    ["D1", "Chủ lịch bị đặt chồng giờ khi các giờ lệch nhau hoặc khác loại cuộc hẹn", "Race", "Cao"],
+    ["D1", "Chủ lịch bị đặt chồng giờ khi các giờ lệch nhau hoặc khác loại cuộc hẹn (TC-02, TC-17)", "Race", "Nghiêm trọng"],
     ["D2", "Cuộc hẹn có ghế: còn ghế nhưng người đặt sau bị từ chối với thông báo xung đột", "Race", "Trung bình"],
-    ["D3", "Nhiều booking chờ xác nhận cho cùng một giờ", "Race", "Trung bình"],
+    ["D3", "Nhiều booking chờ xác nhận cho cùng một giờ", "Race", "Cao"],
     ["D4", "Một booking gốc đã đổi lịch vẫn đổi lịch tiếp được, sinh nhiều booking mới", "Logic", "Cao"],
     ["D5", "Hủy và đổi lịch cùng lúc đều báo thành công, vẫn còn booking hiệu lực", "Race", "Trung bình"],
-    ["D6", "Vượt giới hạn 1 booking mỗi ngày khi đặt đồng thời", "Race", "Trung bình"],
+    ["D6", "Vượt giới hạn 1 booking mỗi ngày hoặc mỗi tuần khi đặt đồng thời (TC-08, TC-13)", "Race", "Nghiêm trọng"],
+    ["D7", "Bỏ qua thời gian đệm: các cuộc hẹn xếp sát nhau dù đã cấu hình đệm 30 phút (TC-11)", "Race", "Cao"],
+    ["D8", "Vượt giới hạn tổng thời lượng mỗi ngày: 180 phút so với giới hạn 30 phút (TC-12)", "Race", "Cao"],
+    ["D9", "Vượt giới hạn số booking đang hoạt động của một người đặt: 6 so với giới hạn 1 (TC-14)", "Race", "Cao"],
+    ["D10", "Hủy một booking nhiều lần cùng lúc: cả 6 lệnh thành công, gửi 12 email thay vì 2 (TC-15)", "Race", "Cao"],
+    ["D11", "Một người chiếm 2 ghế trong cùng một giờ dù có cơ chế chống đăng ký trùng (TC-16)", "Race", "Trung bình"],
     ["O1", "Vượt giới hạn booking trả mã 401 (chưa xác thực) thay vì 403", "Mã lỗi", "Thấp"],
     ["O2", "Mã booking `uid` sinh từ tên chủ lịch, giờ và thời điểm hiện tại, có thể trùng nếu hai yêu cầu xử lý cùng một mili-giây", "Thiết kế", "Thấp"],
   ], [1, 8, 1.6, 1.8], "Danh sách lỗi và quan sát phụ", { center: [0, 2, 3] }));
@@ -613,13 +725,22 @@ function buildBody() {
     ["D4", "Đổi lịch liên tiếp một booking gốc 3 lần: cả 3 trả 200", "3 booking đã chấp nhận từ cùng một gốc (cả khi gửi tuần tự)"],
     ["D5", "Hủy và đổi lịch cùng lúc: cả hai 200", "Booking 09:00 đã hủy nhưng vẫn còn booking 11:00 hiệu lực"],
     ["D6", "8 người đặt 8 giờ, giới hạn 1 mỗi ngày: cả 8 trả 200", "8 booking hiệu lực trong một ngày"],
+    ["D7", "6 người đặt 6 giờ sát nhau, đệm 30 phút: cả 6 trả 200", "6 booking hiệu lực cách nhau 0 phút (09:00 đến 11:30)"],
+    ["D8", "6 người đặt 6 giờ, giới hạn 30 phút mỗi ngày: cả 6 trả 200", "Tổng thời lượng 180 phút trong ngày"],
+    ["D9", "1 người đặt 6 giờ, giới hạn 1 booking mỗi người: cả 6 trả 200", "6 booking hiệu lực của cùng một email"],
+    ["D10", "Hủy 1 booking 6 lần cùng lúc: cả 6 trả 200", "12 email hủy được gửi (kỳ vọng 2)"],
+    ["D11", "1 email đặt 6 lần vào cuộc hẹn 3 ghế: 2 trả 200, 4 trả 409", "Email đó chiếm 2 ghế trong cùng một booking"],
   ], [1, 6, 5.4], "Kết quả tái hiện độc lập từng lỗi", { center: [0], key: "tai-hien" }));
+  body.push(P("Năm lỗi mới D7 đến D11 được tái hiện bằng `repro/repro-curl-2.sh`; kết quả hai lần chạy liên tiếp giống hệt nhau và được lưu ở `docs/evidence/repro-curl-2.txt`."));
   body.push(H3("4.5.3. Nguyên nhân gốc"));
   body.push(
     P("**Nhóm lỗi race D1, D3, D5, D6** có chung nguyên nhân là mẫu kiểm tra rồi mới ghi không có khóa. Trong `RegularBookingService`, các bước đọc lịch trống (`ensureAvailableUsers`), đọc giới hạn số booking và đọc trạng thái booking gốc đều thực hiện trước, rồi `createBooking` mới ghi, giữa hai bước không có giao dịch hay khóa bao trùm."),
     P("Lớp bảo vệ duy nhất trong cơ sở dữ liệu là ràng buộc duy nhất trên `idempotencyKey`. Khóa này tính từ giờ bắt đầu, giờ kết thúc và chủ lịch nên chỉ bắt được hai yêu cầu trùng khít (TC-01). Hai khoảng 09:00–09:30 và 09:15–09:45 cho ra hai khóa khác nhau nên không bị chặn (D1). Thêm vào đó, phần mở rộng chỉ gán khóa cho booking ở trạng thái đã chấp nhận; booking chờ xác nhận có khóa rỗng, và cơ sở dữ liệu cho phép nhiều giá trị rỗng trong cột duy nhất, nên D3 không có lớp bảo vệ nào ở tầng dữ liệu. Với D6, phép đếm số booking trong ngày và lệnh ghi là hai bước tách rời."),
     P("**D2** (cuộc hẹn có ghế): `handleSeats` tìm booking của giờ đó; nếu đã có thì gọi `addSeatToBooking` có khóa dòng (TC-04 đạt). Nếu chưa có, mọi yêu cầu cùng thấy “chưa có booking” và cùng cố tạo mới; yêu cầu đầu thắng, các yêu cầu sau trùng khóa và bị ánh xạ thành lỗi 409 mà không thử lại theo nhánh thêm ghế."),
     P("**D4** là lỗi logic: hàm `getOriginalRescheduledBooking` chỉ từ chối khi booking gốc đã hủy mà chưa được đánh dấu đổi lịch. Trạng thái “đã hủy và đã đánh dấu đổi lịch” vừa dùng cho trường hợp chủ lịch yêu cầu khách đổi giờ (cần cho phép đổi), vừa là trạng thái của booking đã được đổi xong (cần chặn). Hàm không phân biệt hai trường hợp nên booking đã đổi vẫn đổi tiếp được. Câu lệnh cập nhật booking gốc trong giao dịch cũng chỉ theo `id`, không kèm điều kiện trạng thái."),
+    P("**D6, D8, D9** (các giới hạn): ba loại giới hạn (số booking theo ngày hoặc tuần, tổng thời lượng, số booking đang hoạt động của một người đặt) đều được kiểm tra bằng phép đếm ở đầu luồng đặt lịch (`checkBookingAndDurationLimits` và `checkActiveBookingsLimitForBooker` trong `RegularBookingService`), rồi sau đó mới ghi booking mới. Hai bước không nằm trong cùng giao dịch và không có khóa theo chủ lịch hay theo người đặt, nên nhiều yêu cầu cùng đếm được giá trị cũ và cùng được chấp nhận. **D7** (thời gian đệm) có cùng nguyên nhân: thời gian đệm được tính trong lúc tìm giờ trống của chủ lịch (`ensureAvailableUsers`), cũng là một bước đọc trước khi ghi."),
+    P("**D10** (hủy nhiều lần): `handleCancelBooking` kiểm tra “booking đã hủy chưa” trên bản đọc ở đầu hàm (trả 400 nếu đã hủy), sau đó mới cập nhật trạng thái bằng điều kiện chỉ theo `uid` và chạy các tác dụng phụ (email, webhook, lịch ngoài, nhắc nhở). Không có điều kiện ghi kiểu “chỉ cập nhật nếu chưa hủy” và không có khóa, nên nhiều lệnh đồng thời cùng qua bước kiểm tra và cùng chạy lại toàn bộ tác dụng phụ."),
+    P("**D11** (một người chiếm nhiều ghế): `handleSeats` kiểm tra người này đã đăng ký giờ đó chưa (trả 409 `already_signed_up_for_this_booking_error`) trên bản đọc của booking trước khi khóa. Khóa dòng `FOR UPDATE` nằm ở `createNewSeat`, sau bước kiểm tra, và bước đó không kiểm tra lại. Vì vậy nhiều yêu cầu cùng email đều qua kiểm tra rồi lần lượt thêm ghế."),
     P("**O1:** ở `checkBookingLimits.ts` lỗi vượt giới hạn (mã 403) bị bọc lại thành 401. **O2:** mã booking `uid` được sinh từ tên chủ lịch, giờ bắt đầu và thời điểm hiện tại; hai yêu cầu cùng giờ trong cùng một mili-giây sinh cùng `uid` và một yêu cầu bị từ chối ngẫu nhiên. Nhóm đếm được 45 lần lỗi trùng `uid` trong nhật ký máy chủ trong quá trình chạy test.")
   );
   body.push(H3("4.5.4. Thí nghiệm khắc phục"));
@@ -629,8 +750,38 @@ function buildBody() {
     ["TC-02 (D1)", "10 booking chồng", "1 booking", "9 yêu cầu thua nhận HTTP 500"],
     ["TC-05 (D3)", "7 đến 10 booking chờ", "1 booking chờ", "9 yêu cầu thua nhận HTTP 500"],
     ["TC-08 (D6)", "8 booking mỗi ngày", "8 booking mỗi ngày", "Không đổi, cần khóa theo chủ lịch và ngày"],
+    ["TC-17 (D1)", "2 booking chồng giờ", "1 booking", "4 yêu cầu thua nhận 409, 5 yêu cầu thua nhận HTTP 500"],
+    ["TC-16 (D11), chỉ mục duy nhất `(bookingId, email)`", "1 email chiếm 2 ghế", "1 ghế", "5 yêu cầu thua nhận HTTP 400, không có 500; test case chuyển từ không đạt 10/10 sang đạt 10/10"],
   ], [2.4, 3, 3.4, 4], "Kết quả thí nghiệm thêm ràng buộc loại trừ", { key: "khac-phuc" }));
-  body.push(P("Dữ liệu trở nên toàn vẹn ở D1 và D3, xác nhận nguyên nhân là thiếu ràng buộc ở cơ sở dữ liệu. Tuy nhiên người thua nhận lỗi 500 thay vì 409, vì mã Cal.com chỉ ánh xạ lỗi vi phạm ràng buộc duy nhất sang 409, chưa xử lý mã lỗi của ràng buộc loại trừ. Vì vậy cần sửa ở cả hai tầng: ràng buộc ở cơ sở dữ liệu và ánh xạ lỗi ở ứng dụng. D6 là bài toán đếm nên cần cơ chế khác như khóa theo chủ lịch và ngày (advisory lock) hoặc giao dịch mức serializable có thử lại. Đây là hướng đề xuất; nhóm chưa sửa mã Cal.com."));
+  body.push(P("Dữ liệu trở nên toàn vẹn ở D1, D3 và D11, xác nhận nguyên nhân là thiếu ràng buộc ở cơ sở dữ liệu. Tuy nhiên người thua nhận lỗi 500 thay vì 409, vì mã Cal.com chỉ ánh xạ lỗi vi phạm ràng buộc duy nhất sang 409, chưa xử lý mã lỗi của ràng buộc loại trừ. Vì vậy cần sửa ở cả hai tầng: ràng buộc ở cơ sở dữ liệu và ánh xạ lỗi ở ứng dụng. D6 là bài toán đếm nên cần cơ chế khác như khóa theo chủ lịch và ngày (advisory lock) hoặc giao dịch mức serializable có thử lại. Đây là hướng đề xuất; nhóm chưa sửa mã Cal.com."));
+
+  body.push(H3("4.5.5. Vì sao các lỗi này khó phát hiện"));
+  body.push(P("Mười lỗi race có chung bốn đặc điểm khiến chúng khó bị bắt bằng cách kiểm thử thông thường:"));
+  body.push(
+    L("1)", "**Cửa sổ hẹp:** lỗi chỉ xảy ra khi hai yêu cầu đến trong khoảng 30 đến 60 mili-giây ([[fig:cua-so]]); người kiểm thử bằng tay hầu như không tạo được tình huống này."),
+    L("2)", "**Phản hồi trông bình thường:** các yêu cầu đều trả HTTP 200 và giao diện báo thành công; không có thông báo lỗi nào để nhìn thấy."),
+    L("3)", "**Kiểm thử tuần tự cho kết quả đúng:** nhóm đối chứng đạt 19/20, tức mọi cơ chế giới hạn, chống trùng và chống hủy lặp đều hoạt động khi yêu cầu đến lần lượt, và còn trả đúng mã lỗi riêng cho từng cơ chế."),
+    L("4)", "**Chỉ lộ ra khi đối chiếu dữ liệu:** phải so với trạng thái trong cơ sở dữ liệu (số booking, số ghế, tổng thời lượng) hoặc đếm tác dụng phụ (D10: 12 email thay vì 2). Nhóm dùng tính chất bất biến trong cơ sở dữ liệu làm tiêu chí đúng sai chính vì lý do này.")
+  );
+  body.push(P("Nổi bật nhất là D10 và D11. D10 không để lại dấu vết trong dữ liệu (booking cuối cùng vẫn ở trạng thái đã hủy, mọi lệnh đều trả 200); chỉ khi đếm email gửi đi mới thấy mỗi lệnh hủy đều chạy lại đầy đủ tác dụng phụ. D11 nằm trong đúng cơ chế bảo vệ mà Cal.com đã viết (chống đăng ký trùng) và cơ chế đó hoạt động tốt khi kiểm tra tuần tự, nên rất dễ bị coi là đã an toàn."));
+  body.push(H3("4.5.6. Đánh giá rủi ro và hậu quả của từng lỗi"));
+  body.push(P("[[tbl:rui-ro-loi]] chấm điểm lại từng lỗi sau khi có kết quả thật (khả năng × ảnh hưởng, thang 1 đến 5) và nêu hậu quả nếu lỗi không được kiểm tra; [[fig:ma-tran]] đặt các lỗi lên ma trận rủi ro. Khả năng xảy ra dựa trên số liệu đã đo: lỗi tái hiện được ở 10/10 vòng, chỉ cần 2 yêu cầu đồng thời, và cửa sổ 30 đến 60 ms còn rộng hơn khi hệ thống chạy thật vì phải gọi lịch ngoài. Mức ảnh hưởng là đánh giá của nhóm theo hậu quả với người dùng."));
+  body.push(...table([
+    ["Lỗi", "Khả năng", "Ảnh hưởng", "Điểm", "Mức", "Hậu quả nếu không được kiểm tra"],
+    ["D1", "5", "5", "25", "Nghiêm trọng", "Chủ lịch bị 2 đến 10 khách cùng một giờ. Hệ thống không báo gì; chỉ phát hiện khi các khách cùng đến"],
+    ["D6", "5", "4", "20", "Nghiêm trọng", "Giới hạn mỗi ngày hoặc tuần bị phá (8 booking một ngày); chủ lịch quá tải, cam kết với chủ lịch không còn giá trị"],
+    ["D4", "4", "4", "16", "Cao", "Một link đổi lịch dùng lại nhiều lần: 5 lần sinh 5 booking, khách nhận 5 lịch hẹn; có thể bị lợi dụng để chiếm nhiều giờ của chủ lịch"],
+    ["D8", "5", "3", "15", "Cao", "Tổng thời lượng vượt giới hạn: 180 phút so với 30 phút mỗi ngày"],
+    ["D3", "4", "3", "12", "Cao", "Chủ lịch nhận 9 đến 10 yêu cầu chờ xác nhận cho một giờ, phải từ chối thủ công; mọi người đặt tưởng đã giữ được chỗ"],
+    ["D7", "4", "3", "12", "Cao", "Cuộc hẹn xếp sát nhau dù đã cấu hình thời gian đệm; chủ lịch không kịp nghỉ hoặc di chuyển"],
+    ["D9", "4", "3", "12", "Cao", "Một người đặt 6 giờ thay vì 1; giới hạn chống chiếm chỗ vô tác dụng"],
+    ["D10", "4", "3", "12", "Cao", "Mỗi lệnh hủy lặp lại gửi email, webhook, xử lý lịch ngoài: 1 booking gửi 12 email thay vì 2. Ảnh hưởng tới hoàn tiền chưa kiểm chứng (cần tích hợp thanh toán, ngoài phạm vi)"],
+    ["D2", "4", "2", "8", "Trung bình", "Còn ghế nhưng người đặt bị báo xung đột lịch; mỗi vòng chỉ bán được 1 trên 3 ghế"],
+    ["D5", "2", "4", "8", "Trung bình", "Khách tưởng đã hủy nhưng giờ mới vẫn giữ chỗ trong lịch chủ lịch"],
+    ["D11", "2", "3", "6", "Trung bình", "Một người chiếm 2 trong 3 ghế, người khác mất chỗ"],
+  ], [1, 1.5, 1.6, 1.2, 2.4, 8], "Đánh giá rủi ro của các lỗi đã tìm được", { center: [0, 1, 2, 3, 4], size: 22, key: "rui-ro-loi" }));
+  body.push(...fig("hinh-ma-tran-rui-ro.png", "Ma trận rủi ro của các lỗi đã tìm được", 11, "ma-tran"));
+  body.push(P("**Mấu chốt chung của các lỗi:** không có lỗi nào làm hệ thống sập. Trong TC-18, 30 yêu cầu đồng thời không sinh ra phản hồi 5xx nào. Hậu quả nặng nhất là dữ liệu sai một cách âm thầm: hệ thống vẫn trả HTTP 200, người vận hành không nhận được cảnh báo, và lỗi chỉ lộ ra ngoài đời (hai khách cùng đến, chủ lịch quá tải). Vì vậy nhóm xếp D1 và D6 ở mức nghiêm trọng. Thí nghiệm khắc phục còn cho thấy sửa thiếu cũng nguy hiểm: thêm ràng buộc loại trừ mà không ánh xạ lỗi tương ứng thì yêu cầu thua nhận HTTP 500 (vi phạm I7), tức lỗi chuyển từ “sai dữ liệu” sang “báo lỗi máy chủ”."));
 
   body.push(H2("4.6. Quản lý dự án, nhiệm vụ và đóng góp của từng thành viên"));
   body.push(P("Nhóm làm việc theo mô hình Scrum rút gọn, họp ngắn đầu và cuối tuần. Mã nguồn bộ test và tài liệu được quản lý trên GitHub (kho `2312741-sudo/kiem_thu_pm`). Công việc được theo dõi trên bảng GitHub Projects “R05-K15 – Kế hoạch” với ba cột Todo, In Progress, Done và 18 thẻ ([[fig:board]]). Các thẻ hiện chưa gán người phụ trách và lịch sử commit chủ yếu thuộc một thành viên; nhóm sẽ bổ sung trước buổi bảo vệ."));
@@ -661,14 +812,14 @@ function buildBody() {
   body.push(H1("KẾT LUẬN"));
   body.push(H2("1. Kết quả đạt được"));
   body.push(
-    P("Nhóm đã dựng thành công Cal.com v6.2.0 trên hai máy (macOS và Windows 11), chạy được ba luồng nghiệp vụ đặt lịch, đổi lịch, hủy lịch và lập tài liệu cài đặt từ máy sạch. Nhóm đã phân tích kiến trúc và luồng xử lý của nghiệp vụ trọng tâm, xác định bảy tính chất dữ liệu bất biến và thiết kế 8 test case với đặc tả đầy đủ tiền điều kiện, dữ liệu, kết quả mong đợi."),
-    P("Bộ test tự động gồm khoảng 970 dòng mã, gửi yêu cầu đồng thời bằng k6, kiểm tra trực tiếp cơ sở dữ liệu và có nhóm đối chứng gửi tuần tự. Kết quả lượt chạy chính thức: 6 trên 8 test case phát hiện lỗi, gồm 5 lỗi race (D1, D2, D3, D5, D6) và 1 lỗi logic (D4), cùng hai quan sát phụ. Cả 6 lỗi đều được tái hiện độc lập bằng `curl` thuần với dữ liệu sai nhìn thấy được trong cơ sở dữ liệu, và kết quả trên máy Windows khớp 8/8 với máy macOS."),
-    P("Nhóm cũng xác định được nguyên nhân gốc: mẫu kiểm tra rồi mới ghi không có khóa, ràng buộc chống trùng quá hẹp và một trạng thái mang hai nghĩa. Thí nghiệm thêm ràng buộc loại trừ trên dữ liệu test chứng minh nguyên nhân cho D1 và D3, đồng thời chỉ ra hệ thống còn thiếu xử lý mã lỗi tương ứng."),
+    P("Nhóm đã dựng thành công Cal.com v6.2.0 trên hai máy (macOS và Windows 11), chạy được ba luồng nghiệp vụ đặt lịch, đổi lịch, hủy lịch và lập tài liệu cài đặt từ máy sạch. Nhóm đã phân tích kiến trúc và luồng xử lý của nghiệp vụ trọng tâm, xác định mười hai tính chất dữ liệu bất biến và thiết kế 20 test case với đặc tả đầy đủ tiền điều kiện, dữ liệu, kết quả mong đợi."),
+    P("Bộ test tự động gồm khoảng 1 600 dòng mã, gửi yêu cầu đồng thời bằng k6, kiểm tra trực tiếp cơ sở dữ liệu và có nhóm đối chứng gửi tuần tự. Kết quả lượt chạy chính thức: 13 trên 20 test case phát hiện lỗi, gồm 10 lỗi race (D1 đến D3, D5 đến D11) và 1 lỗi logic (D4), cùng hai quan sát phụ; 7 test case còn lại đạt ở cả hai chế độ nên cho thấy bộ test không báo lỗi giả. Cả 11 lỗi đều được tái hiện độc lập bằng `curl` thuần với dữ liệu sai nhìn thấy được trong cơ sở dữ liệu; 8 test case đầu chạy lại trên máy Windows khớp 8/8 với máy macOS."),
+    P("Nhóm cũng xác định được nguyên nhân gốc: mẫu kiểm tra rồi mới ghi không có khóa, ràng buộc chống trùng quá hẹp và một trạng thái mang hai nghĩa. Thí nghiệm thêm ràng buộc loại trừ trên dữ liệu test chứng minh nguyên nhân cho D1 và D3, đồng thời chỉ ra hệ thống còn thiếu xử lý mã lỗi tương ứng. Thí nghiệm thêm chỉ mục duy nhất theo người tham dự đưa TC-16 (D11) từ không đạt 10/10 sang đạt 10/10, chứng minh test case phát hiện đúng lỗi. Đánh giá rủi ro xếp D1 và D6 ở mức nghiêm trọng (điểm 25 và 20): hệ thống vẫn trả HTTP 200 nhưng dữ liệu đã sai nên người vận hành không có cảnh báo nào."),
     P("Với các bằng chứng trên, nhóm đề nghị được duyệt kế hoạch kiểm thử đã trình bày ở mục 3.4: hệ thống chạy được, kỹ thuật phát hiện được lỗi thật, kết quả không phụ thuộc máy, chi phí thấp và phần việc còn lại đã rõ ràng.")
   );
   body.push(H2("2. Hạn chế và hướng phát triển"));
   body.push(
-    P("Đề tài còn một số hạn chế. Thứ nhất, nhóm chưa báo các lỗi tìm được cho nhóm phát triển Cal.com, chưa kiểm tra trên phiên bản mới hơn và chưa sửa mã Cal.com, nên chưa thể khẳng định phía Cal.com xếp tất cả là lỗi (ví dụ D2 có thể được xem là hành vi chấp nhận được). Thứ hai, bộ test chạy ở chế độ phát triển (`yarn dev`) trên một bản Cal.com và một cơ sở dữ liệu cục bộ, chưa thử trên bản dựng chính thức hay nhiều máy chủ sau bộ cân bằng tải. Thứ ba, nhóm chưa kiểm thử qua giao diện bằng Playwright, chưa kiểm thử API phiên bản 2, luồng nhóm và điểm giữ chỗ tạm. Thứ tư, nhân lực chỉ là ước lượng vì nhóm chưa theo dõi giờ làm."),
+    P("Đề tài còn một số hạn chế. Thứ nhất, nhóm chưa báo các lỗi tìm được cho nhóm phát triển Cal.com, chưa kiểm tra trên phiên bản mới hơn và chưa sửa mã Cal.com, nên chưa thể khẳng định phía Cal.com xếp tất cả là lỗi (ví dụ D2 có thể được xem là hành vi chấp nhận được). Thứ hai, bộ test chạy ở chế độ phát triển (`yarn dev`) trên một bản Cal.com và một cơ sở dữ liệu cục bộ, chưa thử trên bản dựng chính thức hay nhiều máy chủ sau bộ cân bằng tải. Thứ ba, nhóm chưa kiểm thử qua giao diện bằng Playwright, chưa kiểm thử API phiên bản 2, luồng nhóm và điểm giữ chỗ tạm. Thứ tư, 12 test case bổ sung (TC-09 đến TC-20) mới chạy trên máy macOS, chưa chạy lại trên Windows. Thứ năm, nhân lực chỉ là ước lượng vì nhóm chưa theo dõi giờ làm."),
     P("Hướng phát triển gồm: bổ sung kịch bản Playwright chạy song song qua giao diện để minh họa lỗi D1 trên giao diện thật; rà soát và đề xuất bản sửa cho D1 và D4 (ràng buộc loại trừ, ánh xạ lỗi, kiểm tra lại trạng thái trong giao dịch khi đổi và hủy lịch, khóa theo chủ lịch cho giới hạn số booking); báo lỗi cho nhóm phát triển Cal.com kèm bộ tái hiện; và đưa bộ test vào quy trình tích hợp liên tục nhờ mã thoát của lệnh chạy.")
   );
 
@@ -702,9 +853,12 @@ function buildBody() {
     ["Hướng dẫn người test, phiếu ghi kết quả", "`docs/HUONG_DAN_NGUOI_TEST.md`"],
     ["Kết quả test giữa kỳ (sinh tự động)", "`docs/KET_QUA_TEST_GIUA_KY.md`"],
     ["Mô tả chi tiết từng lỗi", "`docs/DEFECTS.md`, `docs/MINH_CHUNG_LOI.md`"],
-    ["Kết quả thô lượt chạy chính thức", "`race-tests/results/giua-ky-race/`, `giua-ky-sequential/`"],
+    ["Kết quả thô lượt chạy chính thức (20 test case)", "`race-tests/results/giua-ky-20-race/`, `giua-ky-20-sequential/`"],
+    ["Kết quả đợt 1 (8 test case)", "`race-tests/results/giua-ky-race/`, `giua-ky-sequential/`"],
+    ["Độ nhạy và thí nghiệm khắc phục (đợt 2)", "`race-tests/results/sensitivity-n2-new/`, `fix-unique-attendee/`, `fix-exclusion-20/`"],
     ["Kết quả máy Windows", "`race-tests/results/windows-race/`, `windows-sequential/`"],
-    ["Tái hiện độc lập bằng curl", "`race-tests/repro/repro-curl.sh`, `docs/evidence/repro-curl.txt`"],
+    ["Tái hiện độc lập bằng curl", "`race-tests/repro/repro-curl.sh`, `repro-curl-2.sh`, `docs/evidence/repro-curl.txt`, `repro-curl-2.txt`"],
+    ["Đánh giá rủi ro và chứng minh tính khả thi", "`docs/DANH_GIA_RUI_RO.md`"],
     ["Bảng công việc", "https://github.com/users/2312741-sudo/projects/1"],
   ], [4.2, 7.8], "Tài liệu và bằng chứng đi kèm"));
 

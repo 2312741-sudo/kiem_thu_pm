@@ -1,0 +1,195 @@
+{
+  "root_group": {
+    "name": "",
+    "path": "",
+    "id": "d41d8cd98f00b204e9800998ecf8427e",
+    "groups": [],
+    "checks": []
+  },
+  "options": {
+    "summaryTrendStats": [
+      "min",
+      "avg",
+      "med",
+      "p(90)",
+      "p(95)",
+      "max"
+    ],
+    "summaryTimeUnit": "",
+    "noColor": false
+  },
+  "state": {
+    "isStdOutTTY": false,
+    "isStdErrTTY": false,
+    "testRunDurationMs": 2378.087
+  },
+  "metrics": {
+    "http_req_connecting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 0.082,
+        "avg": 0.5156000000000001,
+        "med": 0.4745,
+        "p(90)": 1.1035000000000001,
+        "p(95)": 1.14005,
+        "max": 1.236
+      }
+    },
+    "http_req_receiving": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 0.011,
+        "avg": 0.02285000000000001,
+        "med": 0.019,
+        "p(90)": 0.030000000000000006,
+        "p(95)": 0.04124999999999996,
+        "max": 0.084
+      }
+    },
+    "http_reqs": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 20,
+        "rate": 8.410121244512922
+      }
+    },
+    "data_sent": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 8080,
+        "rate": 3397.6889827832206
+      }
+    },
+    "http_req_tls_handshaking": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(95)": 0,
+        "max": 0,
+        "min": 0,
+        "avg": 0,
+        "med": 0,
+        "p(90)": 0
+      }
+    },
+    "http_req_blocked": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(95)": 4.9198,
+        "max": 5.106,
+        "min": 3.764,
+        "avg": 4.44325,
+        "med": 4.41,
+        "p(90)": 4.9055
+      }
+    },
+    "http_req_duration{expected_response:true}": {
+      "values": {
+        "p(90)": 887.2468,
+        "p(95)": 887.4001499999999,
+        "max": 888.296,
+        "min": 853.556,
+        "avg": 874.9110000000001,
+        "med": 877.792
+      },
+      "type": "trend",
+      "contains": "time"
+    },
+    "vus": {
+      "contains": "default",
+      "values": {
+        "value": 20,
+        "min": 20,
+        "max": 20
+      },
+      "type": "gauge"
+    },
+    "data_received": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 38875,
+        "rate": 16347.173169021993
+      }
+    },
+    "http_req_failed": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 0,
+        "passes": 0,
+        "fails": 20
+      }
+    },
+    "http_req_waiting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 874.80385,
+        "med": 877.713,
+        "p(90)": 887.1203,
+        "p(95)": 887.3558,
+        "max": 888.188,
+        "min": 853.313
+      }
+    },
+    "http_req_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "med": 877.792,
+        "p(90)": 887.2468,
+        "p(95)": 887.4001499999999,
+        "max": 888.296,
+        "min": 853.556,
+        "avg": 874.9110000000001
+      }
+    },
+    "iteration_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(95)": 2376.99011665,
+        "max": 2377.833083,
+        "min": 2342.674333,
+        "avg": 2364.0683894,
+        "med": 2366.6282495,
+        "p(90)": 2376.8664744
+      }
+    },
+    "http_req_sending": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "min": 0.012,
+        "avg": 0.08429999999999999,
+        "med": 0.08149999999999999,
+        "p(90)": 0.1572,
+        "p(95)": 0.15905,
+        "max": 0.16
+      }
+    },
+    "iterations": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 20,
+        "rate": 8.410121244512922
+      }
+    },
+    "vus_max": {
+      "contains": "default",
+      "values": {
+        "max": 20,
+        "value": 20,
+        "min": 20
+      },
+      "type": "gauge"
+    }
+  }
+}

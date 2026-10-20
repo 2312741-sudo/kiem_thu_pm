@@ -1,0 +1,195 @@
+{
+  "state": {
+    "testRunDurationMs": 1631.457,
+    "isStdOutTTY": false,
+    "isStdErrTTY": false
+  },
+  "metrics": {
+    "data_received": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 3918,
+        "rate": 2401.534334033934
+      }
+    },
+    "http_req_receiving": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(90)": 0.1123,
+        "p(95)": 0.11565,
+        "max": 0.119,
+        "min": 0.052,
+        "avg": 0.08549999999999999,
+        "med": 0.08549999999999999
+      }
+    },
+    "http_req_failed": {
+      "type": "rate",
+      "contains": "default",
+      "values": {
+        "rate": 0,
+        "passes": 0,
+        "fails": 2
+      }
+    },
+    "http_req_blocked": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "max": 6.528,
+        "min": 6.504,
+        "avg": 6.516,
+        "med": 6.516,
+        "p(90)": 6.5256,
+        "p(95)": 6.5268
+      }
+    },
+    "vus": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "value": 2,
+        "min": 2,
+        "max": 2
+      }
+    },
+    "http_reqs": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "count": 2,
+        "rate": 1.2258980776079296
+      }
+    },
+    "iteration_duration": {
+      "values": {
+        "p(95)": 1631.3393496499998,
+        "max": 1631.346083,
+        "min": 1631.211416,
+        "avg": 1631.2787495,
+        "med": 1631.2787495,
+        "p(90)": 1631.3326163
+      },
+      "type": "trend",
+      "contains": "time"
+    },
+    "http_req_connecting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "max": 0.5,
+        "min": 0.5,
+        "avg": 0.5,
+        "med": 0.5,
+        "p(90)": 0.5,
+        "p(95)": 0.5
+      }
+    },
+    "http_req_waiting": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "p(95)": 137.66915,
+        "max": 137.694,
+        "min": 137.197,
+        "avg": 137.44549999999998,
+        "med": 137.44549999999998,
+        "p(90)": 137.6443
+      }
+    },
+    "iterations": {
+      "type": "counter",
+      "contains": "default",
+      "values": {
+        "rate": 1.2258980776079296,
+        "count": 2
+      }
+    },
+    "vus_max": {
+      "type": "gauge",
+      "contains": "default",
+      "values": {
+        "value": 2,
+        "min": 2,
+        "max": 2
+      }
+    },
+    "http_req_duration": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 137.664,
+        "med": 137.664,
+        "p(90)": 137.8368,
+        "p(95)": 137.8584,
+        "max": 137.88,
+        "min": 137.448
+      }
+    },
+    "http_req_tls_handshaking": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 0,
+        "med": 0,
+        "p(90)": 0,
+        "p(95)": 0,
+        "max": 0,
+        "min": 0
+      }
+    },
+    "http_req_sending": {
+      "contains": "time",
+      "values": {
+        "max": 0.134,
+        "min": 0.132,
+        "avg": 0.133,
+        "med": 0.133,
+        "p(90)": 0.1338,
+        "p(95)": 0.13390000000000002
+      },
+      "type": "trend"
+    },
+    "data_sent": {
+      "type": "counter",
+      "contains": "data",
+      "values": {
+        "count": 814,
+        "rate": 498.94051758642735
+      }
+    },
+    "http_req_duration{expected_response:true}": {
+      "type": "trend",
+      "contains": "time",
+      "values": {
+        "avg": 137.664,
+        "med": 137.664,
+        "p(90)": 137.8368,
+        "p(95)": 137.8584,
+        "max": 137.88,
+        "min": 137.448
+      }
+    }
+  },
+  "root_group": {
+    "name": "",
+    "path": "",
+    "id": "d41d8cd98f00b204e9800998ecf8427e",
+    "groups": [],
+    "checks": []
+  },
+  "options": {
+    "noColor": false,
+    "summaryTrendStats": [
+      "min",
+      "avg",
+      "med",
+      "p(90)",
+      "p(95)",
+      "max"
+    ],
+    "summaryTimeUnit": ""
+  }
+}

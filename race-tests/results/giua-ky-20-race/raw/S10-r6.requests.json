@@ -1,0 +1,55 @@
+[
+  {
+    "label": "reschedule-A",
+    "method": "POST",
+    "url": "http://localhost:3000/api/book/event",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "eventTypeId": 1174,
+      "start": "2029-06-28T15:00:00.000Z",
+      "end": "2029-06-28T15:30:00.000Z",
+      "timeZone": "UTC",
+      "language": "en",
+      "metadata": {},
+      "user": "k15host",
+      "rescheduleUid": "2RSrtt7mtmW1SroCB4oprq",
+      "responses": {
+        "name": "s10-r6-ua",
+        "email": "s10-r6-ua@k15.test",
+        "location": {
+          "value": "inPerson",
+          "optionValue": ""
+        }
+      }
+    },
+    "delayMs": 0
+  },
+  {
+    "label": "book-new",
+    "method": "POST",
+    "url": "http://localhost:3000/api/book/event",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "eventTypeId": 1174,
+      "start": "2029-06-28T15:00:00.000Z",
+      "end": "2029-06-28T15:30:00.000Z",
+      "timeZone": "UTC",
+      "language": "en",
+      "metadata": {},
+      "user": "k15host",
+      "responses": {
+        "name": "s10-r6-unew",
+        "email": "s10-r6-unew@k15.test",
+        "location": {
+          "value": "inPerson",
+          "optionValue": ""
+        }
+      }
+    },
+    "delayMs": 0
+  }
+]

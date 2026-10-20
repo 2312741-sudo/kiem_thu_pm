@@ -11,7 +11,7 @@ Mục đích: một thành viên khác chạy lại toàn bộ test trên máy c
 | Node.js 22 | `node -v` | v22.x |
 | k6 | `k6 version` | k6 v1.x hoặc v2.x |
 | Cal.com v6.2.0 đang chạy | mở http://localhost:3000 | Trang Cal.com hiện lên |
-| PostgreSQL có database `calendso` | `npm run fixtures` (bước 3) | In được bảng 5 loại cuộc hẹn |
+| PostgreSQL có database `calendso` | `npm run fixtures` (bước 3) | In được bảng 9 loại cuộc hẹn |
 
 Cài đặt Cal.com và PostgreSQL: xem [README.md](../README.md) mục 2. Cal.com phải đúng tag `v6.2.0` (commit `1c193cca8682b33b9866c792186033f7ef886682`), nếu không kết quả không so sánh được.
 
@@ -41,7 +41,7 @@ cd C:\dev\kiem_thu_pm\race-tests
 npm install
 ```
 
-Nếu đã có thư mục từ trước thì `git pull` để lấy bản mới nhất (có bản sửa báo lỗi k6 rõ ràng hơn).
+Nếu đã có thư mục từ trước thì `git pull` để lấy bản mới nhất (có bản sửa báo lỗi k6 rõ ràng hơn, và bộ test đã tăng từ 8 lên 20 test case). Sau `git pull` **phải chạy lại `npm run fixtures`** vì fixture có thêm 4 loại cuộc hẹn; thiếu bước này các test case TC-11 đến TC-14 sẽ lỗi.
 
 **Nếu PostgreSQL trên máy có mật khẩu** (bản cài đặt thường đặt mật khẩu), khai báo trước khi chạy, thay `MATKHAU` bằng mật khẩu của bạn:
 
@@ -90,7 +90,7 @@ Lượt tuần tự đã chạy đúng như bảng này trên máy Windows. Nế
 ## 6. Gửi lại cho người phụ trách
 
 1. Hai thư mục `results/windows-race` và `results/windows-sequential` (có `REPORT.md`, `summary.json`, `raw/`).
-2. Ảnh chụp Terminal sau khi mỗi lượt chạy xong (thấy dòng PASS/FAIL của 8 test case).
+2. Ảnh chụp Terminal sau khi mỗi lượt chạy xong (thấy dòng PASS/FAIL của 20 test case).
 3. Cấu hình máy, dán kết quả của lệnh sau:
 
 ```powershell
