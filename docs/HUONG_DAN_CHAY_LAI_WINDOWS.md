@@ -4,6 +4,8 @@ Mục đích: một thành viên khác chạy **toàn bộ 20 test case** trên 
 
 **Làm theo thứ tự, không bỏ bước nào.** Ba việc dễ sót nhất: `git pull`, `npm run fixtures` lại, và dùng đúng tên thư mục kết quả ở bước 4.
 
+**Đã chạy xong ngày 21/10/2026:** 20/20 test case khớp với máy macOS (lượt đồng thời 448 giây, lượt tuần tự 113 giây; chỉ TC-07 lệch 1 vòng). Kết quả: `race-tests/results/windows-20-race/` và `windows-20-sequential/`. Tài liệu này giữ lại để chạy lại khi cần.
+
 **Quy tắc:** tại một thời điểm chỉ một lượt test chạy trên một Cal.com. Các lệnh test xóa và tạo lại booking của host test.
 
 ## 1. Cần có

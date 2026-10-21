@@ -25,7 +25,7 @@ s.addText([
   "Bộ test tự động: k6 gửi đồng thời + SQL kiểm CSDL",
   "20 test case × 10 vòng, có nhóm đối chứng tuần tự",
   "11 lỗi (10 race, 1 logic), tái hiện độc lập bằng curl",
-  "Đánh giá rủi ro; 8 test case đầu khớp 8/8 trên Windows",
+  "Đánh giá rủi ro; cả 20 test case khớp 20/20 trên Windows",
 ].map((t, i, a) => ({ text: t, options: { bullet: true, breakLine: i < a.length - 1, paraSpaceAfter: 5 } })), { x: M + 0.25, y: 2.15, w: colW - 0.5, h: 2.5, fontFace: BODY, fontSize: 15, color: MUTED, margin: 0, valign: "top", isTextBox: true });
 card(M + colW + 0.5, 1.6, colW, 3.1);
 s.addText("Kết quả chính", { x: M + colW + 0.75, y: 1.7, w: colW - 0.5, h: 0.4, fontFace: BODY, fontSize: 18, bold: true, color: BLUE, margin: 0, isTextBox: true });
@@ -51,5 +51,5 @@ boxes.forEach(([h, t], i) => {
   s.addText(h, { x: x + 0.2, y: 5.03, w: w3 - 0.4, h: 0.35, fontFace: BODY, fontSize: 16, bold: true, color: INK, margin: 0, isTextBox: true });
   s.addText(t, { x: x + 0.2, y: 5.45, w: w3 - 0.4, h: 1.3, fontFace: BODY, fontSize: 14, color: MUTED, margin: 0, valign: "top", isTextBox: true });
 });
-s.addNotes("Một slide tóm tắt nội dung nhóm đã hoàn thành đến thời điểm hiện tại, dùng để trình bày trước lớp. Nhóm đã dựng Cal.com, viết bộ test tự động gửi yêu cầu đồng thời và kiểm tra trực tiếp cơ sở dữ liệu, chạy 20 test case mỗi cái 10 vòng ở hai chế độ, tìm được 11 lỗi thật và tái hiện độc lập bằng curl, và 8 test case đầu chạy lại trên máy Windows cho cùng kết quả. Chi phí 0 đồng. Việc còn lại là test qua giao diện, đề xuất sửa và báo lỗi cho Cal.com.");
+s.addNotes("Một slide tóm tắt nội dung nhóm đã hoàn thành đến thời điểm hiện tại, dùng để trình bày trước lớp. Nhóm đã dựng Cal.com, viết bộ test tự động gửi yêu cầu đồng thời và kiểm tra trực tiếp cơ sở dữ liệu, chạy 20 test case mỗi cái 10 vòng ở hai chế độ, tìm được 11 lỗi thật và tái hiện độc lập bằng curl, và chạy lại cả 20 test case trên máy Windows cho cùng kết luận. Chi phí 0 đồng. Việc còn lại là test qua giao diện, đề xuất sửa và báo lỗi cho Cal.com.");
 pres.writeFile({ fileName: OUT }).then((f) => console.log("wrote", f));

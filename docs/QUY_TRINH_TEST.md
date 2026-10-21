@@ -101,7 +101,8 @@ Tổng cộng 20 test case × 10 vòng = 200 lần chạy cho mỗi chế độ 
 | Thí nghiệm khắc phục (đợt 1) | Sau khi thêm ràng buộc CSDL | 40 | 380 | 85 giây |
 | Thí nghiệm khắc phục (đợt 2) | TC-02, 05, 17 (ràng buộc loại trừ), TC-16 (chỉ mục duy nhất) | 40 | 360 | 89 giây |
 | Đo cửa sổ race | 18 mốc độ trễ Δ | 180 | 360 | 300 giây |
-| **Tổng** | | **990** | **5 760** | **khoảng 23 phút** |
+| Đợt 2 trên máy Windows | 20 test case, đồng thời 448 giây + tuần tự 113 giây | 400 | 3 180 | 561 giây |
+| **Tổng** | | **1 390** | **8 940** | **khoảng 33 phút** |
 
 Chạy lại toàn bộ bộ test chính 20 test case (đồng thời + tuần tự) tốn khoảng 8 phút máy. Bộ demo giữa kỳ (`npm run demo:midterm`) chạy khoảng 20 giây.
 
@@ -136,7 +137,7 @@ Chạy lại toàn bộ bộ test chính 20 test case (đồng thời + tuần t
 |---|---|---|
 | Sprint 1 (đến 20/10) | Dựng hệ thống, kiến trúc, kế hoạch, PoC | Xong |
 | Sprint 2–3 | Harness 8 test case, chạy 10 vòng, đối chứng tuần tự, đo cửa sổ race | Đã chạy xong |
-| Mở rộng | 20 test case, đánh giá rủi ro, chứng minh khả thi, tái hiện 5 lỗi mới bằng curl | Đã chạy xong (macOS) |
+| Mở rộng | 20 test case, đánh giá rủi ro, chứng minh khả thi, tái hiện 5 lỗi mới bằng curl | Đã chạy xong (macOS và Windows, 20/20 khớp) |
 | Sprint 2–3 | Chạy lại trên máy Windows của thành viên khác | Đã chạy xong, kết quả khớp |
 | Sprint 2–3 còn lại | Scenario Playwright qua giao diện | Chưa làm |
 | Sprint 4 | Rà soát nguyên nhân gốc, đề xuất sửa, hoàn thiện báo cáo | Đang làm |

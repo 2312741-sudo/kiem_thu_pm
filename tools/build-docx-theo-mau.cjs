@@ -43,7 +43,7 @@ const B = (text) => new Paragraph({ alignment: AlignmentType.JUSTIFIED, indent: 
 const H1 = (text, pageBreak = true) => new Paragraph({ heading: HeadingLevel.HEADING_1, pageBreakBefore: pageBreak, children: [new TextRun({ text, font: FONT })] });
 const H2 = (text) => new Paragraph({ heading: HeadingLevel.HEADING_2, children: [new TextRun({ text, font: FONT })] });
 const H3 = (text) => new Paragraph({ heading: HeadingLevel.HEADING_3, children: [new TextRun({ text, font: FONT })] });
-const H4 = (text) => new Paragraph({ heading: HeadingLevel.HEADING_4, children: [new TextRun({ text, font: FONT })] });
+const H4 = (text) => new Paragraph({ heading: HeadingLevel.HEADING_4, keepNext: true, children: [new TextRun({ text, font: FONT })] });
 const spacer = () => new Paragraph({ spacing: { after: 0, line: 240 }, children: [] });
 
 function caption(label, text, key) {
@@ -144,7 +144,7 @@ function buildBody() {
   body.push(
     P("Trong thời đại số, việc đặt lịch hẹn trực tuyến đã trở thành nhu cầu phổ biến: khám bệnh, tư vấn, học thêm, họp công việc. Các hệ thống đặt lịch cho phép người sở hữu lịch công bố những khung giờ còn trống và để khách tự chọn giờ mà không cần trao đổi qua lại. Điều quan trọng nhất mà người dùng kỳ vọng ở loại hệ thống này rất đơn giản: một khung giờ chỉ được giữ cho một người."),
     P("Tuy nhiên, kỳ vọng đó chỉ dễ đạt được khi các yêu cầu đến lần lượt. Khi nhiều khách cùng bấm “Đặt lịch” trong một phần giây, hệ thống phải xử lý đồng thời nhiều yêu cầu cùng tranh một tài nguyên chung là lịch của chủ lịch. Nếu cách xử lý không an toàn trước tình huống này, hệ thống có thể nhận cả hai yêu cầu và chủ lịch bị đặt trùng giờ. Loại lỗi này rất khó gặp khi kiểm thử bằng tay hoặc bằng các kịch bản chạy tuần tự."),
-    P("Xuất phát từ thực tế đó, nhóm thực hiện đề tài R05-K15 của môn Kiểm thử phần mềm: kiểm thử race condition cho Cal.com, một hệ thống đặt lịch mã nguồn mở. Nhóm dựng hệ thống trên máy cá nhân, phân tích luồng đặt lịch, thiết kế 20 test case xoay quanh các tính chất dữ liệu phải luôn đúng, viết bộ test tự động gửi request đồng thời bằng k6 và kiểm tra trực tiếp cơ sở dữ liệu PostgreSQL. Kết quả là 11 lỗi, tất cả đều được tái hiện lại bằng lệnh `curl` thuần (6 lỗi đầu còn được xác nhận trên máy thứ hai). Phần lớn là lỗi khó thấy: hệ thống vẫn trả HTTP 200 và giao diện báo thành công nhưng dữ liệu đã sai, nên kiểm thử tuần tự thông thường không phát hiện được."),
+    P("Xuất phát từ thực tế đó, nhóm thực hiện đề tài R05-K15 của môn Kiểm thử phần mềm: kiểm thử race condition cho Cal.com, một hệ thống đặt lịch mã nguồn mở. Nhóm dựng hệ thống trên máy cá nhân, phân tích luồng đặt lịch, thiết kế 20 test case xoay quanh các tính chất dữ liệu phải luôn đúng, viết bộ test tự động gửi request đồng thời bằng k6 và kiểm tra trực tiếp cơ sở dữ liệu PostgreSQL. Kết quả là 11 lỗi, tất cả đều được tái hiện lại bằng lệnh `curl` thuần (cả 20 test case còn được chạy lại và cho cùng kết luận trên máy Windows). Phần lớn là lỗi khó thấy: hệ thống vẫn trả HTTP 200 và giao diện báo thành công nhưng dữ liệu đã sai, nên kiểm thử tuần tự thông thường không phát hiện được."),
     P("Mục đích của báo cáo giữa kỳ này là **thuyết phục tính khả thi của kế hoạch kiểm thử** để được duyệt: kế hoạch có phạm vi hợp lý, tiêu chí đánh giá rõ ràng, chi phí thấp, và đã được chứng minh chạy thật bằng bộ test và các lỗi thật tìm được. Báo cáo cũng đánh giá rủi ro của từng lỗi, chứng minh tính khả thi của từng test case và ghi rõ nhiệm vụ, đóng góp của từng thành viên.")
   );
 
@@ -487,7 +487,7 @@ function buildBody() {
     ["Đăng ký", "Chốt thành viên, repo, kỹ thuật, phiên bản; lập bảng công việc", "Xong"],
     ["Sprint 1 (đến 20/10)", "Dựng hệ thống, vẽ kiến trúc, viết tài liệu cài đặt, kế hoạch test, thử nghiệm đầu tiên", "Xong"],
     ["Sprint 2 và 3", "Bộ test 8 test case ban đầu, chạy 10 vòng, đối chứng tuần tự, đo cửa sổ race, chạy lại trên máy Windows", "Xong"],
-    ["Mở rộng theo góp ý của giảng viên", "Tăng lên 20 test case, đánh giá rủi ro, chứng minh tính khả thi, tái hiện 5 lỗi mới bằng curl", "Xong (chạy trên macOS)"],
+    ["Mở rộng theo góp ý của giảng viên", "Tăng lên 20 test case, đánh giá rủi ro, chứng minh tính khả thi, tái hiện 5 lỗi mới bằng curl", "Xong (macOS và Windows)"],
     ["Sprint 2 và 3 (còn lại)", "Kiểm thử qua giao diện bằng Playwright", "Chưa làm"],
     ["Sprint 4", "Rà soát nguyên nhân gốc, đề xuất sửa, hoàn thiện báo cáo cuối", "Đang làm"],
     ["Tháng 12", "Slide bảo vệ, tập dượt, đánh giá chéo giữa các thành viên", "Chưa làm"],
@@ -497,7 +497,7 @@ function buildBody() {
   body.push(
     L("1)", "**Hệ thống dựng được và chạy được:** Cal.com v6.2.0 chạy trên hai máy (macOS và Windows 11), ba luồng đặt, đổi, hủy lịch đều thành công."),
     L("2)", "**Kỹ thuật phát hiện được lỗi thật:** 13 trên 20 test case phát hiện lỗi (11 lỗi khác nhau); cả 11 lỗi tái hiện độc lập bằng `curl`, có dữ liệu sai trong cơ sở dữ liệu."),
-    L("3)", "**Kết quả không phụ thuộc máy:** 8 test case đầu chạy lại trên máy Windows cho cùng kết luận 8/8 với máy macOS; 12 test case bổ sung mới chạy trên macOS."),
+    L("3)", "**Kết quả không phụ thuộc máy:** cả 20 test case chạy lại trên máy Windows cho cùng kết luận 20/20 với máy macOS (khác nhau ở một vòng của TC-07)."),
     L("4)", "**Chi phí thấp:** 0 đồng, lượt chạy chính thức 20 test case khoảng 8 phút máy (383 giây đồng thời + 76 giây tuần tự), bộ test khoảng 1 600 dòng mã."),
     L("5)", "**Rủi ro đã được kiểm soát:** nhóm đối chứng tuần tự, lặp 10 vòng, kiểm dữ liệu trong cơ sở dữ liệu, ghim phiên bản."),
     L("6)", "**Phạm vi và việc còn lại rõ ràng:** phần chưa làm (Playwright, báo lỗi cho Cal.com) đã được liệt kê cùng lịch thực hiện.")
@@ -586,7 +586,7 @@ function buildBody() {
 
   body.push(H2("4.4. Thực hiện kiểm thử và kết quả"));
   body.push(H3("4.4.1. Kết quả chạy đồng thời và tuần tự"));
-  body.push(P("Lượt chạy chính thức ngày 20/10/2026 trên máy macOS: 20 test case, mỗi test case 10 vòng ở mỗi chế độ (3 180 yêu cầu). [[tbl:kq-mac]] và [[fig:ket-qua-20]] tổng hợp kết quả; kết quả của 8 test case đầu trên máy Windows ở mục 4.4.2."));
+  body.push(P("Lượt chạy chính thức ngày 20/10/2026 trên máy macOS: 20 test case, mỗi test case 10 vòng ở mỗi chế độ (3 180 yêu cầu). [[tbl:kq-mac]] và [[fig:ket-qua-20]] tổng hợp kết quả; kết quả trên máy Windows ở mục 4.4.2."));
   body.push(...table([
     ["TC", "Đồng thời (vòng vi phạm)", "Tuần tự (vòng vi phạm)", "Kết luận", "Lỗi"],
     ["TC-01", "0/10", "0/10", "Đúng", "–"],
@@ -620,12 +620,27 @@ function buildBody() {
     L("5)", "TC-15 cho thấy một dạng lỗi khác: cả 6 lệnh hủy đều thành công, và nhóm đếm được 12 email hủy được gửi cho một booking (đối chứng tuần tự: 2 email).")
   );
   body.push(H3("4.4.2. Chạy lại trên máy Windows"));
-  body.push(P("Thành viên Ngô Quốc Trường Vĩ chạy lại toàn bộ trên máy Windows 11 ([[tbl:cau-hinh]]) với cùng phiên bản mã. Lượt này gồm 8 test case đầu (bộ test ngày 18/10); 12 test case bổ sung (TC-09 đến TC-20) chưa chạy trên Windows. Kết quả khớp 8/8 với máy macOS: số vòng vi phạm và dữ liệu trong cơ sở dữ liệu ở vòng 1 giống nhau, trừ TC-05, nơi máy macOS nhận 9 booking chờ xác nhận và máy Windows nhận 10; cả hai đều vi phạm 10/10 vòng."));
+  body.push(P("Thành viên Ngô Quốc Trường Vĩ chạy lại toàn bộ trên máy Windows 11 ([[tbl:cau-hinh]]) với cùng phiên bản mã. Lượt ngày 18/10 gồm 8 test case đầu (bộ test lúc đó); lượt ngày 21/10 chạy đủ 20 test case, mô tả ở cuối mục này. Kết quả lượt ngày 18/10 khớp 8/8 với máy macOS: số vòng vi phạm và dữ liệu trong cơ sở dữ liệu ở vòng 1 giống nhau, trừ TC-05, nơi máy macOS nhận 9 booking chờ xác nhận và máy Windows nhận 10; cả hai đều vi phạm 10/10 vòng."));
   body.push(...fig("hinh-ket-qua.png", "Số vòng vi phạm của 8 test case đầu trên hai máy, hai chế độ", 15, "ket-qua"));
   body.push(P("Máy Windows chạy chậm hơn: lượt đồng thời mất 210 giây so với 154 giây trên máy macOS, lượt tuần tự 43 giây so với 23 giây. Độ trễ p95 của TC-01 là 9 703 ms trên Windows so với 417 ms trên macOS; nhiều khả năng do Cal.com biên dịch lần đầu ở vòng đầu, nhóm chưa kiểm chứng. [[fig:win-race]] và [[fig:win-seq]] là ảnh chụp Terminal của hai lượt chạy trên máy Windows."));
   body.push(...fig("windows-race.png", "Kết quả chạy đồng thời trên máy Windows", 9, "win-race"));
   body.push(...fig("windows-sequential.png", "Kết quả chạy tuần tự trên máy Windows", 11, "win-seq"));
   body.push(P("Hai lượt chạy đầu trên máy Windows không hợp lệ và đã bị loại: lượt thứ nhất do máy chưa cài k6, lượt thứ hai do Cal.com dừng giữa chừng và test case TC-01 báo không đạt bất thường. Kết quả ở trên là lượt chạy sạch sau khi khắc phục. Từ đó bộ test được bổ sung bước khởi động nóng và thông báo rõ ràng khi Cal.com dừng giữa lúc chạy."));
+  body.push(H4("Chạy đủ 20 test case trên Windows (21/10/2026)"));
+  body.push(P("Ngày 21/10/2026 thành viên Ngô Quốc Trường Vĩ chạy lại **đủ 20 test case** trên cùng máy Windows 11, 10 vòng mỗi chế độ (3 180 yêu cầu). Kết quả khớp 20/20 với máy macOS về kết luận ([[tbl:kq-win20]]). Lượt đồng thời mất 448 giây (macOS 383 giây), lượt tuần tự 113 giây (macOS 76 giây). Tỉ lệ vòng vi phạm của hai máy chỉ khác ở TC-07."));
+  body.push(...table([
+    ["Test case", "macOS: đồng thời", "Windows: đồng thời", "Windows: tuần tự", "Khớp"],
+    ["TC-01, 04, 09, 10, 18, 19, 20", "0/10", "0/10", "0/10", "Có"],
+    ["TC-02, 03, 05, 08, 11 đến 17", "10/10", "10/10", "0/10", "Có"],
+    ["TC-06", "10/10", "10/10", "10/10", "Có"],
+    ["TC-07", "10/10", "9/10", "0/10", "Có (lệch 1 vòng)"],
+  ], [4.2, 2.4, 2.6, 2.4, 2.4], "Kết quả 20 test case trên máy Windows so với máy macOS", { center: [1, 2, 3, 4], key: "kq-win20", size: 22 }));
+  body.push(PN("**Hai điểm khác nhau, cả hai đều là bình thường:**"));
+  body.push(
+    L("1)", "**TC-07 vi phạm 9/10 vòng.** Ở vòng 1, yêu cầu đổi lịch đến trước nên lệnh hủy bị từ chối (HTTP 400 “đã hủy”); khi đó dữ liệu nhất quán và invariant I5 không bị vi phạm. Lỗi chỉ xảy ra khi hai lệnh thắng cùng lúc. Với chỉ 2 yêu cầu, thứ tự đến thay đổi theo từng vòng, nên tỉ lệ không phải lúc nào cũng 10/10. Nhóm giữ nguyên số thật."),
+    L("2)", "**TC-05:** vòng 1 máy Windows nhận 10 booking chờ xác nhận, máy macOS nhận 9; cả hai đều vi phạm 10/10 vòng (khác biệt này đã gặp ở lượt ngày 18/10).")
+  );
+  body.push(P("Dữ liệu vòng 1 (số mã HTTP và số booking trong cơ sở dữ liệu) của 18 trong 20 test case giống hệt giữa hai máy. Lượt Windows chỉ còn lưu `REPORT.md` (do người chạy gửi lại), không còn `summary.json` và thư mục `raw/`; nhóm dùng `REPORT.md` làm nguồn số liệu cho phần này."));
   body.push(H3("4.4.3. Độ nhạy và cửa sổ race"));
   body.push(P("Để xem lỗi có cần tải lớn hay không, nhóm giảm xuống chỉ 2 yêu cầu đồng thời và chạy 20 vòng. TC-02 (các giờ chồng lấn) vi phạm ở 20/20 vòng và TC-08 (giới hạn mỗi ngày) vi phạm ở 20/20 vòng. Như vậy hai khách đặt gần cùng lúc là đủ gây lỗi. Với 7 test case bổ sung (TC-11 đến TC-17) nhóm cũng giảm xuống 2 yêu cầu đồng thời và chạy 10 vòng: cả 7 test case vẫn vi phạm ở 10/10 vòng. Vậy các lỗi mới không đòi hỏi tải lớn."));
   body.push(P("Để đo độ rộng cửa sổ race, nhóm cho hai yêu cầu xung đột, yêu cầu thứ hai gửi trễ Δ mili-giây. [[fig:cua-so]] cho thấy với Δ từ 0 đến 30 ms vòng nào cũng vi phạm; từ 35 đến 50 ms vi phạm một phần; từ 60 ms trở đi không còn. Vậy cửa sổ race khoảng 30 đến 60 ms, xấp xỉ thời gian xử lý một yêu cầu trên máy test. Trên hệ thống thật, thời gian này dài hơn vì có thêm lời gọi tới lịch ngoài, nên cửa sổ có thể rộng hơn."));
@@ -640,7 +655,7 @@ function buildBody() {
     ["4. Công cụ khác cho cùng kết quả", "`curl` thuần (không k6, không bộ test) tái hiện cả 11 lỗi; D7 đến D11 chạy hai lần liên tiếp cho kết quả y hệt", "`docs/evidence/repro-curl-2.txt`"],
     ["5. Sửa lỗi thì test đạt", "Thêm chỉ mục duy nhất theo người tham dự: TC-16 chuyển từ không đạt 10/10 sang đạt 10/10 (1 người được nhận, 5 người bị từ chối với HTTP 400, không có 500). Thêm ràng buộc loại trừ: TC-02, TC-05, TC-17 hết vi phạm I1 và I3, chỉ còn vi phạm I7 do trả 500", "`results/fix-unique-attendee/`, `results/fix-exclusion-20/`"],
     ["6. Chi phí chấp nhận được", "20 test case, 10 vòng, hai chế độ: khoảng 8 phút máy, 0 đồng", "[[tbl:chi-phi]]"],
-    ["7. Nhiều máy", "8 test case đầu khớp 8/8 giữa macOS và Windows; 12 test case mới mới chạy trên macOS (hạn chế đã ghi nhận)", "`results/windows-race/`"],
+    ["7. Nhiều máy", "Cả 20 test case khớp 20/20 về kết luận giữa macOS và Windows (lệch 1 vòng ở TC-07, giải thích ở mục 4.4.2)", "`results/windows-20-race/`, `windows-20-sequential/`"],
   ], [3, 7.5, 3.2], "Bằng chứng về tính khả thi của các test case", { size: 22, key: "bang-chung" }));
   body.push(P("Câu hỏi “nếu không có test case này thì sao” được trả lời ở [[tbl:ma-tran-tc]]: mỗi test case phát hiện một lỗi mà kiểm thử tuần tự không thấy (cột thứ ba), hoặc xác nhận một cơ chế bảo vệ để làm mốc đối chứng cho các test case khác."));
   body.push(...table([
@@ -679,7 +694,8 @@ function buildBody() {
     ["Thí nghiệm khắc phục (đợt 1)", "40", "380", "85 giây"],
     ["Thí nghiệm khắc phục (TC-02, 05, 16, 17)", "40", "360", "89 giây"],
     ["Đo cửa sổ race (18 mốc độ trễ)", "180", "360", "300 giây"],
-    ["**Tổng**", "**990**", "**5 760**", "**khoảng 23 phút**"],
+    ["Đợt 2 trên máy Windows (đồng thời 448 giây, tuần tự 113 giây)", "400", "3 180", "561 giây"],
+    ["**Tổng**", "**1 390**", "**8 940**", "**khoảng 33 phút**"],
   ], [5.6, 1.6, 2, 2.8], "Chi phí chạy kiểm thử đo được", { center: [1, 2, 3], key: "chi-phi" }));
   body.push(P("Chạy lại bộ test chính 20 test case (cả đồng thời và tuần tự) tốn khoảng 8 phút. Chi phí xây dựng bộ test khoảng 1 600 dòng mã (Node.js, k6, SQL, bash). Về nhân lực, nhóm chưa theo dõi giờ làm của từng người; [[tbl:nhan-luc]] là ước lượng khối lượng công việc, không phải số giờ đo thực tế; ước lượng này chưa gồm đợt mở rộng lên 20 test case."));
   body.push(...table([
@@ -813,13 +829,13 @@ function buildBody() {
   body.push(H2("1. Kết quả đạt được"));
   body.push(
     P("Nhóm đã dựng thành công Cal.com v6.2.0 trên hai máy (macOS và Windows 11), chạy được ba luồng nghiệp vụ đặt lịch, đổi lịch, hủy lịch và lập tài liệu cài đặt từ máy sạch. Nhóm đã phân tích kiến trúc và luồng xử lý của nghiệp vụ trọng tâm, xác định mười hai tính chất dữ liệu bất biến và thiết kế 20 test case với đặc tả đầy đủ tiền điều kiện, dữ liệu, kết quả mong đợi."),
-    P("Bộ test tự động gồm khoảng 1 600 dòng mã, gửi yêu cầu đồng thời bằng k6, kiểm tra trực tiếp cơ sở dữ liệu và có nhóm đối chứng gửi tuần tự. Kết quả lượt chạy chính thức: 13 trên 20 test case phát hiện lỗi, gồm 10 lỗi race (D1 đến D3, D5 đến D11) và 1 lỗi logic (D4), cùng hai quan sát phụ; 7 test case còn lại đạt ở cả hai chế độ nên cho thấy bộ test không báo lỗi giả. Cả 11 lỗi đều được tái hiện độc lập bằng `curl` thuần với dữ liệu sai nhìn thấy được trong cơ sở dữ liệu; 8 test case đầu chạy lại trên máy Windows khớp 8/8 với máy macOS."),
+    P("Bộ test tự động gồm khoảng 1 600 dòng mã, gửi yêu cầu đồng thời bằng k6, kiểm tra trực tiếp cơ sở dữ liệu và có nhóm đối chứng gửi tuần tự. Kết quả lượt chạy chính thức: 13 trên 20 test case phát hiện lỗi, gồm 10 lỗi race (D1 đến D3, D5 đến D11) và 1 lỗi logic (D4), cùng hai quan sát phụ; 7 test case còn lại đạt ở cả hai chế độ nên cho thấy bộ test không báo lỗi giả. Cả 11 lỗi đều được tái hiện độc lập bằng `curl` thuần với dữ liệu sai nhìn thấy được trong cơ sở dữ liệu; cả 20 test case chạy lại trên máy Windows cho cùng kết luận với máy macOS."),
     P("Nhóm cũng xác định được nguyên nhân gốc: mẫu kiểm tra rồi mới ghi không có khóa, ràng buộc chống trùng quá hẹp và một trạng thái mang hai nghĩa. Thí nghiệm thêm ràng buộc loại trừ trên dữ liệu test chứng minh nguyên nhân cho D1 và D3, đồng thời chỉ ra hệ thống còn thiếu xử lý mã lỗi tương ứng. Thí nghiệm thêm chỉ mục duy nhất theo người tham dự đưa TC-16 (D11) từ không đạt 10/10 sang đạt 10/10, chứng minh test case phát hiện đúng lỗi. Đánh giá rủi ro xếp D1 và D6 ở mức nghiêm trọng (điểm 25 và 20): hệ thống vẫn trả HTTP 200 nhưng dữ liệu đã sai nên người vận hành không có cảnh báo nào."),
     P("Với các bằng chứng trên, nhóm đề nghị được duyệt kế hoạch kiểm thử đã trình bày ở mục 3.4: hệ thống chạy được, kỹ thuật phát hiện được lỗi thật, kết quả không phụ thuộc máy, chi phí thấp và phần việc còn lại đã rõ ràng.")
   );
   body.push(H2("2. Hạn chế và hướng phát triển"));
   body.push(
-    P("Đề tài còn một số hạn chế. Thứ nhất, nhóm chưa báo các lỗi tìm được cho nhóm phát triển Cal.com, chưa kiểm tra trên phiên bản mới hơn và chưa sửa mã Cal.com, nên chưa thể khẳng định phía Cal.com xếp tất cả là lỗi (ví dụ D2 có thể được xem là hành vi chấp nhận được). Thứ hai, bộ test chạy ở chế độ phát triển (`yarn dev`) trên một bản Cal.com và một cơ sở dữ liệu cục bộ, chưa thử trên bản dựng chính thức hay nhiều máy chủ sau bộ cân bằng tải. Thứ ba, nhóm chưa kiểm thử qua giao diện bằng Playwright, chưa kiểm thử API phiên bản 2, luồng nhóm và điểm giữ chỗ tạm. Thứ tư, 12 test case bổ sung (TC-09 đến TC-20) mới chạy trên máy macOS, chưa chạy lại trên Windows. Thứ năm, nhân lực chỉ là ước lượng vì nhóm chưa theo dõi giờ làm."),
+    P("Đề tài còn một số hạn chế. Thứ nhất, nhóm chưa báo các lỗi tìm được cho nhóm phát triển Cal.com, chưa kiểm tra trên phiên bản mới hơn và chưa sửa mã Cal.com, nên chưa thể khẳng định phía Cal.com xếp tất cả là lỗi (ví dụ D2 có thể được xem là hành vi chấp nhận được). Thứ hai, bộ test chạy ở chế độ phát triển (`yarn dev`) trên một bản Cal.com và một cơ sở dữ liệu cục bộ, chưa thử trên bản dựng chính thức hay nhiều máy chủ sau bộ cân bằng tải. Thứ ba, nhóm chưa kiểm thử qua giao diện bằng Playwright, chưa kiểm thử API phiên bản 2, luồng nhóm và điểm giữ chỗ tạm. Thứ tư, nhân lực chỉ là ước lượng vì nhóm chưa theo dõi giờ làm."),
     P("Hướng phát triển gồm: bổ sung kịch bản Playwright chạy song song qua giao diện để minh họa lỗi D1 trên giao diện thật; rà soát và đề xuất bản sửa cho D1 và D4 (ràng buộc loại trừ, ánh xạ lỗi, kiểm tra lại trạng thái trong giao dịch khi đổi và hủy lịch, khóa theo chủ lịch cho giới hạn số booking); báo lỗi cho nhóm phát triển Cal.com kèm bộ tái hiện; và đưa bộ test vào quy trình tích hợp liên tục nhờ mã thoát của lệnh chạy.")
   );
 
@@ -856,7 +872,7 @@ function buildBody() {
     ["Kết quả thô lượt chạy chính thức (20 test case)", "`race-tests/results/giua-ky-20-race/`, `giua-ky-20-sequential/`"],
     ["Kết quả đợt 1 (8 test case)", "`race-tests/results/giua-ky-race/`, `giua-ky-sequential/`"],
     ["Độ nhạy và thí nghiệm khắc phục (đợt 2)", "`race-tests/results/sensitivity-n2-new/`, `fix-unique-attendee/`, `fix-exclusion-20/`"],
-    ["Kết quả máy Windows", "`race-tests/results/windows-race/`, `windows-sequential/`"],
+    ["Kết quả máy Windows", "`race-tests/results/windows-race/`, `windows-sequential/` (8 test case), `windows-20-race/`, `windows-20-sequential/` (20 test case)"],
     ["Tái hiện độc lập bằng curl", "`race-tests/repro/repro-curl.sh`, `repro-curl-2.sh`, `docs/evidence/repro-curl.txt`, `repro-curl-2.txt`"],
     ["Đánh giá rủi ro và chứng minh tính khả thi", "`docs/DANH_GIA_RUI_RO.md`"],
     ["Bảng công việc", "https://github.com/users/2312741-sudo/projects/1"],

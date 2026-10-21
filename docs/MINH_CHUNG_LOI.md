@@ -107,3 +107,5 @@ Nguồn: [race-tests/results/giua-ky-20-race/REPORT.md](../race-tests/results/gi
 - Chỉ 2 request đồng thời (S11–S17): [race-tests/results/sensitivity-n2-new/REPORT.md](../race-tests/results/sensitivity-n2-new/REPORT.md), tất cả vẫn 10/10 vòng vi phạm.
 - Sửa lỗi thì test đạt: [fix-unique-attendee](../race-tests/results/fix-unique-attendee/REPORT.md) (S16: FAIL 10/10 → PASS 10/10) và [fix-exclusion-20](../race-tests/results/fix-exclusion-20/REPORT.md) (S2, S5, S17: hết chồng giờ nhưng người thua nhận 500).
 - Đánh giá rủi ro từng lỗi: [DANH_GIA_RUI_RO.md](DANH_GIA_RUI_RO.md).
+
+- Máy Windows chạy lại đủ 20 test case (21/10/2026): [windows-20-race](../race-tests/results/windows-20-race/REPORT.md) và [windows-20-sequential](../race-tests/results/windows-20-sequential/REPORT.md). Khớp 20/20 về kết luận; chỉ TC-07 vi phạm 9/10 vòng.

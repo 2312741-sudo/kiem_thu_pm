@@ -87,7 +87,7 @@ const add = (master, section) => {
     ["Harness k6 + SQL, 20 test case, mỗi test case 10 vòng, có đối chứng tuần tự", "2–3", done, "race-tests/results/"],
     ["Phân tích nguyên nhân gốc, thí nghiệm khắc phục", "4", done, "docs/DEFECTS.md"],
     ["Báo cáo cuối (bản nháp A–H) và slide bảo vệ", "4–5", part, "docs/BAO_CAO.md"],
-    ["Chạy lại trên Windows: 8 test case đầu khớp 8/8", "3", done, "race-tests/results/windows-race"],
+    ["Chạy lại trên máy Windows: 20 test case khớp 20/20", "3", done, "race-tests/results/windows-race"],
     ["Scenario Playwright qua giao diện", "3", todo, "–"],
     ["Board GitHub Projects: 18 thẻ ở 3 cột; còn gán người và commit đều các thành viên", "Đăng ký", part, "docs/evidence/board.png"],
   ], { y: 1.75, colW: [5.9, 1.2, 1.5, W - 8.6], fontSize: 13, rowH: 0.43 });
@@ -253,8 +253,8 @@ const add = (master, section) => {
 {
   const s = add("LIGHT");
   eyebrow(s, "09 · CHI PHÍ TEST");
-  s.addText("Chi phí đo thật: 0 đồng, khoảng 23 phút máy", { placeholder: "title" });
-  const stats = [["0 đồng", "Công cụ miễn phí, chạy trên máy cá nhân"], ["5 760", "Request đã gửi trong mọi lần chạy"], ["≈ 8 phút", "Chạy lại 20 test case, cả hai chế độ"], ["≈ 1 600", "Dòng mã bộ test (Node.js, k6, SQL, bash)"]];
+  s.addText("Chi phí đo thật: 0 đồng, khoảng 33 phút máy", { placeholder: "title" });
+  const stats = [["0 đồng", "Công cụ miễn phí, chạy trên máy cá nhân"], ["8 940", "Request đã gửi trong mọi lần chạy"], ["≈ 8 phút", "Chạy lại 20 test case, cả hai chế độ"], ["≈ 1 600", "Dòng mã bộ test (Node.js, k6, SQL, bash)"]];
   const cw = (W - 3 * 0.3) / 4;
   stats.forEach(([n, l], i) => {
     const x = M + i * (cw + 0.3);
@@ -267,12 +267,12 @@ const add = (master, section) => {
     ["Đợt 1: 8 test case, đồng thời + tuần tự", "1 140", "177 giây"],
     ["Đợt 2: 20 test case, đồng thời (chính thức)", "1 590", "383 giây"],
     ["Đợt 2: 20 test case, tuần tự (đối chứng)", "1 590", "76 giây"],
-    ["Độ nhạy: chỉ 2 request (đợt 1 và 7 test case mới)", "340", "281 giây"],
-    ["Thí nghiệm khắc phục + đo cửa sổ race", "1 100", "474 giây"],
+    ["Đợt 2 trên máy Windows (đồng thời + tuần tự)", "3 180", "561 giây"],
+    ["Thí nghiệm phụ: độ nhạy 2 request, khắc phục, cửa sổ race", "1 440", "755 giây"],
   ], { y: 3.85, colW: [7.2, 2.2, W - 9.4], fontSize: 14, rowH: 0.42 });
   s.addText("Công sức nhóm: ước lượng 34–46 người-giờ (chưa theo dõi giờ thực tế, chưa gồm đợt mở rộng lên 20 test case). Máy: MacBook Apple Silicon 10 nhân, 32 GB RAM.", { x: M, y: 6.5, w: W, h: 0.4, fontFace: BODY, fontSize: 14, color: MUTED, margin: 0, isTextBox: true });
   footer(s, "Số liệu lấy từ summary.json của từng lần chạy: báo cáo bảng 'Chi phí chạy kiểm thử đo được' · docs/QUY_TRINH_TEST.md mục 3");
-  s.addNotes("Số liệu chi phí máy đo thật từ thời điểm bắt đầu và kết thúc trong file summary.json của mỗi lần chạy. Chạy lại bộ test chính 20 test case, cả đồng thời và tuần tự, mất khoảng tám phút. Tổng cộng mọi lần chạy khoảng 23 phút và 5 760 request. Công sức nhân lực là ước lượng 34 đến 46 người-giờ, nhóm chưa theo dõi giờ thực tế từng người và ước lượng này chưa gồm đợt mở rộng.");
+  s.addNotes("Số liệu chi phí máy đo thật từ thời điểm bắt đầu và kết thúc trong file summary.json của mỗi lần chạy. Chạy lại bộ test chính 20 test case, cả đồng thời và tuần tự, mất khoảng tám phút. Tổng cộng mọi lần chạy, cả hai máy, khoảng 33 phút và 8 940 request. Công sức nhân lực là ước lượng 34 đến 46 người-giờ, nhóm chưa theo dõi giờ thực tế từng người và ước lượng này chưa gồm đợt mở rộng.");
 }
 
 // Kết quả test
@@ -297,22 +297,23 @@ const add = (master, section) => {
 {
   const s = add("LIGHT");
   eyebrow(s, "11 · CHẠY LẠI TRÊN MÁY THỨ HAI");
-  s.addText("Máy Windows: 8 test case đầu khớp 8/8", { placeholder: "title" });
+  s.addText("Máy Windows: cả 20 test case khớp 20/20", { placeholder: "title" });
   tbl(s, [
     ["Test case", "Mac: đồng thời", "Windows: đồng thời", "Windows: tuần tự", "Khớp"],
-    ["TC-01, TC-04", "0/10", "0/10", "0/10", "Có"],
-    ["TC-02, 03, 05, 07, 08", "10/10", "10/10", "0/10", "Có"],
+    ["TC-01, 04, 09, 10, 18, 19, 20", "0/10", "0/10", "0/10", "Có"],
+    ["TC-02, 03, 05, 08, 11–17", "10/10", "10/10", "0/10", "Có"],
     ["TC-06", "10/10", "10/10", "10/10", "Có"],
-  ], { y: 1.75, colW: [3.6, 2.3, 2.6, 2.4, W - 10.9], fontSize: 15, rowH: 0.55 });
+    ["TC-07", "10/10", "9/10", "0/10", "Có (lệch 1 vòng)"],
+  ], { y: 1.75, colW: [4.2, 2.1, 2.4, 2.3, W - 11.0], fontSize: 14, rowH: 0.45 });
   const cw = (W - 0.7) / 3;
-  [["Thời gian", "Đồng thời 210 giây (Mac 154 giây); tuần tự 43 giây (Mac 23 giây)."], ["Hai lượt đầu bị loại", "Thiếu k6 và Cal.com dừng giữa chừng. Chỉ dùng lượt chạy sạch."], ["Máy Windows", "Người test: Ngô Quốc Trường Vĩ. Máy MSI, Core i7-13620H, RAM 16 GB. 12 test case mới (TC-09 đến TC-20) chưa chạy trên Windows."]].forEach(([h, b], i) => {
+  [["Thời gian", "20 test case: đồng thời 448 giây (Mac 383 giây); tuần tự 113 giây (Mac 76 giây)."], ["Hai lượt đầu bị loại", "Thiếu k6 và Cal.com dừng giữa chừng. Chỉ dùng lượt chạy sạch."], ["Máy Windows", "Người test: Ngô Quốc Trường Vĩ. Máy MSI, Core i7-13620H, RAM 16 GB. TC-07 lệch 1 vòng (9/10): bình thường với 2 request."]].forEach(([h, b], i) => {
     const x = M + i * (cw + 0.35);
     card(s, x, 4.4, cw, 2.0);
     s.addText(h, { x: x + 0.3, y: 4.6, w: cw - 0.6, h: 0.5, fontFace: BODY, fontSize: 20, bold: true, color: INK, margin: 0, isTextBox: true });
     s.addText(b, { x: x + 0.3, y: 5.2, w: cw - 0.6, h: 1.1, fontFace: BODY, fontSize: 15, color: MUTED, margin: 0, valign: "top", isTextBox: true });
   });
-  footer(s, "race-tests/results/windows-race · race-tests/results/windows-sequential");
-  s.addNotes("Một thành viên chạy lại bộ test trên máy Windows của mình với cùng phiên bản mã. Kết luận tám test case giống hệt máy Mac: năm lỗi race chỉ sai khi đồng thời, một lỗi logic sai cả khi tuần tự, hai test case đúng. Hai lượt chạy đầu trên máy Windows không hợp lệ vì thiếu công cụ k6 và vì Cal.com dừng giữa chừng; nhóm đã loại và chỉ dùng lượt chạy sạch. Người chạy trên máy Windows là Ngô Quốc Trường Vĩ, máy MSI Core i7-13620H, RAM 16 GB.");
+  footer(s, "race-tests/results/windows-20-race · race-tests/results/windows-20-sequential");
+  s.addNotes("Bạn Vĩ chạy lại bộ test trên máy Windows với cùng phiên bản mã. Ngày 18/10 là tám test case đầu, khớp tám trên tám. Ngày 21/10 chạy đủ hai mươi test case: kết luận khớp hai mươi trên hai mươi với máy Mac. Chỗ khác duy nhất là TC-07 vi phạm chín trên mười vòng thay vì mười: ở vòng một, yêu cầu đổi lịch đến trước nên lệnh hủy bị từ chối, dữ liệu nhất quán, không phải lỗi. Điều này bình thường với bài toán chỉ có hai yêu cầu. Máy Windows chậm hơn: bốn trăm bốn mươi tám giây so với ba trăm tám mươi ba giây. Hai lượt chạy đầu trên máy Windows lần trước bị loại vì thiếu k6 và Cal.com dừng giữa chừng; nhóm chỉ dùng lượt chạy sạch.");
 }
 
 // Chứng minh tính khả thi
@@ -328,11 +329,11 @@ const add = (master, section) => {
     ["4. Công cụ khác cho cùng kết quả", "curl thuần tái hiện cả 11 lỗi; D7–D11 chạy 2 lần liên tiếp, giống hệt"],
     ["5. Sửa lỗi thì test đạt", "Chỉ mục duy nhất theo người tham dự: TC-16 từ FAIL 10/10 sang PASS 10/10; ràng buộc loại trừ: TC-02, 05, 17 hết chồng giờ"],
     ["6. Chi phí chấp nhận được", "20 test case, 10 vòng, hai chế độ: ≈ 8 phút máy, 0 đồng"],
-    ["7. Nhiều máy", "8 test case đầu khớp 8/8 giữa macOS và Windows (12 test case mới chỉ chạy trên macOS)"],
+    ["7. Nhiều máy", "Cả 20 test case khớp 20/20 giữa macOS và Windows (TC-07 lệch 1 vòng, 9/10)"],
   ], { y: 1.75, colW: [3.5, W - 3.5], fontSize: 14, rowH: 0.56 });
   s.addText("Nếu bỏ một test case thì mất một lỗi mà kiểm thử tuần tự không thấy, hoặc mất một mốc đối chứng: bảng 'Vai trò của từng test case' trong báo cáo mục 4.4.4.", { x: M, y: 6.35, w: W, h: 0.5, fontFace: BODY, fontSize: 14, color: MUTED, margin: 0, valign: "top", isTextBox: true });
   footer(s, "Báo cáo mục 4.4.4 · docs/DANH_GIA_RUI_RO.md · results/fix-unique-attendee, fix-exclusion-20, sensitivity-n2-new");
-  s.addNotes("Đây là phần chứng minh tính khả thi của test case. Một: tất cả chạy tự động. Hai: bảy test case đạt ở cả hai chế độ và khi chạy tuần tự các cơ chế bảo vệ từ chối bằng mã lỗi riêng như duration_limit_reached hay booker_limit_exceeded_error, nghĩa là test case thật sự kiểm tra chứ không đạt rỗng. Ba: lặp lại mười trên mười vòng và vẫn như vậy khi chỉ có hai request. Bốn: curl thuần cho cùng kết quả. Năm là bằng chứng mạnh nhất: khi nhóm thêm chỉ mục duy nhất theo người tham dự trên cơ sở dữ liệu test thì TC-16 chuyển từ không đạt sang đạt, tức test case đúng là phát hiện lỗi đó. Với ràng buộc loại trừ thì dữ liệu hết chồng giờ nhưng người thua nhận lỗi 500, nên sửa phải làm ở cả hai tầng. Hạn chế: mười hai test case mới chưa chạy trên máy Windows.");
+  s.addNotes("Đây là phần chứng minh tính khả thi của test case. Một: tất cả chạy tự động. Hai: bảy test case đạt ở cả hai chế độ và khi chạy tuần tự các cơ chế bảo vệ từ chối bằng mã lỗi riêng như duration_limit_reached hay booker_limit_exceeded_error, nghĩa là test case thật sự kiểm tra chứ không đạt rỗng. Ba: lặp lại mười trên mười vòng và vẫn như vậy khi chỉ có hai request. Bốn: curl thuần cho cùng kết quả. Năm là bằng chứng mạnh nhất: khi nhóm thêm chỉ mục duy nhất theo người tham dự trên cơ sở dữ liệu test thì TC-16 chuyển từ không đạt sang đạt, tức test case đúng là phát hiện lỗi đó. Với ràng buộc loại trừ thì dữ liệu hết chồng giờ nhưng người thua nhận lỗi 500, nên sửa phải làm ở cả hai tầng. Bảy: hai máy khớp hai mươi trên hai mươi test case; TC-07 lệch một vòng vì chỉ có hai request nên thứ tự đến thay đổi.");
 }
 
 // 4 · Lỗi thật

@@ -59,9 +59,9 @@ Hai lỗi đáng chú ý nhất vì dễ bị coi là đã an toàn:
 | 4 | Công cụ khác cho cùng kết quả | `curl` thuần (không k6, không bộ test) tái hiện cả 11 lỗi; D7–D11 chạy 2 lần liên tiếp cho kết quả y hệt | `evidence/repro-curl.txt`, `evidence/repro-curl-2.txt` |
 | 5 | Sửa lỗi thì test đạt | Thêm chỉ mục duy nhất theo người tham dự: TC-16 từ FAIL 10/10 sang PASS 10/10 (1 người được nhận, 5 người bị 400, không có 500). Thêm ràng buộc loại trừ: TC-02, 05, 17 hết vi phạm I1/I3, chỉ còn vi phạm I7 do trả 500 | `results/fix-unique-attendee/`, `results/fix-exclusion-20/` |
 | 6 | Chi phí chấp nhận được | 20 test case, 10 vòng, hai chế độ: khoảng 8 phút máy, 0 đồng | báo cáo bảng chi phí |
-| 7 | Nhiều máy | 8 test case đầu khớp 8/8 giữa macOS và Windows | `results/windows-race/` |
+| 7 | Nhiều máy | Cả 20 test case khớp 20/20 về kết luận giữa macOS và Windows (21/10). Chỉ lệch TC-07: 9/10 vòng thay vì 10/10, vì ở vòng 1 yêu cầu đổi lịch đến trước nên lệnh hủy bị từ chối (400), dữ liệu nhất quán | `results/windows-20-race/`, `windows-20-sequential/` |
 
-**Hạn chế:** 12 test case bổ sung (TC-09 đến TC-20) mới chạy trên macOS, chưa chạy lại trên Windows. Nhóm chưa báo lỗi cho Cal.com và chưa sửa mã Cal.com (thí nghiệm khắc phục chỉ ở mức CSDL test, đã gỡ sau khi chạy).
+**Hạn chế:** lượt Windows ngày 21/10 chỉ còn `REPORT.md` (không có `summary.json` và `raw/`); số liệu đã đối chiếu từ `REPORT.md`. Nhóm chưa báo lỗi cho Cal.com và chưa sửa mã Cal.com (thí nghiệm khắc phục chỉ ở mức CSDL test, đã gỡ sau khi chạy).
 
 ## 6. Vai trò của từng test case: nếu không có thì bỏ sót gì
 

@@ -25,7 +25,7 @@
 | **Tìm ra mấu chốt của lỗi (không kiểm tra thì sao)** | Lý do khó thấy, hậu quả từng lỗi, "không sập mà sai âm thầm" | 15; báo cáo 4.5.5, 4.5.6 |
 | Đưa ra quy trình test | Quy trình 7 bước, tiêu chí pass/fail | 6; báo cáo 3.3.4 |
 | Danh sách test case là gì | 20 test case, đặc tả đầy đủ | 7, 8; báo cáo 3.3.6 |
-| Chi phí cho việc test | 0 đồng, 460 giây máy cho lượt chính thức (tổng 23 phút), ước lượng 34 đến 46 giờ | 10; báo cáo 4.4.5 |
+| Chi phí cho việc test | 0 đồng, 460 giây máy cho lượt chính thức (tổng 33 phút gồm cả máy Windows), ước lượng 34 đến 46 giờ | 10; báo cáo 4.4.5 |
 | Nêu kế hoạch test (giữa kỳ) | Phạm vi, giả định, rủi ro, lịch | 9, 17; báo cáo 3.3, 3.4 |
 | Test như thế nào | k6 đồng thời, kiểm CSDL, đối chứng, hai máy | 11, 12; báo cáo 4.3, 4.4 |
 | Kỹ thuật test | Kiểm thử đồng thời (race condition) | 6, 9; báo cáo 2.1 |
@@ -74,7 +74,7 @@ Mỗi slide đều gắn với một ý "vì sao điều này chứng minh kế 
 
 *Khả thi vì:* phạm vi hẹp, phiên bản cố định.
 
-**Slide 3 (tiến độ).** "Theo kế hoạch, Sprint 1 gồm dựng hệ thống, vẽ kiến trúc, viết tài liệu cài đặt và kế hoạch test, tất cả đã xong. Nhóm còn làm trước: bộ test 20 test case đã chạy xong, và 8 test case đầu đã chạy lại trên một máy khác. Còn lại là test qua giao diện bằng Playwright. Công việc theo dõi trên GitHub Projects, đã có 18 thẻ, nhóm đang gán người."
+**Slide 3 (tiến độ).** "Theo kế hoạch, Sprint 1 gồm dựng hệ thống, vẽ kiến trúc, viết tài liệu cài đặt và kế hoạch test, tất cả đã xong. Nhóm còn làm trước: bộ test 20 test case đã chạy xong, và cả 20 test case đã chạy lại trên một máy Windows khác. Còn lại là test qua giao diện bằng Playwright. Công việc theo dõi trên GitHub Projects, đã có 18 thẻ, nhóm đang gán người."
 
 *Khả thi vì:* nhóm đang đi nhanh hơn kế hoạch.
 
@@ -98,7 +98,7 @@ Mỗi slide đều gắn với một ý "vì sao điều này chứng minh kế 
 
 *Khả thi vì:* phạm vi, giả định và tiêu chí đều nêu rõ, đúng yêu cầu của phần giữa kỳ trong đề.
 
-**Slide 10 (chi phí).** "Chi phí tiền là 0 đồng. Lượt chạy chính thức 20 test case gửi 3 180 request, chạy lại cả đồng thời và tuần tự mất khoảng 8 phút máy. Tính cả thí nghiệm phụ là 5 760 request, khoảng 23 phút. Nhân lực nhóm ước lượng 34 đến 46 người-giờ, chưa gồm đợt mở rộng; nhóm chưa theo dõi giờ thực tế từng người."
+**Slide 10 (chi phí).** "Chi phí tiền là 0 đồng. Lượt chạy chính thức 20 test case gửi 3 180 request, chạy lại cả đồng thời và tuần tự mất khoảng 8 phút máy. Tính cả thí nghiệm phụ và lượt chạy trên máy Windows là 8 940 request, khoảng 33 phút. Nhân lực nhóm ước lượng 34 đến 46 người-giờ, chưa gồm đợt mở rộng; nhóm chưa theo dõi giờ thực tế từng người."
 
 *Khả thi vì:* chi phí rất thấp.
 
@@ -106,7 +106,7 @@ Mỗi slide đều gắn với một ý "vì sao điều này chứng minh kế 
 
 *Khả thi vì:* kỹ thuật đã phát hiện lỗi thật, và bộ test phân biệt được chỗ đúng với chỗ sai.
 
-**Slide 12 (máy Windows).** "Bạn Vĩ chạy lại 8 test case đầu trên máy Windows 11, Core i7-13620H, 16 GB RAM. Kết quả khớp 8 trên 8 với máy Mac. Mười hai test case mới chưa chạy trên Windows, đó là hạn chế nhóm ghi nhận. Hai lượt chạy đầu trên máy đó bị loại vì thiếu k6 và Cal.com dừng giữa chừng; nhóm chỉ dùng lượt chạy sạch."
+**Slide 12 (máy Windows).** "Bạn Vĩ chạy lại cả hai mươi test case trên máy Windows 11, Core i7-13620H, 16 GB RAM. Kết luận khớp hai mươi trên hai mươi với máy Mac. Chỗ khác duy nhất là TC-07 vi phạm chín trên mười vòng: ở vòng một, yêu cầu đổi lịch đến trước nên lệnh hủy bị từ chối, dữ liệu vẫn nhất quán, không phải lỗi. Máy Windows chậm hơn: 448 giây so với 383 giây. Hai lượt chạy đầu trên máy đó lần trước bị loại vì thiếu k6 và Cal.com dừng giữa chừng; nhóm chỉ dùng lượt chạy sạch."
 
 *Khả thi vì:* kết quả không phụ thuộc máy và nhóm biết loại kết quả không hợp lệ.
 
@@ -163,7 +163,7 @@ Không cần chạy lại toàn bộ 20 test case, vì mất khoảng 8 phút v�
 Dùng [SLIDE_1_TRANG_TRINH_BAY_LOP.pdf](SLIDE_1_TRANG_TRINH_BAY_LOP.pdf). Một người nói, theo thứ tự các ô trên slide:
 
 1. "Nhóm 14 kiểm thử race condition cho Cal.com, một hệ thống đặt lịch."
-2. **Đã hoàn thành:** dựng hệ thống, bộ test tự động, 20 test case chạy 10 vòng, 11 lỗi tái hiện độc lập, đánh giá rủi ro, 8 test case đầu chạy lại trên máy Windows.
+2. **Đã hoàn thành:** dựng hệ thống, bộ test tự động, 20 test case chạy 10 vòng, 11 lỗi tái hiện độc lập, đánh giá rủi ro, chạy lại 20 test case trên máy Windows.
 3. **Kết quả chính:** chỉ vào bảng: 12 test case chỉ sai khi đồng thời, 7 test case đúng ở cả hai chế độ, 1 test case sai cả khi tuần tự.
 4. **Chi phí:** 0 đồng, khoảng 8 phút máy cho 20 test case.
 5. **Còn lại:** test qua giao diện, đề xuất sửa, báo lỗi cho Cal.com, hoàn thiện báo cáo.
@@ -196,10 +196,10 @@ Dùng [SLIDE_1_TRANG_TRINH_BAY_LOP.pdf](SLIDE_1_TRANG_TRINH_BAY_LOP.pdf). Một 
 | Sao biết là race chứ không phải lỗi thường? | Có nhóm đối chứng gửi tuần tự: TC-02 tuần tự đúng, đồng thời sai. TC-06 sai cả hai nên nhóm xếp là lỗi logic. |
 | Request có thực sự đồng thời không? | Có, k6 đặt cùng mốc giờ gửi, độ lệch đo được 0 đến 1 ms. |
 | Sao không tin mã HTTP? | Vì cả 10 request đều trả 200 mà cơ sở dữ liệu vẫn sai. |
-| Lỗi có phải lỗi thật không? | Tái hiện từng lỗi bằng curl thuần và xem dữ liệu trong DB; 6 lỗi đầu chạy trên hai máy cho cùng kết quả, 5 lỗi mới chạy hai lần liên tiếp cho kết quả y hệt trên máy Mac. |
+| Lỗi có phải lỗi thật không? | Tái hiện từng lỗi bằng curl thuần và xem dữ liệu trong DB; bộ test cho cùng kết luận trên hai máy (20/20); 5 lỗi mới còn tái hiện bằng curl hai lần liên tiếp cho kết quả y hệt. |
 | Hướng sửa là gì? | Thêm ràng buộc cơ sở dữ liệu không cho hai booking chồng giờ. Thử trên dữ liệu test thì D1 và D3 hết lỗi nhưng người thua nhận 500 thay vì 409, nên cần sửa cả mã trả lỗi. |
 | Đã báo lỗi cho Cal.com chưa? | Chưa. Nhóm chưa sửa mã Cal.com, mới thử một hướng sửa trên dữ liệu test. |
-| Hai máy giống nhau không? | Giống 8 trên 8 test case đầu. Khác ở tốc độ và một vòng của TC-05. Mười hai test case mới chưa chạy trên Windows. |
+| Hai máy giống nhau không? | Giống 20 trên 20 test case về kết luận. Khác ở tốc độ, số booking vòng 1 của TC-05 (Windows 10, Mac 9) và TC-07 (Windows 9/10 vòng, Mac 10/10). |
 | Con số 20/20 từ đâu? | Thí nghiệm riêng với 2 request đồng thời, 20 vòng. Bảng chính là 10 request, 10 vòng. |
 | Vì sao tăng lên 20 test case? | Thầy góp ý 8 là ít. Nhóm thêm 12 test case vào các tính năng dễ sót: bốn loại giới hạn, thời gian đệm, hủy nhiều lần, ghế trùng, đổi lịch tranh giờ, tải cao. |
 | Làm sao biết test case của nhóm đúng, không phải nhiễu? | Bảy bằng chứng (slide 13). Mạnh nhất: bảy test case đạt ở cả hai chế độ, và khi thêm bản sửa ở cơ sở dữ liệu thì TC-16 chuyển từ không đạt sang đạt. |
@@ -225,7 +225,6 @@ Ngoài phần của mình, mỗi người nắm một câu tóm tắt cho phần
 - Nhóm **chưa báo lỗi cho Cal.com**, **chưa sửa mã Cal.com**, **chưa test qua giao diện** bằng Playwright.
 - Giờ làm chỉ là **ước lượng**, chưa theo dõi thực tế.
 - Một số lỗi có thể bị phía Cal.com coi là hành vi chấp nhận được (ví dụ D2). Nhóm gọi là lỗi vì dữ liệu sai so với kỳ vọng đã nêu.
-- 12 test case mới (TC-09 đến TC-20) mới chạy trên máy Mac, chưa chạy trên Windows.
 - Điểm "ảnh hưởng" trong đánh giá rủi ro là đánh giá của nhóm, chưa có dữ liệu thật từ người dùng Cal.com.
 - Thí nghiệm sửa lỗi chỉ ở mức cơ sở dữ liệu test (đã gỡ sau khi chạy); nhóm chưa sửa mã Cal.com.
 - Nếu thầy hỏi vượt giữa kỳ, trả lời: nhóm đã chạy đủ 20 test case, phần chưa làm đã ghi trong kế hoạch.
