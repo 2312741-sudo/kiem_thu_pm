@@ -137,6 +137,22 @@ Mỗi slide đều gắn với một ý "vì sao điều này chứng minh kế 
 
 **Chuẩn bị trước giờ báo cáo:**
 
+**Nếu cổng 5432 bị Postgres.app bản 18 chiếm** (lỗi `database "calendso" does not exist`): chạy PostgreSQL 16 của đề tài ở cổng 5433 và nạp biến môi trường trong mỗi cửa sổ Terminal dùng cho demo.
+
+```bash
+/Applications/Postgres.app/Contents/Versions/16/bin/pg_ctl -D "$PWD/.pgdata/data" -l "$PWD/.pgdata/pg.log" -o "-p 5433 -c max_connections=300" start
+```
+
+```bash
+source tools/demo-env.sh && cd calcom && yarn dev
+```
+
+```bash
+source tools/demo-env.sh && cd race-tests && npm run demo:midterm
+```
+
+(Chạy ba lệnh trong thư mục gốc của kho; lệnh thứ hai và thứ ba ở hai cửa sổ Terminal khác nhau.)
+
 1. Cal.com chạy trong Terminal riêng, đợi dòng `Ready`, để nguyên cửa sổ:
 
 ```bash
