@@ -103,7 +103,7 @@ Chạy lại S2 10 vòng: DB luôn chỉ còn **1** booking active, nên invaria
 **Nguyên nhân gốc**
 
 `handleSeats()` (`packages/features/bookings/lib/handleSeats/handleSeats.ts`) tìm booking hiện có của slot bằng `findFirst({ eventTypeId, startTime, status: ACCEPTED })`:
-- Nếu đã có booking, nó gọi `addSeatToBooking()`, hàm này đã khóa `FOR UPDATE` và hoạt động đúng (S4 PASS).
+- Nếu đã có booking, nó gọi `createNewSeat()`, hàm này dùng `addSeatToBooking()` (`handleSeats/create/createNewSeat.ts` dòng ~47–53) khóa `FOR UPDATE` và hoạt động đúng (S4 PASS).
 - Nếu **chưa có**, luồng rơi xuống `createBooking()` để tạo booking mới cho slot.
 
 Khi N request đến cùng lúc vào slot trống, tất cả cùng thấy "chưa có booking", nên tất cả cùng INSERT. Request đầu thắng. Các request sau trùng `idempotencyKey` (cùng start, end, host) hoặc trùng `uid` (O2), nhận `P2002` rồi bị ánh xạ thành 409 `booking_conflict_error`. Code không thử lại theo nhánh "thêm ghế vào booking vừa được tạo".
@@ -198,7 +198,7 @@ Hàm không phân biệt hai trường hợp, nên trường hợp 2 vẫn đư�
 - **Thực tế:** 10/10 vòng có **8/8** booking được nhận. Với 2 request: 20/20 vòng có 2 booking.
 - **Đối chứng tuần tự:** đúng 1 booking, 7 request bị từ chối với `booking_limit_reached`.
 
-**Nguyên nhân gốc:** `CheckBookingLimitsService._checkBookingLimit()` (`packages/features/bookings/lib/checkBookingLimits.ts`) gọi `countBookingsByEventTypeAndDateRange()` rồi so sánh với giới hạn. Phép đếm và lệnh INSERT về sau là hai bước tách rời, không có khóa.
+**Nguyên nhân gốc:** `CheckBookingLimitsService._checkBookingLimit()` (`packages/features/bookings/lib/checkBookingLimits.ts`) gọi `countBookingsByEventTypeAndDateRange()` (dòng ~93) rồi so sánh với giới hạn. Phép đếm và lệnh INSERT về sau là hai bước tách rời, không có khóa.
 
 **Thí nghiệm khắc phục:** exclusion constraint của D1 **không** sửa được D6 (`results/fix-exclusion`: vẫn 8/8), vì các booking không chồng giờ. Invariant dạng "đếm" cần cơ chế khác:
 - `pg_advisory_xact_lock(eventTypeId, ngày)` bao quanh bước đếm + INSERT;
@@ -232,7 +232,7 @@ Hàm không phân biệt hai trường hợp, nên trường hợp 2 vẫn đư�
 - **Thực tế:** 10/10 vòng cả 6 request trả 200, tổng 180 phút.
 - **Đối chứng tuần tự:** 1 thành công, 5 bị 401 `duration_limit_reached` (cùng lỗi mã 401 như O1).
 
-**Nguyên nhân gốc:** `checkBookingAndDurationLimits` (`RegularBookingService.ts` dòng ~944) cộng thời lượng các booking hiện có rồi so với giới hạn; INSERT sau đó, không khóa. Cùng họ với D6.
+**Nguyên nhân gốc:** `RegularBookingService.ts` (dòng ~944) gọi `checkBookingAndDurationLimits`, hàm này gọi tiếp `checkDurationLimits` (`packages/features/bookings/lib/checkDurationLimits.ts`). Ở đó `getTotalBookingDuration()` (dòng ~59) cộng thời lượng các booking hiện có rồi so với giới hạn; INSERT sau đó, không khóa. Cùng họ với D6. Mã 401 ở đối chứng tuần tự cũng do `checkDurationLimits.ts` dòng ~33 bọc lỗi 403 thành 401, giống O1.
 
 **Đề xuất sửa:** như D6: `pg_advisory_xact_lock(eventTypeId, ngày)` bao quanh bước đếm và INSERT.
 
@@ -248,7 +248,7 @@ Hàm không phân biệt hai trường hợp, nên trường hợp 2 vẫn đư�
 - **Thực tế:** 10/10 vòng cả 6 request trả 200, email đó có 6 booking active.
 - **Đối chứng tuần tự:** 1 thành công, 5 bị 400 `booker_limit_exceeded_error`.
 
-**Nguyên nhân gốc:** `checkActiveBookingsLimitForBooker` (`RegularBookingService.ts` dòng ~702) đếm booking active của email rồi mới tiếp tục luồng đặt lịch; ghi ở bước sau, không khóa theo email.
+**Nguyên nhân gốc:** `checkActiveBookingsLimitForBooker` (gọi ở `RegularBookingService.ts` dòng ~702; phép đếm `prisma.booking.count` ở `handleNewBooking/checkActiveBookingsLimitForBooker.ts` dòng ~45, chỉ đếm booking ACCEPTED có giờ bắt đầu trong tương lai) đếm booking active của email rồi mới tiếp tục luồng đặt lịch; ghi ở bước sau, không khóa theo email.
 
 **Đề xuất sửa:** khóa theo `(eventTypeId, email)` bao quanh bước đếm + INSERT.
 
@@ -264,7 +264,7 @@ Hàm không phân biệt hai trường hợp, nên trường hợp 2 vẫn đư�
 - **Thực tế:** 10/10 vòng cả 6 lệnh trả 200. Booking cuối cùng vẫn ở trạng thái cancelled nên **dữ liệu không dấu hiệu lỗi**. Nhưng đếm email: một booking bị hủy 6 lần làm Cal.com cố gửi **12 email hủy** (mỗi lần 2: host và người đặt), đối chứng tuần tự là 2. Số 12 đã đo ở `repro-curl-2.sh` (2 lần chạy liên tiếp đều 12) và đối chiếu được với tổng 28 email của một booking qua 4 lần chạy (2 + 12 + 12 + 2).
 - **Đối chứng tuần tự:** 1 lệnh 200, 5 lệnh 400.
 
-**Nguyên nhân gốc:** `handleCancelBooking.ts` kiểm tra `bookingToDelete.status === CANCELLED` (dòng ~197, trả 400) trên bản đọc ở đầu hàm; sau đó cập nhật trạng thái bằng `where: { uid }` (dòng ~566, không điều kiện trạng thái) và chạy các tác dụng phụ: webhook `BOOKING_CANCELLED`, email, nhắc nhở workflow, xóa sự kiện lịch ngoài, xử lý hoàn tiền (nếu đã thanh toán, dòng ~605). Không có khóa và không có điều kiện ghi "chỉ khi chưa hủy".
+**Nguyên nhân gốc:** `handleCancelBooking.ts` kiểm tra `bookingToDelete.status === CANCELLED` (dòng ~197, trả 400) trên bản đọc ở đầu hàm; sau đó cập nhật trạng thái bằng `where: { uid }` (dòng ~566, không điều kiện trạng thái) và chạy các tác dụng phụ: webhook `BOOKING_CANCELLED`, email, nhắc nhở workflow, xóa sự kiện lịch ngoài, xử lý hoàn tiền (nếu đã thanh toán, dòng ~600). Không có khóa và không có điều kiện ghi "chỉ khi chưa hủy".
 
 **Chưa kiểm chứng:** ảnh hưởng tới hoàn tiền với booking có thanh toán (cần tích hợp Stripe, ngoài phạm vi đề tài). Chỉ khẳng định được email lặp; webhook và lịch ngoài suy ra từ mã nhưng chưa quan sát.
 
